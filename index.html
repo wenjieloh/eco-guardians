@@ -30,38 +30,60 @@
         <section id="learn" class="content-box">
             <h2>What are Invasive Species?</h2>
             <p>An invasive plant isn't just a weed—it's a species brought from another part of the world that grows out of control because it has no natural enemies here.</p>
-            </section>
+        </section>
+
+        <section id="habitats" class="content-box">
+            <h2>Where Do They Hide?</h2>
+            <p>Invasive species are tough. They often thrive in <strong>disturbed ground</strong>, like:</p>
+            <ul>
+                <li><strong>Roadsides:</strong> Where seeds drop from car tires.</li>
+                <li><strong>Riverbanks:</strong> Where water carries plant fragments to new soil.</li>
+                <li><strong>Backyards:</strong> Where "pretty" garden plants escape into the wild.</li>
+            </ul>
+        </section>
 
         <section id="game" class="content-box">
-            <h2>Memory Match: Plant Identifer</h2>
-            <div id="memory-board" class="game-container">
+            <h2>Memory Match: Plant Identifier</h2>
+            <p>Match the pairs to clear the field!</p>
+            <div id="memory-board" class="memory-game">
                 </div>
-            <button onclick="resetGame()">Restart Game</button>
+            <div class="game-controls">
+                <p id="game-stats">Matches: 0</p>
+                <button onclick="setupGame()">Restart Game</button>
+            </div>
+        </section>
+
+        <section id="take-action" class="content-box" style="background-color: #ffeaea;">
+            <h2>What To Do: The Citizen Science Guide</h2>
+            <div class="action-steps">
+                <div class="step">
+                    <span class="icon">🚫</span>
+                    <h3>Don't Move Firewood</h3>
+                    <p>Invasive bugs and seeds travel in wood. Buy it where you burn it!</p>
+                </div>
+                <div class="step">
+                    <span class="icon">👟</span>
+                    <h3>Scrub Your Boots</h3>
+                    <p>Seeds hide in the mud on your shoes. Brush them off after a hike.</p>
+                </div>
+                <div class="step">
+                    <span class="icon">📱</span>
+                    <h3>Report It!</h3>
+                    <p>Use apps like <strong>iNaturalist</strong> to snap a photo and alert scientists.</p>
+                </div>
+            </div>
+            
+            <div class="action-list">
+                <h3>Quick Summary:</h3>
+                <ol>
+                    <li><strong>Report It:</strong> Use apps to log the location.</li>
+                    <li><strong>Clean Your Gear:</strong> Don't carry seeds from one park to another.</li>
+                    <li><strong>Native Only:</strong> Plant local flowers, not "aliens."</li>
+                </ol>
+            </div>
         </section>
     </main>
 
-<section id="take-action" class="content-box">
-    <h2>How Can You Help?</h2>
-    <div class="action-steps">
-        <div class="step">
-            <span class="icon">🚫</span>
-            <h3>Don't Move Firewood</h3>
-            <p>Invasive bugs and seeds travel in wood. Buy it where you burn it!</p>
-        </div>
-        <div class="step">
-            <span class="icon">👟</span>
-            <h3>Scrub Your Boots</h3>
-            <p>Seeds hide in the mud on your shoes. Brush them off after a hike.</p>
-        </div>
-        <div class="step">
-            <span class="icon">📱</span>
-            <h3>Report It!</h3>
-            <p>Use apps like <strong>iNaturalist</strong> to snap a photo and alert scientists.</p>
-        </div>
-    </div>
-</section>
-
-    
     <footer>
         <p>&copy; 2026 EcoGuardians Educational Project - Hosted on GitHub</p>
     </footer>
@@ -69,25 +91,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-<section id="habitats" class="content-box">
-    <h2>Where Do They Hide?</h2>
-    <p>Invasive species are tough. They often thrive in <strong>disturbed ground</strong>, like:</p>
-    <ul>
-        <li><strong>Roadsides:</strong> Where seeds drop from car tires.</li>
-        <li><strong>Riverbanks:</strong> Where water carries plant fragments to new soil.</li>
-        <li><strong>Backyards:</strong> Where "pretty" garden plants escape into the wild.</li>
-    </ul>
-</section>
-
-<section id="take-action" class="content-box" style="background-color: #ffeaea;">
-    <h2>What To Do: The Citizen Science Guide</h2>
-    <ol>
-        <li><strong>Report It:</strong> Use apps like iNaturalist to log the location.</li>
-        <li><strong>Clean Your Boots:</strong> Don't carry seeds from one park to another.</li>
-        <li><strong>Native Only:</strong> Ask your parents to plant local flowers, not "aliens."</li>
-    </ol>
-</section>
