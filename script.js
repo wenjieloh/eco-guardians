@@ -134,3 +134,13 @@ window.onload = () => {
     setupGame();
     loadQuickQuiz();
 };
+
+
+
+
+
+function setupGame() {
+    matchedCount = 0; // Reset the counter for new games
+    const board = document.getElementById('memory-board');
+    // ... rest of your code
+}
