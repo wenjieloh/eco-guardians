@@ -111,6 +111,37 @@ window.onload = () => {
     setupGame();
 };
 
+function loadQuickQuiz() {
+    const actionSection = document.querySelector('#take-action');
+    const quizDiv = document.createElement('div');
+    quizDiv.className = 'quiz-box';
+    quizDiv.innerHTML = `
+        <hr>
+        <h3>Quick Check: True or False?</h3>
+        <p>Invasive plants are good because they grow fast and provide more green space.</p>
+        <button onclick="checkQuiz(false)">True</button>
+        <button onclick="checkQuiz(true)">False</button>
+        <p id="quiz-feedback"></p>
+    `;
+    actionSection.appendChild(quizDiv);
+}
 
+function checkQuiz(isCorrect) {
+    const feedback = document.getElementById('quiz-feedback');
+    if (isCorrect) {
+        feedback.innerHTML = "✅ Correct! They crowd out native plants and hurt biodiversity.";
+        feedback.style.color = "green";
+    } else {
+        feedback.innerHTML = "❌ Not quite. They actually destroy the 'homes' of local animals.";
+        feedback.style.color = "red";
+    }
+}
+
+// Update your existing window.onload to include this:
+window.onload = () => {
+    setupGame();
+    loadHabitatInfo();
+    loadQuickQuiz();
+};
 
     
