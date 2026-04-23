@@ -114,3 +114,33 @@ button:hover {
     70% { box-shadow: 0 0 0 10px rgba(167, 40, 40, 0); }
     100% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0); }
 }
+
+
+
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.memory-card {
+    height: 80px;
+    background-color: var(--primary-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.memory-card.flipped {
+    background-color: white;
+    color: var(--text-dark);
+    border: 2px solid var(--primary-green);
+}
