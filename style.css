@@ -77,3 +77,40 @@ button {
 button:hover {
     transform: scale(1.05);
 }
+
+
+
+
+
+
+.habitat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.habitat-card {
+    border-left: 10px solid gray;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.high { border-left-color: orange; }
+.medium { border-left-color: gold; }
+.extreme { border-left-color: var(--danger-red); animation: pulse 2s infinite; }
+
+.badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(167, 40, 40, 0); }
+    100% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0); }
+}
