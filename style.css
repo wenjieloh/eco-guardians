@@ -161,3 +161,15 @@ button:hover { transform: scale(1.05); }
     border-radius: 4px;
     vertical-align: middle;
 }
+
+
+
+.badge {
+    background: var(--text-dark);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-bottom: 10px;
+}
