@@ -1,3 +1,4 @@
+/* 1. VARIABLES & GLOBALS */
 :root {
     --primary-green: #2d5a27;
     --danger-red: #a72828;
@@ -13,7 +14,7 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation */
+/* 2. NAVIGATION */
 header {
     background-color: var(--primary-green);
     color: white;
@@ -44,7 +45,7 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Sections */
+/* 3. LAYOUT & HERO */
 .content-box {
     max-width: 800px;
     margin: 40px auto;
@@ -57,37 +58,18 @@ nav ul li a {
 #hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80');
     background-size: cover;
     color: white;
 }
 
-/* Buttons */
-button {
-    background-color: var(--primary-green);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-
-
-
-
-
+/* 4. HABITAT CARDS */
 .habitat-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .habitat-card {
@@ -95,19 +77,12 @@ button:hover {
     padding: 20px;
     background: #fff;
     border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
 
+.extreme { border-left-color: var(--danger-red); animation: pulse 2s infinite; }
 .high { border-left-color: orange; }
 .medium { border-left-color: gold; }
-.extreme { border-left-color: var(--danger-red); animation: pulse 2s infinite; }
-
-.badge {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    background: #eee;
-    border-radius: 10px;
-}
 
 @keyframes pulse {
     0% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0.4); }
@@ -115,19 +90,17 @@ button:hover {
     100% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0); }
 }
 
-
-
-
-.game-container {
+/* 5. MEMORY GAME */
+.memory-game {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    max-width: 400px;
+    max-width: 500px;
     margin: 20px auto;
 }
 
 .memory-card {
-    height: 80px;
+    height: 100px;
     background-color: var(--primary-green);
     color: white;
     display: flex;
@@ -136,7 +109,7 @@ button:hover {
     font-size: 2rem;
     border-radius: 8px;
     cursor: pointer;
-    user-select: none;
+    transition: transform 0.2s;
 }
 
 .memory-card.flipped {
@@ -145,9 +118,7 @@ button:hover {
     border: 2px solid var(--primary-green);
 }
 
-
-
-
+/* 6. ACTION STEPS */
 .action-steps {
     display: flex;
     gap: 20px;
@@ -166,8 +137,16 @@ button:hover {
     border: 2px dashed var(--primary-green);
 }
 
-.icon {
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 10px;
+/* 7. BUTTONS */
+button {
+    background-color: var(--primary-green);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
 }
+
+button:hover { transform: scale(1.05); }
