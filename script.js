@@ -1,4 +1,6 @@
-// Expanded Plant Data
+// ==========================================
+// 1. DATA (The Facts)
+// ==========================================
 const plantData = [
     {
         name: "Kudzu",
@@ -23,11 +25,20 @@ const plantData = [
     }
 ];
 
-// Function to build the "How it Kills" section
+const gamePlants = ['🌿', '🌿', '🌵', '🌵', '🍃', '🍃', '🍄', '🍄'];
+let flippedCards = [];
+let matchedCount = 0;
+
+// ==========================================
+// 2. FUNCTIONS (The Actions)
+// ==========================================
+
+// Build the Habitat Cards
 function loadHabitatInfo() {
     const habitatSection = document.querySelector('#habitats');
+    if(!habitatSection) return;
+    
     let html = '<h2>Habitats Under Attack</h2><div class="habitat-grid">';
-
     plantData.forEach(plant => {
         html += `
             <div class="habitat-card ${plant.dangerLevel.toLowerCase()}">
@@ -39,34 +50,22 @@ function loadHabitatInfo() {
             </div>
         `;
     });
-
     html += '</div>';
     habitatSection.innerHTML = html;
 }
 
-// Initialize when page loads
-window.onload = () => {
-    loadLearnSection(); // From previous step
-    loadHabitatInfo();
-
-
-
-    // Game State
-const gamePlants = ['🌿', '🌿', '🌵', '🌵', '🍃', '🍃', '🍄', '🍄']; // Simplified for now
-let flippedCards = [];
-let matchedCount = 0;
-
+// Memory Game Logic
 function setupGame() {
     const board = document.getElementById('memory-board');
-    // Shuffle the cards
-    const shuffled = gamePlants.sort(() => 0.5 - Math.random());
+    if(!board) return;
+
+    const shuffled = [...gamePlants].sort(() => 0.5 - Math.random());
+    board.innerHTML = ''; 
     
-    board.innerHTML = ''; // Clear board
     shuffled.forEach((emoji, index) => {
         const card = document.createElement('div');
         card.classList.add('memory-card');
         card.dataset.emoji = emoji;
-        card.dataset.id = index;
         card.innerHTML = '?';
         card.onclick = () => flipCard(card);
         board.appendChild(card);
@@ -79,7 +78,6 @@ function flipCard(card) {
         card.classList.add('flipped');
         flippedCards.push(card);
     }
-
     if (flippedCards.length === 2) {
         setTimeout(checkMatch, 700);
     }
@@ -99,20 +97,11 @@ function checkMatch() {
     flippedCards = [];
 }
 
-function resetGame() {
-    matchedCount = 0;
-    flippedCards = [];
-    setupGame();
-}
-
-// Add this to your existing window.onload
-window.onload = () => {
-    loadLearnSection();
-    setupGame();
-};
-
+// Quiz Logic
 function loadQuickQuiz() {
     const actionSection = document.querySelector('#take-action');
+    if(!actionSection) return;
+
     const quizDiv = document.createElement('div');
     quizDiv.className = 'quiz-box';
     quizDiv.innerHTML = `
@@ -137,11 +126,11 @@ function checkQuiz(isCorrect) {
     }
 }
 
-// Update your existing window.onload to include this:
+// ==========================================
+// 3. INITIALIZATION (The "Start" Button)
+// ==========================================
 window.onload = () => {
-    setupGame();
     loadHabitatInfo();
+    setupGame();
     loadQuickQuiz();
 };
-
-    
