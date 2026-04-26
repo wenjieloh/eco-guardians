@@ -1,152 +1,198 @@
-/* 1. VARIABLES & GLOBALS */
+/* ==========================================
+   1. FONTS & COLOR THEME
+   ========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
 :root {
-    --primary-green: #2d5a27;
-    --danger-red: #a72828;
-    --light-tan: #f4f1ea;
-    --text-dark: #333;
+    --primary: #4a7c44;
+    --secondary: #8fb339;
+    --accent: #f7b733;
+    --danger: #d9534f;
+    --dark: #1a2f15;
+    --light: #f9fbf2;
+    --white: #ffffff;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
-    background-color: var(--light-tan);
-    color: var(--text-dark);
+    background-color: var(--light);
+    color: var(--dark);
+    scroll-behavior: smooth;
     line-height: 1.6;
 }
 
-/* 2. NAVIGATION */
+/* ==========================================
+   2. NAVIGATION (Sticky Glass Effect)
+   ========================================== */
 header {
-    background-color: var(--primary-green);
-    color: white;
-    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--primary);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    padding: 10px 0;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    gap: 20px;
 }
 
 nav ul li a {
-    color: white;
     text-decoration: none;
-    margin-left: 20px;
-    font-weight: bold;
+    color: var(--dark);
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-/* 3. LAYOUT & HERO */
-.content-box {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
+nav ul li a:hover { color: var(--secondary); }
 
+/* ==========================================
+   3. HERO SECTION (The Big Intro)
+   ========================================== */
 #hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80');
+    background: linear-gradient(135deg, rgba(74, 124, 68, 0.8), rgba(143, 179, 57, 0.8)), 
+                url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
+    background-position: center;
     color: white;
+    padding: 100px 20px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
 }
 
-/* 4. HABITAT CARDS */
+#hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+/* ==========================================
+   4. CONTENT BOXES
+   ========================================== */
+.content-box {
+    max-width: 900px;
+    margin: -30px auto 50px auto;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   5. HABITAT GRID & DANGER LEVELS
+   ========================================== */
 .habitat-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-    padding: 10px;
 }
 
 .habitat-card {
-    border-left: 10px solid gray;
+    background: #fdfdfd;
     padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    border-top: 6px solid #ccc;
+    transition: transform 0.3s ease;
 }
 
-.extreme { border-left-color: var(--danger-red); animation: pulse 2s infinite; }
-.high { border-left-color: orange; }
-.medium { border-left-color: gold; }
+.habitat-card:hover { transform: translateY(-5px); }
+
+.extreme { border-top-color: var(--danger); animation: pulse 2s infinite; }
+.high { border-top-color: orange; }
+.medium { border-top-color: var(--accent); }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(167, 40, 40, 0); }
-    100% { box-shadow: 0 0 0 0px rgba(167, 40, 40, 0); }
+    0% { box-shadow: 0 0 0 0px rgba(217, 83, 79, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
+    100% { box-shadow: 0 0 0 0px rgba(217, 83, 79, 0); }
 }
 
-/* 5. MEMORY GAME */
-.memory-game {
+/* ==========================================
+   6. MEMORY GAME (Fixed Visibility)
+   ========================================== */
+#memory-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
     max-width: 500px;
-    margin: 20px auto;
+    margin: 25px auto;
 }
 
 .memory-card {
-    height: 100px;
-    background-color: var(--primary-green);
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    border-radius: 8px;
+    font-size: 2.2rem;
+    border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s;
+    box-shadow: 0 5px 0 #2d5028;
+    transition: 0.1s;
 }
 
 .memory-card.flipped {
-    background-color: white;
-    color: var(--text-dark);
-    border: 2px solid var(--primary-green);
+    background: var(--white) !important;
+    color: var(--dark);
+    border: 3px solid var(--secondary);
+    box-shadow: none;
+    transform: translateY(3px);
 }
 
-/* 6. ACTION STEPS */
+/* ==========================================
+   7. ACTION STEPS & BUTTONS
+   ========================================== */
 .action-steps {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
 }
 
 .step {
-    flex: 1;
-    min-width: 200px;
-    background: #e9f5db;
+    background: #f4f9e9;
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    border: 2px dashed var(--primary-green);
+    border: 1px solid #d0e1b5;
 }
 
-/* 7. BUTTONS */
 button {
-    background-color: var(--primary-green);
+    background: var(--secondary);
     color: white;
+    padding: 12px 28px;
     border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    cursor: pointer;
+    border-radius: 50px;
     font-weight: bold;
-    transition: transform 0.2s;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-button:hover { transform: scale(1.05); }
+button:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+    #memory-board { grid-template-columns: repeat(2, 1fr); }
+    #hero
