@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoGuardians: Invasive Plant Alert</title>
+    <title>EcoGuardians | Invasive Species Awareness</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,9 +12,8 @@
         <nav>
             <div class="logo">🌿 EcoGuardians</div>
             <ul>
-                <li><a href="#learn">Learn</a></li>
                 <li><a href="#habitats">Habitats</a></li>
-                <li><a href="#game">Memory Game</a></li>
+                <li><a href="#game">Play Game</a></li>
                 <li><a href="#take-action">Take Action</a></li>
             </ul>
         </nav>
@@ -23,69 +22,39 @@
     <main>
         <section id="hero">
             <h1>Protect Our Ecosystem!</h1>
-            <p>Invasive plants are "aliens" in our backyard. Learn how to spot them and stop them.</p>
-            <button onclick="location.href='#learn'">Start Exploring</button>
-        </section>
-
-        <section id="learn" class="content-box">
-            <h2>What are Invasive Species?</h2>
-            <p>An invasive plant isn't just a weed—it's a species brought from another part of the world that grows out of control because it has no natural enemies here.</p>
+            <p>Become a Citizen Scientist and help us stop the spread of invasive "alien" plants.</p>
+            <button onclick="document.getElementById('habitats').scrollIntoView()">Start Learning</button>
         </section>
 
         <section id="habitats" class="content-box">
-            <h2>Where Do They Hide?</h2>
-            <p>Invasive species are tough. They often thrive in <strong>disturbed ground</strong>, like:</p>
-            <ul>
-                <li><strong>Roadsides:</strong> Where seeds drop from car tires.</li>
-                <li><strong>Riverbanks:</strong> Where water carries plant fragments to new soil.</li>
-                <li><strong>Backyards:</strong> Where "pretty" garden plants escape into the wild.</li>
-            </ul>
-        </section>
+            </section>
 
         <section id="game" class="content-box">
-            <h2>Memory Match: Plant Identifier</h2>
-            <p>Match the pairs to clear the field!</p>
-            <div id="memory-board" class="memory-game">
-                </div>
+            <div class="section-header">
+                <h2>Memory Match</h2>
+                <p>Match the invaders to clear the field!</p>
+            </div>
+            <div id="memory-board"></div>
             <div class="game-controls">
-                <p id="game-stats">Matches: 0</p>
+                <p id="game-stats">Matches: 0 / 4</p>
                 <button onclick="setupGame()">Restart Game</button>
             </div>
         </section>
 
-        <section id="take-action" class="content-box" style="background-color: #ffeaea;">
-            <h2>What To Do: The Citizen Science Guide</h2>
+        <section id="take-action" class="content-box">
+            <h2>Take Action</h2>
             <div class="action-steps">
-                <div class="step">
-                    <span class="icon">🚫</span>
-                    <h3>Don't Move Firewood</h3>
-                    <p>Invasive bugs and seeds travel in wood. Buy it where you burn it!</p>
-                </div>
-                <div class="step">
-                    <span class="icon">👟</span>
-                    <h3>Scrub Your Boots</h3>
-                    <p>Seeds hide in the mud on your shoes. Brush them off after a hike.</p>
-                </div>
-                <div class="step">
-                    <span class="icon">📱</span>
-                    <h3>Report It!</h3>
-                    <p>Use apps like <strong>iNaturalist</strong> to snap a photo and alert scientists.</p>
-                </div>
+                <div class="step"><h3>🚫 Don't Move Wood</h3><p>Seeds and bugs travel in firewood!</p></div>
+                <div class="step"><h3>👟 Scrub Your Boots</h3><p>Stop seeds from hitchhiking.</p></div>
+                <div class="step"><h3>📱 Report Sightings</h3><p>Use iNaturalist to alert experts.</p></div>
             </div>
-            
-            <div class="action-list">
-                <h3>Quick Summary:</h3>
-                <ol>
-                    <li><strong>Report It:</strong> Use apps to log the location.</li>
-                    <li><strong>Clean Your Gear:</strong> Don't carry seeds from one park to another.</li>
-                    <li><strong>Native Only:</strong> Plant local flowers, not "aliens."</li>
-                </ol>
-            </div>
+            <div id="quiz-container">
+                </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 EcoGuardians Educational Project - Hosted on GitHub</p>
+        <p>&copy; 2026 EcoGuardians Project | Built for Secondary Schools</p>
     </footer>
 
     <script src="script.js"></script>
