@@ -78,3 +78,19 @@ header {
     font-weight: bold;
     margin-top: 1.5rem;
 }
+/* Singapore Theme Add-on */
+header {
+    background: linear-gradient(to right, #1b4332, #081c15); /* Deeper jungle green */
+    border-bottom: 4px solid #ef233c; /* A touch of Singapore Red */
+}
+
+.logo::after {
+    content: " 🇸🇬"; /* Adds the flag to your logo automatically */
+}
+
+#hero {
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Mikania_micrantha_leaves.jpg/1200px-Mikania_micrantha_leaves.jpg');
+    background-size: cover;
+    background-position: center;
+}
