@@ -3,119 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoGuardians | Invasive Species Awareness</title>
+    <title>Invasive Alert | Youth Identification Guide</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <nav>
-            <div class="logo">🌿 EcoGuardians</div>
-            <ul>
-                <li><a href="#habitats">Habitats</a></li>
-                <li><a href="#game">Play Game</a></li>
-                <li><a href="#take-action">Take Action</a></li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <span class="logo">🌿 INVASIVE ALERT</span>
+            <p>Know the Enemy. Protect the Native.</p>
+        </div>
     </header>
 
     <main>
         <section id="hero">
-            <h1>Protect Our Ecosystem!</h1>
-            <p>Become a Citizen Scientist and help us stop the spread of invasive "alien" plants.</p>
-            <button onclick="document.getElementById('habitats').scrollIntoView()">Start Learning</button>
+            <h1>It’s Not Just a Weed.</h1>
+            <p>Invasive species destroy local habitats. Use this guide to identify and report the "Aliens" in our backyard.</p>
         </section>
 
-        <section id="habitats" class="content-box">
+        <section id="plant-guide" class="wrapper">
             </section>
 
-        <section id="game" class="content-box">
-            <div class="section-header">
-                <h2>Memory Match</h2>
-                <p>Match the invaders to clear the field!</p>
+        <section id="report-it" class="wrapper">
+            <div class="action-card">
+                <h2>See something? Say something.</h2>
+                <p>Don't touch unknown plants! Take a photo and use the app below to alert local rangers.</p>
+                <a href="https://www.inaturalist.org/" target="_blank" class="btn">Open iNaturalist</a>
             </div>
-            <div id="memory-board"></div>
-            <div class="game-controls">
-                <p id="game-stats">Matches: 0 / 4</p>
-                <button onclick="setupGame()">Restart Game</button>
-            </div>
-        </section>
-
-        <section id="take-action" class="content-box">
-            <h2>Take Action</h2>
-            <div class="action-steps">
-                <div class="step"><h3>🚫 Don't Move Wood</h3><p>Seeds and bugs travel in firewood!</p></div>
-                <div class="step"><h3>👟 Scrub Your Boots</h3><p>Stop seeds from hitchhiking.</p></div>
-                <div class="step"><h3>📱 Report Sightings</h3><p>Use iNaturalist to alert experts.</p></div>
-            </div>
-            <div id="quiz-container">
-                </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 EcoGuardians Project | Built for Secondary Schools</p>
+        <p>EcoGuardians | 2026 Environmental Awareness Project</p>
     </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoGuardians | Invasive Species</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">🌿 EcoGuardians</div>
-            <ul>
-                <li><a href="#habitats">Profiles</a></li>
-                <li><a href="#game">Play Game</a></li>
-                <li><a href="#take-action">Action</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Protect Our Nature!</h1>
-                <p>Stop the "Alien" plants from taking over our local parks.</p>
-                <button onclick="document.getElementById('habitats').scrollIntoView()">Start Exploring</button>
-            </div>
-        </section>
-
-        <section id="habitats" class="content-box">
-            </section>
-
-        <section id="game" class="content-box">
-            <div class="section-header">
-                <h2>Memory Match</h2>
-                <p>Can you find the matching pairs of invaders?</p>
-            </div>
-            <div id="memory-board"></div>
-            <div class="game-controls">
-                <p id="game-stats">Matches Found: 0 / 4</p>
-                <button class="btn-alt" onclick="setupGame()">Shuffle & Restart</button>
-            </div>
-        </section>
-
-        <section id="take-action" class="content-box">
-            <h2>Take Action</h2>
-            <div class="action-steps">
-                <div class="step"><span>🚫</span><h3>Wood</h3><p>Don't move firewood!</p></div>
-                <div class="step"><span>👟</span><h3>Boots</h3><p>Scrub those seeds off!</p></div>
-                <div class="step"><span>📱</span><h3>Report</h3><p>Use iNaturalist.</p></div>
-            </div>
-            <div id="quiz-container"></div>
-        </section>
-    </main>
 
     <script src="script.js"></script>
 </body>
