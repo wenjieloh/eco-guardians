@@ -1,4 +1,21 @@
-const weeds = [
+const weeds = [{
+        name: "Mile-a-Minute (Mikania micrantha)",
+        id: "Heart-shaped leaves that grow incredibly fast over other plants.",
+        danger: "ECO-CHOKER: One of Singapore's worst weeds. It blankets forests and kills native trees by blocking sun.",
+        warning: "HIGH"
+    },
+    {
+        name: "Lantana",
+        id: "Small, colorful clusters of flowers (pink, orange, yellow). Rough, sandpaper-like leaves.",
+        danger: "TOXIC: Forms dense thickets that prevent native seedlings from growing. Berries are toxic to pets.",
+        warning: "MEDIUM"
+    },
+    {
+        name: "Water Hyacinth",
+        id: "Floating plants with thick, shiny leaves and purple flowers. Seen in Singapore's reservoirs.",
+        danger: "WATER BLOCKER: Carpets the water surface, killing fish by removing oxygen from the water.",
+        warning: "HIGH"
+    }
     {
         name: "Giant Hogweed",
         id: "Huge white flowers and purple-spotted stems.",
