@@ -1,17 +1,16 @@
 :root {
-    --bg: #f4f7f1;
-    --card-bg: #ffffff;
     --primary: #1b4332;
-    --accent: #d9480f; /* Warning Orange */
+    --accent: #d9480f;
+    --bg: #f4f7f1;
     --text: #2d3436;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: sans-serif;
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
-    line-height: 1.6;
+    padding: 0;
 }
 
 header {
@@ -19,12 +18,6 @@ header {
     color: white;
     padding: 2rem 1rem;
     text-align: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 1px;
 }
 
 .wrapper {
@@ -35,54 +28,38 @@ header {
 
 #hero {
     text-align: center;
-    padding: 4rem 1rem;
+    padding: 5rem 1rem;
     background: white;
     border-bottom: 5px solid var(--accent);
 }
 
-h1 { font-size: 2.5rem; margin: 0; color: var(--primary); }
-
-/* Plant Identification Cards */
+/* Identification Cards */
 .plant-card {
-    background: var(--card-bg);
+    background: white;
     margin-bottom: 2rem;
     border-radius: 15px;
-    overflow: hidden;
-    display: flex;
+    padding: 2rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border: 1px solid #e0e0e0;
+    border: 1px solid #ddd;
 }
 
 .danger-tag {
     background: var(--accent);
     color: white;
-    padding: 5px 15px;
+    padding: 5px 12px;
     font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    display: inline-block;
     border-radius: 5px;
-}
-
-.plant-info {
-    padding: 2rem;
-}
-
-.plant-info h2 {
-    margin-top: 10px;
-    color: var(--primary);
-    font-size: 1.8rem;
+    font-size: 0.8rem;
 }
 
 .kill-zone {
     background: #fff5f5;
     padding: 1rem;
     border-radius: 8px;
-    border-left: 4px solid var(--accent);
+    border-left: 5px solid var(--accent);
     margin-top: 1rem;
 }
 
-/* Action Card */
 .action-card {
     background: var(--primary);
     color: white;
@@ -99,10 +76,5 @@ h1 { font-size: 2.5rem; margin: 0; color: var(--primary); }
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
-    margin-top: 1rem;
-}
-
-/* Mobile responsive */
-@media (max-width: 600px) {
-    .plant-card { flex-direction: column; }
+    margin-top: 1.5rem;
 }
