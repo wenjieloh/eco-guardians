@@ -1,146 +1,146 @@
 // ==========================================
-// 1. DATA (The Facts)
+// 1. DATA VAULT
 // ==========================================
 const plantData = [
     {
         name: "Kudzu",
         habitat: "Forest Edges",
-        threat: "Smothers trees & breaks power lines.",
-        howToKill: "Continuous mowing or digging up the 'root crown'.",
-        dangerLevel: "High"
+        threat: "Grows a foot a day, smothering native trees.",
+        howToKill: "Continuous mowing or digging up root crowns.",
+        dangerLevel: "High",
+        icon: "🌿"
     },
     {
         name: "Purple Loosestrife",
-        habitat: "Wetlands/Marshes",
-        threat: "Chokes out native water plants and destroys bird nesting sites.",
-        howToKill: "Pulling by hand before seeds drop or using leaf-eating beetles.",
-        dangerLevel: "Medium"
+        habitat: "Wetlands",
+        threat: "Chokes out native plants and bird nesting sites.",
+        howToKill: "Manual pulling or using specialist beetles.",
+        dangerLevel: "Medium",
+        icon: "🌸"
     },
     {
         name: "Giant Hogweed",
         habitat: "Riverbanks",
-        threat: "Grows 15ft tall! Its sap causes severe skin burns.",
+        threat: "Sap causes severe skin burns and blisters.",
         howToKill: "DANGER: Professional removal only. Do not touch!",
-        dangerLevel: "Extreme"
+        dangerLevel: "Extreme",
+        icon: "⚠️"
+    },
+    {
+        name: "Japanese Knotweed",
+        habitat: "Urban/Roadsides",
+        threat: "Grows through concrete and damages buildings.",
+        howToKill: "Chemical treatment by professionals.",
+        dangerLevel: "High",
+        icon: "🏢"
     }
 ];
 
-const gamePlants = ['🌿', '🌿', '🌵', '🌵', '🍃', '🍃', '🍄', '🍄'];
+const gameEmojis = ['🌿', '🌿', '🌸', '🌸', '⚠️', '⚠️', '🏢', '🏢'];
 let flippedCards = [];
 let matchedCount = 0;
 
 // ==========================================
-// 2. FUNCTIONS (The Actions)
+// 2. HABITAT & PROFILE BUILDER
 // ==========================================
+function loadHabitats() {
+    const container = document.getElementById('habitats');
+    if (!container) return;
 
-// Build the Habitat Cards
-function loadHabitatInfo() {
-    const habitatSection = document.querySelector('#habitats');
-    if(!habitatSection) return;
-    
-    let html = '<h2>Habitats Under Attack</h2><div class="habitat-grid">';
+    let html = `<h2>Invasive Profiles</h2><div class="habitat-grid">`;
     plantData.forEach(plant => {
         html += `
             <div class="habitat-card ${plant.dangerLevel.toLowerCase()}">
-                <span class="badge">${plant.dangerLevel} Danger</span>
+                <div class="card-icon">${plant.icon}</div>
                 <h3>${plant.name}</h3>
-                <p><strong>Found in:</strong> ${plant.habitat}</p>
+                <p><strong>Habitat:</strong> ${plant.habitat}</p>
                 <p><strong>The Threat:</strong> ${plant.threat}</p>
-                <p class="kill-method"><strong>How to stop it:</strong> ${plant.howToKill}</p>
+                <p class="kill-note"><strong>Fix:</strong> ${plant.howToKill}</p>
+                <span class="badge">${plant.dangerLevel} Danger</span>
             </div>
         `;
     });
-    html += '</div>';
-    habitatSection.innerHTML = html;
+    html += `</div>`;
+    container.innerHTML = html;
 }
 
-// Memory Game Logic
+// ==========================================
+// 3. MEMORY GAME LOGIC
+// ==========================================
 function setupGame() {
     const board = document.getElementById('memory-board');
-    if(!board) return;
+    if (!board) return;
 
-    const shuffled = [...gamePlants].sort(() => 0.5 - Math.random());
-    board.innerHTML = ''; 
-    
-    shuffled.forEach((emoji, index) => {
+    const shuffled = [...gameEmojis].sort(() => Math.random() - 0.5);
+    board.innerHTML = '';
+    matchedCount = 0;
+    flippedCards = [];
+    document.getElementById('game-stats').innerText = `Matches: 0 / 4`;
+
+    shuffled.forEach(emoji => {
         const card = document.createElement('div');
         card.classList.add('memory-card');
         card.dataset.emoji = emoji;
-        card.innerHTML = '?';
-        card.onclick = () => flipCard(card);
+        card.innerHTML = "?";
+        card.onclick = () => {
+            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
+                card.innerHTML = card.dataset.emoji;
+                card.classList.add('flipped');
+                flippedCards.push(card);
+                if (flippedCards.length === 2) setTimeout(checkMatch, 700);
+            }
+        };
         board.appendChild(card);
     });
 }
 
-function flipCard(card) {
-    if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
-        card.innerHTML = card.dataset.emoji;
-        card.classList.add('flipped');
-        flippedCards.push(card);
-    }
-    if (flippedCards.length === 2) {
-        setTimeout(checkMatch, 700);
-    }
-}
-
 function checkMatch() {
-    const [card1, card2] = flippedCards;
-    if (card1.dataset.emoji === card2.dataset.emoji) {
-        matchedCount += 2;
-        if (matchedCount === gamePlants.length) alert("Great job! You identified them all!");
+    const [c1, c2] = flippedCards;
+    if (c1.dataset.emoji === c2.dataset.emoji) {
+        matchedCount++;
+        document.getElementById('game-stats').innerText = `Matches: ${matchedCount} / 4`;
     } else {
-        card1.innerHTML = '?';
-        card2.innerHTML = '?';
-        card1.classList.remove('flipped');
-        card2.classList.remove('flipped');
+        c1.innerHTML = "?"; c2.innerHTML = "?";
+        c1.classList.remove('flipped'); c2.classList.remove('flipped');
     }
     flippedCards = [];
+    if (matchedCount === 4) alert("Great job, Eco-Guardian!");
 }
 
-// Quiz Logic
-function loadQuickQuiz() {
-    const actionSection = document.querySelector('#take-action');
-    if(!actionSection) return;
+// ==========================================
+// 4. QUIZ LOGIC
+// ==========================================
+function loadQuiz() {
+    const container = document.getElementById('quiz-container');
+    if (!container) return;
 
-    const quizDiv = document.createElement('div');
-    quizDiv.className = 'quiz-box';
-    quizDiv.innerHTML = `
-        <hr>
-        <h3>Quick Check: True or False?</h3>
-        <p>Invasive plants are good because they grow fast and provide more green space.</p>
-        <button onclick="checkQuiz(false)">True</button>
-        <button onclick="checkQuiz(true)">False</button>
-        <p id="quiz-feedback"></p>
+    container.innerHTML = `
+        <div class="quiz-box">
+            <h3>Knowledge Check</h3>
+            <p>True or False: Every fast-growing plant is considered an "Invasive Species."</p>
+            <button onclick="checkQuiz(false)">True</button>
+            <button onclick="checkQuiz(true)">False</button>
+            <p id="quiz-feedback"></p>
+        </div>
     `;
-    actionSection.appendChild(quizDiv);
 }
 
 function checkQuiz(isCorrect) {
-    const feedback = document.getElementById('quiz-feedback');
+    const fb = document.getElementById('quiz-feedback');
     if (isCorrect) {
-        feedback.innerHTML = "✅ Correct! They crowd out native plants and hurt biodiversity.";
-        feedback.style.color = "green";
+        fb.innerHTML = "✅ Correct! A plant is only 'Invasive' if it causes harm to the local ecosystem.";
+        fb.style.color = "green";
     } else {
-        feedback.innerHTML = "❌ Not quite. They actually destroy the 'homes' of local animals.";
-        feedback.style.color = "red";
+        fb.innerHTML = "❌ Not quite. Some fast growers are native and helpful!";
+        fb.style.color = "red";
     }
 }
 
 // ==========================================
-// 3. INITIALIZATION (The "Start" Button)
+// 5. MASTER INITIALIZATION
 // ==========================================
 window.onload = () => {
-    loadHabitatInfo();
+    loadHabitats();
     setupGame();
-    loadQuickQuiz();
+    loadQuiz();
 };
-
-
-
-
-
-function setupGame() {
-    matchedCount = 0; // Reset the counter for new games
-    const board = document.getElementById('memory-board');
-    // ... rest of your code
-}
