@@ -150,26 +150,3 @@ button {
 }
 
 button:hover { transform: scale(1.05); }
-
-
-
-.badge {
-    background: #333;
-    color: #fff;
-    padding: 4px 8px;
-    font-size: 0.7rem;
-    border-radius: 4px;
-    vertical-align: middle;
-}
-
-
-
-.badge {
-    background: var(--text-dark);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    display: inline-block;
-    margin-bottom: 10px;
-}
