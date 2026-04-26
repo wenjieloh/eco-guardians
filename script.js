@@ -144,3 +144,72 @@ window.onload = () => {
     setupGame();
     loadQuiz();
 };
+
+
+const plantData = [
+    { name: "Kudzu", danger: "High", icon: "🌿" },
+    { name: "Giant Hogweed", danger: "Extreme", icon: "⚠️" },
+    { name: "Knotweed", danger: "High", icon: "🏢" },
+    { name: "Loosestrife", danger: "Medium", icon: "🌸" }
+];
+
+const emojis = ['🌿', '🌿', '⚠️', '⚠️', '🏢', '🏢', '🌸', '🌸'];
+let flipped = [];
+let matches = 0;
+
+function setupGame() {
+    const board = document.getElementById('memory-board');
+    if (!board) return;
+    
+    board.innerHTML = '';
+    matches = 0;
+    document.getElementById('game-stats').innerText = `Matches Found: 0 / 4`;
+
+    const shuffled = emojis.sort(() => Math.random() - 0.5);
+    
+    shuffled.forEach(emoji => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.emoji = emoji;
+        card.innerHTML = '?';
+        card.onclick = () => {
+            if (flipped.length < 2 && !card.classList.contains('flipped')) {
+                card.innerHTML = card.dataset.emoji;
+                card.classList.add('flipped');
+                flipped.push(card);
+                if (flipped.length === 2) setTimeout(checkMatch, 600);
+            }
+        };
+        board.appendChild(card);
+    });
+}
+
+function checkMatch() {
+    const [c1, c2] = flipped;
+    if (c1.dataset.emoji === c2.dataset.emoji) {
+        matches++;
+        document.getElementById('game-stats').innerText = `Matches Found: ${matches} / 4`;
+    } else {
+        c1.innerHTML = '?'; c2.innerHTML = '?';
+        c1.classList.remove('flipped'); c2.classList.remove('flipped');
+    }
+    flipped = [];
+    if (matches === 4) alert("Champion! You know your invaders!");
+}
+
+function loadProfiles() {
+    const container = document.getElementById('habitats');
+    let html = '<h2>Invasive Profiles</h2><div class="habitat-grid">';
+    plantData.forEach(p => {
+        html += `<div class="habitat-card ${p.danger.toLowerCase()}">
+            <h3>${p.icon} ${p.name}</h3>
+            <p>Danger: ${p.danger}</p>
+        </div>`;
+    });
+    container.innerHTML = html + '</div>';
+}
+
+window.onload = () => {
+    loadProfiles();
+    setupGame();
+};
