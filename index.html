@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Plant Invaders – Stop the Spread!</title>
+  <title>Plant Invaders SG – Stop the Spread!</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-logo" onclick="showPage('home')">🌿 Plant Invaders</div>
+    <div class="nav-logo" onclick="showPage('home')">🌿 Plant Invaders SG</div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#" onclick="showPage('home')" data-page="home" class="active">Home</a></li>
       <li><a href="#" onclick="showPage('learn')" data-page="learn">Learn</a></li>
@@ -22,15 +22,17 @@
     <button class="nav-toggle" id="navToggle">☰</button>
   </nav>
 
-  <!-- PAGE: HOME -->
+  <!-- ===== HOME ===== -->
   <div id="page-home" class="page active">
+
+    <!-- HERO -->
     <header class="hero">
       <div class="hero-bg"></div>
       <div class="leaves-container" id="leavesContainer"></div>
       <div class="hero-content">
-        <div class="hero-badge">🚨 Environmental Alert</div>
-        <h1 class="hero-title">Plants Are <span class="highlight">Invading</span><br>Our World!</h1>
-        <p class="hero-sub">Learn how invasive plant species are taking over ecosystems — and what <strong>YOU</strong> can do to stop them!</p>
+        <div class="hero-badge">🇸🇬 Singapore Environmental Alert</div>
+        <h1 class="hero-title">Plants Are <span class="highlight">Invading</span> Singapore!</h1>
+        <p class="hero-sub">Right now, invasive plants are silently taking over Bukit Timah, the Southern Ridges, and your neighbourhood park. The good news? <strong>You can stop them.</strong></p>
         <div class="hero-btns">
           <button class="btn btn-primary" onclick="showPage('learn')">Start Learning 🌱</button>
           <button class="btn btn-secondary" onclick="showPage('games')">Play Games 🎮</button>
@@ -38,7 +40,7 @@
       </div>
       <div class="hero-graphic">
         <div class="planet-wrap">
-          <div class="planet">🌍</div>
+          <div class="planet-emoji">🌏</div>
           <div class="vine vine1">🌿</div>
           <div class="vine vine2">🍃</div>
           <div class="vine vine3">🌿</div>
@@ -47,91 +49,210 @@
       </div>
     </header>
 
-    <section class="stats-strip">
-      <div class="stat-item"><span class="stat-num">3,500+</span><span class="stat-label">Invasive Species Worldwide</span></div>
-      <div class="stat-item"><span class="stat-num">40%</span><span class="stat-label">Of Endangered Species Threatened</span></div>
-      <div class="stat-item"><span class="stat-num">#2</span><span class="stat-label">Cause of Biodiversity Loss</span></div>
-      <div class="stat-item"><span class="stat-num">$1.4T</span><span class="stat-label">Annual Global Damage Cost</span></div>
+    <!-- YOUTH HOOK -->
+    <section class="youth-hook">
+      <div class="container">
+        <div class="hook-header">
+          <div class="section-tag">WHY YOU SHOULD CARE</div>
+          <h2 class="section-title">This Is <em>Your</em> Singapore to Protect 🇸🇬</h2>
+        </div>
+        <div class="hook-grid">
+          <div class="hook-card">
+            <div class="hook-icon">🏫</div>
+            <h3>Your School, Your Parks</h3>
+            <p>Invasive plants are already in parks near your school — Bishan, Pasir Ris, East Coast. If nothing is done, Singapore's green spaces will be taken over within decades.</p>
+          </div>
+          <div class="hook-card">
+            <div class="hook-icon">💼</div>
+            <h3>Real Career Opportunities</h3>
+            <p>Singapore is investing millions into the <strong>City in Nature</strong> vision. Conservation, ecology, and environmental science are among the fastest-growing career paths in Singapore.</p>
+          </div>
+          <div class="hook-card">
+            <div class="hook-icon">🌡️</div>
+            <h3>Invasives Make Heat Worse</h3>
+            <p>Native trees cool Singapore's urban heat. Invasive plants replace them with species that trap heat and reduce shade — making our already hot island even hotter.</p>
+          </div>
+          <div class="hook-card">
+            <div class="hook-icon">🦎</div>
+            <h3>Your Wildlife Is Disappearing</h3>
+            <p>Otters, monitor lizards, hornbills, and mousedeer all depend on native plants. When invasives take over, these animals lose their food and shelter.</p>
+          </div>
+          <div class="hook-card">
+            <div class="hook-icon">🏆</div>
+            <h3>Be the Generation That Fixed It</h3>
+            <p>Previous generations introduced these plants by accident. Your generation gets to be the one that solved it — and that story starts here, right now.</p>
+          </div>
+          <div class="hook-card">
+            <div class="hook-icon">📱</div>
+            <h3>Citizen Science Is Real Science</h3>
+            <p>NParks and NUS researchers actively use data from student volunteers to track invasive species in Singapore. Your sightings count as real scientific data.</p>
+          </div>
+        </div>
+        <div class="hook-cta">
+          <p class="hook-quote">"Singapore has lost over 40% of its original biodiversity. But we still have Bukit Timah — one of the most biodiverse patches of rainforest on Earth. <strong>It's worth fighting for.</strong>"</p>
+          <button class="btn btn-primary" onclick="showPage('learn')">I'm In — Let's Learn →</button>
+        </div>
+      </div>
     </section>
 
+    <!-- STATS -->
+    <section class="stats-strip">
+      <div class="stat-item"><span class="stat-num">400+</span><span class="stat-label">Invasive Plant Species in Singapore</span></div>
+      <div class="stat-item"><span class="stat-num">163km²</span><span class="stat-label">Of Singapore's Nature At Risk</span></div>
+      <div class="stat-item"><span class="stat-num">40%</span><span class="stat-label">Of Original Biodiversity Already Lost</span></div>
+      <div class="stat-item"><span class="stat-num">$50M+</span><span class="stat-label">Spent Annually on Invasive Control in SG</span></div>
+    </section>
+
+    <!-- WHAT IS INVASIVE -->
     <section class="section what-section">
       <div class="container">
         <div class="section-tag">THE BASICS</div>
         <h2 class="section-title">What Is an Invasive Plant?</h2>
         <div class="cards-row">
-          <div class="info-card"><div class="card-icon">🌍</div><h3>Not From Here</h3><p>Invasive plants are species introduced to places outside their native home.</p></div>
-          <div class="info-card"><div class="card-icon">⚡</div><h3>Grows Super Fast</h3><p>Without natural predators or diseases, they spread uncontrollably, taking over habitats.</p></div>
-          <div class="info-card"><div class="card-icon">💀</div><h3>Kills Native Life</h3><p>They choke out native plants by stealing sunlight, water, and nutrients.</p></div>
-          <div class="info-card"><div class="card-icon">🔥</div><h3>Hard to Remove</h3><p>Once established, invasive plants are extremely difficult and expensive to get rid of.</p></div>
+          <div class="info-card"><div class="card-icon">🌍</div><h3>Not From Here</h3><p>Invasive plants are species introduced — accidentally or on purpose — outside their native range. In Singapore, many arrived via trade ships or were planted as ornamentals.</p></div>
+          <div class="info-card"><div class="card-icon">⚡</div><h3>Spreads Uncontrollably</h3><p>Without natural predators or diseases from their home country, they spread unchecked — sometimes doubling coverage in weeks.</p></div>
+          <div class="info-card"><div class="card-icon">💀</div><h3>Smothers Native Life</h3><p>They steal sunlight, water, and nutrients from native plants — cascading into habitat loss for Singapore's wildlife.</p></div>
+          <div class="info-card"><div class="card-icon">🔥</div><h3>Incredibly Hard to Eradicate</h3><p>Once established, invasive plants cost enormous time, money, and effort to remove — prevention and early action are everything.</p></div>
         </div>
       </div>
     </section>
 
+    <!-- SINGAPORE CONTEXT -->
+    <section class="section sg-context">
+      <div class="container">
+        <div class="sg-split">
+          <div class="sg-text">
+            <div class="section-tag">SINGAPORE'S STORY</div>
+            <h2 class="section-title">Why Singapore Is Especially Vulnerable</h2>
+            <p>As one of the world's busiest ports and a major aviation hub, Singapore is a gateway through which invasive species constantly enter — hidden in cargo, soil, produce, and even tourists' luggage.</p>
+            <br>
+            <p>Our tropical climate — warm, wet, and year-round growing season — is ideal for invasive plants to establish and spread rapidly. Singapore's fragmented green spaces make it even harder for native ecosystems to recover once invaded.</p>
+            <br>
+            <p>NParks' <strong>City in Nature</strong> initiative aims to restore and protect Singapore's biodiversity. But managing invasives is one of its biggest challenges. <em>That's where you come in.</em></p>
+            <button class="btn btn-primary" onclick="showPage('species')" style="margin-top:1.5rem">Meet the Invaders →</button>
+          </div>
+          <div class="sg-visual">
+            <div class="sg-map-box">
+              <div class="map-title">🗺️ Key Invaded Areas in Singapore</div>
+              <div class="map-locations">
+                <div class="map-loc" style="top:20%;left:30%"><div class="loc-dot red"></div><span>Bukit Timah</span></div>
+                <div class="map-loc" style="top:35%;left:60%"><div class="loc-dot orange"></div><span>Pulau Ubin</span></div>
+                <div class="map-loc" style="top:55%;left:45%"><div class="loc-dot red"></div><span>Central Catchment</span></div>
+                <div class="map-loc" style="top:70%;left:25%"><div class="loc-dot orange"></div><span>Southern Ridges</span></div>
+                <div class="map-loc" style="top:75%;left:65%"><div class="loc-dot yellow"></div><span>East Coast Park</span></div>
+                <div class="map-loc" style="top:40%;left:15%"><div class="loc-dot yellow"></div><span>Sungei Buloh</span></div>
+              </div>
+              <div class="map-legend">
+                <span><span class="leg-dot red"></span> Severely Invaded</span>
+                <span><span class="leg-dot orange"></span> Moderately Invaded</span>
+                <span><span class="leg-dot yellow"></span> At Risk</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIES PREVIEW -->
     <section class="section species-preview">
       <div class="container">
-        <div class="section-tag">MEET THE INVADERS</div>
+        <div class="section-tag">SINGAPORE'S WORST INVADERS</div>
         <h2 class="section-title">Know Your Enemy 🕵️</h2>
-        <p class="section-sub">Click on a plant to learn more!</p>
+        <p class="section-sub">These invasive plants are found right here in Singapore. Click to learn more!</p>
         <div class="species-grid">
-          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌿</div><div class="species-name">Kudzu</div><div class="species-nick">"The Vine That Ate the South"</div><div class="danger-badge high">DANGER: HIGH</div></div>
-          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">💜</div><div class="species-name">Water Hyacinth</div><div class="species-nick">"World's Worst Aquatic Weed"</div><div class="danger-badge high">DANGER: HIGH</div></div>
-          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🎋</div><div class="species-name">Japanese Knotweed</div><div class="species-nick">"The Concrete Destroyer"</div><div class="danger-badge extreme">DANGER: EXTREME</div></div>
-          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌸</div><div class="species-name">Lantana</div><div class="species-nick">"The Pretty Killer"</div><div class="danger-badge medium">DANGER: MEDIUM</div></div>
-          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌾</div><div class="species-name">Cogon Grass</div><div class="species-nick">"The Fire Grass"</div><div class="danger-badge high">DANGER: HIGH</div></div>
-          <div class="species-card see-more" onclick="showPage('species')"><div class="species-emoji">➕</div><div class="species-name">See All Species</div><div class="species-nick">6 invasive plants covered</div></div>
+          <div class="species-card" onclick="showPage('species')">
+            <div class="species-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Dioscorea_bulbifera_bulbils.jpg/320px-Dioscorea_bulbifera_bulbils.jpg" alt="Zanzibar Yam" class="species-img"/></div>
+            <div class="species-name">Zanzibar Yam</div>
+            <div class="species-nick">"The Bulb Bomber"</div>
+            <div class="danger-badge extreme">DANGER: EXTREME</div>
+          </div>
+          <div class="species-card" onclick="showPage('species')">
+            <div class="species-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mikania_micrantha_W_IMG_2100.jpg/320px-Mikania_micrantha_W_IMG_2100.jpg" alt="Mile-a-Minute" class="species-img"/></div>
+            <div class="species-name">Mile-a-Minute</div>
+            <div class="species-nick">"Singapore's #1 Weed"</div>
+            <div class="danger-badge extreme">DANGER: EXTREME</div>
+          </div>
+          <div class="species-card" onclick="showPage('species')">
+            <div class="species-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Eichhornia_crassipes_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-056.jpg/320px-Eichhornia_crassipes_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-056.jpg" alt="Water Hyacinth" class="species-img"/></div>
+            <div class="species-name">Water Hyacinth</div>
+            <div class="species-nick">"Waterway Choker"</div>
+            <div class="danger-badge high">DANGER: HIGH</div>
+          </div>
+          <div class="species-card" onclick="showPage('species')">
+            <div class="species-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg/320px-Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg" alt="Clidemia hirta" class="species-img"/></div>
+            <div class="species-name">Senduduk Bulu</div>
+            <div class="species-nick">"The Forest Floor Killer"</div>
+            <div class="danger-badge high">DANGER: HIGH</div>
+          </div>
+          <div class="species-card" onclick="showPage('species')">
+            <div class="species-img-wrap"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chromolaena_odorata_MS_4321.jpg/320px-Chromolaena_odorata_MS_4321.jpg" alt="Siam Weed" class="species-img"/></div>
+            <div class="species-name">Siam Weed</div>
+            <div class="species-nick">"The Sunlight Thief"</div>
+            <div class="danger-badge high">DANGER: HIGH</div>
+          </div>
+          <div class="species-card see-more" onclick="showPage('species')">
+            <div class="species-img-wrap see-more-inner">➕</div>
+            <div class="species-name">See All 8 Species</div>
+            <div class="species-nick">Full Singapore profiles</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- GAMES TEASER -->
     <section class="section games-teaser">
       <div class="container">
         <div class="games-split">
           <div class="games-text">
             <div class="section-tag">LEARN BY PLAYING</div>
             <h2 class="section-title white">Test Your Knowledge! 🎮</h2>
-            <p class="white-sub">Fun games to help you learn and remember the fight against invasive species.</p>
+            <p class="white-sub">Five fun games designed to make you an invasive species expert — Singapore edition.</p>
             <ul class="game-list">
-              <li>🃏 <strong>Memory Match</strong> — Match invasive plants to their native regions</li>
-              <li>❓ <strong>Invasive Quiz</strong> — 10-question challenge with instant feedback</li>
-              <li>🎯 <strong>Spot the Invader</strong> — Identify invasive vs. native plants</li>
-              <li>🗺️ <strong>Spread Simulator</strong> — Watch how invasives take over a map</li>
+              <li>🃏 <strong>Memory Match</strong> — Match SG plants to their origins (colour-coded!)</li>
+              <li>❓ <strong>Singapore Quiz</strong> — 12 questions on local invasives</li>
+              <li>🎯 <strong>Spot the Invader</strong> — Native vs Invasive challenge</li>
+              <li>🗺️ <strong>Spread Simulator</strong> — Watch invasions happen in real time</li>
+              <li>🔬 <strong>Plant ID Challenge</strong> — Identify plants from real photos</li>
             </ul>
             <button class="btn btn-white" onclick="showPage('games')">Play All Games →</button>
           </div>
           <div class="games-cards-preview">
             <div class="preview-card pc1">🃏</div>
             <div class="preview-card pc2">❓</div>
-            <div class="preview-card pc3">🎯</div>
+            <div class="preview-card pc3">🔬</div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ACTION STRIP -->
     <section class="section action-section">
       <div class="container">
-        <div class="section-tag">YOU CAN HELP</div>
-        <h2 class="section-title">3 Things You Can Do <em>Today</em></h2>
+        <div class="section-tag">YOU CAN HELP RIGHT NOW</div>
+        <h2 class="section-title">3 Things Singapore Students Can Do</h2>
         <div class="action-steps">
-          <div class="step-card"><div class="step-num">01</div><h3>Identify & Report</h3><p>Learn to recognise invasive plants and report sightings using apps like iNaturalist.</p></div>
-          <div class="step-card"><div class="step-num">02</div><h3>Spread the Word</h3><p>Tell friends, family, and classmates! Awareness is the first step to stopping the spread.</p></div>
-          <div class="step-card"><div class="step-num">03</div><h3>Join a Clean-Up</h3><p>Volunteer with local conservation groups to remove invasive plants from your community.</p></div>
+          <div class="step-card"><div class="step-num">01</div><h3>Report on iNaturalist SG</h3><p>Download iNaturalist and log invasive plants in your neighbourhood. NParks and NUS researchers use this data directly.</p></div>
+          <div class="step-card"><div class="step-num">02</div><h3>Join NParks Volunteer Events</h3><p>NParks runs regular invasive plant removal sessions at Bukit Timah and Central Catchment. Open to students!</p></div>
+          <div class="step-card"><div class="step-num">03</div><h3>Never Release Garden Plants</h3><p>Never dump unwanted aquarium or garden plants into waterways or green spaces — it's one of the top ways invasives spread in Singapore.</p></div>
         </div>
-        <button class="btn btn-primary" onclick="showPage('action')">Learn More Ways to Help →</button>
+        <button class="btn btn-primary" onclick="showPage('action')">See Full Action Guide →</button>
       </div>
     </section>
-  </div>
 
-  <!-- PAGE: LEARN -->
+  </div><!-- end home -->
+
+
+  <!-- ===== LEARN ===== -->
   <div id="page-learn" class="page">
     <div class="page-header">
       <div class="section-tag">EDUCATION HUB</div>
       <h1>Learn About Invasive Plants 📚</h1>
-      <p>Everything you need to know — how they spread, where they live, and how to fight back.</p>
+      <p>Everything you need to know — Singapore-focused, student-friendly, science-backed.</p>
     </div>
     <div class="progress-section">
       <div class="container">
         <div class="progress-bar-wrap">
-          <span class="progress-label">Your Learning Progress</span>
+          <span class="progress-label">📖 Reading Progress</span>
           <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
           <span class="progress-pct" id="progressPct">0%</span>
         </div>
@@ -142,124 +263,216 @@
         <div class="tab-nav">
           <button class="tab-btn active" data-tab="what">🌍 What Are They?</button>
           <button class="tab-btn" data-tab="spread">💨 How They Spread</button>
-          <button class="tab-btn" data-tab="habitats">🏞️ Habitats</button>
+          <button class="tab-btn" data-tab="habitats">🏞️ SG Habitats</button>
           <button class="tab-btn" data-tab="damage">💀 The Damage</button>
           <button class="tab-btn" data-tab="control">🛡️ Control Methods</button>
         </div>
 
+        <!-- WHAT -->
         <div class="tab-content active" id="tab-what">
           <div class="learn-grid">
             <div class="learn-text">
               <h2>What Makes a Plant "Invasive"?</h2>
-              <p>An invasive plant is a species that is <strong>non-native</strong> to an ecosystem and whose introduction causes harm to the environment, economy, or human health.</p>
-              <br><p>A plant becomes invasive when it:</p>
+              <p>An invasive plant is a species that is <strong>non-native</strong> to an ecosystem and whose introduction causes — or is likely to cause — harm to the environment, economy, or human health.</p>
+              <br>
+              <p>Not every foreign plant is invasive. A plant becomes truly invasive when it:</p>
               <ul class="learn-list">
-                <li>Establishes itself in a new environment</li>
-                <li>Reproduces rapidly and spreads aggressively</li>
-                <li>Outcompetes native species for resources</li>
-                <li>Causes ecological or economic damage</li>
+                <li>Establishes and reproduces successfully in a new environment</li>
+                <li>Spreads rapidly without human help</li>
+                <li>Outcompetes native species for sunlight, water, and nutrients</li>
+                <li>Disrupts native ecosystems and the animals that depend on them</li>
               </ul>
+              <br>
+              <p>In Singapore, invasive plants arrived via centuries of global trade, colonial-era ornamental planting, and the aquarium and gardening trades. Today, over 400 non-native plant species have been recorded here — many of them causing real damage.</p>
             </div>
             <div class="learn-visual">
               <div class="diagram-box">
-                <h4>Native vs Invasive</h4>
+                <h4>Native vs Invasive — Singapore Example</h4>
                 <div class="compare-grid">
-                  <div class="compare-col native"><div class="compare-head">🌸 Native Plant</div><ul><li>Evolved here</li><li>Has natural enemies</li><li>Supports local wildlife</li><li>Grows in balance</li><li>Part of the food web</li></ul></div>
-                  <div class="compare-col invasive"><div class="compare-head">🌿 Invasive Plant</div><ul><li>Brought from elsewhere</li><li>No natural enemies</li><li>Pushes wildlife out</li><li>Takes over fast</li><li>Disrupts food web</li></ul></div>
+                  <div class="compare-col native">
+                    <div class="compare-head">🌸 Tembusu Tree (Native)</div>
+                    <ul>
+                      <li>Evolved in local conditions</li>
+                      <li>Feeds native insects & birds</li>
+                      <li>Supports 50+ animal species</li>
+                      <li>Appears on Singapore $5 note</li>
+                      <li>Grows in natural balance</li>
+                    </ul>
+                  </div>
+                  <div class="compare-col invasive">
+                    <div class="compare-head">🌿 Zanzibar Yam (Invasive)</div>
+                    <ul>
+                      <li>Introduced from Africa/Asia</li>
+                      <li>No local natural enemies</li>
+                      <li>Smothers trees and shrubs</li>
+                      <li>Spreads via bulbils in soil</li>
+                      <li>Takes over rapidly</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="fact-cards">
-            <div class="fact-card"><div class="fact-icon">🧬</div><h4>Why No Enemies?</h4><p>In their home country, insects, fungi, and animals evolved to control these plants. In a new country, none of these natural controls exist!</p></div>
-            <div class="fact-card"><div class="fact-icon">⏱️</div><h4>Explosive Growth</h4><p>Some invasive plants double their coverage in a single year. Kudzu can grow 30cm in a single day!</p></div>
-            <div class="fact-card"><div class="fact-icon">🚢</div><h4>Accidental vs Intentional</h4><p>Many invasive plants were brought deliberately as garden plants, only to escape and wreak havoc. Others hitched rides as seeds in soil or packaging.</p></div>
+            <div class="fact-card"><div class="fact-icon">🧬</div><h4>The "Enemy Release" Effect</h4><p>In Africa, the Zanzibar Yam is kept in check by insects, fungi, and animals that evolved alongside it. In Singapore, none of these natural controls exist — so it grows explosively.</p></div>
+            <div class="fact-card"><div class="fact-icon">🚢</div><h4>Singapore's Port Problem</h4><p>As the world's second-busiest port, Singapore receives cargo from 600+ ports globally. Seeds and plant fragments arrive constantly — hidden in soil, packaging, and fresh produce.</p></div>
+            <div class="fact-card"><div class="fact-icon">🌡️</div><h4>Climate Change Makes It Worse</h4><p>Rising temperatures and changing rainfall patterns in Singapore create even more favourable conditions for tropical invasives to establish and spread year-round.</p></div>
           </div>
           <button class="mark-read-btn" onclick="markRead('what')">✅ Mark as Read</button>
         </div>
 
+        <!-- SPREAD -->
         <div class="tab-content" id="tab-spread">
-          <h2>How Do Invasive Plants Spread?</h2>
-          <p class="tab-intro">Invasive plants are incredibly clever at moving around. Here are the main ways they spread:</p>
+          <h2>How Do Invasive Plants Spread in Singapore?</h2>
+          <p class="tab-intro">Singapore's unique geography — island nation, major port, dense urban-nature mix — creates specific pathways for invasive plants to spread:</p>
           <div class="spread-methods">
-            <div class="spread-item"><div class="spread-icon">💧</div><div class="spread-info"><h4>Water</h4><p>Seeds and plant fragments float downstream, colonising riverbanks and wetlands.</p></div></div>
-            <div class="spread-item"><div class="spread-icon">💨</div><div class="spread-info"><h4>Wind</h4><p>Lightweight seeds with feathery attachments travel huge distances on the wind.</p></div></div>
-            <div class="spread-item"><div class="spread-icon">🐦</div><div class="spread-info"><h4>Animals & Birds</h4><p>Animals eat berries and deposit seeds far away. Seeds also stick to fur and feathers.</p></div></div>
-            <div class="spread-item"><div class="spread-icon">👟</div><div class="spread-info"><h4>Humans</h4><p>We carry seeds on shoes, tyres, and clothes. Dumped garden waste is one of the biggest causes.</p></div></div>
-            <div class="spread-item"><div class="spread-icon">🚗</div><div class="spread-info"><h4>Vehicles</h4><p>Construction equipment moves soil containing seeds and roots from site to site.</p></div></div>
-            <div class="spread-item"><div class="spread-icon">🌱</div><div class="spread-info"><h4>Underground Roots</h4><p>Many invasives spread through rhizomes. Cut one plant and the roots sprout five more!</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🚢</div><div class="spread-info"><h4>Shipping & Trade</h4><p>Seeds hidden in soil or cargo are the biggest entry point. Singapore's port handles over 37 million containers per year — each one a potential vector.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🌊</div><div class="spread-info"><h4>Waterways & Drains</h4><p>Singapore's canal network connects nature reserves to the coast. Plants like Water Hyacinth spread rapidly through our drainage systems into reservoirs and parks.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🐦</div><div class="spread-info"><h4>Birds & Wildlife</h4><p>Birds eat berries of invasive plants like Clidemia hirta and Lantana and deposit seeds throughout our nature reserves — sometimes covering kilometres in a single day.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🏡</div><div class="spread-info"><h4>Irresponsible Gardening</h4><p>Aquarium plants dumped into canals and ornamental plants dumped at forest edges are major problems in Singapore. Never release garden plants into the wild!</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🏗️</div><div class="spread-info"><h4>Construction & Soil Movement</h4><p>Singapore's constant construction moves soil — and the seeds and rhizomes within it — to new locations. Invasives thrive in disturbed soil at construction edges.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🌱</div><div class="spread-info"><h4>Underground Bulbils & Rhizomes</h4><p>The Zanzibar Yam produces bulbils (small bulb-like structures) that drop from vines and remain dormant in soil for years, sprouting when conditions are right.</p></div></div>
           </div>
           <div class="spread-diagram">
-            <h3>Spread Timeline 📈</h3>
+            <h3>How One Plant Becomes a Crisis 📈</h3>
             <div class="timeline">
-              <div class="timeline-step"><div class="tl-circle">Year 1</div><p>Single plant. Looks harmless.</p></div>
+              <div class="timeline-step"><div class="tl-circle">Year 1</div><p>Single plant arrives. Unnoticed.</p></div>
               <div class="timeline-arrow">→</div>
-              <div class="timeline-step"><div class="tl-circle">Year 3</div><p>Dozens of plants. Spreading.</p></div>
+              <div class="timeline-step"><div class="tl-circle">Year 3</div><p>Dozens of plants. Spreading quietly.</p></div>
               <div class="timeline-arrow">→</div>
-              <div class="timeline-step"><div class="tl-circle">Year 7</div><p>Hundreds of plants. Natives declining.</p></div>
+              <div class="timeline-step"><div class="tl-circle">Year 7</div><p>Hundreds of plants. Native species declining.</p></div>
               <div class="timeline-arrow">→</div>
-              <div class="timeline-step tl-danger"><div class="tl-circle danger">Year 15</div><p>Entire habitat taken over.</p></div>
+              <div class="timeline-step tl-danger"><div class="tl-circle danger">Year 15</div><p>Entire habitat invaded. Extremely costly to reverse.</p></div>
             </div>
           </div>
           <button class="mark-read-btn" onclick="markRead('spread')">✅ Mark as Read</button>
         </div>
 
+        <!-- HABITATS -->
         <div class="tab-content" id="tab-habitats">
-          <h2>Where Do They Take Over?</h2>
-          <p class="tab-intro">Invasive plants can invade almost any habitat:</p>
+          <h2>Singapore's Most Threatened Habitats</h2>
+          <p class="tab-intro">Singapore has some of South-East Asia's most precious and fragmented ecosystems — all under threat from invasive plants:</p>
           <div class="habitat-grid">
-            <div class="habitat-card"><div class="habitat-emoji">🌊</div><h4>Rivers & Wetlands</h4><p>Water hyacinth and purple loosestrife choke waterways, blocking sunlight and depleting oxygen for fish.</p><div class="habitat-plants">⚠️ Water Hyacinth, Purple Loosestrife</div></div>
-            <div class="habitat-card"><div class="habitat-emoji">🌲</div><h4>Forests</h4><p>Climbing vines smother trees, blocking sunlight. Some release toxins that kill other plants.</p><div class="habitat-plants">⚠️ Kudzu, English Ivy</div></div>
-            <div class="habitat-card"><div class="habitat-emoji">🌾</div><h4>Grasslands</h4><p>Dense grass invaders crowd out wildflowers and the insects that depend on them.</p><div class="habitat-plants">⚠️ Cogon Grass, Cheatgrass</div></div>
-            <div class="habitat-card"><div class="habitat-emoji">🏙️</div><h4>Urban Areas</h4><p>Invasives thrive in disturbed soil along roads, railways, and construction sites.</p><div class="habitat-plants">⚠️ Japanese Knotweed, Buddleja</div></div>
-            <div class="habitat-card"><div class="habitat-emoji">🌊</div><h4>Coastal Areas</h4><p>Salt-tolerant invasives can destroy coastal dunes and mangroves protecting shorelines.</p><div class="habitat-plants">⚠️ Spartina, Ice Plant</div></div>
-            <div class="habitat-card"><div class="habitat-emoji">🏔️</div><h4>Islands</h4><p>Islands are most vulnerable — species evolved in isolation with no defences against invasives.</p><div class="habitat-plants">⚠️ Miconia, Strawberry Guava</div></div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🌳</div>
+              <h4>Bukit Timah Forest</h4>
+              <p>One of the world's most biodiverse urban forests. Mile-a-Minute and Zanzibar Yam are aggressively invading its edges, threatening endemic species found nowhere else on Earth.</p>
+              <div class="habitat-plants">⚠️ Mile-a-Minute, Zanzibar Yam, Clidemia hirta</div>
+            </div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🌊</div>
+              <h4>Reservoirs & Waterways</h4>
+              <p>Singapore's reservoirs and canals supply our drinking water. Water Hyacinth mats reduce water quality, block sunlight, and clog pumping systems.</p>
+              <div class="habitat-plants">⚠️ Water Hyacinth, Water Lettuce, Salvinia</div>
+            </div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🌿</div>
+              <h4>Mangroves (Sungei Buloh)</h4>
+              <p>Singapore's mangroves are critical nurseries for fish and shrimp, and resting spots for migratory birds. Invasive grasses and vines are fragmenting these habitats.</p>
+              <div class="habitat-plants">⚠️ Casuarina, Para Grass</div>
+            </div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🏝️</div>
+              <h4>Pulau Ubin</h4>
+              <p>Singapore's last kampong island is a biodiversity refuge. But invasive plants are filling gaps left by abandoned farmland — outcompeting returning native species.</p>
+              <div class="habitat-plants">⚠️ Siam Weed, Lantana, Senduduk Bulu</div>
+            </div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🌺</div>
+              <h4>Grasslands & Wastelands</h4>
+              <p>Open areas between urban and forested zones are invasion hotspots. Invasive grasses establish here first, then creep into adjacent forests.</p>
+              <div class="habitat-plants">⚠️ Siam Weed, Cogon Grass, Albizia</div>
+            </div>
+            <div class="habitat-card">
+              <div class="habitat-emoji">🦅</div>
+              <h4>Southern Ridges</h4>
+              <p>This green corridor connecting Labrador to Mount Faber is under constant invasion pressure from urban-adapted invasive plants spreading from surrounding housing estates.</p>
+              <div class="habitat-plants">⚠️ Senduduk Bulu, Heliconia, Albizia</div>
+            </div>
           </div>
           <button class="mark-read-btn" onclick="markRead('habitats')">✅ Mark as Read</button>
         </div>
 
+        <!-- DAMAGE -->
         <div class="tab-content" id="tab-damage">
-          <h2>The Damage They Cause 💀</h2>
-          <p class="tab-intro">Invasive plants are the second biggest cause of species extinction worldwide:</p>
+          <h2>The Damage They Cause in Singapore 💀</h2>
+          <p class="tab-intro">The impact of invasive plants goes far beyond just looking untidy. Here's what's really at stake for Singapore:</p>
           <div class="damage-sections">
-            <div class="damage-block eco"><h3>🌿 Environmental Damage</h3><ul class="damage-list"><li><strong>Pushes out native plants</strong> — competing for light, water, and nutrients</li><li><strong>Destroys animal habitats</strong> — many animals only eat specific native plants</li><li><strong>Changes soil chemistry</strong> — some invasives release toxins that poison the soil</li><li><strong>Increases wildfire risk</strong> — invasive grasses burn faster and hotter</li><li><strong>Blocks waterways</strong> — aquatic invasives choke rivers, reducing oxygen for fish</li></ul></div>
-            <div class="damage-block econ"><h3>💰 Economic Damage</h3><ul class="damage-list"><li><strong>Reduces crop yields</strong> — invasives compete with food crops</li><li><strong>Costs billions in control</strong> — the US alone spends $34 billion/year</li><li><strong>Damages property</strong> — Japanese knotweed can crack foundations and walls</li><li><strong>Harms fishing industries</strong> — aquatic invasives destroy fish habitats</li></ul></div>
-            <div class="damage-block health"><h3>🏥 Human Health Damage</h3><ul class="damage-list"><li><strong>Allergens</strong> — invasive plants often produce more pollen than natives</li><li><strong>Toxic plants</strong> — some (like Lantana) are poisonous to children and pets</li><li><strong>Tick habitats</strong> — dense undergrowth creates homes for ticks carrying Lyme disease</li><li><strong>Water quality</strong> — algal blooms contaminate drinking water</li></ul></div>
+            <div class="damage-block eco">
+              <h3>🌿 Ecological Damage</h3>
+              <ul class="damage-list">
+                <li><strong>Biodiversity collapse</strong> — Invasive plants replace diverse native communities with single-species monocultures</li>
+                <li><strong>Wildlife food web disruption</strong> — Native insects, birds, and mammals depend on specific native plants that invasives displace</li>
+                <li><strong>Soil chemistry changes</strong> — Some invasives alter soil pH and nutrient levels, preventing native plants from re-establishing</li>
+                <li><strong>Light competition</strong> — Fast-growing vines like Mile-a-Minute grow over forest canopy, starving trees of sunlight until they die</li>
+                <li><strong>Seed bank disruption</strong> — Invasive bulbils and seeds persist in soil for years, making regeneration of native species nearly impossible</li>
+              </ul>
+            </div>
+            <div class="damage-block econ">
+              <h3>💰 Economic & Infrastructure Damage</h3>
+              <ul class="damage-list">
+                <li><strong>Water supply costs</strong> — Water Hyacinth mats require expensive mechanical and chemical treatment in reservoirs</li>
+                <li><strong>PUB drainage blockage</strong> — Aquatic weeds block Singapore's canal systems, requiring costly maintenance</li>
+                <li><strong>NParks removal budgets</strong> — Singapore spends tens of millions annually managing invasive plants in parks and reserves</li>
+                <li><strong>Tourism impact</strong> — Degraded green spaces reduce the appeal of Singapore's nature parks, which attract significant eco-tourism</li>
+              </ul>
+            </div>
+            <div class="damage-block health">
+              <h3>🏥 Public Health Concerns</h3>
+              <ul class="damage-list">
+                <li><strong>Dengue risk</strong> — Dense invasive plant mats create still-water habitats perfect for Aedes mosquito breeding</li>
+                <li><strong>Toxic plants</strong> — Some invasive species in Singapore are toxic to children and pets if touched or ingested</li>
+                <li><strong>Allergens</strong> — Invasive flowering plants can worsen respiratory conditions for sensitive individuals</li>
+                <li><strong>Water quality</strong> — Invasive aquatic plants reduce dissolved oxygen, enabling bacteria and toxin-producing algae to bloom</li>
+              </ul>
+            </div>
+          </div>
+          <div class="damage-spotlight">
+            <h3>🔦 Spotlight: What Mile-a-Minute Does to Bukit Timah</h3>
+            <p>Mikania micrantha (Mile-a-Minute) is Singapore's most problematic invasive plant. Growing up to 8cm per day, it drapes itself over shrubs and trees like a thick green blanket, cutting off all light. Trees weaken and collapse. The seedbank becomes dominated by Mikania seeds. Native undergrowth vanishes entirely. Recovering a heavily invaded patch can take 10–20 years of active management — or it may never recover at all.</p>
           </div>
           <button class="mark-read-btn" onclick="markRead('damage')">✅ Mark as Read</button>
         </div>
 
+        <!-- CONTROL -->
         <div class="tab-content" id="tab-control">
-          <h2>How Do We Fight Back? 🛡️</h2>
-          <p class="tab-intro">Several methods exist for controlling invasive plants — each with pros and cons:</p>
+          <h2>How Singapore Fights Back 🛡️</h2>
+          <p class="tab-intro">Singapore uses several integrated approaches to manage invasive plants — combining government action with community involvement:</p>
           <div class="control-methods">
-            <div class="control-card"><div class="control-icon">✋</div><h4>Manual Removal</h4><div class="method-badge good">Best for small areas</div><p>Hand-pulling, digging, or cutting. <strong>Pros:</strong> No chemicals, targeted. <strong>Cons:</strong> Labour-intensive, must remove all roots.</p></div>
-            <div class="control-card"><div class="control-icon">🧪</div><h4>Herbicides</h4><div class="method-badge caution">Use carefully</div><p>Chemical sprays. <strong>Pros:</strong> Effective on large areas. <strong>Cons:</strong> Can harm native plants, enters waterways.</p></div>
-            <div class="control-card"><div class="control-icon">🐛</div><h4>Biological Control</h4><div class="method-badge good">Long-term solution</div><p>Introducing natural enemies. <strong>Pros:</strong> Sustainable. <strong>Cons:</strong> Takes years, must be thoroughly tested first.</p></div>
-            <div class="control-card"><div class="control-icon">🌱</div><h4>Replanting Natives</h4><div class="method-badge good">Essential step</div><p>After removing invasives, plant native species. <strong>Pros:</strong> Restores ecosystem. <strong>Cons:</strong> Slow, ongoing effort.</p></div>
-            <div class="control-card"><div class="control-icon">🚫</div><h4>Prevention</h4><div class="method-badge great">Most effective!</div><p>Stopping new invasives from entering. Includes biosecurity checks, regulations on plant imports, and public awareness. Prevention is always cheaper than cure!</p></div>
+            <div class="control-card"><div class="control-icon">✋</div><h4>Manual Removal</h4><div class="method-badge good">NParks Standard</div><p>NParks staff and volunteers physically uproot invasive plants. Effective for small patches. Must remove all roots — even small fragments of Zanzibar Yam can regrow.</p></div>
+            <div class="control-card"><div class="control-icon">🧪</div><h4>Targeted Herbicides</h4><div class="method-badge caution">Specialist Use Only</div><p>Foliar sprays or stem injection with herbicides like glyphosate. Used carefully to minimise impact on native plants. Not applied near waterways without special protocols.</p></div>
+            <div class="control-card"><div class="control-icon">🌱</div><h4>Native Replanting</h4><div class="method-badge good">Critical Follow-Up</div><p>After invasive removal, NParks replants native species to close the gap before invasives return. This is why volunteer planting events are so important!</p></div>
+            <div class="control-card"><div class="control-icon">🔬</div><h4>Research & Monitoring</h4><div class="method-badge great">NUS + NParks</div><p>NUS researchers monitor invasive spread using GPS mapping and citizen science data from iNaturalist. Early detection data saves enormous costs in management.</p></div>
+            <div class="control-card"><div class="control-icon">📋</div><h4>Biosecurity at Borders</h4><div class="method-badge good">AVA Regulated</div><p>Singapore's Agriculture, Food & Veterinary Authority (AVA) maintains a list of prohibited plants. All plant imports must be declared and inspected at borders.</p></div>
+            <div class="control-card"><div class="control-icon">🏫</div><h4>Education & Community</h4><div class="method-badge great">Most Sustainable!</div><p>Long-term success depends on a public that understands invasive plants. School programmes, community events, and citizen science are Singapore's most powerful tools.</p></div>
           </div>
-          <div class="control-tip"><span>💡</span><p><strong>Key tip:</strong> Never dump garden waste in natural areas! Many invasions started with a single plant thrown over a fence.</p></div>
+          <div class="control-tip">
+            <span>💡</span>
+            <p><strong>Singapore-specific tip:</strong> If you see Water Hyacinth in a canal or reservoir, report it to PUB's 24-hour hotline (1800-284-6600) or NParks' feedback portal. Early reports save huge management costs!</p>
+          </div>
           <button class="mark-read-btn" onclick="markRead('control')">✅ Mark as Read</button>
         </div>
+
       </div>
     </section>
     <section class="section quiz-cta" style="text-align:center">
       <div class="container">
-        <h2 class="section-title">Think You've Learnt It All? 🧠</h2>
-        <p class="section-sub">Test your knowledge with our interactive quiz!</p>
-        <button class="btn btn-primary" onclick="showPage('games')">Play the Quiz →</button>
+        <h2 class="section-title">Ready to Test What You Know? 🧠</h2>
+        <p class="section-sub">Try our Singapore-specific quiz and games!</p>
+        <button class="btn btn-primary" onclick="showPage('games')">Play the Games →</button>
       </div>
     </section>
-  </div>
+  </div><!-- end learn -->
 
-  <!-- PAGE: SPECIES -->
+
+  <!-- ===== SPECIES ===== -->
   <div id="page-species" class="page">
     <div class="page-header">
-      <div class="section-tag">THE ROGUES GALLERY</div>
-      <h1>Invasive Species Encyclopedia 🔍</h1>
-      <p>Click on any plant to discover how it invades, what damage it causes, and how to stop it.</p>
+      <div class="section-tag">SINGAPORE ROGUES GALLERY</div>
+      <h1>Singapore's Invasive Species 🔍</h1>
+      <p>Eight invasive plants causing real damage across Singapore. Click any card for the full profile.</p>
     </div>
+
     <div class="filter-bar">
       <div class="container">
         <div class="filter-wrap">
@@ -273,155 +486,244 @@
         </div>
       </div>
     </div>
+
     <section class="section species-section">
       <div class="container">
-        <div class="species-master-grid" id="speciesGrid">
+        <div class="species-master-grid">
 
+          <!-- ZANZIBAR YAM -->
           <div class="sp-card" data-category="extreme terrestrial">
-            <div class="sp-header kudzu-bg"><div class="sp-emoji">🌿</div><div class="sp-danger extreme">EXTREME</div></div>
+            <div class="sp-header zanzibar-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Dioscorea_bulbifera_bulbils.jpg/400px-Dioscorea_bulbifera_bulbils.jpg" alt="Zanzibar Yam" class="sp-bg-img"/>
+              <div class="sp-danger extreme">EXTREME</div>
+            </div>
             <div class="sp-body">
-              <h3>Kudzu</h3><p class="sp-latin"><em>Pueraria montana</em></p><p class="sp-nick">"The Vine That Ate the South"</p>
-              <div class="sp-quick-facts"><span>📍 East Asia</span><span>🌍 USA, Australia</span><span>📏 30cm/day</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('kudzu-detail', this)">Learn More ▼</button>
-              <div class="sp-detail" id="kudzu-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Roadsides, forest edges, disturbed areas. Thrives in warm, humid climates. Spreading northwards with climate change.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Grows over everything — trees, shrubs, other plants. Dense mats block all sunlight and can bring down entire trees through sheer weight.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Seeds eaten and dispersed by animals. Also spreads through underground rhizomes and stem nodes that root wherever they touch ground.</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Repeated cutting during growing season — exhausts roots</li><li>Herbicide treatment on cut stems in late summer</li><li>Grazing with goats — they love eating kudzu!</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Kudzu was sold at garden centres in the 1930s as an ornamental plant! The US government even paid farmers to plant it for erosion control.</p></div>
+              <h3>Zanzibar Yam</h3>
+              <p class="sp-latin"><em>Dioscorea bulbifera</em></p>
+              <p class="sp-nick">"The Bulb Bomber"</p>
+              <div class="sp-quick-facts"><span>📍 Africa & Asia</span><span>🌍 Found: Island-wide</span><span>📏 Up to 5m long</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('zanzibar-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="zanzibar-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Forest edges, secondary forests, roadsides, and garden fences across Singapore. Particularly aggressive at Bukit Timah, Central Catchment, and Pulau Ubin. Thrives in Singapore's year-round warmth and humidity.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>The Zanzibar Yam twines aggressively around native shrubs and trees, growing several metres high. Its heart-shaped leaves create a dense canopy that blocks all sunlight — smothering whatever is underneath. It produces bulbils (small aerial tubers) that drop to the ground, spread via soil disturbance, and remain viable for years.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Bulbils drop from the vine and are moved by water flow, soil disturbance during construction, and sometimes by animals. The yam also spreads through underground tubers. Even small fragments of tuber left in soil can regenerate a full plant.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Manual uprooting — must remove all bulbils from soil</li><li>Repeated cutting over multiple seasons to exhaust root reserves</li><li>Herbicide stem injection for established plants</li><li>Monitoring for regrowth for at least 2 years after removal</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> The Zanzibar Yam is edible in its native range (when properly prepared) — it was likely introduced to Singapore as a food crop during colonial times. Now it's one of our most problematic invasives.</p></div>
               </div>
             </div>
           </div>
 
-          <div class="sp-card" data-category="high aquatic">
-            <div class="sp-header hyacinth-bg"><div class="sp-emoji">💜</div><div class="sp-danger high">HIGH</div></div>
+          <!-- MILE-A-MINUTE -->
+          <div class="sp-card" data-category="extreme terrestrial">
+            <div class="sp-header mam-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mikania_micrantha_W_IMG_2100.jpg/400px-Mikania_micrantha_W_IMG_2100.jpg" alt="Mile-a-Minute" class="sp-bg-img"/>
+              <div class="sp-danger extreme">EXTREME</div>
+            </div>
             <div class="sp-body">
-              <h3>Water Hyacinth</h3><p class="sp-latin"><em>Eichhornia crassipes</em></p><p class="sp-nick">"World's Worst Aquatic Weed"</p>
-              <div class="sp-quick-facts"><span>📍 S. America</span><span>🌍 Africa, Asia</span><span>📏 Doubles in 2 weeks</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('hyacinth-detail', this)">Learn More ▼</button>
+              <h3>Mile-a-Minute</h3>
+              <p class="sp-latin"><em>Mikania micrantha</em></p>
+              <p class="sp-nick">"Singapore's #1 Weed"</p>
+              <div class="sp-quick-facts"><span>📍 C. & S. America</span><span>🌍 Found: Island-wide</span><span>📏 8cm growth/day</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('mam-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="mam-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Roadsides, forest edges, degraded forest, wasteland, and gaps in secondary vegetation across Singapore. The single most widespread and problematic invasive plant in Singapore according to NParks. Found in virtually every nature area.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Mile-a-Minute earns its name — growing up to 8cm per day in Singapore's tropical climate. It climbs over and smothers all vegetation beneath it, forming a continuous canopy that blocks all light. Affected trees and shrubs die within months. It produces thousands of tiny wind-dispersed seeds continuously throughout the year.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Wind dispersal of lightweight seeds is the primary mechanism. Seeds travel from construction sites, roadsides, and disturbed areas into adjacent forest. The plant also spreads vegetatively — stem fragments root easily in Singapore's moist soil.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Manual cutting and removal before seed set — top priority action</li><li>Repeated weekly cutting during the growing season</li><li>Herbicide spraying on established infestations</li><li>Competitive planting of fast-growing native species to shade it out</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Mile-a-Minute was accidentally introduced to Singapore via contaminated grass seed in the 1960s. A single preventable import mistake created decades of ongoing management costs and irreversible forest damage.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WATER HYACINTH -->
+          <div class="sp-card" data-category="high aquatic">
+            <div class="sp-header hyacinth-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg/400px-Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg" alt="Water Hyacinth" class="sp-bg-img"/>
+              <div class="sp-danger high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Water Hyacinth</h3>
+              <p class="sp-latin"><em>Eichhornia crassipes</em></p>
+              <p class="sp-nick">"The Waterway Choker"</p>
+              <div class="sp-quick-facts"><span>📍 S. America</span><span>🌍 Found: Canals, reservoirs</span><span>📏 Doubles in 2 weeks</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('hyacinth-detail', this)">Full Profile ▼</button>
               <div class="sp-detail" id="hyacinth-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Lakes, ponds, rivers, and slow-moving waterways. Prefers warm, nutrient-rich water. Devastating in tropical and subtropical regions.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms thick floating mats that block sunlight — aquatic plants die and fish suffocate as oxygen drops. Also traps fishing nets and breeds disease-carrying mosquitoes.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Doubles coverage in just 2 weeks through vegetative reproduction. Floods move large mats to new water bodies.</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Mechanical harvesting with specialist boats</li><li>Biological control: Neochetina weevils (highly effective!)</li><li>Composting — removed plants make great fertiliser</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Water hyacinth produces beautiful purple flowers — which is why it was spread as a decorative pond plant. Lake Victoria in Africa lost 90% of its biodiversity after it took over.</p></div>
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Found in Singapore's reservoirs, canals, and slow-moving waterways. Common in Kranji Reservoir, Sungei Buloh, and various urban canals. Particularly problematic after heavy rains wash it between water bodies.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms thick floating mats that block sunlight to submerged aquatic plants. Dissolved oxygen drops dramatically as decomposing plant material consumes oxygen — fish and other aquatic life suffocate. The mats also create ideal breeding grounds for Aedes mosquitoes, increasing dengue risk.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Doubles its coverage in as little as two weeks through vegetative reproduction. Flood events wash mats through Singapore's canal network from reservoir to reservoir. Sometimes introduced when people dump aquarium plants into waterways.</p></div>
+                <div class="sp-section"><h4>🛡️ How PUB & NParks Remove It</h4><ul><li>Mechanical harvesting using specialist boats on larger water bodies</li><li>Manual removal using nets and rakes in canals</li><li>Biological control research ongoing</li><li>NEVER dump aquarium plants into Singapore's waterways</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Water Hyacinth was introduced to Singapore as an ornamental pond plant in the early 20th century because of its beautiful purple flowers. It's now one of our most costly aquatic invasives.</p></div>
               </div>
             </div>
           </div>
 
-          <div class="sp-card" data-category="extreme terrestrial">
-            <div class="sp-header knotweed-bg"><div class="sp-emoji">🎋</div><div class="sp-danger extreme">EXTREME</div></div>
-            <div class="sp-body">
-              <h3>Japanese Knotweed</h3><p class="sp-latin"><em>Reynoutria japonica</em></p><p class="sp-nick">"The Concrete Destroyer"</p>
-              <div class="sp-quick-facts"><span>📍 East Asia</span><span>🌍 Europe, USA, NZ</span><span>📏 Roots: 3m deep</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('knotweed-detail', this)">Learn More ▼</button>
-              <div class="sp-detail" id="knotweed-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Roadsides, riverbanks, waste ground, gardens. Incredibly hardy — grows through tarmac and concrete. Survives drought, flooding, and even fire.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Dense stands block all light. Rhizome network extends 7m sideways and 3m deep — cracking building foundations, walls, and pavements.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Almost entirely through root fragments — a piece the size of a fingernail can grow a whole new plant. Human activity like digging is the main spread mechanism.</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Specialist herbicide — takes 3–5 years of treatment</li><li>Excavation and disposal at licensed waste sites (NEVER compost)</li><li>Biological control: Aphalara itadori psyllid</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> In the UK, Japanese knotweed in your garden can prevent you from getting a mortgage on your house. It must be declared when selling property!</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="sp-card" data-category="medium terrestrial">
-            <div class="sp-header lantana-bg"><div class="sp-emoji">🌸</div><div class="sp-danger medium">MEDIUM</div></div>
-            <div class="sp-body">
-              <h3>Lantana</h3><p class="sp-latin"><em>Lantana camara</em></p><p class="sp-nick">"The Pretty Killer"</p>
-              <div class="sp-quick-facts"><span>📍 C. America</span><span>🌍 Africa, Asia</span><span>⚠️ Toxic to livestock</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('lantana-detail', this)">Learn More ▼</button>
-              <div class="sp-detail" id="lantana-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Open forests, grasslands, roadsides in tropical and subtropical regions. Common in India, Australia, and parts of Africa.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms dense thickets blocking native plant growth. Berries are toxic to humans and most livestock, though birds eat and spread them everywhere.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Bird-dispersed seeds are the main vector. Also spreads vegetatively. Still sold in garden centres in some countries!</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Manual removal with gloves (skin irritant)</li><li>Herbicide on cut stumps</li><li>Biological control: 36 agents tested worldwide</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Lantana's flowers change colour as they age — from yellow to orange to red — to signal to pollinators they've already been visited!</p></div>
-              </div>
-            </div>
-          </div>
-
+          <!-- CLIDEMIA / SENDUDUK BULU -->
           <div class="sp-card" data-category="high terrestrial">
-            <div class="sp-header cogon-bg"><div class="sp-emoji">🌾</div><div class="sp-danger high">HIGH</div></div>
+            <div class="sp-header clidemia-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg/400px-Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg" alt="Senduduk Bulu" class="sp-bg-img"/>
+              <div class="sp-danger high">HIGH</div>
+            </div>
             <div class="sp-body">
-              <h3>Cogon Grass</h3><p class="sp-latin"><em>Imperata cylindrica</em></p><p class="sp-nick">"The Fire Grass"</p>
-              <div class="sp-quick-facts"><span>📍 SE Asia</span><span>🌍 USA, Africa</span><span>🔥 Increases fire risk</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('cogon-detail', this)">Learn More ▼</button>
-              <div class="sp-detail" id="cogon-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Disturbed areas, roadsides, pine forests. Highly adaptable — tolerates poor soils, drought, fire, and heavy grazing.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Releases allelopathic chemicals poisoning the soil. Burns hotter than native grass fires, killing tree seedlings and creating a dangerous fire-cycle feedback loop.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Wind-dispersed feathery seeds travel miles. Also spreads through rhizomes and regrows denser after fire.</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Systemic herbicide treatment (imazapyr or glyphosate)</li><li>Repeated mowing to exhaust root reserves</li><li>Shading with fast-growing native trees</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> The Japanese military used cogon grass for thatching during WWII, accidentally spreading it through the Pacific — one of history's most damaging accidental introductions!</p></div>
+              <h3>Senduduk Bulu</h3>
+              <p class="sp-latin"><em>Clidemia hirta</em></p>
+              <p class="sp-nick">"The Forest Floor Killer"</p>
+              <div class="sp-quick-facts"><span>📍 Tropical Americas</span><span>🌍 Found: Forest understorey</span><span>🍇 8,000 seeds per plant</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('clidemia-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="clidemia-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>A serious understorey invader in Singapore's secondary forests and nature reserves, including Bukit Timah and Central Catchment. Unlike many invasives, it tolerates shade — meaning it can invade intact forest, not just disturbed edges.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms dense shrubby thickets in the forest understorey, preventing native seedlings from establishing. This breaks the regeneration cycle of native forest — once Senduduk Bulu takes over the understorey, the forest cannot replace its canopy trees naturally as they die.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Each plant produces thousands of small berries eagerly eaten by birds — especially the invasive Javan Myna. The myna disperses seeds throughout Singapore's forest fragments. This bird-plant invasive partnership makes Senduduk Bulu especially hard to control.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Manual uprooting — most effective when plants are young</li><li>Cut-stump herbicide treatment for established shrubs</li><li>Long-term monitoring — seeds persist in soil for years</li><li>Replanting native understorey species after clearing</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Senduduk Bulu's invasion success in Singapore is partly powered by the Javan Myna — itself an invasive species! One invasive helping another is called an "invasion meltdown" by scientists.</p></div>
               </div>
             </div>
           </div>
 
-          <div class="sp-card" data-category="high aquatic">
-            <div class="sp-header loosestrife-bg"><div class="sp-emoji">🌺</div><div class="sp-danger high">HIGH</div></div>
+          <!-- SIAM WEED -->
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-header siam-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chromolaena_odorata_MS_4321.jpg/400px-Chromolaena_odorata_MS_4321.jpg" alt="Siam Weed" class="sp-bg-img"/>
+              <div class="sp-danger high">HIGH</div>
+            </div>
             <div class="sp-body">
-              <h3>Purple Loosestrife</h3><p class="sp-latin"><em>Lythrum salicaria</em></p><p class="sp-nick">"The Wetland Destroyer"</p>
-              <div class="sp-quick-facts"><span>📍 Europe & Asia</span><span>🌍 N. America</span><span>🌸 2.7M seeds/plant</span></div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('loosestrife-detail', this)">Learn More ▼</button>
-              <div class="sp-detail" id="loosestrife-detail">
-                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Wetlands, marshes, riverbanks, and lake edges. Has invaded approximately 50% of all North American wetlands.</p></div>
-                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms monocultures replacing diverse native wetland plants. The entire food web collapses — waterfowl, amphibians, and insects all decline dramatically.</p></div>
-                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Each plant produces up to 2.7 million seeds per year, dispersed by water, wind, and animals' feet. Also spreads through root fragments.</p></div>
-                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Biological control using Galerucella beetles — most successful method!</li><li>Hand-pulling when young (before seeds form)</li><li>Cutting before flowering to prevent seeding</li></ul></div>
-                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Purple loosestrife has three different flower types — each needing pollen from the other two to set seed. Despite this, it still produces millions of seeds yearly!</p></div>
+              <h3>Siam Weed</h3>
+              <p class="sp-latin"><em>Chromolaena odorata</em></p>
+              <p class="sp-nick">"The Sunlight Thief"</p>
+              <div class="sp-quick-facts"><span>📍 C. & S. America</span><span>🌍 Found: Wasteland, edges</span><span>📏 3m tall in 1 season</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('siam-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="siam-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Roadsides, wasteland, forest edges, and abandoned farmland — especially prevalent on Pulau Ubin and along Singapore's rail corridor. Highly adaptable and drought-tolerant for a tropical species.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Grows up to 3 metres tall in a single growing season, shading out all native plants below. Produces allelopathic chemicals that inhibit the germination and growth of surrounding plants. Forms dense monocultures that are almost impenetrable to wildlife.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Wind-dispersed seeds in large quantities. Each plant produces thousands of feathery seeds that float long distances. Thrives particularly in disturbed soil after construction or land clearing — making Singapore's constant development a major driver of its spread.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Cutting before seed set is critical — prevents next generation</li><li>Herbicide treatment on cut stumps</li><li>Replanting with fast-growing native pioneer species for competition</li><li>Community volunteer cutting events on Pulau Ubin</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Siam Weed is highly flammable when dry — it increases fire risk in areas where it dominates. In Singapore's generally fire-free forests, even a small fire from a discarded cigarette in a Siam Weed patch could be devastating.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ALBIZIA -->
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-header albizia-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Falcataria_moluccana_in_singapore.jpg/400px-Falcataria_moluccana_in_singapore.jpg" alt="Albizia" class="sp-bg-img"/>
+              <div class="sp-danger high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Albizia</h3>
+              <p class="sp-latin"><em>Falcataria moluccana</em></p>
+              <p class="sp-nick">"The Widow-Maker Tree"</p>
+              <div class="sp-quick-facts"><span>📍 Maluku, Indonesia</span><span>🌍 Found: Parks, forests</span><span>📏 Grows 7m/year</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('albizia-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="albizia-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Extremely common across Singapore in secondary forests, parks, and roadside plantings. So fast-growing it was deliberately planted for shade — before its invasive and dangerous nature was understood. Now found throughout Pulau Ubin and Central Catchment.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>One of the world's fastest-growing trees — up to 7 metres per year. This rapid growth produces structurally weak wood that breaks catastrophically in Singapore's frequent storms, creating dangerous widow-maker falls. Its dense canopy shades out native forest regeneration completely.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Wind and water-dispersed seeds produced in enormous quantities. Its nitrogen-fixing roots give it an advantage in poor soils, allowing it to outcompete native trees that need better soil conditions to establish.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Ring-barking for large specimens — kills tree slowly to prevent sudden collapse</li><li>Controlled felling by arborists — dangerous due to structural weakness</li><li>Stump treatment with herbicide to prevent regrowth</li><li>Pulau Ubin Albizia removal is a major ongoing NParks project</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> The Albizia was planted so extensively in Singapore for reforestation in the 1970s that it now dominates large areas of secondary forest — a well-intentioned decision that created a major ecological problem.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LANTANA -->
+          <div class="sp-card" data-category="medium terrestrial">
+            <div class="sp-header lantana-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lantana_camara_1.jpg/400px-Lantana_camara_1.jpg" alt="Lantana" class="sp-bg-img"/>
+              <div class="sp-danger medium">MEDIUM</div>
+            </div>
+            <div class="sp-body">
+              <h3>Lantana</h3>
+              <p class="sp-latin"><em>Lantana camara</em></p>
+              <p class="sp-nick">"The Pretty Killer"</p>
+              <div class="sp-quick-facts"><span>📍 C. America</span><span>🌍 Found: Gardens, edges</span><span>⚠️ Toxic berries</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('lantana-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="lantana-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Roadsides, garden escapes, forest edges, and Pulau Ubin wasteland. Often sold in Singapore plant nurseries as an ornamental — making it one of the few invasives still being actively spread by consumers.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms dense prickly thickets that exclude native plants and make areas impenetrable to wildlife. Its berries are poisonous to children and most native mammals (though birds eat them). It also releases allelopathic chemicals that suppress surrounding plant growth.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Bird-dispersed seeds — particularly by the Javan Myna and Asian Glossy Starling — are the primary spread mechanism in Singapore. Also escapes from gardens that border nature areas.</p></div>
+                <div class="sp-section"><h4>🛡️ How NParks Removes It</h4><ul><li>Manual removal with thick gloves (thorny stems)</li><li>Herbicide on cut stumps</li><li>Campaigns to discourage purchase of Lantana from nurseries</li><li>Biological control: Lantana has 36+ studied biocontrol agents globally</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Lantana flowers change colour as they age — from yellow to orange to red. This is a signal to pollinators: yellow flowers have nectar, red ones don't. Despite this clever trick, it's a serious invasive across tropical Singapore.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SALVINIA -->
+          <div class="sp-card" data-category="medium aquatic">
+            <div class="sp-header salvinia-bg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Salvinia_molesta_3.jpg/400px-Salvinia_molesta_3.jpg" alt="Salvinia" class="sp-bg-img"/>
+              <div class="sp-danger medium">MEDIUM</div>
+            </div>
+            <div class="sp-body">
+              <h3>Giant Salvinia</h3>
+              <p class="sp-latin"><em>Salvinia molesta</em></p>
+              <p class="sp-nick">"The Aquarium Escapee"</p>
+              <div class="sp-quick-facts"><span>📍 S. America</span><span>🌍 Found: Ponds, canals</span><span>📏 Doubles in 2.5 days</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('salvinia-detail', this)">Full Profile ▼</button>
+              <div class="sp-detail" id="salvinia-detail">
+                <div class="sp-section"><h4>🏞️ Habitat in Singapore</h4><p>Found in ornamental ponds, slow-moving canals, and reservoir margins across Singapore. Frequently introduced through the aquarium trade — people buy it as an aquarium plant then dump it in waterways when they no longer want it.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Can double its biomass in as little as 2.5 days under optimal conditions. Creates thick floating mats that block all light, deplete oxygen, and prevent gas exchange at the water surface. Completely eliminates aquatic biodiversity beneath the mat within weeks.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads in SG</h4><p>Almost entirely through human activity — aquarium plant releases are the main vector in Singapore. Fragments also travel through Singapore's canal network during heavy rain. The plant reproduces vegetatively, so even tiny fragments become new plants.</p></div>
+                <div class="sp-section"><h4>🛡️ How PUB & NParks Remove It</h4><ul><li>Manual skimming from ponds and canals</li><li>Biological control: Cyrtobagous salviniae weevil (very effective globally)</li><li>Public awareness campaigns targeting aquarium hobbyists</li><li>Regulation of aquatic plant sales in Singapore</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Giant Salvinia is covered in tiny water-repelling hairs shaped like miniature egg-beaters — a remarkable natural waterproofing system that helps it float. Scientists have studied these hairs to develop new waterproof materials.</p></div>
               </div>
             </div>
           </div>
 
         </div>
 
+        <!-- QUICK ID -->
         <div style="margin-top:4rem">
-          <div class="section-tag">IDENTIFICATION</div>
-          <h2 class="section-title">How to Spot an Invasive Plant 🔎</h2>
+          <div class="section-tag">FIELD IDENTIFICATION</div>
+          <h2 class="section-title">How to Spot an Invasive Plant in Singapore 🔎</h2>
           <div class="id-tips">
-            <div class="id-tip"><div class="id-num">1</div><div><h4>Growing somewhere unusual</h4><p>Invasives often appear in disturbed areas — roadsides, building sites, river edges, or recently cleared land.</p></div></div>
-            <div class="id-tip"><div class="id-num">2</div><div><h4>Lots of it — and nothing else</h4><p>Invasives often form monocultures. Natural areas have many different plant species mixed together.</p></div></div>
-            <div class="id-tip"><div class="id-num">3</div><div><h4>Growing over everything</h4><p>Climbing or sprawling plants covering other vegetation is a classic sign of an invasive species.</p></div></div>
-            <div class="id-tip"><div class="id-num">4</div><div><h4>Use iNaturalist</h4><p>Download the free iNaturalist app, photograph the plant, and the community will help you identify it!</p></div></div>
+            <div class="id-tip"><div class="id-num">1</div><div><h4>It's at a forest edge or disturbed area</h4><p>Most Singapore invasives establish first in disturbed soil — construction edges, roadsides, and gaps in vegetation. If you see a single species dominating these areas, be suspicious.</p></div></div>
+            <div class="id-tip"><div class="id-num">2</div><div><h4>It's forming a monoculture</h4><p>Healthy Singapore forest has extraordinary plant diversity. If you see a large area dominated by just one species — especially a climbing vine or dense shrub — it may be invasive.</p></div></div>
+            <div class="id-tip"><div class="id-num">3</div><div><h4>It's climbing or smothering other plants</h4><p>Look for vines draping over shrubs and trees like a blanket — a classic sign of Zanzibar Yam or Mile-a-Minute. The plants underneath may already be dying.</p></div></div>
+            <div class="id-tip"><div class="id-num">4</div><div><h4>Use iNaturalist Singapore</h4><p>Open iNaturalist, photograph the plant, and submit. The Singapore NParks community will help identify it within hours. Your observation becomes scientific data!</p></div></div>
           </div>
-          <div class="id-warning"><span>⚠️</span><p><strong>Important:</strong> Never touch or remove plants you don't recognise! Always tell an adult and report through official channels.</p></div>
+          <div class="id-warning"><span>⚠️</span><p><strong>Important:</strong> Never remove invasive plants yourself without NParks guidance. Some (like Albizia) are structurally dangerous. Always report first and let the experts manage removal.</p></div>
         </div>
+
       </div>
     </section>
-  </div>
+  </div><!-- end species -->
 
-  <!-- PAGE: GAMES -->
+
+  <!-- ===== GAMES ===== -->
   <div id="page-games" class="page">
     <div class="page-header">
       <div class="section-tag">PLAY & LEARN</div>
       <h1>Games & Activities 🎮</h1>
-      <p>Test your knowledge about invasive plants with our fun interactive games!</p>
+      <p>Five Singapore-themed games to make you an invasive species expert. Earn points, beat your score!</p>
     </div>
+
     <div class="score-tracker">
       <div class="container">
         <div class="score-badges">
-          <div class="score-badge">🧠 Quiz: <span id="quizScoreVal">0</span> pts</div>
-          <div class="score-badge">🃏 Memory: <span id="memoryScoreVal">0</span> pts</div>
-          <div class="score-badge">🎯 Spot: <span id="spotScoreVal">0</span> pts</div>
-          <div class="score-badge total-badge">⭐ Total: <span id="totalScoreVal">0</span> pts</div>
+          <div class="score-badge">🧠 Quiz: <span id="quizScoreVal">0</span>pts</div>
+          <div class="score-badge">🃏 Memory: <span id="memoryScoreVal">0</span>pts</div>
+          <div class="score-badge">🎯 Spot: <span id="spotScoreVal">0</span>pts</div>
+          <div class="score-badge">🔬 ID: <span id="idScoreVal">0</span>pts</div>
+          <div class="score-badge total-badge">⭐ Total: <span id="totalScoreVal">0</span>pts</div>
         </div>
       </div>
     </div>
+
     <section class="section games-select-section">
       <div class="container">
         <div class="game-select-grid">
-          <div class="game-select-card active-game" onclick="selectGame('quiz')"><div class="gs-icon">❓</div><h3>Invasive Quiz</h3><p>10 questions, instant feedback</p><div class="gs-badge">QUIZ</div></div>
-          <div class="game-select-card" onclick="selectGame('memory')"><div class="gs-icon">🃏</div><h3>Memory Match</h3><p>Match plants to their homes</p><div class="gs-badge">MEMORY</div></div>
+          <div class="game-select-card active-game" onclick="selectGame('quiz')"><div class="gs-icon">❓</div><h3>SG Quiz</h3><p>12 Singapore-specific questions</p><div class="gs-badge">QUIZ</div></div>
+          <div class="game-select-card" onclick="selectGame('memory')"><div class="gs-icon">🃏</div><h3>Memory Match</h3><p>Colour-coded plant matching</p><div class="gs-badge">MEMORY</div></div>
           <div class="game-select-card" onclick="selectGame('spot')"><div class="gs-icon">🎯</div><h3>Spot the Invader</h3><p>Native vs Invasive challenge</p><div class="gs-badge">IDENTIFY</div></div>
-          <div class="game-select-card" onclick="selectGame('spread')"><div class="gs-icon">🗺️</div><h3>Spread Simulator</h3><p>Watch invasions in real time</p><div class="gs-badge">SIMULATE</div></div>
+          <div class="game-select-card" onclick="selectGame('plantid')"><div class="gs-icon">🔬</div><h3>Plant ID Challenge</h3><p>Name that invasive plant!</p><div class="gs-badge">CHALLENGE</div></div>
+          <div class="game-select-card" onclick="selectGame('spread')"><div class="gs-icon">🗺️</div><h3>Spread Simulator</h3><p>Watch Singapore get invaded</p><div class="gs-badge">SIMULATE</div></div>
         </div>
       </div>
     </section>
 
+    <!-- QUIZ PANEL -->
     <section class="section game-panel active-panel" id="game-quiz">
       <div class="container">
         <div class="game-box">
-          <div class="game-header"><h2>🧠 Invasive Plant Quiz</h2><div class="quiz-progress">Question <span id="qNum">1</span> of 10</div></div>
+          <div class="game-header"><h2>🧠 Singapore Invasive Quiz</h2><div class="quiz-progress">Question <span id="qNum">1</span> of 12</div></div>
           <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
           <div id="quizArea">
             <p class="question-text" id="questionText">Loading...</p>
@@ -430,8 +732,9 @@
             <button class="btn btn-primary next-btn" id="nextBtn" style="display:none" onclick="nextQuestion()">Next Question →</button>
           </div>
           <div id="quizComplete" style="display:none" class="game-complete">
-            <div class="complete-emoji">🎉</div><h3>Quiz Complete!</h3>
-            <p>You scored <strong id="finalScore">0</strong> out of <strong>10</strong></p>
+            <div class="complete-emoji">🎉</div>
+            <h3>Quiz Complete!</h3>
+            <p>You scored <strong id="finalScore">0</strong> out of <strong>12</strong></p>
             <div class="score-message" id="scoreMessage"></div>
             <button class="btn btn-primary" onclick="restartQuiz()">Play Again 🔄</button>
           </div>
@@ -439,14 +742,17 @@
       </div>
     </section>
 
+    <!-- MEMORY PANEL -->
     <section class="section game-panel" id="game-memory">
       <div class="container">
         <div class="game-box">
-          <div class="game-header"><h2>🃏 Memory Match</h2><div class="memory-stats">Moves: <span id="moveCount">0</span> | Pairs: <span id="pairCount">0</span>/8</div></div>
-          <p class="game-intro">Match each invasive plant to its continent of origin!</p>
+          <div class="game-header"><h2>🃏 Colour-Coded Memory Match</h2><div class="memory-stats">Moves: <span id="moveCount">0</span> | Pairs: <span id="pairCount">0</span>/8</div></div>
+          <p class="game-intro">Match each invasive plant to its <strong>region of origin</strong>. Matched pairs share the same colour — use that to help you remember!</p>
+          <div class="memory-legend" id="memoryLegend"></div>
           <div class="memory-grid" id="memoryGrid"></div>
           <div id="memoryComplete" style="display:none" class="game-complete">
-            <div class="complete-emoji">🏆</div><h3>You matched them all!</h3>
+            <div class="complete-emoji">🏆</div>
+            <h3>All matched!</h3>
             <p>Completed in <strong id="finalMoves">0</strong> moves</p>
             <button class="btn btn-primary" onclick="initMemory()">Play Again 🔄</button>
           </div>
@@ -454,28 +760,30 @@
       </div>
     </section>
 
+    <!-- SPOT PANEL -->
     <section class="section game-panel" id="game-spot">
       <div class="container">
         <div class="game-box">
           <div class="game-header"><h2>🎯 Spot the Invader</h2><div class="spot-stats">Round <span id="spotRound">1</span>/10 | Score: <span id="spotPoints">0</span></div></div>
-          <p class="game-intro">Is this plant <strong>native</strong> or <strong>invasive</strong>? Use the clues to decide!</p>
+          <p class="game-intro">Is this plant <strong>native to Singapore</strong> or an <strong>invasive species</strong>? Read the clue carefully!</p>
           <div id="spotArea">
             <div class="spot-card">
               <div class="spot-plant-display">
-                <div class="spot-emoji" id="spotEmoji">🌿</div>
+                <img id="spotImg" src="" alt="Plant" class="spot-plant-img" onerror="this.style.display='none'"/>
                 <h3 class="spot-name" id="spotName">Plant Name</h3>
                 <p class="spot-clue" id="spotClue">Loading...</p>
                 <p class="spot-origin" id="spotOrigin"></p>
               </div>
               <div class="spot-btns">
-                <button class="spot-btn native-btn" onclick="spotAnswer('native')">🌿 Native Plant</button>
-                <button class="spot-btn invasive-btn" onclick="spotAnswer('invasive')">🚨 Invasive Plant</button>
+                <button class="spot-btn native-btn" onclick="spotAnswer('native')">🌿 Native to Singapore</button>
+                <button class="spot-btn invasive-btn" onclick="spotAnswer('invasive')">🚨 Invasive Species</button>
               </div>
               <div class="spot-feedback" id="spotFeedback" style="display:none"></div>
             </div>
           </div>
           <div id="spotComplete" style="display:none" class="game-complete">
-            <div class="complete-emoji">🌟</div><h3>Round Complete!</h3>
+            <div class="complete-emoji">🌟</div>
+            <h3>Round Complete!</h3>
             <p>You scored <strong id="spotFinalScore">0</strong>/10</p>
             <button class="btn btn-primary" onclick="initSpot()">Play Again 🔄</button>
           </div>
@@ -483,113 +791,108 @@
       </div>
     </section>
 
+    <!-- PLANT ID CHALLENGE -->
+    <section class="section game-panel" id="game-plantid">
+      <div class="container">
+        <div class="game-box">
+          <div class="game-header"><h2>🔬 Plant ID Challenge</h2><div class="quiz-progress">Round <span id="idRound">1</span>/8</div></div>
+          <p class="game-intro">A real photo of a Singapore invasive plant. Can you name it from the clues?</p>
+          <div id="plantidArea">
+            <div class="plantid-card">
+              <div class="plantid-img-wrap">
+                <img id="plantidImg" src="" alt="Mystery Plant" class="plantid-img"/>
+                <div class="plantid-overlay">🔍 What plant is this?</div>
+              </div>
+              <div class="plantid-clues" id="plantidClues"></div>
+              <div class="plantid-answers" id="plantidAnswers"></div>
+              <div class="plantid-feedback" id="plantidFeedback" style="display:none"></div>
+              <button class="btn btn-primary next-btn" id="plantidNextBtn" style="display:none" onclick="nextPlantId()">Next Plant →</button>
+            </div>
+          </div>
+          <div id="plantidComplete" style="display:none" class="game-complete">
+            <div class="complete-emoji">🎓</div>
+            <h3>Expert Level Unlocked!</h3>
+            <p>You identified <strong id="plantidFinal">0</strong>/8 plants correctly!</p>
+            <button class="btn btn-primary" onclick="initPlantId()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPREAD SIMULATOR -->
     <section class="section game-panel" id="game-spread">
       <div class="container">
         <div class="game-box">
-          <div class="game-header"><h2>🗺️ Spread Simulator</h2><div class="sim-stats">Year: <span id="simYear">0</span> | Coverage: <span id="simCoverage">0</span>%</div></div>
-          <p class="game-intro">Watch how an invasive plant spreads across a landscape. Green = healthy native habitat. Red = invaded!</p>
+          <div class="game-header"><h2>🗺️ Singapore Spread Simulator</h2><div class="sim-stats">Year: <span id="simYear">0</span> | Invaded: <span id="simCoverage">0</span>%</div></div>
+          <p class="game-intro">Watch how an invasive plant spreads across a Singapore nature reserve. 🟢 = Healthy native forest. 🔴 = Invaded. 🔵 = Water. Can you stop it in time?</p>
           <div class="sim-controls">
-            <div class="sim-control"><label>Species</label><select id="simSpecies" onchange="resetSim()"><option value="slow">Slow Spreader (Lantana)</option><option value="fast">Fast Spreader (Kudzu)</option><option value="water">Water Invader (Water Hyacinth)</option></select></div>
-            <div class="sim-control"><label>Climate</label><select id="simClimate" onchange="resetSim()"><option value="ideal">Ideal Conditions</option><option value="good">Good Conditions</option><option value="poor">Poor Conditions</option></select></div>
+            <div class="sim-control"><label>Invasive Species</label>
+              <select id="simSpecies" onchange="resetSim()">
+                <option value="mam">Mile-a-Minute (Fast)</option>
+                <option value="zanzibar">Zanzibar Yam (Medium)</option>
+                <option value="siam">Siam Weed (Slow)</option>
+                <option value="hyacinth">Water Hyacinth (Aquatic)</option>
+              </select>
+            </div>
+            <div class="sim-control"><label>Reserve Size</label>
+              <select id="simClimate" onchange="resetSim()">
+                <option value="ideal">Large (Bukit Timah)</option>
+                <option value="good">Medium (Southern Ridges)</option>
+                <option value="poor">Small (Neighbourhood Park)</option>
+              </select>
+            </div>
           </div>
           <canvas id="simCanvas" width="600" height="350"></canvas>
           <div class="sim-buttons">
             <button class="btn btn-primary" id="simPlayBtn" onclick="toggleSim()">▶️ Start Simulation</button>
             <button class="btn btn-secondary" onclick="resetSim()">🔄 Reset</button>
-            <button class="btn btn-secondary" onclick="addIntervention()">🛡️ Intervene!</button>
+            <button class="btn btn-secondary" onclick="addIntervention()">🛡️ NParks Intervenes!</button>
           </div>
-          <p class="sim-tip" id="simTip">Press Start to begin. Watch what happens over 50 years!</p>
+          <p class="sim-tip" id="simTip">Select a species and press Start. Watch what happens over 30 years!</p>
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- PAGE: ACTION -->
+  </div><!-- end games -->
+
+
+  <!-- ===== ACTION ===== -->
   <div id="page-action" class="page">
     <div class="page-header">
       <div class="section-tag">BE THE CHANGE</div>
-      <h1>Take Action! 🌍</h1>
-      <p>Knowledge is power — but action saves ecosystems. Here's exactly how you can help.</p>
+      <h1>Take Action in Singapore! 🌏</h1>
+      <p>Real actions you can take right now to protect Singapore's nature — no experience required.</p>
     </div>
+
     <section class="section pledge-section">
       <div class="container">
         <div class="pledge-box">
-          <h2>🤝 Take the Plant Defender Pledge</h2>
-          <p>Join thousands of young conservationists committing to protect native ecosystems!</p>
+          <h2>🤝 Take the Singapore Plant Defender Pledge</h2>
+          <p>Join Singapore's next generation of conservationists. Tick each pledge to earn your Plant Defender badge!</p>
           <div class="pledge-items" id="pledgeItems">
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will learn to identify at least 3 invasive plants in my area</label>
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will never dump garden waste in natural areas</label>
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will tell at least 3 people about invasive plants</label>
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will report any invasive plants I see using iNaturalist</label>
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will volunteer for or organise a local clean-up</label>
-            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will choose native plants for any garden or school project</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will download iNaturalist and report at least one invasive plant sighting</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will never dump aquarium or garden plants into Singapore waterways or green spaces</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will tell at least 3 classmates about invasive plants in Singapore</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will join or organise an NParks volunteer event at a nature reserve</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will choose native plants if I ever plant anything in a garden or school project</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will learn to identify at least 3 Singapore invasive plants by sight</label>
           </div>
           <div class="pledge-progress">
-            <span id="pledgeCount">0</span>/6 pledges made
+            <span id="pledgeCount">0</span>/6 pledges
             <div class="pledge-bar"><div class="pledge-fill" id="pledgeFill"></div></div>
           </div>
-          <div id="pledgeComplete" class="pledge-complete" style="display:none">🎉 You're officially a <strong>Plant Defender!</strong> Share this with friends!</div>
+          <div id="pledgeComplete" class="pledge-complete" style="display:none">🏅 You're officially a <strong>Singapore Plant Defender!</strong> Screenshot this and share it with your class!</div>
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
-        <div class="section-tag">STEP BY STEP</div>
-        <h2 class="section-title">How to Report an Invasive Plant</h2>
+        <div class="section-tag">HOW TO REPORT</div>
+        <h2 class="section-title">Step-by-Step: Report an Invasive Plant in Singapore</h2>
         <div class="how-to-steps">
-          <div class="how-step"><div class="how-num">📱</div><div class="how-content"><h4>Step 1: Download iNaturalist</h4><p>Get the free app (iOS or Android). Used by scientists and conservationists worldwide.</p></div></div>
-          <div class="how-step"><div class="how-num">📸</div><div class="how-content"><h4>Step 2: Photograph the Plant</h4><p>Take clear photos of the leaves, stem, flowers, and surroundings. Don't touch unknown plants.</p></div></div>
-          <div class="how-step"><div class="how-num">🔍</div><div class="how-content"><h4>Step 3: Submit Your Observation</h4><p>Upload to iNaturalist. The community will help identify the plant with your GPS location.</p></div></div>
-          <div class="how-step"><div class="how-num">📢</div><div class="how-content"><h4>Step 4: Report to Authorities</h4><p>Contact your local council or conservation department to report confirmed sightings.</p></div></div>
-          <div class="how-step"><div class="how-num">🌱</div><div class="how-content"><h4>Step 5: Follow Up</h4><p>Check if action was taken. Contact a local conservation group if nothing happens.</p></div></div>
-        </div>
-      </div>
-    </section>
-    <section class="section warning-section">
-      <div class="container">
-        <div class="section-tag">SAFETY FIRST</div>
-        <h2 class="section-title">What NOT to Do ⚠️</h2>
-        <div class="warnings-grid">
-          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't touch unknown plants</h4><p>Some invasives (like Giant Hogweed) can cause severe skin burns. Always identify first and get adult supervision.</p></div>
-          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't pull and leave them</h4><p>Dropped root fragments and seeds can just grow new plants. Bag and dispose of correctly.</p></div>
-          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't compost invasive plants</h4><p>Most survive home composting and re-establish when compost is used. Take to a certified green waste facility.</p></div>
-          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't tackle large areas alone</h4><p>Large-scale removal requires specialists. Contact local conservation groups or your council.</p></div>
-        </div>
-      </div>
-    </section>
-    <section class="section checklist-section">
-      <div class="container">
-        <div class="section-tag">TOOLS FOR STUDENTS</div>
-        <h2 class="section-title">Student Activities</h2>
-        <div class="activity-cards">
-          <div class="activity-card"><div class="act-icon">📋</div><h4>Garden Audit</h4><p>Walk around your school garden or local green space and identify whether any plants you see are invasive.</p><div class="act-level">🟢 Primary School</div></div>
-          <div class="activity-card"><div class="act-icon">🗺️</div><h4>Invasion Mapping</h4><p>Create a map of your local area marking where you've spotted invasive plants. Use iNaturalist to contribute to real science!</p><div class="act-level">🟡 Secondary School</div></div>
-          <div class="activity-card"><div class="act-icon">📊</div><h4>Biodiversity Survey</h4><p>Compare plant diversity in an invaded area vs a healthy native area. Count species and present your data to class.</p><div class="act-level">🟡 Secondary School</div></div>
-          <div class="activity-card"><div class="act-icon">📣</div><h4>Awareness Campaign</h4><p>Create posters, social media content, or a school assembly presentation about invasive plants in your local area.</p><div class="act-level">🟢 All Ages</div></div>
-          <div class="activity-card"><div class="act-icon">🌱</div><h4>Native Plant Project</h4><p>Grow native plants from seed and plant them in your school grounds to support local insects and biodiversity.</p><div class="act-level">🟢 Primary School</div></div>
-          <div class="activity-card"><div class="act-icon">🤝</div><h4>Community Clean-Up</h4><p>Organise or join a local invasive plant removal day. Contact your council to find events near you.</p><div class="act-level">🟠 With Adult Supervision</div></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo" onclick="showPage('home')" style="cursor:pointer">🌿 Plant Invaders</span>
-        <p>An educational resource for primary and secondary school students.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('learn')">Learn</a>
-        <a href="#" onclick="showPage('species')">Species</a>
-        <a href="#" onclick="showPage('games')">Games</a>
-        <a href="#" onclick="showPage('action')">Take Action</a>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>Made for students, by students 🌱 | Educational Use Only</p></div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+          <div class="how-step"><div class="how-num">📱</div><div class="how-content"><h4>Step 1: Download iNaturalist</h4><p>Free on iOS and Android. Singapore has an active community — your observations get responses within hours, often from NParks or NUS researchers.</p></div></div>
+          <div class="how-step"><div class="how-num">📸</div><div class="how-content"><h4>Step 2: Photograph Clearly</h4><p>Take multiple photos: the whole plant, leaves (top and bottom), stem, flowers or fruits if visible. The more detail, the more accurate the identification.</p></div></div>
+          <div class="how-step"><div class="how-num">📍</div><div class="how-content"><h4>Step 3: Enable GPS Location</h4><p>Make sure location services are on when you photograph — precise GPS coordinates are what make citizen science data useful to researchers.</p></div></div>
+          <div class="how-step"><div class="how-num">✅</div><div class="how-content"><h4>Step 4: Submit the Observation</h4><p>Upload to iNaturalist. Add any notes about the infestation size, how dense it is, and whether it's inside or at the edge of forest. All details help.</p></div></div>
+          <div class="how-step"><div class="how-num">📢</div><div class="how-content"><h4>Step 5: Report Formally if Needed</h4><p>For serious infestations, contact NParks directly at 1800-471-7300 or submit via the OneService app. For aquatic invasives in canals, contact PUB at 1800-284-66
