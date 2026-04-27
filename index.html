@@ -1,35 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invasive Alert 2026</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Invaders – Stop the Spread!</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="logo">🌿 INVASIVE ALERT</div>
+  <nav class="navbar">
+    <div class="nav-logo" onclick="showPage('home')">🌿 Plant Invaders</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('learn')" data-page="learn">Learn</a></li>
+      <li><a href="#" onclick="showPage('species')" data-page="species">Species</a></li>
+      <li><a href="#" onclick="showPage('games')" data-page="games">Games</a></li>
+      <li><a href="#" onclick="showPage('action')" data-page="action">Take Action</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </nav>
+
+  <!-- PAGE: HOME -->
+  <div id="page-home" class="page active">
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="leaves-container" id="leavesContainer"></div>
+      <div class="hero-content">
+        <div class="hero-badge">🚨 Environmental Alert</div>
+        <h1 class="hero-title">Plants Are <span class="highlight">Invading</span><br>Our World!</h1>
+        <p class="hero-sub">Learn how invasive plant species are taking over ecosystems — and what <strong>YOU</strong> can do to stop them!</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="showPage('learn')">Start Learning 🌱</button>
+          <button class="btn btn-secondary" onclick="showPage('games')">Play Games 🎮</button>
+        </div>
+      </div>
+      <div class="hero-graphic">
+        <div class="planet-wrap">
+          <div class="planet">🌍</div>
+          <div class="vine vine1">🌿</div>
+          <div class="vine vine2">🍃</div>
+          <div class="vine vine3">🌿</div>
+          <div class="vine vine4">🍃</div>
+        </div>
+      </div>
     </header>
 
-    <main>
-        <section id="hero">
-            <h1>Protect Our <br><span style="color:#40916c">Ecosystem.</span></h1>
-            <p style="font-size: 1.2rem; max-width: 600px; margin: 20px auto;">Identifying the alien species threatening Singapore's biodiversity.</p>
-        </section>
+    <section class="stats-strip">
+      <div class="stat-item"><span class="stat-num">3,500+</span><span class="stat-label">Invasive Species Worldwide</span></div>
+      <div class="stat-item"><span class="stat-num">40%</span><span class="stat-label">Of Endangered Species Threatened</span></div>
+      <div class="stat-item"><span class="stat-num">#2</span><span class="stat-label">Cause of Biodiversity Loss</span></div>
+      <div class="stat-item"><span class="stat-num">$1.4T</span><span class="stat-label">Annual Global Damage Cost</span></div>
+    </section>
 
-        <div id="plant-guide">
+    <section class="section what-section">
+      <div class="container">
+        <div class="section-tag">THE BASICS</div>
+        <h2 class="section-title">What Is an Invasive Plant?</h2>
+        <div class="cards-row">
+          <div class="info-card"><div class="card-icon">🌍</div><h3>Not From Here</h3><p>Invasive plants are species introduced to places outside their native home.</p></div>
+          <div class="info-card"><div class="card-icon">⚡</div><h3>Grows Super Fast</h3><p>Without natural predators or diseases, they spread uncontrollably, taking over habitats.</p></div>
+          <div class="info-card"><div class="card-icon">💀</div><h3>Kills Native Life</h3><p>They choke out native plants by stealing sunlight, water, and nutrients.</p></div>
+          <div class="info-card"><div class="card-icon">🔥</div><h3>Hard to Remove</h3><p>Once established, invasive plants are extremely difficult and expensive to get rid of.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section species-preview">
+      <div class="container">
+        <div class="section-tag">MEET THE INVADERS</div>
+        <h2 class="section-title">Know Your Enemy 🕵️</h2>
+        <p class="section-sub">Click on a plant to learn more!</p>
+        <div class="species-grid">
+          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌿</div><div class="species-name">Kudzu</div><div class="species-nick">"The Vine That Ate the South"</div><div class="danger-badge high">DANGER: HIGH</div></div>
+          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">💜</div><div class="species-name">Water Hyacinth</div><div class="species-nick">"World's Worst Aquatic Weed"</div><div class="danger-badge high">DANGER: HIGH</div></div>
+          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🎋</div><div class="species-name">Japanese Knotweed</div><div class="species-nick">"The Concrete Destroyer"</div><div class="danger-badge extreme">DANGER: EXTREME</div></div>
+          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌸</div><div class="species-name">Lantana</div><div class="species-nick">"The Pretty Killer"</div><div class="danger-badge medium">DANGER: MEDIUM</div></div>
+          <div class="species-card" onclick="showPage('species')"><div class="species-emoji">🌾</div><div class="species-name">Cogon Grass</div><div class="species-nick">"The Fire Grass"</div><div class="danger-badge high">DANGER: HIGH</div></div>
+          <div class="species-card see-more" onclick="showPage('species')"><div class="species-emoji">➕</div><div class="species-name">See All Species</div><div class="species-nick">6 invasive plants covered</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section games-teaser">
+      <div class="container">
+        <div class="games-split">
+          <div class="games-text">
+            <div class="section-tag">LEARN BY PLAYING</div>
+            <h2 class="section-title white">Test Your Knowledge! 🎮</h2>
+            <p class="white-sub">Fun games to help you learn and remember the fight against invasive species.</p>
+            <ul class="game-list">
+              <li>🃏 <strong>Memory Match</strong> — Match invasive plants to their native regions</li>
+              <li>❓ <strong>Invasive Quiz</strong> — 10-question challenge with instant feedback</li>
+              <li>🎯 <strong>Spot the Invader</strong> — Identify invasive vs. native plants</li>
+              <li>🗺️ <strong>Spread Simulator</strong> — Watch how invasives take over a map</li>
+            </ul>
+            <button class="btn btn-white" onclick="showPage('games')">Play All Games →</button>
+          </div>
+          <div class="games-cards-preview">
+            <div class="preview-card pc1">🃏</div>
+            <div class="preview-card pc2">❓</div>
+            <div class="preview-card pc3">🎯</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section action-section">
+      <div class="container">
+        <div class="section-tag">YOU CAN HELP</div>
+        <h2 class="section-title">3 Things You Can Do <em>Today</em></h2>
+        <div class="action-steps">
+          <div class="step-card"><div class="step-num">01</div><h3>Identify & Report</h3><p>Learn to recognise invasive plants and report sightings using apps like iNaturalist.</p></div>
+          <div class="step-card"><div class="step-num">02</div><h3>Spread the Word</h3><p>Tell friends, family, and classmates! Awareness is the first step to stopping the spread.</p></div>
+          <div class="step-card"><div class="step-num">03</div><h3>Join a Clean-Up</h3><p>Volunteer with local conservation groups to remove invasive plants from your community.</p></div>
+        </div>
+        <button class="btn btn-primary" onclick="showPage('action')">Learn More Ways to Help →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE: LEARN -->
+  <div id="page-learn" class="page">
+    <div class="page-header">
+      <div class="section-tag">EDUCATION HUB</div>
+      <h1>Learn About Invasive Plants 📚</h1>
+      <p>Everything you need to know — how they spread, where they live, and how to fight back.</p>
+    </div>
+    <div class="progress-section">
+      <div class="container">
+        <div class="progress-bar-wrap">
+          <span class="progress-label">Your Learning Progress</span>
+          <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+          <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+      </div>
+    </div>
+    <section class="learn-section">
+      <div class="container">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="what">🌍 What Are They?</button>
+          <button class="tab-btn" data-tab="spread">💨 How They Spread</button>
+          <button class="tab-btn" data-tab="habitats">🏞️ Habitats</button>
+          <button class="tab-btn" data-tab="damage">💀 The Damage</button>
+          <button class="tab-btn" data-tab="control">🛡️ Control Methods</button>
+        </div>
+
+        <div class="tab-content active" id="tab-what">
+          <div class="learn-grid">
+            <div class="learn-text">
+              <h2>What Makes a Plant "Invasive"?</h2>
+              <p>An invasive plant is a species that is <strong>non-native</strong> to an ecosystem and whose introduction causes harm to the environment, economy, or human health.</p>
+              <br><p>A plant becomes invasive when it:</p>
+              <ul class="learn-list">
+                <li>Establishes itself in a new environment</li>
+                <li>Reproduces rapidly and spreads aggressively</li>
+                <li>Outcompetes native species for resources</li>
+                <li>Causes ecological or economic damage</li>
+              </ul>
             </div>
-
-        <section style="text-align: center; padding: 5rem 2rem;">
-            <div style="background: white; padding: 4rem; border-radius: 40px; box-shadow: var(--shadow);">
-                <h2>Join the Citizen Science Movement</h2>
-                <p>See an invader? Report it instantly via iNaturalist.</p>
-                <a href="https://www.inaturalist.org/" target="_blank" class="btn">Launch Reporter App</a>
+            <div class="learn-visual">
+              <div class="diagram-box">
+                <h4>Native vs Invasive</h4>
+                <div class="compare-grid">
+                  <div class="compare-col native"><div class="compare-head">🌸 Native Plant</div><ul><li>Evolved here</li><li>Has natural enemies</li><li>Supports local wildlife</li><li>Grows in balance</li><li>Part of the food web</li></ul></div>
+                  <div class="compare-col invasive"><div class="compare-head">🌿 Invasive Plant</div><ul><li>Brought from elsewhere</li><li>No natural enemies</li><li>Pushes wildlife out</li><li>Takes over fast</li><li>Disrupts food web</li></ul></div>
+                </div>
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
+          <div class="fact-cards">
+            <div class="fact-card"><div class="fact-icon">🧬</div><h4>Why No Enemies?</h4><p>In their home country, insects, fungi, and animals evolved to control these plants. In a new country, none of these natural controls exist!</p></div>
+            <div class="fact-card"><div class="fact-icon">⏱️</div><h4>Explosive Growth</h4><p>Some invasive plants double their coverage in a single year. Kudzu can grow 30cm in a single day!</p></div>
+            <div class="fact-card"><div class="fact-icon">🚢</div><h4>Accidental vs Intentional</h4><p>Many invasive plants were brought deliberately as garden plants, only to escape and wreak havoc. Others hitched rides as seeds in soil or packaging.</p></div>
+          </div>
+          <button class="mark-read-btn" onclick="markRead('what')">✅ Mark as Read</button>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="tab-content" id="tab-spread">
+          <h2>How Do Invasive Plants Spread?</h2>
+          <p class="tab-intro">Invasive plants are incredibly clever at moving around. Here are the main ways they spread:</p>
+          <div class="spread-methods">
+            <div class="spread-item"><div class="spread-icon">💧</div><div class="spread-info"><h4>Water</h4><p>Seeds and plant fragments float downstream, colonising riverbanks and wetlands.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">💨</div><div class="spread-info"><h4>Wind</h4><p>Lightweight seeds with feathery attachments travel huge distances on the wind.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🐦</div><div class="spread-info"><h4>Animals & Birds</h4><p>Animals eat berries and deposit seeds far away. Seeds also stick to fur and feathers.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">👟</div><div class="spread-info"><h4>Humans</h4><p>We carry seeds on shoes, tyres, and clothes. Dumped garden waste is one of the biggest causes.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🚗</div><div class="spread-info"><h4>Vehicles</h4><p>Construction equipment moves soil containing seeds and roots from site to site.</p></div></div>
+            <div class="spread-item"><div class="spread-icon">🌱</div><div class="spread-info"><h4>Underground Roots</h4><p>Many invasives spread through rhizomes. Cut one plant and the roots sprout five more!</p></div></div>
+          </div>
+          <div class="spread-diagram">
+            <h3>Spread Timeline 📈</h3>
+            <div class="timeline">
+              <div class="timeline-step"><div class="tl-circle">Year 1</div><p>Single plant. Looks harmless.</p></div>
+              <div class="timeline-arrow">→</div>
+              <div class="timeline-step"><div class="tl-circle">Year 3</div><p>Dozens of plants. Spreading.</p></div>
+              <div class="timeline-arrow">→</div>
+              <div class="timeline-step"><div class="tl-circle">Year 7</div><p>Hundreds of plants. Natives declining.</p></div>
+              <div class="timeline-arrow">→</div>
+              <div class="timeline-step tl-danger"><div class="tl-circle danger">Year 15</div><p>Entire habitat taken over.</p></div>
+            </div>
+          </div>
+          <button class="mark-read-btn" onclick="markRead('spread')">✅ Mark as Read</button>
+        </div>
+
+        <div class="tab-content" id="tab-habitats">
+          <h2>Where Do They Take Over?</h2>
+          <p class="tab-intro">Invasive plants can invade almost any habitat:</p>
+          <div class="habitat-grid">
+            <div class="habitat-card"><div class="habitat-emoji">🌊</div><h4>Rivers & Wetlands</h4><p>Water hyacinth and purple loosestrife choke waterways, blocking sunlight and depleting oxygen for fish.</p><div class="habitat-plants">⚠️ Water Hyacinth, Purple Loosestrife</div></div>
+            <div class="habitat-card"><div class="habitat-emoji">🌲</div><h4>Forests</h4><p>Climbing vines smother trees, blocking sunlight. Some release toxins that kill other plants.</p><div class="habitat-plants">⚠️ Kudzu, English Ivy</div></div>
+            <div class="habitat-card"><div class="habitat-emoji">🌾</div><h4>Grasslands</h4><p>Dense grass invaders crowd out wildflowers and the insects that depend on them.</p><div class="habitat-plants">⚠️ Cogon Grass, Cheatgrass</div></div>
+            <div class="habitat-card"><div class="habitat-emoji">🏙️</div><h4>Urban Areas</h4><p>Invasives thrive in disturbed soil along roads, railways, and construction sites.</p><div class="habitat-plants">⚠️ Japanese Knotweed, Buddleja</div></div>
+            <div class="habitat-card"><div class="habitat-emoji">🌊</div><h4>Coastal Areas</h4><p>Salt-tolerant invasives can destroy coastal dunes and mangroves protecting shorelines.</p><div class="habitat-plants">⚠️ Spartina, Ice Plant</div></div>
+            <div class="habitat-card"><div class="habitat-emoji">🏔️</div><h4>Islands</h4><p>Islands are most vulnerable — species evolved in isolation with no defences against invasives.</p><div class="habitat-plants">⚠️ Miconia, Strawberry Guava</div></div>
+          </div>
+          <button class="mark-read-btn" onclick="markRead('habitats')">✅ Mark as Read</button>
+        </div>
+
+        <div class="tab-content" id="tab-damage">
+          <h2>The Damage They Cause 💀</h2>
+          <p class="tab-intro">Invasive plants are the second biggest cause of species extinction worldwide:</p>
+          <div class="damage-sections">
+            <div class="damage-block eco"><h3>🌿 Environmental Damage</h3><ul class="damage-list"><li><strong>Pushes out native plants</strong> — competing for light, water, and nutrients</li><li><strong>Destroys animal habitats</strong> — many animals only eat specific native plants</li><li><strong>Changes soil chemistry</strong> — some invasives release toxins that poison the soil</li><li><strong>Increases wildfire risk</strong> — invasive grasses burn faster and hotter</li><li><strong>Blocks waterways</strong> — aquatic invasives choke rivers, reducing oxygen for fish</li></ul></div>
+            <div class="damage-block econ"><h3>💰 Economic Damage</h3><ul class="damage-list"><li><strong>Reduces crop yields</strong> — invasives compete with food crops</li><li><strong>Costs billions in control</strong> — the US alone spends $34 billion/year</li><li><strong>Damages property</strong> — Japanese knotweed can crack foundations and walls</li><li><strong>Harms fishing industries</strong> — aquatic invasives destroy fish habitats</li></ul></div>
+            <div class="damage-block health"><h3>🏥 Human Health Damage</h3><ul class="damage-list"><li><strong>Allergens</strong> — invasive plants often produce more pollen than natives</li><li><strong>Toxic plants</strong> — some (like Lantana) are poisonous to children and pets</li><li><strong>Tick habitats</strong> — dense undergrowth creates homes for ticks carrying Lyme disease</li><li><strong>Water quality</strong> — algal blooms contaminate drinking water</li></ul></div>
+          </div>
+          <button class="mark-read-btn" onclick="markRead('damage')">✅ Mark as Read</button>
+        </div>
+
+        <div class="tab-content" id="tab-control">
+          <h2>How Do We Fight Back? 🛡️</h2>
+          <p class="tab-intro">Several methods exist for controlling invasive plants — each with pros and cons:</p>
+          <div class="control-methods">
+            <div class="control-card"><div class="control-icon">✋</div><h4>Manual Removal</h4><div class="method-badge good">Best for small areas</div><p>Hand-pulling, digging, or cutting. <strong>Pros:</strong> No chemicals, targeted. <strong>Cons:</strong> Labour-intensive, must remove all roots.</p></div>
+            <div class="control-card"><div class="control-icon">🧪</div><h4>Herbicides</h4><div class="method-badge caution">Use carefully</div><p>Chemical sprays. <strong>Pros:</strong> Effective on large areas. <strong>Cons:</strong> Can harm native plants, enters waterways.</p></div>
+            <div class="control-card"><div class="control-icon">🐛</div><h4>Biological Control</h4><div class="method-badge good">Long-term solution</div><p>Introducing natural enemies. <strong>Pros:</strong> Sustainable. <strong>Cons:</strong> Takes years, must be thoroughly tested first.</p></div>
+            <div class="control-card"><div class="control-icon">🌱</div><h4>Replanting Natives</h4><div class="method-badge good">Essential step</div><p>After removing invasives, plant native species. <strong>Pros:</strong> Restores ecosystem. <strong>Cons:</strong> Slow, ongoing effort.</p></div>
+            <div class="control-card"><div class="control-icon">🚫</div><h4>Prevention</h4><div class="method-badge great">Most effective!</div><p>Stopping new invasives from entering. Includes biosecurity checks, regulations on plant imports, and public awareness. Prevention is always cheaper than cure!</p></div>
+          </div>
+          <div class="control-tip"><span>💡</span><p><strong>Key tip:</strong> Never dump garden waste in natural areas! Many invasions started with a single plant thrown over a fence.</p></div>
+          <button class="mark-read-btn" onclick="markRead('control')">✅ Mark as Read</button>
+        </div>
+      </div>
+    </section>
+    <section class="section quiz-cta" style="text-align:center">
+      <div class="container">
+        <h2 class="section-title">Think You've Learnt It All? 🧠</h2>
+        <p class="section-sub">Test your knowledge with our interactive quiz!</p>
+        <button class="btn btn-primary" onclick="showPage('games')">Play the Quiz →</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE: SPECIES -->
+  <div id="page-species" class="page">
+    <div class="page-header">
+      <div class="section-tag">THE ROGUES GALLERY</div>
+      <h1>Invasive Species Encyclopedia 🔍</h1>
+      <p>Click on any plant to discover how it invades, what damage it causes, and how to stop it.</p>
+    </div>
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-wrap">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="extreme">🔴 Extreme</button>
+          <button class="filter-btn" data-filter="high">🟠 High</button>
+          <button class="filter-btn" data-filter="medium">🟡 Medium</button>
+          <button class="filter-btn" data-filter="aquatic">💧 Aquatic</button>
+          <button class="filter-btn" data-filter="terrestrial">🌲 Terrestrial</button>
+        </div>
+      </div>
+    </div>
+    <section class="section species-section">
+      <div class="container">
+        <div class="species-master-grid" id="speciesGrid">
+
+          <div class="sp-card" data-category="extreme terrestrial">
+            <div class="sp-header kudzu-bg"><div class="sp-emoji">🌿</div><div class="sp-danger extreme">EXTREME</div></div>
+            <div class="sp-body">
+              <h3>Kudzu</h3><p class="sp-latin"><em>Pueraria montana</em></p><p class="sp-nick">"The Vine That Ate the South"</p>
+              <div class="sp-quick-facts"><span>📍 East Asia</span><span>🌍 USA, Australia</span><span>📏 30cm/day</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('kudzu-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="kudzu-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Roadsides, forest edges, disturbed areas. Thrives in warm, humid climates. Spreading northwards with climate change.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Grows over everything — trees, shrubs, other plants. Dense mats block all sunlight and can bring down entire trees through sheer weight.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Seeds eaten and dispersed by animals. Also spreads through underground rhizomes and stem nodes that root wherever they touch ground.</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Repeated cutting during growing season — exhausts roots</li><li>Herbicide treatment on cut stems in late summer</li><li>Grazing with goats — they love eating kudzu!</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Kudzu was sold at garden centres in the 1930s as an ornamental plant! The US government even paid farmers to plant it for erosion control.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high aquatic">
+            <div class="sp-header hyacinth-bg"><div class="sp-emoji">💜</div><div class="sp-danger high">HIGH</div></div>
+            <div class="sp-body">
+              <h3>Water Hyacinth</h3><p class="sp-latin"><em>Eichhornia crassipes</em></p><p class="sp-nick">"World's Worst Aquatic Weed"</p>
+              <div class="sp-quick-facts"><span>📍 S. America</span><span>🌍 Africa, Asia</span><span>📏 Doubles in 2 weeks</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('hyacinth-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="hyacinth-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Lakes, ponds, rivers, and slow-moving waterways. Prefers warm, nutrient-rich water. Devastating in tropical and subtropical regions.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms thick floating mats that block sunlight — aquatic plants die and fish suffocate as oxygen drops. Also traps fishing nets and breeds disease-carrying mosquitoes.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Doubles coverage in just 2 weeks through vegetative reproduction. Floods move large mats to new water bodies.</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Mechanical harvesting with specialist boats</li><li>Biological control: Neochetina weevils (highly effective!)</li><li>Composting — removed plants make great fertiliser</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Water hyacinth produces beautiful purple flowers — which is why it was spread as a decorative pond plant. Lake Victoria in Africa lost 90% of its biodiversity after it took over.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="extreme terrestrial">
+            <div class="sp-header knotweed-bg"><div class="sp-emoji">🎋</div><div class="sp-danger extreme">EXTREME</div></div>
+            <div class="sp-body">
+              <h3>Japanese Knotweed</h3><p class="sp-latin"><em>Reynoutria japonica</em></p><p class="sp-nick">"The Concrete Destroyer"</p>
+              <div class="sp-quick-facts"><span>📍 East Asia</span><span>🌍 Europe, USA, NZ</span><span>📏 Roots: 3m deep</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('knotweed-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="knotweed-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Roadsides, riverbanks, waste ground, gardens. Incredibly hardy — grows through tarmac and concrete. Survives drought, flooding, and even fire.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Dense stands block all light. Rhizome network extends 7m sideways and 3m deep — cracking building foundations, walls, and pavements.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Almost entirely through root fragments — a piece the size of a fingernail can grow a whole new plant. Human activity like digging is the main spread mechanism.</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Specialist herbicide — takes 3–5 years of treatment</li><li>Excavation and disposal at licensed waste sites (NEVER compost)</li><li>Biological control: Aphalara itadori psyllid</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> In the UK, Japanese knotweed in your garden can prevent you from getting a mortgage on your house. It must be declared when selling property!</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="medium terrestrial">
+            <div class="sp-header lantana-bg"><div class="sp-emoji">🌸</div><div class="sp-danger medium">MEDIUM</div></div>
+            <div class="sp-body">
+              <h3>Lantana</h3><p class="sp-latin"><em>Lantana camara</em></p><p class="sp-nick">"The Pretty Killer"</p>
+              <div class="sp-quick-facts"><span>📍 C. America</span><span>🌍 Africa, Asia</span><span>⚠️ Toxic to livestock</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('lantana-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="lantana-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Open forests, grasslands, roadsides in tropical and subtropical regions. Common in India, Australia, and parts of Africa.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms dense thickets blocking native plant growth. Berries are toxic to humans and most livestock, though birds eat and spread them everywhere.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Bird-dispersed seeds are the main vector. Also spreads vegetatively. Still sold in garden centres in some countries!</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Manual removal with gloves (skin irritant)</li><li>Herbicide on cut stumps</li><li>Biological control: 36 agents tested worldwide</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Lantana's flowers change colour as they age — from yellow to orange to red — to signal to pollinators they've already been visited!</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-header cogon-bg"><div class="sp-emoji">🌾</div><div class="sp-danger high">HIGH</div></div>
+            <div class="sp-body">
+              <h3>Cogon Grass</h3><p class="sp-latin"><em>Imperata cylindrica</em></p><p class="sp-nick">"The Fire Grass"</p>
+              <div class="sp-quick-facts"><span>📍 SE Asia</span><span>🌍 USA, Africa</span><span>🔥 Increases fire risk</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('cogon-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="cogon-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Disturbed areas, roadsides, pine forests. Highly adaptable — tolerates poor soils, drought, fire, and heavy grazing.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Releases allelopathic chemicals poisoning the soil. Burns hotter than native grass fires, killing tree seedlings and creating a dangerous fire-cycle feedback loop.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Wind-dispersed feathery seeds travel miles. Also spreads through rhizomes and regrows denser after fire.</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Systemic herbicide treatment (imazapyr or glyphosate)</li><li>Repeated mowing to exhaust root reserves</li><li>Shading with fast-growing native trees</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> The Japanese military used cogon grass for thatching during WWII, accidentally spreading it through the Pacific — one of history's most damaging accidental introductions!</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high aquatic">
+            <div class="sp-header loosestrife-bg"><div class="sp-emoji">🌺</div><div class="sp-danger high">HIGH</div></div>
+            <div class="sp-body">
+              <h3>Purple Loosestrife</h3><p class="sp-latin"><em>Lythrum salicaria</em></p><p class="sp-nick">"The Wetland Destroyer"</p>
+              <div class="sp-quick-facts"><span>📍 Europe & Asia</span><span>🌍 N. America</span><span>🌸 2.7M seeds/plant</span></div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('loosestrife-detail', this)">Learn More ▼</button>
+              <div class="sp-detail" id="loosestrife-detail">
+                <div class="sp-section"><h4>🏞️ Habitat</h4><p>Wetlands, marshes, riverbanks, and lake edges. Has invaded approximately 50% of all North American wetlands.</p></div>
+                <div class="sp-section"><h4>💀 How It Kills</h4><p>Forms monocultures replacing diverse native wetland plants. The entire food web collapses — waterfowl, amphibians, and insects all decline dramatically.</p></div>
+                <div class="sp-section"><h4>📡 How It Spreads</h4><p>Each plant produces up to 2.7 million seeds per year, dispersed by water, wind, and animals' feet. Also spreads through root fragments.</p></div>
+                <div class="sp-section"><h4>🛡️ How to Remove</h4><ul><li>Biological control using Galerucella beetles — most successful method!</li><li>Hand-pulling when young (before seeds form)</li><li>Cutting before flowering to prevent seeding</li></ul></div>
+                <div class="sp-funfact"><span>🤯</span><p><strong>Wild fact:</strong> Purple loosestrife has three different flower types — each needing pollen from the other two to set seed. Despite this, it still produces millions of seeds yearly!</p></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:4rem">
+          <div class="section-tag">IDENTIFICATION</div>
+          <h2 class="section-title">How to Spot an Invasive Plant 🔎</h2>
+          <div class="id-tips">
+            <div class="id-tip"><div class="id-num">1</div><div><h4>Growing somewhere unusual</h4><p>Invasives often appear in disturbed areas — roadsides, building sites, river edges, or recently cleared land.</p></div></div>
+            <div class="id-tip"><div class="id-num">2</div><div><h4>Lots of it — and nothing else</h4><p>Invasives often form monocultures. Natural areas have many different plant species mixed together.</p></div></div>
+            <div class="id-tip"><div class="id-num">3</div><div><h4>Growing over everything</h4><p>Climbing or sprawling plants covering other vegetation is a classic sign of an invasive species.</p></div></div>
+            <div class="id-tip"><div class="id-num">4</div><div><h4>Use iNaturalist</h4><p>Download the free iNaturalist app, photograph the plant, and the community will help you identify it!</p></div></div>
+          </div>
+          <div class="id-warning"><span>⚠️</span><p><strong>Important:</strong> Never touch or remove plants you don't recognise! Always tell an adult and report through official channels.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE: GAMES -->
+  <div id="page-games" class="page">
+    <div class="page-header">
+      <div class="section-tag">PLAY & LEARN</div>
+      <h1>Games & Activities 🎮</h1>
+      <p>Test your knowledge about invasive plants with our fun interactive games!</p>
+    </div>
+    <div class="score-tracker">
+      <div class="container">
+        <div class="score-badges">
+          <div class="score-badge">🧠 Quiz: <span id="quizScoreVal">0</span> pts</div>
+          <div class="score-badge">🃏 Memory: <span id="memoryScoreVal">0</span> pts</div>
+          <div class="score-badge">🎯 Spot: <span id="spotScoreVal">0</span> pts</div>
+          <div class="score-badge total-badge">⭐ Total: <span id="totalScoreVal">0</span> pts</div>
+        </div>
+      </div>
+    </div>
+    <section class="section games-select-section">
+      <div class="container">
+        <div class="game-select-grid">
+          <div class="game-select-card active-game" onclick="selectGame('quiz')"><div class="gs-icon">❓</div><h3>Invasive Quiz</h3><p>10 questions, instant feedback</p><div class="gs-badge">QUIZ</div></div>
+          <div class="game-select-card" onclick="selectGame('memory')"><div class="gs-icon">🃏</div><h3>Memory Match</h3><p>Match plants to their homes</p><div class="gs-badge">MEMORY</div></div>
+          <div class="game-select-card" onclick="selectGame('spot')"><div class="gs-icon">🎯</div><h3>Spot the Invader</h3><p>Native vs Invasive challenge</p><div class="gs-badge">IDENTIFY</div></div>
+          <div class="game-select-card" onclick="selectGame('spread')"><div class="gs-icon">🗺️</div><h3>Spread Simulator</h3><p>Watch invasions in real time</p><div class="gs-badge">SIMULATE</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-panel active-panel" id="game-quiz">
+      <div class="container">
+        <div class="game-box">
+          <div class="game-header"><h2>🧠 Invasive Plant Quiz</h2><div class="quiz-progress">Question <span id="qNum">1</span> of 10</div></div>
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgressFill"></div></div>
+          <div id="quizArea">
+            <p class="question-text" id="questionText">Loading...</p>
+            <div class="answer-grid" id="answerGrid"></div>
+            <div class="feedback-box" id="feedbackBox" style="display:none"></div>
+            <button class="btn btn-primary next-btn" id="nextBtn" style="display:none" onclick="nextQuestion()">Next Question →</button>
+          </div>
+          <div id="quizComplete" style="display:none" class="game-complete">
+            <div class="complete-emoji">🎉</div><h3>Quiz Complete!</h3>
+            <p>You scored <strong id="finalScore">0</strong> out of <strong>10</strong></p>
+            <div class="score-message" id="scoreMessage"></div>
+            <button class="btn btn-primary" onclick="restartQuiz()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-panel" id="game-memory">
+      <div class="container">
+        <div class="game-box">
+          <div class="game-header"><h2>🃏 Memory Match</h2><div class="memory-stats">Moves: <span id="moveCount">0</span> | Pairs: <span id="pairCount">0</span>/8</div></div>
+          <p class="game-intro">Match each invasive plant to its continent of origin!</p>
+          <div class="memory-grid" id="memoryGrid"></div>
+          <div id="memoryComplete" style="display:none" class="game-complete">
+            <div class="complete-emoji">🏆</div><h3>You matched them all!</h3>
+            <p>Completed in <strong id="finalMoves">0</strong> moves</p>
+            <button class="btn btn-primary" onclick="initMemory()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-panel" id="game-spot">
+      <div class="container">
+        <div class="game-box">
+          <div class="game-header"><h2>🎯 Spot the Invader</h2><div class="spot-stats">Round <span id="spotRound">1</span>/10 | Score: <span id="spotPoints">0</span></div></div>
+          <p class="game-intro">Is this plant <strong>native</strong> or <strong>invasive</strong>? Use the clues to decide!</p>
+          <div id="spotArea">
+            <div class="spot-card">
+              <div class="spot-plant-display">
+                <div class="spot-emoji" id="spotEmoji">🌿</div>
+                <h3 class="spot-name" id="spotName">Plant Name</h3>
+                <p class="spot-clue" id="spotClue">Loading...</p>
+                <p class="spot-origin" id="spotOrigin"></p>
+              </div>
+              <div class="spot-btns">
+                <button class="spot-btn native-btn" onclick="spotAnswer('native')">🌿 Native Plant</button>
+                <button class="spot-btn invasive-btn" onclick="spotAnswer('invasive')">🚨 Invasive Plant</button>
+              </div>
+              <div class="spot-feedback" id="spotFeedback" style="display:none"></div>
+            </div>
+          </div>
+          <div id="spotComplete" style="display:none" class="game-complete">
+            <div class="complete-emoji">🌟</div><h3>Round Complete!</h3>
+            <p>You scored <strong id="spotFinalScore">0</strong>/10</p>
+            <button class="btn btn-primary" onclick="initSpot()">Play Again 🔄</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section game-panel" id="game-spread">
+      <div class="container">
+        <div class="game-box">
+          <div class="game-header"><h2>🗺️ Spread Simulator</h2><div class="sim-stats">Year: <span id="simYear">0</span> | Coverage: <span id="simCoverage">0</span>%</div></div>
+          <p class="game-intro">Watch how an invasive plant spreads across a landscape. Green = healthy native habitat. Red = invaded!</p>
+          <div class="sim-controls">
+            <div class="sim-control"><label>Species</label><select id="simSpecies" onchange="resetSim()"><option value="slow">Slow Spreader (Lantana)</option><option value="fast">Fast Spreader (Kudzu)</option><option value="water">Water Invader (Water Hyacinth)</option></select></div>
+            <div class="sim-control"><label>Climate</label><select id="simClimate" onchange="resetSim()"><option value="ideal">Ideal Conditions</option><option value="good">Good Conditions</option><option value="poor">Poor Conditions</option></select></div>
+          </div>
+          <canvas id="simCanvas" width="600" height="350"></canvas>
+          <div class="sim-buttons">
+            <button class="btn btn-primary" id="simPlayBtn" onclick="toggleSim()">▶️ Start Simulation</button>
+            <button class="btn btn-secondary" onclick="resetSim()">🔄 Reset</button>
+            <button class="btn btn-secondary" onclick="addIntervention()">🛡️ Intervene!</button>
+          </div>
+          <p class="sim-tip" id="simTip">Press Start to begin. Watch what happens over 50 years!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PAGE: ACTION -->
+  <div id="page-action" class="page">
+    <div class="page-header">
+      <div class="section-tag">BE THE CHANGE</div>
+      <h1>Take Action! 🌍</h1>
+      <p>Knowledge is power — but action saves ecosystems. Here's exactly how you can help.</p>
+    </div>
+    <section class="section pledge-section">
+      <div class="container">
+        <div class="pledge-box">
+          <h2>🤝 Take the Plant Defender Pledge</h2>
+          <p>Join thousands of young conservationists committing to protect native ecosystems!</p>
+          <div class="pledge-items" id="pledgeItems">
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will learn to identify at least 3 invasive plants in my area</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will never dump garden waste in natural areas</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will tell at least 3 people about invasive plants</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will report any invasive plants I see using iNaturalist</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will volunteer for or organise a local clean-up</label>
+            <label class="pledge-item"><input type="checkbox" onchange="updatePledge()"> I will choose native plants for any garden or school project</label>
+          </div>
+          <div class="pledge-progress">
+            <span id="pledgeCount">0</span>/6 pledges made
+            <div class="pledge-bar"><div class="pledge-fill" id="pledgeFill"></div></div>
+          </div>
+          <div id="pledgeComplete" class="pledge-complete" style="display:none">🎉 You're officially a <strong>Plant Defender!</strong> Share this with friends!</div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-tag">STEP BY STEP</div>
+        <h2 class="section-title">How to Report an Invasive Plant</h2>
+        <div class="how-to-steps">
+          <div class="how-step"><div class="how-num">📱</div><div class="how-content"><h4>Step 1: Download iNaturalist</h4><p>Get the free app (iOS or Android). Used by scientists and conservationists worldwide.</p></div></div>
+          <div class="how-step"><div class="how-num">📸</div><div class="how-content"><h4>Step 2: Photograph the Plant</h4><p>Take clear photos of the leaves, stem, flowers, and surroundings. Don't touch unknown plants.</p></div></div>
+          <div class="how-step"><div class="how-num">🔍</div><div class="how-content"><h4>Step 3: Submit Your Observation</h4><p>Upload to iNaturalist. The community will help identify the plant with your GPS location.</p></div></div>
+          <div class="how-step"><div class="how-num">📢</div><div class="how-content"><h4>Step 4: Report to Authorities</h4><p>Contact your local council or conservation department to report confirmed sightings.</p></div></div>
+          <div class="how-step"><div class="how-num">🌱</div><div class="how-content"><h4>Step 5: Follow Up</h4><p>Check if action was taken. Contact a local conservation group if nothing happens.</p></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section warning-section">
+      <div class="container">
+        <div class="section-tag">SAFETY FIRST</div>
+        <h2 class="section-title">What NOT to Do ⚠️</h2>
+        <div class="warnings-grid">
+          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't touch unknown plants</h4><p>Some invasives (like Giant Hogweed) can cause severe skin burns. Always identify first and get adult supervision.</p></div>
+          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't pull and leave them</h4><p>Dropped root fragments and seeds can just grow new plants. Bag and dispose of correctly.</p></div>
+          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't compost invasive plants</h4><p>Most survive home composting and re-establish when compost is used. Take to a certified green waste facility.</p></div>
+          <div class="warning-card"><div class="warn-icon">🚫</div><h4>Don't tackle large areas alone</h4><p>Large-scale removal requires specialists. Contact local conservation groups or your council.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="section checklist-section">
+      <div class="container">
+        <div class="section-tag">TOOLS FOR STUDENTS</div>
+        <h2 class="section-title">Student Activities</h2>
+        <div class="activity-cards">
+          <div class="activity-card"><div class="act-icon">📋</div><h4>Garden Audit</h4><p>Walk around your school garden or local green space and identify whether any plants you see are invasive.</p><div class="act-level">🟢 Primary School</div></div>
+          <div class="activity-card"><div class="act-icon">🗺️</div><h4>Invasion Mapping</h4><p>Create a map of your local area marking where you've spotted invasive plants. Use iNaturalist to contribute to real science!</p><div class="act-level">🟡 Secondary School</div></div>
+          <div class="activity-card"><div class="act-icon">📊</div><h4>Biodiversity Survey</h4><p>Compare plant diversity in an invaded area vs a healthy native area. Count species and present your data to class.</p><div class="act-level">🟡 Secondary School</div></div>
+          <div class="activity-card"><div class="act-icon">📣</div><h4>Awareness Campaign</h4><p>Create posters, social media content, or a school assembly presentation about invasive plants in your local area.</p><div class="act-level">🟢 All Ages</div></div>
+          <div class="activity-card"><div class="act-icon">🌱</div><h4>Native Plant Project</h4><p>Grow native plants from seed and plant them in your school grounds to support local insects and biodiversity.</p><div class="act-level">🟢 Primary School</div></div>
+          <div class="activity-card"><div class="act-icon">🤝</div><h4>Community Clean-Up</h4><p>Organise or join a local invasive plant removal day. Contact your council to find events near you.</p><div class="act-level">🟠 With Adult Supervision</div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo" onclick="showPage('home')" style="cursor:pointer">🌿 Plant Invaders</span>
+        <p>An educational resource for primary and secondary school students.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('learn')">Learn</a>
+        <a href="#" onclick="showPage('species')">Species</a>
+        <a href="#" onclick="showPage('games')">Games</a>
+        <a href="#" onclick="showPage('action')">Take Action</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>Made for students, by students 🌱 | Educational Use Only</p></div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
