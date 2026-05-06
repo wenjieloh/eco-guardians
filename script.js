@@ -1,18 +1,19 @@
 // ============================================================
-// PAGE NAVIGATION
+// NAVIGATION
 // ============================================================
+const scores = { quiz: 0, memory: 0, spot: 0, runner: 0 };
+
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
-  const navLink = document.querySelector(`[data-page="${name}"]`);
-  if (navLink) navLink.classList.add('active');
+  const link = document.querySelector(`[data-page="${name}"]`);
+  if (link) link.classList.add('active');
   window.scrollTo(0, 0);
-  if (name === 'games') initAllGames();
+  if (name === 'games') { setTimeout(initAllGames, 100); }
   if (name === 'action') restorePledge();
 }
 
-// NAVBAR
 document.getElementById('navToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
 });
@@ -20,32 +21,50 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
 });
 
-// FALLING LEAVES
-const leavesContainer = document.getElementById('leavesContainer');
-const leafEmojis = ['🍃', '🌿', '🌱', '🍂', '🌾'];
-for (let i = 0; i < 20; i++) {
-  const leaf = document.createElement('div');
-  leaf.classList.add('falling-leaf');
-  leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
-  leaf.style.left = Math.random() * 100 + 'vw';
-  leaf.style.animationDuration = (7 + Math.random() * 10) + 's';
-  leaf.style.animationDelay = (Math.random() * 12) + 's';
-  leaf.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
-  leavesContainer.appendChild(leaf);
+function showToast(msg, duration = 2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
 }
 
-// SCROLL FADE-UP
-const observer = new IntersectionObserver((entries) => {
+function updateScores() {
+  document.getElementById('quizScoreVal').textContent = scores.quiz;
+  document.getElementById('memoryScoreVal').textContent = scores.memory;
+  document.getElementById('spotScoreVal').textContent = scores.spot;
+  document.getElementById('runnerScoreVal').textContent = scores.runner;
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+  document.getElementById('totalScoreVal').textContent = total;
+  document.getElementById('navTotalScore').textContent = `⭐ ${total} pts`;
+}
+
+// ============================================================
+// HERO PARTICLES
+// ============================================================
+const hp = document.getElementById('heroParticles');
+const colors = ['#74c69d','#52b788','#f4d03f','#e67e22','#3498db'];
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement('div');
+  p.className = 'h-particle';
+  const size = 4 + Math.random() * 10;
+  p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}vw;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${8+Math.random()*12}s;animation-delay:${Math.random()*10}s`;
+  hp.appendChild(p);
+}
+
+// ============================================================
+// SCROLL ANIMATIONS
+// ============================================================
+const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-document.querySelectorAll('.info-card, .step-card, .hook-card').forEach((el, i) => {
+document.querySelectorAll('.hook-card, .action-card, .info-card').forEach((el, i) => {
   el.classList.add('fade-up');
-  el.style.transitionDelay = (i * 0.07) + 's';
-  observer.observe(el);
+  el.style.transitionDelay = (i % 6 * 0.08) + 's';
+  obs.observe(el);
 });
 
 // ============================================================
-// LEARN TABS
+// LEARN PAGE — TABS + PROGRESS
 // ============================================================
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -56,170 +75,171 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-const readTabs = new Set(JSON.parse(localStorage.getItem('readTabs_sg') || '[]'));
+const readTabs = new Set(JSON.parse(localStorage.getItem('readTabs_sg3') || '[]'));
 function updateProgress() {
   const pct = Math.round((readTabs.size / 5) * 100);
-  const fill = document.getElementById('progressFill');
-  const pctEl = document.getElementById('progressPct');
-  if (fill) fill.style.width = pct + '%';
-  if (pctEl) pctEl.textContent = pct + '%';
+  const f = document.getElementById('progressFill');
+  const p = document.getElementById('progressPct');
+  if (f) f.style.width = pct + '%';
+  if (p) p.textContent = pct + '%';
 }
-function markRead(tabId) {
+function markRead(tabId, btn) {
   readTabs.add(tabId);
-  localStorage.setItem('readTabs_sg', JSON.stringify([...readTabs]));
+  localStorage.setItem('readTabs_sg3', JSON.stringify([...readTabs]));
   updateProgress();
-  const btn = document.querySelector(`#tab-${tabId} .mark-read-btn`);
-  if (btn) { btn.textContent = '✅ Done!'; btn.classList.add('done'); }
+  btn.textContent = '✅ Done!';
+  btn.classList.add('done');
+  showToast('📖 Section marked as read! ' + Math.round((readTabs.size / 5) * 100) + '% complete');
 }
-readTabs.forEach(tabId => {
-  const btn = document.querySelector(`#tab-${tabId} .mark-read-btn`);
-  if (btn) { btn.textContent = '✅ Done!'; btn.classList.add('done'); }
+readTabs.forEach(t => {
+  const b = document.querySelector(`#tab-${t} .mark-read-btn`);
+  if (b) { b.textContent = '✅ Done!'; b.classList.add('done'); }
 });
 updateProgress();
 
 // ============================================================
-// SPECIES FILTER + EXPAND
+// SPECIES — FILTER + EXPAND
 // ============================================================
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.sp-card').forEach(card => {
-      card.classList.toggle('hidden', filter !== 'all' && !card.dataset.category.includes(filter));
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.sp-card').forEach(c => {
+      c.classList.toggle('hidden', f !== 'all' && !c.dataset.category.includes(f));
     });
   });
 });
 
-function toggleSpecies(id, btn) {
-  const detail = document.getElementById(id);
-  const isOpen = detail.classList.contains('open');
-  detail.classList.toggle('open', !isOpen);
-  detail.style.display = isOpen ? 'none' : 'block';
-  btn.textContent = isOpen ? 'Full Profile ▼' : 'Show Less ▲';
+function toggleSp(id, btn) {
+  const d = document.getElementById(id);
+  const open = d.classList.contains('open');
+  d.classList.toggle('open', !open);
+  d.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'Full Profile ▼' : 'Show Less ▲';
 }
 
 // ============================================================
 // GAME SYSTEM
 // ============================================================
-const scores = { quiz: 0, memory: 0, spot: 0, id: 0 };
-function updateScores() {
-  document.getElementById('quizScoreVal').textContent = scores.quiz;
-  document.getElementById('memoryScoreVal').textContent = scores.memory;
-  document.getElementById('spotScoreVal').textContent = scores.spot;
-  document.getElementById('idScoreVal').textContent = scores.id;
-  document.getElementById('totalScoreVal').textContent = Object.values(scores).reduce((a, b) => a + b, 0);
-}
-
 function selectGame(name) {
   document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active-panel'));
-  document.querySelectorAll('.game-select-card').forEach(c => c.classList.remove('active-game'));
+  document.querySelectorAll('.gsc').forEach(c => c.classList.remove('active-gsc'));
   document.getElementById('game-' + name).classList.add('active-panel');
-  const idx = ['quiz','memory','spot','plantid','spread'].indexOf(name);
-  document.querySelectorAll('.game-select-card')[idx]?.classList.add('active-game');
+  const idx = ['quiz', 'memory', 'spot', 'runner', 'spread'].indexOf(name);
+  const cards = document.querySelectorAll('.gsc');
+  if (cards[idx]) cards[idx].classList.add('active-gsc');
   document.getElementById('game-' + name).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (name === 'spread') resetSim();
 }
 
 function initAllGames() {
-  initQuiz(); initMemory(); initSpot(); initPlantId(); resetSim();
+  initQuiz();
+  initMemory();
+  initSpot();
+  resetSim();
+  initRunnerDisplay();
 }
 
 // ============================================================
 // QUIZ — 12 SINGAPORE QUESTIONS
 // ============================================================
-const quizQuestions = [
-  { q: "Which invasive plant is considered Singapore's #1 most problematic weed by NParks?", a: ["Zanzibar Yam", "Mile-a-Minute (Mikania micrantha)", "Lantana", "Water Hyacinth"], correct: 1, explain: "Mile-a-Minute (Mikania micrantha) is Singapore's most widespread invasive plant. Growing up to 8cm per day, it smothers native vegetation across virtually every nature area in Singapore." },
-  { q: "How did Mile-a-Minute first arrive in Singapore?", a: ["Carried by migratory birds", "Deliberately planted by NParks", "Accidentally introduced via contaminated grass seed in the 1960s", "Brought in through the aquarium trade"], correct: 2, explain: "Mile-a-Minute arrived through contaminated grass seed imports in the 1960s — a preventable mistake that has cost Singapore decades of ongoing management efforts." },
-  { q: "The Zanzibar Yam (Dioscorea bulbifera) spreads in Singapore primarily through:", a: ["Wind-dispersed seeds", "Bulbils that fall to the ground and remain dormant in soil", "Root runners underground", "Being eaten and spread by birds"], correct: 1, explain: "The Zanzibar Yam produces bulbils — small aerial tubers — that drop to the ground and can remain viable in soil for years before sprouting into new plants." },
-  { q: "Why is Senduduk Bulu (Clidemia hirta) especially dangerous in Singapore's forests?", a: ["It only grows in open fields", "It tolerates shade and can invade intact forest understorey", "It is spread only by humans", "It only affects aquatic habitats"], correct: 1, explain: "Unlike most invasives that start at forest edges, Senduduk Bulu can invade shaded forest understorey — preventing native tree seedlings from establishing and breaking the forest regeneration cycle." },
-  { q: "Which invasive species partnership is called an 'invasion meltdown' by scientists?", a: ["Water Hyacinth and PUB drains", "Senduduk Bulu berries being spread by the invasive Javan Myna", "Albizia and construction sites", "Siam Weed and fire"], correct: 1, explain: "Senduduk Bulu produces berries that the invasive Javan Myna eats and spreads throughout Singapore's forests — two invasive species helping each other spread, a phenomenon scientists call 'invasion meltdown'." },
-  { q: "The Albizia tree is dangerous in Singapore because:", a: ["Its berries are toxic to humans", "It grows extremely fast but produces structurally weak wood that breaks dangerously in storms", "It blocks waterways", "It produces allelopathic chemicals"], correct: 1, explain: "Albizia grows up to 7 metres per year but produces brittle wood. In Singapore's frequent storms, branches and whole trees can fall suddenly — creating what arborists call 'widow-maker' hazards." },
-  { q: "Why was Water Hyacinth originally introduced to Singapore?", a: ["As a water treatment plant", "For use in aquaculture", "As a decorative ornamental pond plant", "For scientific research"], correct: 2, explain: "Water Hyacinth was introduced as a decorative pond plant due to its beautiful purple flowers. It escaped into Singapore's waterways and is now one of our most costly aquatic invasives." },
-  { q: "Which Singapore government agency should you contact if you spot Water Hyacinth in a canal?", a: ["Ministry of Education", "PUB (Public Utilities Board)", "Urban Redevelopment Authority", "National Heritage Board"], correct: 1, explain: "PUB manages Singapore's waterways and has specialist teams for aquatic invasive removal. Their 24-hour hotline is 1800-284-6600. Early reporting saves enormous management costs!" },
-  { q: "What makes Singapore particularly vulnerable to invasive plant introductions?", a: ["Its small size", "Being one of the world's busiest ports and aviation hubs, with a tropical climate perfect for growth", "Having too many parks", "Its soil type"], correct: 1, explain: "Singapore's position as a major port and aviation hub means invasive species constantly arrive hidden in cargo, soil, and luggage. Our tropical climate then provides ideal year-round growing conditions." },
-  { q: "Giant Salvinia (Salvinia molesta) is primarily spreading in Singapore through:", a: ["Migratory birds", "Flood events only", "Aquarium plant releases by hobbyists dumping plants into waterways", "Wind dispersal"], correct: 2, explain: "Giant Salvinia is mostly introduced when aquarium hobbyists dump plants into Singapore canals and waterways. It can double its biomass in 2.5 days — making every dumped plant a potential disaster." },
-  { q: "What is Singapore's 'City in Nature' initiative?", a: ["A plan to build more indoor gardens", "NParks' initiative to weave nature throughout Singapore's urban landscape and restore biodiversity", "A programme for importing ornamental plants", "A tourism campaign"], correct: 1, explain: "City in Nature is NParks' flagship initiative to integrate greenery throughout Singapore's urban landscape. Managing invasive plants is one of its biggest ongoing challenges — which is why citizen action matters so much." },
-  { q: "Which Singapore nature area is described as one of the most biodiverse urban forests on Earth?", a: ["East Coast Park", "Gardens by the Bay", "Bukit Timah Nature Reserve", "Sentosa"], correct: 2, explain: "Bukit Timah Nature Reserve, at just 163 hectares, has more plant species than the entire North American continent — making it one of Earth's most biodiverse urban forest patches, and a critical habitat worth protecting from invasives." }
+const quizData = [
+  { q: "Which invasive plant is considered Singapore's most problematic weed by NParks?", a: ["Zanzibar Yam", "Mile-a-Minute (Mikania micrantha)", "Lantana", "Water Hyacinth"], c: 1, e: "Mile-a-Minute grows up to 8cm per day and is found in virtually every nature area in Singapore, smothering native vegetation wherever it spreads." },
+  { q: "How did Mile-a-Minute first arrive in Singapore?", a: ["Carried by migratory birds", "Deliberately planted by NParks", "Via contaminated grass seed in the 1960s", "Through the aquarium trade"], c: 2, e: "Contaminated grass seed imports in the 1960s — a preventable mistake that created decades of ongoing management costs." },
+  { q: "The Zanzibar Yam spreads in Singapore primarily through:", a: ["Wind-dispersed seeds", "Bulbils that fall and remain dormant in soil", "Underground root runners", "Being eaten and spread by birds"], c: 1, e: "Bulbils are small aerial tubers that drop from the vine. They can remain viable in soil for years before sprouting into new plants." },
+  { q: "Why is Senduduk Bulu especially dangerous in Singapore's forests?", a: ["It only grows in open fields", "It tolerates shade and can invade intact forest understorey", "It is spread only by humans", "It only affects aquatic habitats"], c: 1, e: "Unlike most invasives, Senduduk Bulu can invade shaded forest understorey — preventing native tree seedlings from establishing and breaking the forest regeneration cycle." },
+  { q: "What is an 'invasion meltdown'?", a: ["When a forest burns down due to invasives", "When two invasive species help each other spread — like the Javan Myna spreading Senduduk Bulu", "When invasives spread faster in summer", "When NParks runs out of budget"], c: 1, e: "The Javan Myna (itself invasive) eats Senduduk Bulu berries and disperses seeds throughout forests. Two invasives helping each other is called an invasion meltdown." },
+  { q: "The Albizia tree is dangerous in Singapore because:", a: ["Its berries are toxic to humans", "It grows very fast but produces weak wood that breaks dangerously in storms", "It blocks waterways", "It releases toxic chemicals"], c: 1, e: "Albizia grows up to 7m/year but produces brittle wood. In Singapore's storms, branches and whole trees can fall suddenly — a serious widow-maker hazard." },
+  { q: "Why was Water Hyacinth originally introduced to Singapore?", a: ["As a water treatment plant", "For aquaculture", "As a decorative ornamental pond plant", "For scientific research"], c: 2, e: "Introduced as a decorative pond plant due to its beautiful purple flowers — now one of Singapore's costliest aquatic invasives." },
+  { q: "Which agency should you contact if you spot Water Hyacinth in a Singapore canal?", a: ["Ministry of Education", "PUB (Public Utilities Board) — 1800-284-6600", "Urban Redevelopment Authority", "Singapore Tourism Board"], c: 1, e: "PUB manages Singapore's waterways and has specialist aquatic invasive removal teams. Their 24-hour hotline is 1800-284-6600." },
+  { q: "What makes Singapore especially vulnerable to invasive plant introductions?", a: ["Its small size alone", "Being a major port and aviation hub with a tropical climate perfect for invasive growth", "Having too many parks", "Its soil composition"], c: 1, e: "Singapore's position as a global port and aviation hub means invasives constantly arrive in cargo, soil, and luggage — then our tropical climate allows year-round explosive growth." },
+  { q: "Giant Salvinia is primarily spread in Singapore through:", a: ["Migratory birds", "Flood events", "Aquarium hobbyists dumping plants into waterways", "Wind dispersal"], c: 2, e: "Aquarium hobbyists dumping plants into Singapore canals and waterways is the main vector. Giant Salvinia can double its biomass in just 2.5 days!" },
+  { q: "What is Singapore's 'City in Nature' initiative?", a: ["A plan to build more indoor gardens", "NParks' initiative to weave nature throughout Singapore's urban landscape and restore biodiversity", "A tourism campaign", "A programme for importing ornamental plants"], c: 1, e: "City in Nature is NParks' flagship initiative. Managing invasive plants is one of its biggest ongoing challenges — which is why citizen action matters so much." },
+  { q: "Bukit Timah Nature Reserve is remarkable because:", a: ["It's the largest park in Singapore", "It has more plant species than the entire North American continent in just 163 hectares", "It has no invasive plants", "It was created artificially"], c: 1, e: "Bukit Timah is one of Earth's most biodiverse urban forest patches — making it absolutely critical to protect from invasive plants like Mile-a-Minute and Zanzibar Yam." }
 ];
 
-let currentQ = 0, quizQScore = 0, quizAnswered = false;
+let qIdx = 0, qScore = 0, qAnswered = false;
 
 function initQuiz() {
-  currentQ = 0; quizQScore = 0; quizAnswered = false;
+  qIdx = 0; qScore = 0; qAnswered = false;
   document.getElementById('quizComplete').style.display = 'none';
   document.getElementById('quizArea').style.display = 'block';
-  renderQuestion();
+  renderQ();
 }
-function renderQuestion() {
-  quizAnswered = false;
-  const q = quizQuestions[currentQ];
-  document.getElementById('qNum').textContent = currentQ + 1;
+function renderQ() {
+  qAnswered = false;
+  const q = quizData[qIdx];
+  document.getElementById('qNum').textContent = qIdx + 1;
   document.getElementById('questionText').textContent = q.q;
-  document.getElementById('quizProgressFill').style.width = ((currentQ / quizQuestions.length) * 100) + '%';
+  document.getElementById('quizProgressFill').style.width = (qIdx / quizData.length * 100) + '%';
   const grid = document.getElementById('answerGrid');
   grid.innerHTML = '';
   q.a.forEach((ans, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'answer-btn';
-    btn.textContent = ans;
-    btn.onclick = () => selectAnswer(i);
-    grid.appendChild(btn);
+    const b = document.createElement('button');
+    b.className = 'a-btn';
+    b.textContent = ans;
+    b.onclick = () => pickAnswer(i);
+    grid.appendChild(b);
   });
   document.getElementById('feedbackBox').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'none';
 }
-function selectAnswer(idx) {
-  if (quizAnswered) return;
-  quizAnswered = true;
-  const q = quizQuestions[currentQ];
-  const btns = document.querySelectorAll('.answer-btn');
+function pickAnswer(idx) {
+  if (qAnswered) return;
+  qAnswered = true;
+  const q = quizData[qIdx];
+  const btns = document.querySelectorAll('.a-btn');
   btns.forEach(b => b.disabled = true);
-  btns[q.correct].classList.add('correct');
+  btns[q.c].classList.add('correct');
   const fb = document.getElementById('feedbackBox');
-  if (idx === q.correct) {
-    fb.className = 'feedback-box correct-fb';
-    fb.innerHTML = '✅ Correct! ' + q.explain;
-    quizQScore++;
+  if (idx === q.c) {
+    fb.className = 'q-feedback correct-fb';
+    fb.innerHTML = '✅ Correct! ' + q.e;
+    qScore++;
+    showToast('✅ Correct! +10 pts');
   } else {
     btns[idx].classList.add('wrong');
-    fb.className = 'feedback-box wrong-fb';
-    fb.innerHTML = '❌ Not quite. ' + q.explain;
+    fb.className = 'q-feedback wrong-fb';
+    fb.innerHTML = '❌ Not quite. ' + q.e;
+    showToast('❌ Not this time!');
   }
   fb.style.display = 'block';
   document.getElementById('nextBtn').style.display = 'inline-block';
 }
 function nextQuestion() {
-  currentQ++;
-  if (currentQ >= quizQuestions.length) {
+  qIdx++;
+  if (qIdx >= quizData.length) {
     document.getElementById('quizArea').style.display = 'none';
     document.getElementById('quizComplete').style.display = 'block';
-    document.getElementById('finalScore').textContent = quizQScore;
+    document.getElementById('finalScore').textContent = qScore;
     const msgs = [
-      [0, 4, "Keep exploring the Learn section — Singapore's ecosystems need informed defenders! 📚"],
-      [5, 7, "Good effort! You're building real knowledge about Singapore's invasive plants. 🌱"],
-      [8, 10, "Great job! You know Singapore's invasive species well. 🌿"],
-      [11, 12, "PERFECT! You're a Singapore Plant Defender — NParks would be proud! 🏆🇸🇬"]
+      [0, 4, "Keep exploring the Learn section — Singapore needs informed defenders! 📚"],
+      [5, 7, "Good effort! You're building solid knowledge about Singapore's invasives. 🌱"],
+      [8, 10, "Great job! You know Singapore's invasive species very well. 🌿"],
+      [11, 12, "PERFECT SCORE! You're a Singapore Plant Defender! NParks would hire you! 🏆🇸🇬"]
     ];
-    const m = msgs.find(([mn, mx]) => quizQScore >= mn && quizQScore <= mx);
+    const m = msgs.find(([mn, mx]) => qScore >= mn && qScore <= mx);
     document.getElementById('scoreMessage').textContent = m[2];
-    scores.quiz = Math.max(scores.quiz, quizQScore * 10);
+    scores.quiz = Math.max(scores.quiz, qScore * 10);
     updateScores();
-  } else { renderQuestion(); }
+    showToast(`Quiz done! ${qScore}/12 — ${qScore * 10} points!`);
+  } else { renderQ(); }
 }
 function restartQuiz() { initQuiz(); }
 
 // ============================================================
 // MEMORY GAME — COLOUR CODED
 // ============================================================
-const memoryPairs = [
-  { id: 'zanzibar', plant: 'Zanzibar Yam', origin: 'Africa & Asia', color: '#e74c3c', colorName: 'Red' },
-  { id: 'mam', plant: 'Mile-a-Minute', origin: 'C. & S. America', color: '#e67e22', colorName: 'Orange' },
-  { id: 'hyacinth', plant: 'Water Hyacinth', origin: 'South America', color: '#9b59b6', colorName: 'Purple' },
-  { id: 'clidemia', plant: 'Senduduk Bulu', origin: 'Tropical Americas', color: '#e91e8c', colorName: 'Pink' },
-  { id: 'siam', plant: 'Siam Weed', origin: 'C. & S. America', color: '#f39c12', colorName: 'Amber' },
-  { id: 'albizia', plant: 'Albizia Tree', origin: 'Maluku, Indonesia', color: '#27ae60', colorName: 'Green' },
-  { id: 'lantana', plant: 'Lantana', origin: 'Central America', color: '#16a085', colorName: 'Teal' },
-  { id: 'salvinia', plant: 'Giant Salvinia', origin: 'South America', color: '#2980b9', colorName: 'Blue' }
+const memPairs = [
+  { id: 'zanzibar', plant: 'Zanzibar Yam', origin: 'Africa & Asia', color: '#e74c3c' },
+  { id: 'mam', plant: 'Mile-a-Minute', origin: 'C. & S. America', color: '#e67e22' },
+  { id: 'hyacinth', plant: 'Water Hyacinth', origin: 'South America', color: '#9b59b6' },
+  { id: 'clidemia', plant: 'Senduduk Bulu', origin: 'Tropical Americas', color: '#e91e8c' },
+  { id: 'siam', plant: 'Siam Weed', origin: 'C. & S. America', color: '#f39c12' },
+  { id: 'albizia', plant: 'Albizia', origin: 'Maluku, Indonesia', color: '#27ae60' },
+  { id: 'lantana', plant: 'Lantana', origin: 'Central America', color: '#16a085' },
+  { id: 'salvinia', plant: 'Giant Salvinia', origin: 'South America', color: '#2980b9' }
 ];
 
 let memFlipped = [], memMatched = 0, memMoves = 0, memLocked = false;
@@ -230,57 +250,43 @@ function initMemory() {
   document.getElementById('pairCount').textContent = 0;
   document.getElementById('memoryComplete').style.display = 'none';
 
-  // Build legend
   const legend = document.getElementById('memoryLegend');
-  legend.innerHTML = '';
-  memoryPairs.forEach(p => {
-    const item = document.createElement('div');
-    item.className = 'mem-legend-item';
-    item.style.borderColor = p.color;
-    item.style.color = p.color;
-    item.innerHTML = `<span style="width:10px;height:10px;background:${p.color};border-radius:50%;display:inline-block"></span>${p.plant} = ${p.origin}`;
-    legend.appendChild(item);
+  legend.innerHTML = '<strong style="font-size:0.78rem;color:var(--text-mid);display:block;margin-bottom:0.4rem">Colour key — matched pairs share a colour:</strong>';
+  memPairs.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'ml-item';
+    el.style.cssText = `border-color:${p.color};background:${p.color}`;
+    el.textContent = `${p.plant} = ${p.origin}`;
+    legend.appendChild(el);
   });
 
-  const allCards = [];
-  memoryPairs.forEach(p => {
-    allCards.push({ id: p.id, type: 'plant', text: p.plant, sub: 'invasive plant', color: p.color });
-    allCards.push({ id: p.id, type: 'origin', text: p.origin, sub: 'region of origin', color: p.color });
+  const all = [];
+  memPairs.forEach(p => {
+    all.push({ id: p.id, type: 'plant', text: p.plant, sub: '🌿 invasive plant', color: p.color });
+    all.push({ id: p.id, type: 'origin', text: p.origin, sub: '📍 region of origin', color: p.color });
   });
-  allCards.sort(() => Math.random() - 0.5);
+  all.sort(() => Math.random() - 0.5);
 
   const grid = document.getElementById('memoryGrid');
   grid.innerHTML = '';
-  allCards.forEach(c => {
+  all.forEach(c => {
     const card = document.createElement('button');
     card.className = 'mem-card';
     card.dataset.id = c.id;
     card.dataset.type = c.type;
     card.dataset.color = c.color;
-    card.style.backgroundColor = var_to_hex('--green-mid');
-    card.style.borderColor = '#ccc';
-    card.innerHTML = `
-      <div class="card-inner">
-        <span class="card-front-icon">🌿</span>
-        <div class="card-back-content">
-          <span class="card-back-text">${c.text}</span>
-          <span class="card-back-sub">${c.sub}</span>
-        </div>
-      </div>`;
-    card.onclick = () => flipCard(card, c.color);
+    card.innerHTML = `<div class="mem-card-front">🌿</div><div class="mem-card-back"><div class="mem-card-back-main">${c.text}</div><div class="mem-card-back-sub">${c.sub}</div></div>`;
+    card.onclick = () => flipMemCard(card, c.color);
     grid.appendChild(card);
   });
 }
 
-function var_to_hex(v) { return '#2d6a4f'; }
-
-function flipCard(card, color) {
+function flipMemCard(card, color) {
   if (memLocked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
   card.classList.add('flipped');
   card.style.backgroundColor = color;
   card.style.borderColor = color;
   memFlipped.push(card);
-
   if (memFlipped.length === 2) {
     memLocked = true; memMoves++;
     document.getElementById('moveCount').textContent = memMoves;
@@ -289,20 +295,23 @@ function flipCard(card, color) {
       a.classList.add('matched'); b.classList.add('matched');
       memMatched++;
       document.getElementById('pairCount').textContent = memMatched;
+      showToast('✅ Match! ' + a.dataset.id.toUpperCase());
       memFlipped = []; memLocked = false;
-      if (memMatched === memoryPairs.length) {
+      if (memMatched === memPairs.length) {
         setTimeout(() => {
           document.getElementById('memoryComplete').style.display = 'block';
           document.getElementById('finalMoves').textContent = memMoves;
-          scores.memory = Math.max(scores.memory, Math.max(0, 300 - memMoves * 8));
+          const pts = Math.max(50, 300 - memMoves * 8);
+          scores.memory = Math.max(scores.memory, pts);
           updateScores();
+          showToast(`🏆 All matched! ${pts} points!`, 3000);
         }, 500);
       }
     } else {
       setTimeout(() => {
         a.classList.remove('flipped'); b.classList.remove('flipped');
-        a.style.backgroundColor = '#2d6a4f'; a.style.borderColor = '#ccc';
-        b.style.backgroundColor = '#2d6a4f'; b.style.borderColor = '#ccc';
+        a.style.backgroundColor = ''; a.style.borderColor = '';
+        b.style.backgroundColor = ''; b.style.borderColor = '';
         memFlipped = []; memLocked = false;
       }, 1000);
     }
@@ -310,58 +319,59 @@ function flipCard(card, color) {
 }
 
 // ============================================================
-// SPOT THE INVADER — SINGAPORE PLANTS
+// SPOT THE INVADER
 // ============================================================
-const spotPlants = [
-  { name: 'Tembusu Tree', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Fagraea_fragrans_-_Tembusu.jpg/320px-Fagraea_fragrans_-_Tembusu.jpg', type: 'native', clue: 'This iconic tree appears on Singapore\'s $5 note and has been growing in our parks for centuries. It supports dozens of native insect species and is part of Singapore\'s ecological heritage.', origin: 'Native to Singapore & Southeast Asia' },
-  { name: 'Mile-a-Minute', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mikania_micrantha_W_IMG_2100.jpg/320px-Mikania_micrantha_W_IMG_2100.jpg', type: 'invasive', clue: 'This vine drapes itself over other plants like a blanket, growing up to 8cm per day. It was introduced via contaminated grass seed in the 1960s and is now Singapore\'s most problematic invasive weed.', origin: 'Native to Central & South America' },
-  { name: 'Sea Apple', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Syzygium_grande_flowers_2.jpg/320px-Syzygium_grande_flowers_2.jpg', type: 'native', clue: 'A beautiful flowering tree commonly seen along Singapore\'s roadsides and parks. It produces pink fluffy flowers and supports native pollinators. It\'s one of Singapore\'s most beloved native tree species.', origin: 'Native to Singapore & Malaysia' },
-  { name: 'Zanzibar Yam', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Dioscorea_bulbifera_bulbils.jpg/320px-Dioscorea_bulbifera_bulbils.jpg', type: 'invasive', clue: 'This climbing vine produces small bulb-like structures that fall and spread through soil. It twines aggressively around trees and shrubs, smothering everything beneath its heart-shaped leaves.', origin: 'Native to Africa & parts of Asia' },
-  { name: 'Singapore Kopsia', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Kopsia_fruticosa1.jpg/320px-Kopsia_fruticosa1.jpg', type: 'native', clue: 'This shrub produces beautiful pink flowers and is endemic to Singapore and surrounding regions. It is found naturally in Singapore\'s secondary forests and is a key part of native forest understorey.', origin: 'Native to Singapore & Peninsula Malaysia' },
-  { name: 'Siam Weed', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chromolaena_odorata_MS_4321.jpg/320px-Chromolaena_odorata_MS_4321.jpg', type: 'invasive', clue: 'This bushy plant grows up to 3 metres tall in a single season, releasing chemicals that prevent other plants from growing nearby. It dominates wasteland on Pulau Ubin.', origin: 'Native to Central & South America' },
-  { name: 'Seashore Paspalum', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Paspalum_vaginatum_Blanco1.23.jpg/320px-Paspalum_vaginatum_Blanco1.23.jpg', type: 'native', clue: 'This grass is naturally found along Singapore\'s coastal areas and is an important stabiliser of sandy and muddy shorelines. It has evolved alongside local coastal ecosystems.', origin: 'Native to tropical coastal regions globally' },
-  { name: 'Water Hyacinth', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg/320px-Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg', type: 'invasive', clue: 'This floating plant has beautiful purple flowers but forms thick mats on water surfaces. It blocks sunlight, depletes oxygen for fish, and creates mosquito breeding habitat in Singapore\'s waterways.', origin: 'Native to South America' },
-  { name: 'Nipah Palm', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Nypa_fruticans_Blanco2.415.jpg/320px-Nypa_fruticans_Blanco2.415.jpg', type: 'native', clue: 'This palm grows in Singapore\'s mangroves and has been part of our coastal ecosystem for thousands of years. Its leaves are used in traditional Malay cooking (ketupat). It supports many mangrove species.', origin: 'Native to Singapore & Southeast Asia' },
-  { name: 'Lantana', img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lantana_camara_1.jpg/320px-Lantana_camara_1.jpg', type: 'invasive', clue: 'This prickly shrub has colourful flowers that change colour as they age. Despite its pretty appearance, its berries are toxic and it forms dense thickets that prevent native plants from growing.', origin: 'Native to Central America' }
+const spotData = [
+  { name: 'Tembusu Tree', img: 'images/tembusu.jpg', type: 'native', clue: 'This iconic tree appears on Singapore\'s $5 note and has been growing in our parks for centuries. It supports dozens of native insect and bird species.', origin: '✅ Native to Singapore & Southeast Asia' },
+  { name: 'Mile-a-Minute', img: 'images/mam.jpg', type: 'invasive', clue: 'This vine drapes over other plants like a blanket, growing up to 8cm per day. Introduced via contaminated grass seed in the 1960s.', origin: '🚨 Native to Central & South America' },
+  { name: 'Sea Apple', img: 'images/seaapple.jpg', type: 'native', clue: 'A beautiful flowering tree commonly seen along Singapore\'s roadsides and parks. It produces pink fluffy flowers and supports native pollinators.', origin: '✅ Native to Singapore & Malaysia' },
+  { name: 'Zanzibar Yam', img: 'images/zanzibar.jpg', type: 'invasive', clue: 'This climbing vine produces small bulb-like structures that fall and spread through soil. It twines aggressively around trees, smothering everything beneath it.', origin: '🚨 Native to Africa & parts of Asia' },
+  { name: 'Singapore Kopsia', img: 'images/kopsia.jpg', type: 'native', clue: 'This shrub produces beautiful pink flowers and is endemic to Singapore and surrounding regions. Found naturally in Singapore\'s secondary forests.', origin: '✅ Native to Singapore & Peninsula Malaysia' },
+  { name: 'Siam Weed', img: 'images/siam.jpg', type: 'invasive', clue: 'This bushy plant grows up to 3 metres tall in a single season, releasing chemicals that prevent other plants from growing nearby. Dominates Pulau Ubin wasteland.', origin: '🚨 Native to Central & South America' },
+  { name: 'Nipah Palm', img: 'images/nipah.jpg', type: 'native', clue: 'This palm grows in Singapore\'s mangroves and has been part of our coastal ecosystem for thousands of years. Its leaves are used in traditional Malay cooking.', origin: '✅ Native to Singapore & Southeast Asia' },
+  { name: 'Water Hyacinth', img: 'images/hyacinth.jpg', type: 'invasive', clue: 'This floating plant has beautiful purple flowers but forms thick mats on water. It blocks sunlight, depletes oxygen for fish, and creates mosquito habitat.', origin: '🚨 Native to South America' },
+  { name: 'Albizia', img: 'images/albizia.jpg', type: 'invasive', clue: 'This tree grows up to 7 metres per year but produces structurally weak wood. Its branches can fall without warning in Singapore\'s tropical storms.', origin: '🚨 Native to Maluku, Indonesia' },
+  { name: 'Lantana', img: 'images/lantana.jpg', type: 'invasive', clue: 'This prickly shrub has colourful flowers that change colour as they age. Its berries are toxic to children and it forms dense thickets blocking native plants.', origin: '🚨 Native to Central America' }
 ];
 
 let spotRound = 0, spotScore = 0, spotAnswered = false, spotOrder = [];
 
 function initSpot() {
   spotRound = 0; spotScore = 0; spotAnswered = false;
-  spotOrder = [...Array(spotPlants.length).keys()].sort(() => Math.random() - 0.5);
+  spotOrder = [...Array(spotData.length).keys()].sort(() => Math.random() - 0.5);
   document.getElementById('spotComplete').style.display = 'none';
   document.getElementById('spotArea').style.display = 'block';
   renderSpot();
 }
 function renderSpot() {
   spotAnswered = false;
-  const plant = spotPlants[spotOrder[spotRound]];
+  const p = spotData[spotOrder[spotRound]];
   document.getElementById('spotRound').textContent = spotRound + 1;
-  document.getElementById('spotPoints').textContent = spotScore;
+  document.getElementById('spotPoints').textContent = spotScore * 10;
   const img = document.getElementById('spotImg');
-  img.src = plant.img;
-  img.style.display = 'block';
-  document.getElementById('spotName').textContent = plant.name;
-  document.getElementById('spotClue').textContent = plant.clue;
+  img.src = p.img; img.style.display = 'block';
+  document.getElementById('spotName').textContent = p.name;
+  document.getElementById('spotClue').textContent = p.clue;
   document.getElementById('spotOrigin').textContent = '';
   document.getElementById('spotFeedback').style.display = 'none';
-  document.querySelectorAll('.spot-btn').forEach(b => { b.disabled = false; b.style.opacity = 1; });
+  document.querySelectorAll('.spot-btn').forEach(b => b.disabled = false);
 }
 function spotAnswer(answer) {
   if (spotAnswered) return;
   spotAnswered = true;
-  const plant = spotPlants[spotOrder[spotRound]];
-  document.getElementById('spotOrigin').textContent = plant.origin;
+  const p = spotData[spotOrder[spotRound]];
+  document.getElementById('spotOrigin').textContent = p.origin;
   document.querySelectorAll('.spot-btn').forEach(b => b.disabled = true);
   const fb = document.getElementById('spotFeedback');
-  if (answer === plant.type) {
+  if (answer === p.type) {
     fb.className = 'spot-feedback correct';
-    fb.textContent = `✅ Correct! "${plant.name}" is ${plant.type === 'invasive' ? 'an INVASIVE species' : 'a NATIVE plant to Singapore'}.`;
+    fb.textContent = `✅ Correct! "${p.name}" is ${p.type === 'invasive' ? 'an INVASIVE species' : 'a NATIVE plant to Singapore'}.`;
     spotScore++;
+    showToast('✅ Correct! +10 pts');
   } else {
     fb.className = 'spot-feedback wrong';
-    fb.textContent = `❌ Not quite! "${plant.name}" is actually ${plant.type === 'invasive' ? 'an INVASIVE species' : 'a NATIVE plant to Singapore'}.`;
+    fb.textContent = `❌ "${p.name}" is actually ${p.type === 'invasive' ? 'an INVASIVE species' : 'a NATIVE plant'}.`;
+    showToast('❌ Not this time!');
   }
   fb.style.display = 'block';
   setTimeout(() => {
@@ -373,191 +383,422 @@ function spotAnswer(answer) {
       scores.spot = Math.max(scores.spot, spotScore * 10);
       updateScores();
     } else { renderSpot(); }
-  }, 2000);
+  }, 2200);
 }
 
 // ============================================================
-// PLANT ID CHALLENGE
+// PLANT DEFENDER RUNNER GAME
 // ============================================================
-const plantIdRounds = [
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mikania_micrantha_W_IMG_2100.jpg/400px-Mikania_micrantha_W_IMG_2100.jpg', answer: 'Mile-a-Minute', options: ['Mile-a-Minute', 'Zanzibar Yam', 'Siam Weed', 'Lantana'], clues: ['Grows up to 8cm per day in Singapore', 'Forms a continuous blanket over other vegetation', 'Has small white daisy-like flowers', 'Introduced via contaminated grass seed in the 1960s'], explain: "Mile-a-Minute (Mikania micrantha) is identifiable by its heart-shaped leaves, twining growth habit, and the way it drapes completely over other plants. It's Singapore's most widespread invasive weed." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Dioscorea_bulbifera_bulbils.jpg/400px-Dioscorea_bulbifera_bulbils.jpg', answer: 'Zanzibar Yam', options: ['Zanzibar Yam', 'Water Hyacinth', 'Giant Salvinia', 'Mile-a-Minute'], clues: ['Produces small bulb-like structures called bulbils', 'Has large heart-shaped leaves', 'Climbs and twines around trees', 'Bulbils can remain dormant in soil for years'], explain: "The Zanzibar Yam is identified by its distinctive bulbils — small aerial tubers that hang from the vine and eventually drop to spread the plant. Its large, glossy heart-shaped leaves are also distinctive." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg/400px-Water_hyacinth_%28Eichhornia_crassipes%29_fleur.jpg', answer: 'Water Hyacinth', options: ['Water Hyacinth', 'Giant Salvinia', 'Nipah Palm', 'Senduduk Bulu'], clues: ['Floats freely on water surfaces', 'Produces beautiful purple flowers', 'Has distinctive bulbous, spongy leaf stalks', 'Can double its coverage in 2 weeks'], explain: "Water Hyacinth is unmistakable with its purple flowers, rounded floating leaves, and distinctively swollen (bulbous) leaf stalks filled with air that help it float. It forms dense mats in Singapore's waterways." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg/400px-Clidemia_hirta_-_Koster%27s_curse_-_desc-flower.jpg', answer: 'Senduduk Bulu', options: ['Senduduk Bulu', 'Lantana', 'Siam Weed', 'Albizia'], clues: ['Grows in shaded forest understorey', 'Has hairy (bulu means hairy) leaves with prominent veins', 'Produces small white flowers and dark purple berries', 'Spread by the invasive Javan Myna bird'], explain: "Senduduk Bulu (Clidemia hirta) is identified by its hairy, ribbed leaves with 5–7 prominent veins running lengthwise, small white flowers, and dark purple berries. 'Bulu' means hairy in Malay, describing its key feature." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Chromolaena_odorata_MS_4321.jpg/400px-Chromolaena_odorata_MS_4321.jpg', answer: 'Siam Weed', options: ['Siam Weed', 'Mile-a-Minute', 'Lantana', 'Zanzibar Yam'], clues: ['Grows into a large bushy shrub, 2–3 metres tall', 'Has opposite, triangular-toothed leaves', 'Produces clusters of small pale lilac/white flowers', 'Has a distinctive strong smell when leaves are crushed'], explain: "Siam Weed is identified by its bushy shrub growth, opposite leaves with toothed margins, small lilac flower clusters, and a strong, distinctive smell when you crush its leaves. It dominates wasteland and forest edges." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Falcataria_moluccana_in_singapore.jpg/400px-Falcataria_moluccana_in_singapore.jpg', answer: 'Albizia', options: ['Albizia', 'Tembusu', 'Sea Apple', 'Nipah Palm'], clues: ['One of the world\'s fastest-growing trees — up to 7m per year', 'Has a flat-topped, spreading canopy', 'Produces feathery, bipinnate leaves', 'Commonly seen across Singapore but structurally dangerous'], explain: "Albizia (Falcataria moluccana) is identified by its extremely rapid growth, flat umbrella-like canopy, and feathery compound leaves. Despite looking impressive, its wood is brittle and it poses a falling hazard in storms." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lantana_camara_1.jpg/400px-Lantana_camara_1.jpg', answer: 'Lantana', options: ['Lantana', 'Siam Weed', 'Senduduk Bulu', 'Sea Apple'], clues: ['Has small flowers that change colour as they age', 'Produces small dark berries toxic to children', 'Has rough, prickly stems', 'Still sold in some Singapore nurseries as an ornamental'], explain: "Lantana is identified by its clusters of small multi-coloured flowers (often yellow, orange, and red mixed on the same plant), its rough hairy leaves, prickly stems, and small dark berries. The colour-changing flowers are its most distinctive feature." },
-  { img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Salvinia_molesta_3.jpg/400px-Salvinia_molesta_3.jpg', answer: 'Giant Salvinia', options: ['Giant Salvinia', 'Water Hyacinth', 'Water Lettuce', 'Nipah Palm'], clues: ['A floating fern — not a flowering plant', 'Covered in tiny egg-beater shaped water-repelling hairs', 'Grows in dense mats on still or slow water', 'Primarily spread by aquarium plant dumping in Singapore'], explain: "Giant Salvinia is a floating fern identified by its paired floating leaves covered in distinctive water-repelling hairs (shaped like tiny egg-beaters), and a third submerged leaf that acts as roots. Its mats grow extremely dense." }
+const RC = document.getElementById('runnerCanvas');
+const RX = RC ? RC.getContext('2d') : null;
+const RW = 700, RH = 280;
+const GROUND = RH - 50;
+
+const INVADERS = ['🌿','🎋','🍃','🌾'];
+const NATIVES  = ['🌺','🌸','⭐','🌼','🛡️'];
+const SG_FACTS = [
+  "Mile-a-Minute grows 8cm per day in Singapore!",
+  "Bukit Timah has more plant species than all of North America!",
+  "The Zanzibar Yam was originally introduced as food in colonial times.",
+  "Singapore handles 37 million containers per year — each a potential invasive vector.",
+  "The Javan Myna helps spread Senduduk Bulu seeds — an 'invasion meltdown'!",
+  "Water Hyacinth doubles its coverage in just 2 weeks.",
+  "Albizia was deliberately planted for reforestation in the 1970s — now it's a problem!",
+  "40% of Singapore's original biodiversity has already been lost.",
+  "Giant Salvinia can double in biomass in just 2.5 days!",
+  "Siam Weed is flammable when dry — a fire risk in Singapore's forests."
 ];
 
-let plantIdRound = 0, plantIdScore = 0, plantIdAnswered = false;
+let runner = {
+  running: false,
+  x: 80, y: GROUND, vy: 0,
+  w: 40, h: 50,
+  jumping: false, sliding: false,
+  slideTimer: 0,
+  score: 0, lives: 3,
+  speed: 4, frameCount: 0,
+  shield: 0, shieldTimer: 0,
+  obstacles: [], collectibles: [],
+  bg: [], clouds: [],
+  lastFact: 0
+};
 
-function initPlantId() {
-  plantIdRound = 0; plantIdScore = 0; plantIdAnswered = false;
-  document.getElementById('plantidComplete').style.display = 'none';
-  document.getElementById('plantidArea').style.display = 'block';
-  renderPlantId();
+function initRunnerDisplay() {
+  if (!RX) return;
+  runner.running = false;
+  drawRunnerBg();
+  document.getElementById('runnerOverlay').classList.remove('hidden');
+  document.getElementById('roTitle').textContent = 'Plant Defender';
+  document.getElementById('roMsg').textContent = 'Run through Bukit Timah! Jump over invasive plants, collect native species for points. Watch out — invasives cost you a life!';
+  document.getElementById('roBtn').textContent = 'Start Running! 🌿';
+  document.getElementById('roBtn').onclick = startRunner;
+  displayFact();
 }
-function renderPlantId() {
-  plantIdAnswered = false;
-  const r = plantIdRounds[plantIdRound];
-  document.getElementById('idRound').textContent = plantIdRound + 1;
-  const img = document.getElementById('plantidImg');
-  img.src = r.img;
-  img.className = 'plantid-img';
-  const overlay = document.querySelector('.plantid-overlay');
-  overlay.classList.remove('hidden');
-  const cluesDiv = document.getElementById('plantidClues');
-  cluesDiv.innerHTML = '<h4>🔍 Clues:</h4>' + r.clues.map(c => `<div class="plantid-clue-item">${c}</div>`).join('');
-  const answersDiv = document.getElementById('plantidAnswers');
-  const shuffled = [...r.options].sort(() => Math.random() - 0.5);
-  answersDiv.innerHTML = '';
-  shuffled.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'plantid-btn';
-    btn.textContent = opt;
-    btn.onclick = () => selectPlantId(opt, r.answer, r.explain, btn);
-    answersDiv.appendChild(btn);
+
+function drawRunnerBg() {
+  if (!RX) return;
+  // Sky gradient
+  const sky = RX.createLinearGradient(0, 0, 0, RH);
+  sky.addColorStop(0, '#0d2b1a');
+  sky.addColorStop(0.6, '#1a4a2a');
+  sky.addColorStop(1, '#2d6a4f');
+  RX.fillStyle = sky;
+  RX.fillRect(0, 0, RW, RH);
+  // Stars
+  RX.fillStyle = 'rgba(255,255,255,0.4)';
+  for (let i = 0; i < 40; i++) {
+    RX.fillRect((i * 197 + 11) % RW, (i * 137) % (RH * 0.5), 1.5, 1.5);
+  }
+  // Ground
+  const grd = RX.createLinearGradient(0, GROUND, 0, RH);
+  grd.addColorStop(0, '#2d8a4e');
+  grd.addColorStop(1, '#1a3a2a');
+  RX.fillStyle = grd;
+  RX.fillRect(0, GROUND, RW, RH - GROUND);
+  // Ground detail
+  RX.fillStyle = '#3da862';
+  for (let i = 0; i < RW; i += 40) {
+    RX.fillRect(i, GROUND, 20, 3);
+  }
+}
+
+function startRunner() {
+  runner.running = true;
+  runner.x = 80; runner.y = GROUND; runner.vy = 0;
+  runner.jumping = false; runner.sliding = false; runner.slideTimer = 0;
+  runner.score = 0; runner.lives = 3; runner.speed = 4; runner.frameCount = 0;
+  runner.shield = 0; runner.shieldTimer = 0;
+  runner.obstacles = []; runner.collectibles = [];
+  runner.bg = []; runner.clouds = [];
+  for (let i = 0; i < 6; i++) runner.clouds.push({ x: Math.random() * RW, y: 20 + Math.random() * 60, speed: 0.3 + Math.random() * 0.5 });
+  document.getElementById('runnerOverlay').classList.add('hidden');
+  updateRunnerHUD();
+  requestAnimationFrame(runnerLoop);
+}
+
+function runnerJump() {
+  if (!runner.running) return;
+  if (!runner.jumping && !runner.sliding) {
+    runner.vy = -13;
+    runner.jumping = true;
+  }
+}
+function runnerSlide() {
+  if (!runner.running) return;
+  if (!runner.jumping) {
+    runner.sliding = true;
+    runner.slideTimer = 45;
+  }
+}
+
+// Controls
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space' || e.key === 'ArrowUp') { e.preventDefault(); runnerJump(); }
+  if (e.key === 'ArrowDown') { e.preventDefault(); runnerSlide(); }
+});
+if (RC) {
+  RC.addEventListener('touchstart', e => { e.preventDefault(); runnerJump(); }, { passive: false });
+  RC.addEventListener('click', () => runnerJump());
+}
+
+function runnerLoop() {
+  if (!runner.running) return;
+  runner.frameCount++;
+  RX.clearRect(0, 0, RW, RH);
+  drawRunnerBg();
+
+  // Clouds
+  runner.clouds.forEach(c => {
+    c.x -= c.speed;
+    if (c.x < -80) { c.x = RW + 60; c.y = 20 + Math.random() * 60; }
+    RX.font = '28px serif';
+    RX.globalAlpha = 0.25;
+    RX.fillText('☁', c.x, c.y);
+    RX.globalAlpha = 1;
   });
-  document.getElementById('plantidFeedback').style.display = 'none';
-  document.getElementById('plantidNextBtn').style.display = 'none';
-}
-function selectPlantId(chosen, correct, explain, clickedBtn) {
-  if (plantIdAnswered) return;
-  plantIdAnswered = true;
-  document.querySelectorAll('.plantid-btn').forEach(b => b.disabled = true);
-  document.getElementById('plantidImg').classList.add('revealed');
-  document.querySelector('.plantid-overlay').classList.add('hidden');
-  const fb = document.getElementById('plantidFeedback');
-  if (chosen === correct) {
-    clickedBtn.classList.add('correct');
-    fb.className = 'plantid-feedback correct-fb';
-    fb.innerHTML = `✅ Correct! This is <strong>${correct}</strong>. ${explain}`;
-    plantIdScore++;
-  } else {
-    clickedBtn.classList.add('wrong');
-    document.querySelectorAll('.plantid-btn').forEach(b => { if (b.textContent === correct) b.classList.add('correct'); });
-    fb.className = 'plantid-feedback wrong-fb';
-    fb.innerHTML = `❌ This is <strong>${correct}</strong>. ${explain}`;
+
+  // Scroll speed increase
+  runner.speed = 4 + Math.floor(runner.score / 200) * 0.5;
+
+  // Background trees
+  RX.font = '28px serif';
+  for (let i = 0; i < 5; i++) {
+    const bx = ((runner.frameCount * 1.5 + i * 140) % (RW + 40)) - 20;
+    RX.fillText('🌲', bx, GROUND - 20);
   }
-  fb.style.display = 'block';
-  document.getElementById('plantidNextBtn').style.display = 'inline-block';
-}
-function nextPlantId() {
-  plantIdRound++;
-  if (plantIdRound >= plantIdRounds.length) {
-    document.getElementById('plantidArea').style.display = 'none';
-    document.getElementById('plantidComplete').style.display = 'block';
-    document.getElementById('plantidFinal').textContent = plantIdScore;
-    scores.id = Math.max(scores.id, plantIdScore * 15);
-    updateScores();
-  } else {
-    renderPlantId();
+
+  // Physics
+  runner.vy += 0.7;
+  runner.y += runner.vy;
+  if (runner.y >= GROUND) { runner.y = GROUND; runner.vy = 0; runner.jumping = false; }
+
+  // Slide timer
+  if (runner.sliding) {
+    runner.slideTimer--;
+    if (runner.slideTimer <= 0) runner.sliding = false;
   }
+
+  // Shield timer
+  if (runner.shieldTimer > 0) {
+    runner.shieldTimer--;
+    if (runner.shieldTimer <= 0) runner.shield = 0;
+  }
+
+  // Spawn obstacles
+  if (runner.frameCount % Math.max(55, 110 - runner.score / 30) === 0) {
+    const type = Math.floor(Math.random() * INVADERS.length);
+    const tall = Math.random() > 0.5;
+    runner.obstacles.push({ x: RW + 20, type, tall, w: 36, h: tall ? 55 : 38 });
+  }
+
+  // Spawn collectibles
+  if (runner.frameCount % 70 === 0) {
+    const flying = Math.random() > 0.6;
+    const type = Math.floor(Math.random() * NATIVES.length);
+    runner.collectibles.push({ x: RW + 20, y: flying ? GROUND - 70 : GROUND - 15, type, w: 30, h: 30, flying });
+  }
+
+  // Draw obstacles
+  RX.font = '32px serif';
+  runner.obstacles = runner.obstacles.filter(ob => {
+    ob.x -= runner.speed;
+    const oy = GROUND - (ob.tall ? 40 : 20);
+    RX.fillText(INVADERS[ob.type], ob.x, oy + 10);
+    return ob.x > -50;
+  });
+
+  // Draw collectibles
+  RX.font = '26px serif';
+  runner.collectibles = runner.collectibles.filter(col => {
+    col.x -= runner.speed;
+    const bob = Math.sin(runner.frameCount * 0.1 + col.x) * 5;
+    RX.fillText(NATIVES[col.type], col.x, col.y + bob);
+    return col.x > -40;
+  });
+
+  // Player hitbox
+  const ph = runner.sliding ? 25 : 46;
+  const py = runner.sliding ? runner.y - ph + 10 : runner.y - ph;
+  const pw = runner.sliding ? 50 : 32;
+
+  // Shield glow
+  if (runner.shield > 0) {
+    RX.save();
+    RX.globalAlpha = 0.3 + 0.2 * Math.sin(runner.frameCount * 0.3);
+    RX.fillStyle = '#74c69d';
+    RX.beginPath();
+    RX.ellipse(runner.x + 18, py + ph / 2, pw + 12, ph / 2 + 12, 0, 0, Math.PI * 2);
+    RX.fill();
+    RX.restore();
+  }
+
+  // Draw player
+  RX.font = runner.sliding ? '42px serif' : '38px serif';
+  RX.fillText(runner.sliding ? '🏃' : '🧑', runner.x - 5, py + ph);
+  if (runner.sliding) { RX.font = '14px serif'; RX.fillText('💨', runner.x + 30, py + ph - 10); }
+
+  // Collision — obstacles
+  runner.obstacles = runner.obstacles.filter(ob => {
+    const oy = GROUND - (ob.tall ? 40 : 20);
+    const ohitH = ob.tall ? 50 : 32;
+    if (runner.shield === 0 &&
+      runner.x + 8 < ob.x + ob.w - 6 &&
+      runner.x + pw - 8 > ob.x + 6 &&
+      py < oy &&
+      py + ph > oy - ohitH + 10) {
+      runner.lives--;
+      updateRunnerHUD();
+      showToast('🌿 Hit by an invasive! -1 life', 1500);
+      if (runner.lives <= 0) { endRunner(); return false; }
+      return false;
+    }
+    return true;
+  });
+
+  // Collision — collectibles
+  runner.collectibles = runner.collectibles.filter(col => {
+    if (runner.x + 8 < col.x + col.w - 4 &&
+      runner.x + pw - 4 > col.x + 4 &&
+      py < col.y + col.h &&
+      py + ph > col.y) {
+      const emoji = NATIVES[col.type];
+      if (emoji === '⭐') { runner.score += 50; showToast('⭐ Star! +50 pts'); }
+      else if (emoji === '🛡️') { runner.shield = 1; runner.shieldTimer = 180; showToast('🛡️ Shield activated! 3s invincibility'); }
+      else { runner.score += 10; showToast(`🌺 Native plant! +10 pts`, 1000); }
+      runner.score += 0; // base from speed
+      updateRunnerHUD();
+      return false;
+    }
+    return true;
+  });
+
+  // Distance score
+  if (runner.frameCount % 15 === 0) { runner.score += 1; updateRunnerHUD(); }
+
+  // HUD overlay
+  RX.fillStyle = 'rgba(0,0,0,0.4)';
+  RX.fillRect(0, 0, RW, 30);
+  RX.fillStyle = '#74c69d';
+  RX.font = 'bold 13px Nunito, sans-serif';
+  RX.fillText(`Score: ${runner.score}`, 12, 20);
+  RX.fillText(`Speed: ${runner.speed.toFixed(1)}x`, 120, 20);
+  if (runner.shield > 0) { RX.fillStyle = '#f4d03f'; RX.fillText('🛡️ SHIELD ACTIVE', 220, 20); }
+
+  // Fact ticker
+  if (runner.frameCount - runner.lastFact > 480) {
+    displayFact();
+    runner.lastFact = runner.frameCount;
+  }
+
+  requestAnimationFrame(runnerLoop);
 }
+
+function updateRunnerHUD() {
+  document.getElementById('runnerScore').textContent = runner.score;
+  const high = Math.max(runner.score, parseInt(localStorage.getItem('runnerHigh_sg') || '0'));
+  localStorage.setItem('runnerHigh_sg', high);
+  document.getElementById('runnerHigh').textContent = high;
+  const livesStr = ['❤️', '❤️', '❤️'].slice(0, runner.lives).join('') + ['🖤', '🖤', '🖤'].slice(runner.lives).join('');
+  document.getElementById('runnerLives').textContent = livesStr || '💀';
+}
+
+function endRunner() {
+  runner.running = false;
+  const high = Math.max(runner.score, parseInt(localStorage.getItem('runnerHigh_sg') || '0'));
+  localStorage.setItem('runnerHigh_sg', high);
+  scores.runner = Math.max(scores.runner, runner.score);
+  updateScores();
+  const overlay = document.getElementById('runnerOverlay');
+  overlay.classList.remove('hidden');
+  document.getElementById('roTitle').textContent = runner.score >= 200 ? '🏆 Great Run!' : '💀 Invaded!';
+  document.getElementById('roMsg').textContent = `You scored ${runner.score} points! High score: ${high}. The invasive plants got you — but you can fight back!`;
+  document.getElementById('roBtn').textContent = 'Try Again 🔄';
+  document.getElementById('roBtn').onclick = startRunner;
+  showToast(`Game over! ${runner.score} pts scored!`, 3000);
+}
+
+function displayFact() {
+  const el = document.getElementById('runnerFact');
+  if (el) el.textContent = '💡 Did you know? ' + SG_FACTS[Math.floor(Math.random() * SG_FACTS.length)];
+}
+
+// Init high score display
+window.addEventListener('load', () => {
+  const high = localStorage.getItem('runnerHigh_sg') || '0';
+  const el = document.getElementById('runnerHigh');
+  if (el) el.textContent = high;
+});
 
 // ============================================================
 // SPREAD SIMULATOR
 // ============================================================
-let simGrid = [], simRunning = false, simInterval = null, simYearCount = 0;
-const SIM_COLS = 60, SIM_ROWS = 35;
-const spreadRates = { mam: 0.12, zanzibar: 0.07, siam: 0.04, hyacinth: 0.09 };
-const sizeMultipliers = { ideal: 1.0, good: 0.8, poor: 0.6 };
+const SC = document.getElementById('simCanvas');
+const SX = SC ? SC.getContext('2d') : null;
+const SCOLS = 60, SROWS = 34;
+const RATES = { mam: 0.13, zanzibar: 0.08, siam: 0.04, hyacinth: 0.09 };
+const SIZES = { large: 1.0, medium: 0.75, small: 0.5 };
+
+let simGrid = [], simRunning = false, simTimer = null, simYear = 0;
 
 function resetSim() {
-  simRunning = false; clearInterval(simInterval); simYearCount = 0;
-  const btn = document.getElementById('simPlayBtn');
-  if (btn) btn.textContent = '▶️ Start Simulation';
-  ['simYear','simCoverage'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = 0; });
+  simRunning = false; clearInterval(simTimer); simYear = 0;
+  const pb = document.getElementById('simPlayBtn');
+  if (pb) pb.textContent = '▶️ Start';
+  if (document.getElementById('simYear')) document.getElementById('simYear').textContent = 0;
+  if (document.getElementById('simCoverage')) document.getElementById('simCoverage').textContent = 0;
   const tip = document.getElementById('simTip');
-  if (tip) tip.textContent = 'Select a species and press Start. Watch what happens over 30 years!';
-  simGrid = Array.from({ length: SIM_ROWS }, () => Array(SIM_COLS).fill(0));
-  // Add some water cells for realism
-  for (let c = 0; c < SIM_COLS; c++) {
-    if (c > SIM_COLS * 0.6 && c < SIM_COLS * 0.75) {
-      for (let r = SIM_ROWS * 0.3; r < SIM_ROWS * 0.7; r++) simGrid[Math.floor(r)][c] = 3;
-    }
-  }
-  simGrid[Math.floor(SIM_ROWS / 2)][5] = 1;
+  if (tip) tip.textContent = 'Select a species and press Start to begin the 30-year simulation.';
+
+  simGrid = Array.from({ length: SROWS }, () => Array(SCOLS).fill(0));
+  // Water body (right side)
+  for (let r = Math.floor(SROWS * 0.25); r < Math.floor(SROWS * 0.75); r++)
+    for (let c = Math.floor(SCOLS * 0.62); c < Math.floor(SCOLS * 0.77); c++)
+      simGrid[r][c] = 3;
+  // Start invasion
+  simGrid[Math.floor(SROWS / 2)][4] = 1;
   drawSim();
 }
+
 function drawSim() {
-  const canvas = document.getElementById('simCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const cw = canvas.width, ch = canvas.height;
-  const cellW = cw / SIM_COLS, cellH = ch / SIM_ROWS;
-  for (let r = 0; r < SIM_ROWS; r++) {
-    for (let c = 0; c < SIM_COLS; c++) {
+  if (!SX || !SC) return;
+  const cw = SC.width, ch = SC.height;
+  const cW = cw / SCOLS, cH = ch / SROWS;
+  for (let r = 0; r < SROWS; r++) {
+    for (let c = 0; c < SCOLS; c++) {
       const v = simGrid[r][c];
-      ctx.fillStyle = v === 0 ? '#2d6a4f' : v === 1 ? '#e74c3c' : v === 2 ? '#1a5c2a' : '#3498db';
-      ctx.fillRect(c * cellW, r * cellH, cellW - 0.5, cellH - 0.5);
+      SX.fillStyle = v === 0 ? `hsl(${140 + (r * c % 15)},55%,${28 + (r + c) % 6}%)` :
+                     v === 1 ? `hsl(${5 + (r * 3 % 10)},75%,${40 + r % 8}%)` :
+                     v === 2 ? '#1a4a2a' : `hsl(210,65%,${38 + c % 8}%)`;
+      SX.fillRect(c * cW, r * cH, cW - 0.5, cH - 0.5);
     }
   }
   // Legend
-  const items = [['#2d6a4f','Native'], ['#e74c3c','Invaded'], ['#3498db','Water'], ['#1a5c2a','Protected']];
-  let lx = 8;
-  ctx.font = '11px Nunito, sans-serif';
-  items.forEach(([col, label]) => {
-    ctx.fillStyle = col; ctx.fillRect(lx, ch - 24, 14, 14);
-    ctx.fillStyle = 'white'; ctx.fillText(label, lx + 17, ch - 12);
-    lx += 85;
-  });
+  SX.fillStyle = 'rgba(0,0,0,0.55)';
+  SX.fillRect(0, ch - 22, cw, 22);
+  const items = [['#3da862','🟢 Native'], ['#e74c3c','🔴 Invaded'], ['#3498db','🔵 Water'], ['#1a4a2a','🟤 Protected']];
+  let lx = 10;
+  SX.font = '11px Nunito, sans-serif'; SX.fillStyle = '#fff';
+  items.forEach(([, label]) => { SX.fillText(label, lx, ch - 6); lx += 140; });
 }
+
 function stepSim() {
   const species = document.getElementById('simSpecies').value;
-  const size = document.getElementById('simClimate').value;
-  const rate = spreadRates[species] * sizeMultipliers[size];
+  const size = document.getElementById('simSize').value;
+  const rate = RATES[species] * SIZES[size];
   const isAquatic = species === 'hyacinth';
   const newGrid = simGrid.map(r => [...r]);
-  for (let r = 0; r < SIM_ROWS; r++) {
-    for (let c = 0; c < SIM_COLS; c++) {
+  for (let r = 0; r < SROWS; r++) {
+    for (let c = 0; c < SCOLS; c++) {
       if (simGrid[r][c] === 1) {
-        [[r-1,c],[r+1,c],[r,c-1],[r,c+1],[r-1,c-1],[r+1,c+1]].forEach(([nr,nc]) => {
-          if (nr<0||nr>=SIM_ROWS||nc<0||nc>=SIM_COLS) return;
-          const target = simGrid[nr][nc];
-          if (isAquatic && target === 3 && Math.random() < rate) newGrid[nr][nc] = 1;
-          else if (!isAquatic && target === 0 && Math.random() < rate) newGrid[nr][nc] = 1;
+        [[r-1,c],[r+1,c],[r,c-1],[r,c+1],[r-1,c+1],[r+1,c-1]].forEach(([nr,nc]) => {
+          if (nr < 0 || nr >= SROWS || nc < 0 || nc >= SCOLS) return;
+          const t = simGrid[nr][nc];
+          if (isAquatic && t === 3 && Math.random() < rate) newGrid[nr][nc] = 1;
+          if (!isAquatic && t === 0 && Math.random() < rate) newGrid[nr][nc] = 1;
         });
       }
     }
   }
-  simGrid = newGrid; simYearCount++;
+  simGrid = newGrid; simYear++;
   const invaded = simGrid.flat().filter(v => v === 1).length;
   const total = simGrid.flat().filter(v => v !== 3).length;
   const pct = Math.round((invaded / total) * 100);
-  document.getElementById('simYear').textContent = simYearCount;
-  document.getElementById('simCoverage').textContent = pct;
+  if (document.getElementById('simYear')) document.getElementById('simYear').textContent = simYear;
+  if (document.getElementById('simCoverage')) document.getElementById('simCoverage').textContent = pct;
   const tip = document.getElementById('simTip');
-  if (pct > 5 && pct <= 20) tip.textContent = '🔴 Invasion spreading! Native species are being displaced.';
-  else if (pct > 20 && pct <= 50) tip.textContent = '🚨 Over 20% invaded! Wildlife habitats are collapsing.';
-  else if (pct > 50) tip.textContent = '💀 Over half the reserve is destroyed. This is why early action matters so much!';
-  if (simYearCount >= 30) {
-    clearInterval(simInterval); simRunning = false;
-    document.getElementById('simPlayBtn').textContent = '▶️ Start Simulation';
-    tip.textContent = `30 years later: ${pct}% of the reserve is invaded. Press Reset to try a different scenario!`;
+  if (tip) {
+    if (pct > 5 && pct <= 25) tip.textContent = '🔴 Invasion spreading! Native species are being displaced.';
+    else if (pct > 25 && pct <= 55) tip.textContent = '🚨 Over 25% invaded! Habitats are collapsing — click Intervene!';
+    else if (pct > 55) tip.textContent = '💀 Over half the reserve is destroyed. Early action is everything!';
+  }
+  if (simYear >= 30) {
+    clearInterval(simTimer); simRunning = false;
+    if (document.getElementById('simPlayBtn')) document.getElementById('simPlayBtn').textContent = '▶️ Start';
+    if (tip) tip.textContent = `30 years later: ${pct}% invaded. Press Reset to try a different scenario!`;
+    showToast(`Simulation done — ${pct}% of the reserve was invaded!`, 3000);
   }
   drawSim();
 }
+
 function toggleSim() {
   if (simRunning) {
-    clearInterval(simInterval); simRunning = false;
+    clearInterval(simTimer); simRunning = false;
     document.getElementById('simPlayBtn').textContent = '▶️ Resume';
   } else {
     simRunning = true;
     document.getElementById('simPlayBtn').textContent = '⏸️ Pause';
-    simInterval = setInterval(stepSim, 180);
+    simTimer = setInterval(stepSim, 180);
   }
 }
+
 function addIntervention() {
   let count = 0;
-  for (let r = 0; r < SIM_ROWS && count < 25; r++) {
-    for (let c = 0; c < SIM_COLS && count < 25; c++) {
-      if (simGrid[r][c] === 1 && Math.random() < 0.35) { simGrid[r][c] = 2; count++; }
-    }
-  }
+  for (let r = 0; r < SROWS && count < 30; r++)
+    for (let c = 0; c < SCOLS && count < 30; c++)
+      if (simGrid[r][c] === 1 && Math.random() < 0.4) { simGrid[r][c] = 2; count++; }
   const tip = document.getElementById('simTip');
-  if (tip) tip.textContent = '🛡️ NParks intervened! Protected cells (dark green) resist further invasion. But is it enough?';
+  if (tip) tip.textContent = '🛡️ NParks intervened! Dark green cells resist further invasion. Will it be enough?';
+  showToast('🛡️ NParks intervened! Removing invasives...', 2000);
   drawSim();
 }
 
@@ -565,22 +806,31 @@ function addIntervention() {
 // PLEDGE SYSTEM
 // ============================================================
 function updatePledge() {
-  const checkboxes = document.querySelectorAll('.pledge-items input[type="checkbox"]');
-  const checked = [...checkboxes].filter(c => c.checked).length;
+  const cbs = document.querySelectorAll('.pledge-items input[type=checkbox]');
+  const checked = [...cbs].filter(c => c.checked).length;
   document.getElementById('pledgeCount').textContent = checked;
-  document.getElementById('pledgeFill').style.width = (checked / checkboxes.length * 100) + '%';
-  document.getElementById('pledgeComplete').style.display = checked === checkboxes.length ? 'block' : 'none';
-  localStorage.setItem('pledgeState_sg', JSON.stringify([...checkboxes].map(c => c.checked)));
+  document.getElementById('pledgeFill').style.width = (checked / cbs.length * 100) + '%';
+  document.getElementById('pledgeComplete').style.display = checked === cbs.length ? 'block' : 'none';
+  if (checked === cbs.length) showToast('🏅 You are now a Singapore Plant Defender!', 3000);
+  localStorage.setItem('pledge_sg3', JSON.stringify([...cbs].map(c => c.checked)));
 }
 function restorePledge() {
-  const saved = JSON.parse(localStorage.getItem('pledgeState_sg') || '[]');
-  const checkboxes = document.querySelectorAll('.pledge-items input[type="checkbox"]');
-  saved.forEach((state, i) => { if (checkboxes[i]) checkboxes[i].checked = state; });
-  if (checkboxes.length) updatePledge();
+  const saved = JSON.parse(localStorage.getItem('pledge_sg3') || '[]');
+  const cbs = document.querySelectorAll('.pledge-items input[type=checkbox]');
+  saved.forEach((s, i) => { if (cbs[i]) cbs[i].checked = s; });
+  if (cbs.length) updatePledge();
 }
 
+// ============================================================
 // INIT
+// ============================================================
 window.addEventListener('load', () => {
   updateProgress();
   restorePledge();
+  updateScores();
+  const high = localStorage.getItem('runnerHigh_sg') || '0';
+  const el = document.getElementById('runnerHigh');
+  if (el) el.textContent = high;
+  // Draw initial sim canvas
+  resetSim();
 });
