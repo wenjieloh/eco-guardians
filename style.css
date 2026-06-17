@@ -4447,3 +4447,17 @@ button:active {
   display: flex; justify-content: space-between;
   padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+
+
+
+
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.reward-badge {
+  animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
