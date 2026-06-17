@@ -1685,3 +1685,42 @@ function readContent(button) {
   // 4. Speak!
   window.speechSynthesis.speak(speech);
 }
+
+
+
+
+
+
+// Global User Stats
+let userStats = {
+  streak: parseInt(localStorage.getItem('ecoStreak')) || 0,
+  xp: parseInt(localStorage.getItem('ecoXP')) || 0,
+  lastPlayed: localStorage.getItem('lastPlayed') || null
+};
+
+// Update streak based on date
+function checkStreak() {
+  const today = new Date().toDateString();
+  if (userStats.lastPlayed !== today) {
+    if (userStats.lastPlayed === new Date(Date.now() - 86400000).toDateString()) {
+      userStats.streak++; // Streak maintained!
+    } else {
+      userStats.streak = 1; // Start new streak
+    }
+    userStats.lastPlayed = today;
+    saveStats();
+  }
+}
+
+function addXP(amount) {
+  userStats.xp += amount;
+  saveStats();
+  document.getElementById('xp-display').textContent = `XP: ${userStats.xp}`;
+  showToast(`+${amount} XP Earned!`);
+}
+
+function saveStats() {
+  localStorage.setItem('ecoStreak', userStats.streak);
+  localStorage.setItem('ecoXP', userStats.xp);
+  localStorage.setItem('lastPlayed', userStats.lastPlayed);
+}
