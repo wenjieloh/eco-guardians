@@ -4254,3 +4254,30 @@ button:focus-visible,
   transform: scale(1.1); /* Makes the invasive plant look aggressive */
   box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
 }
+
+
+
+
+/* ===== IMMERSIVE CARD IMAGES ===== */
+.flower-img-wrapper img,
+.card-media-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crucial: Stops images from stretching weirdly */
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Hover Zoom Effect */
+.flower-card:hover .flower-img-wrapper img,
+.eco-card:hover .card-media-wrap img {
+  transform: scale(1.08); /* Smoothly zooms into the plant on hover */
+}
+
+/* Fallback Backdrop */
+.flower-img-wrapper,
+.card-media-wrap {
+  background: #112a1d; /* Solid dark green backdrop while image loads */
+  position: relative;
+  overflow: hidden;
+}
