@@ -1357,3 +1357,41 @@ function standUp() {
   isDucking = false;
   playerSprite.classList.remove('duck-active');
 }
+
+
+
+
+// Function initializer for Gallery Filter Actions
+function initFlowerGallery() {
+  const filterButtons = document.querySelectorAll('.gallery-filters .tab-btn');
+  const flowerCards = document.querySelectorAll('.flower-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // 1. Reset selection styling on buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // 2. Extract selected category evaluation string
+      const selectedFilter = button.getAttribute('data-filter');
+
+      // 3. Loop cards and safely apply responsive visual flags
+      flowerCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+
+        if (selectedFilter === 'all' || cardCategory === selectedFilter) {
+          card.style.display = 'flex';
+          // Triggers your pre-built fadeUp keyframe animation gracefully
+          card.style.animation = 'fadeUp 0.4s ease forwards';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
+// Instantiate within your existing DomContentLoaded pipeline listener
+document.addEventListener('DOMContentLoaded', () => {
+  initFlowerGallery();
+});
