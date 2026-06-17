@@ -1328,3 +1328,32 @@ function movePlayer(direction) {
     player.y = GAME_BOTTOM_BOUNDARY;
   }
 }
+
+
+
+
+const playerSprite = document.getElementById('player-sprite');
+let isDucking = false;
+
+// Listen for the key press (The Duck)
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowDown' && !isDucking) {
+    isDucking = true;
+    playerSprite.classList.add('duck-active'); 
+    
+    // Optional: Add a timeout to force them to stand up after 2 seconds
+    // setTimeout(() => standUp(), 2000); 
+  }
+});
+
+// Listen for the key release (The Stand Up)
+document.addEventListener('keyup', (event) => {
+  if (event.key === 'ArrowDown') {
+    standUp();
+  }
+});
+
+function standUp() {
+  isDucking = false;
+  playerSprite.classList.remove('duck-active');
+}
