@@ -3571,3 +3571,83 @@ ul li {
   }
 }
   
+
+
+/* ===== DESIGN SYSTEM (VARIABLES) ===== */
+:root {
+  /* Colors */
+  --clr-primary: #52b788;
+  --clr-primary-light: #74c69d;
+  --clr-dark: #1a3a2a;
+  --clr-bg: #fef9ef;
+  --clr-accent: #f4d03f;
+  --clr-danger: #e74c3c;
+  
+  /* Fonts */
+  --font-body: 'Nunito', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
+}
+
+/* Usage Example */
+body {
+  font-family: var(--font-body);
+  background: var(--clr-bg);
+  color: var(--clr-dark);
+}
+
+
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 3px dashed var(--clr-primary);
+  outline-offset: 4px;
+}
+
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger */
+  }
+  .nav-links {
+    display: none; /* Hide normal links, trigger via JS later */
+  }
+  .nav-right {
+    display: none; /* Hide score/extras on small screens to save space */
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+:root {
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-nav: 500;
+  --z-modal: 1000;
+  --z-toast: 2000;
+}
+
+
+
+.character {
+  height: 60px; /* Normal height */
+  transition: height 0.1s ease;
+}
+
+.character.duck-active {
+  height: 30px; /* Shrunk height so high obstacles miss */
+  transform: translateY(30px); /* Keep them planted on the ground */
+}
