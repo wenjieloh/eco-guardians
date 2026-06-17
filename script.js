@@ -1395,3 +1395,32 @@ function initFlowerGallery() {
 document.addEventListener('DOMContentLoaded', () => {
   initFlowerGallery();
 });
+
+
+
+// A single function to rule them all
+function initNavigation() {
+  const navLinks = document.querySelectorAll('[data-target]');
+  const pages = document.querySelectorAll('.page');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetPageId = link.getAttribute('data-target');
+
+      pages.forEach(page => {
+        if (page.id === `${targetPageId}-page`) {
+          page.classList.add('active');
+          page.setAttribute('aria-hidden', 'false');
+        } else {
+          page.classList.remove('active');
+          page.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      // Update active nav link styling
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+}
