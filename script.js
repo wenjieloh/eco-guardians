@@ -1829,3 +1829,28 @@ function saveProfile() {
   
   showToast("Profile Updated! 🌿");
 }
+
+
+
+
+function toggleChat() {
+  const chat = document.getElementById('chat-window');
+  chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+}
+
+function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const body = document.getElementById('chat-body');
+  if (!input.value) return;
+
+  // Add User Message
+  body.innerHTML += `<div class="user-msg">${input.value}</div>`;
+  
+  // Simulate AI Response
+  setTimeout(() => {
+    body.innerHTML += `<div class="bot-msg">That's a great question! Invasive species like the Kudzu vine are a real threat to Singapore's biodiversity. Would you like to read our blog post about it?</div>`;
+    body.scrollTop = body.scrollHeight; // Auto-scroll to bottom
+  }, 1000);
+
+  input.value = '';
+}
