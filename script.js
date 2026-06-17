@@ -1724,3 +1724,27 @@ function saveStats() {
   localStorage.setItem('ecoXP', userStats.xp);
   localStorage.setItem('lastPlayed', userStats.lastPlayed);
 }
+
+
+
+
+const video = document.getElementById('camera-view');
+
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+    video.srcObject = stream;
+  } catch (err) {
+    console.error("Camera access denied", err);
+  }
+}
+
+document.getElementById('snap-btn').addEventListener('click', () => {
+  // 1. Capture frame logic would go here
+  // 2. Mock identification for prototype:
+  showToast("Scanning for species...");
+  setTimeout(() => {
+    addXP(50); // Reward the user!
+    alert("Identified: Singapore Kopsia! +50 XP");
+  }, 2000);
+});
