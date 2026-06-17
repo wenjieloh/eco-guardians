@@ -1642,3 +1642,24 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(event.target.value);
   });
 });
+
+
+
+
+
+let currentZoom = 1.0;
+
+function changeZoom(amount) {
+  currentZoom += amount;
+  
+  // Set safety limits so the user can't zoom to infinity or zero
+  if (currentZoom < 0.8) currentZoom = 0.8;
+  if (currentZoom > 2.0) currentZoom = 2.0;
+  
+  document.body.style.zoom = currentZoom;
+}
+
+function resetZoom() {
+  currentZoom = 1.0;
+  document.body.style.zoom = currentZoom;
+}
