@@ -1489,3 +1489,19 @@ function initApplicationRouter() {
     });
   });
 }
+
+
+
+let gameScore = 0;
+
+function enemyDodgedOrItemCollected(points) {
+  gameScore += points;
+  document.querySelector('.nav-score').textContent = `🍃 Score: ${gameScore}`;
+  
+  // Instant Reward Milestones
+  if (gameScore === 50) {
+    showToast("🏅 Badge Earned: Novice Ranger!");
+  } else if (gameScore === 150) {
+    showToast("🌟 Badge Earned: Habitat Guardian!");
+  }
+}
