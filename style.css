@@ -4301,3 +4301,27 @@ button:focus-visible,
 .lang-dropdown:focus {
   border-color: var(--clr-forest-light);
 }
+
+
+
+
+.zoom-controls {
+  display: flex;
+  gap: 5px;
+  margin-left: var(--space-sm);
+}
+
+.zoom-controls button {
+  background: var(--clr-primary-tint);
+  border: none;
+  color: var(--clr-forest-dark);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.zoom-controls button:hover {
+  background: var(--clr-accent);
+}
