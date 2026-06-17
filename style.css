@@ -4379,3 +4379,41 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--clr-forest-light);
 }
+
+
+
+/* Chat FAB */
+.chat-fab {
+  position: fixed; bottom: 20px; right: 20px;
+  width: 60px; height: 60px;
+  background: var(--clr-primary);
+  color: white; border-radius: 50%;
+  border: none; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 9999; font-size: 1.5rem;
+  transition: var(--transition-smooth);
+}
+
+/* Chat Window */
+.chat-window {
+  position: fixed; bottom: 90px; right: 20px;
+  width: 320px; height: 450px;
+  background: white; border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: none; flex-direction: column;
+  z-index: 9998; border: 1px solid #eee;
+  overflow: hidden;
+}
+
+.chat-header {
+  background: var(--clr-forest-dark); color: white;
+  padding: 1rem; display: flex; justify-content: space-between;
+}
+
+.chat-body {
+  flex: 1; padding: 1rem; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.bot-msg { background: var(--clr-bg-light); padding: 8px; border-radius: 8px; align-self: flex-start; }
+.user-msg { background: var(--clr-primary); color: white; padding: 8px; border-radius: 8px; align-self: flex-end; }
