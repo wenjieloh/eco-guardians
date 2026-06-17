@@ -1505,3 +1505,70 @@ function enemyDodgedOrItemCollected(points) {
     showToast("🌟 Badge Earned: Habitat Guardian!");
   }
 }
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const gridContainer = document.getElementById('spread-grid');
+  const btnAdvance = document.getElementById('btn-advance');
+  const statNative = document.getElementById('stat-native');
+  const statKudzu = document.getElementById('stat-kudzu');
+  
+  let grid = [];
+  const gridSize = 10; // 10x10 grid (100 cells)
+
+  // 1. Setup the initial forest
+  function initSim() {
+    gridContainer.innerHTML = '';
+    grid = Array(gridSize * gridSize).fill('native');
+    
+    // Plant two invasive seeds to start
+    grid[0] = 'invasive'; 
+    grid[9] = 'invasive';
+
+    drawGrid();
+  }
+
+  // 2. Draw the grid to the screen
+  function drawGrid() {
+    gridContainer.innerHTML = '';
+    let invasiveCount = 0;
+
+    grid.forEach(cellState => {
+      const cell = document.createElement('div');
+      cell.className = `sim-cell cell-${cellState}`;
+      gridContainer.appendChild(cell);
+      if (cellState === 'invasive') invasiveCount++;
+    });
+
+    // Update the UI stats
+    statNative.textContent = `${100 - invasiveCount}%`;
+    statKudzu.textContent = `${invasiveCount}%`;
+  }
+
+  // 3. The Spread Logic (When button is clicked)
+  btnAdvance.addEventListener('click', () => {
+    let newGrid = [...grid];
+
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i] === 'invasive') {
+        // Spread logic: Target adjacent cells (up, down, left, right)
+        const adjacent = [i - 1, i + 1, i - gridSize, i + gridSize];
+        
+        adjacent.forEach(adjIndex => {
+          // Check boundaries and random chance of spreading
+          if (adjIndex >= 0 && adjIndex < grid.length && Math.random() > 0.3) {
+            newGrid[adjIndex] = 'invasive';
+          }
+        });
+      }
+    }
+    grid = newGrid;
+    drawGrid();
+  });
+
+  // Start it up!
+  initSim();
+});
