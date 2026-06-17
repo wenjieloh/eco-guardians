@@ -1748,3 +1748,32 @@ document.getElementById('snap-btn').addEventListener('click', () => {
     alert("Identified: Singapore Kopsia! +50 XP");
   }, 2000);
 });
+
+
+
+
+function showDailyQuiz() {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="eco-card" style="width:90%; max-width:400px;">
+      <h3>Daily Lesson: Kudzu</h3>
+      <p>True or False: Kudzu is a native plant to Singapore.</p>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-red" onclick="checkAnswer(false)">False</button>
+        <button class="btn btn-green" onclick="checkAnswer(true)">True</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+window.checkAnswer = (answer) => {
+  if (answer === false) {
+    addXP(20);
+    showToast("Correct! Streak Saved!");
+  } else {
+    showToast("Try again tomorrow!");
+  }
+  document.querySelector('.modal-overlay').remove();
+};
