@@ -3772,3 +3772,14 @@ button:focus-visible,
   color: #2d6a4f;
   line-height: 1.4;
 }
+
+
+
+
+.leaf-particle,
+.globe,
+.rp-char {
+  /* This forces the browser to utilize GPU hardware acceleration */
+  will-change: transform;
+  transform: translateZ(0); 
+}
