@@ -4432,3 +4432,18 @@ button:active {
 .eco-card:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Subtle lift effect */
 }
+
+
+
+
+.leaderboard-card {
+  background: linear-gradient(135deg, #2d5a27, #1a3317);
+  color: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+.leaderboard-list li {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
