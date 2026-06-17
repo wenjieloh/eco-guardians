@@ -1663,3 +1663,169 @@ function resetZoom() {
   currentZoom = 1.0;
   document.body.style.zoom = currentZoom;
 }
+
+
+
+
+function readContent(button) {
+  // 1. Find the parent card or the nearest text content
+  const card = button.closest('.eco-card') || button.closest('.page');
+  const textToRead = card.querySelector('p, h1, h3').innerText;
+
+  // 2. Create the speech object
+  const speech = new SpeechSynthesisUtterance(textToRead);
+  
+  // 3. Set the language based on your current selector
+  const langSelector = document.getElementById('language-selector');
+  speech.lang = langSelector.value === 'zh' ? 'zh-CN' : 
+                langSelector.value === 'ms' ? 'ms-MY' : 
+                langSelector.value === 'ta' ? 'ta-IN' : 
+                'en-US';
+
+  // 4. Speak!
+  window.speechSynthesis.speak(speech);
+}
+
+
+
+
+
+
+// Global User Stats
+let userStats = {
+  streak: parseInt(localStorage.getItem('ecoStreak')) || 0,
+  xp: parseInt(localStorage.getItem('ecoXP')) || 0,
+  lastPlayed: localStorage.getItem('lastPlayed') || null
+};
+
+// Update streak based on date
+function checkStreak() {
+  const today = new Date().toDateString();
+  if (userStats.lastPlayed !== today) {
+    if (userStats.lastPlayed === new Date(Date.now() - 86400000).toDateString()) {
+      userStats.streak++; // Streak maintained!
+    } else {
+      userStats.streak = 1; // Start new streak
+    }
+    userStats.lastPlayed = today;
+    saveStats();
+  }
+}
+
+function addXP(amount) {
+  userStats.xp += amount;
+  saveStats();
+  document.getElementById('xp-display').textContent = `XP: ${userStats.xp}`;
+  showToast(`+${amount} XP Earned!`);
+}
+
+function saveStats() {
+  localStorage.setItem('ecoStreak', userStats.streak);
+  localStorage.setItem('ecoXP', userStats.xp);
+  localStorage.setItem('lastPlayed', userStats.lastPlayed);
+}
+
+
+
+
+const video = document.getElementById('camera-view');
+
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+    video.srcObject = stream;
+  } catch (err) {
+    console.error("Camera access denied", err);
+  }
+}
+
+document.getElementById('snap-btn').addEventListener('click', () => {
+  // 1. Capture frame logic would go here
+  // 2. Mock identification for prototype:
+  showToast("Scanning for species...");
+  setTimeout(() => {
+    addXP(50); // Reward the user!
+    alert("Identified: Singapore Kopsia! +50 XP");
+  }, 2000);
+});
+
+
+
+
+function showDailyQuiz() {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = `
+    <div class="eco-card" style="width:90%; max-width:400px;">
+      <h3>Daily Lesson: Kudzu</h3>
+      <p>True or False: Kudzu is a native plant to Singapore.</p>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-red" onclick="checkAnswer(false)">False</button>
+        <button class="btn btn-green" onclick="checkAnswer(true)">True</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+window.checkAnswer = (answer) => {
+  if (answer === false) {
+    addXP(20);
+    showToast("Correct! Streak Saved!");
+  } else {
+    showToast("Try again tomorrow!");
+  }
+  document.querySelector('.modal-overlay').remove();
+};
+
+
+
+
+// This is a conceptual example of how the connection works
+async function identifyPlant(imageBlob) {
+  const response = await fetch('https://api.plant.id/v2/identify', {
+    method: 'POST',
+    headers: { 'Api-Key': 'YOUR_API_KEY', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ images: [/* your image data */] })
+  });
+  
+  const result = await response.json();
+  const plantName = result.suggestions[0].plant_name;
+  
+  // Now show the result to the user
+  showToast(`Identified: ${plantName}! +50 XP`);
+}
+
+
+
+
+// Load profile on start
+document.addEventListener('DOMContentLoaded', () => {
+  loadProfile();
+});
+
+function loadProfile() {
+  const savedName = localStorage.getItem('ecoName') || 'New Guardian';
+  const savedXP = localStorage.getItem('ecoXP') || 0;
+  const savedStreak = localStorage.getItem('ecoStreak') || 0;
+
+  // Update Profile Page Fields
+  document.getElementById('username-input').value = savedName;
+  document.getElementById('stat-xp').textContent = savedXP;
+  document.getElementById('stat-streak').textContent = savedStreak;
+  
+  // Update Navbar (if you have one)
+  const navName = document.getElementById('nav-user-name');
+  if (navName) navName.textContent = savedName;
+}
+
+function saveProfile() {
+  const newName = document.getElementById('username-input').value;
+  localStorage.setItem('ecoName', newName);
+  
+  // Update Navbar instantly
+  const navName = document.getElementById('nav-user-name');
+  if (navName) navName.textContent = newName;
+  
+  showToast("Profile Updated! 🌿");
+}

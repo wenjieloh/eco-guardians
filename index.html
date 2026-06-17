@@ -1823,3 +1823,42 @@
 
 
   
+<button class="btn-audio" onclick="readContent(this)">
+  🔊 Read Aloud
+</button>
+
+
+
+  <div id="camera-page" class="page">
+  <div class="eco-card" style="text-align:center;">
+    <h3>🌱 Plant Identifier</h3>
+    <video id="camera-view" autoplay playsinline style="width:100%; border-radius:10px;"></video>
+    <button id="snap-btn" class="btn btn-green" style="margin-top: var(--space-sm);">Snap & Identify</button>
+  </div>
+</div>
+
+
+
+
+  <div id="profile-page" class="page">
+  <div class="container" style="max-width: 600px; padding-top: var(--space-xl);">
+    
+    <div class="eco-card" style="text-align: center;">
+      <div class="avatar-circle" id="user-avatar">?</div>
+      <input type="text" id="username-input" placeholder="Enter your Guardian Name" class="name-input">
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin: var(--space-lg) 0;">
+        <div class="stat-box">
+          <div class="stat-value" id="stat-xp">0</div>
+          <div class="stat-label">Total XP</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-streak">0</div>
+          <div class="stat-label">Day Streak</div>
+        </div>
+      </div>
+      
+      <button class="btn btn-green" onclick="saveProfile()">Save Profile</button>
+    </div>
+  </div>
+</div>
