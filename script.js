@@ -1893,3 +1893,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // For the presentation demo, we trigger it after 10 seconds of being on the site
   setTimeout(sendStreakReminder, 10000); 
 });
+
+
+
+
+// Simple Debounce function
+function debounce(func, delay) {
+  let timeout;
+  return function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, arguments), delay);
+  };
+}
+
+// Usage: Prevents the UI from glitching during rapid resizing
+window.addEventListener('resize', debounce(() => {
+  console.log("Resize finished, updating layout...");
+}, 250));
