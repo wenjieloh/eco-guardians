@@ -1854,3 +1854,42 @@ function sendMessage() {
 
   input.value = '';
 }
+
+
+
+
+
+
+
+
+// 1. Request Permission from the user
+function requestNotificationPermission() {
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notifications.");
+  } else if (Notification.permission !== 'denied') {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        console.log("Notification permission granted!");
+      }
+    });
+  }
+}
+
+// 2. The Trigger Function
+function sendStreakReminder() {
+  if (Notification.permission === "granted") {
+    new Notification("EcoGuardians Reminder 🌿", {
+      body: "Your streak is at risk! Complete your daily lesson to save it.",
+      icon: "assets/images/logo-icon.png" // Replace with your logo path
+    });
+  }
+}
+
+// 3. Logic: Trigger after 10 seconds (Simulating a daily reminder for your demo)
+// In a real app, you would use a 'setInterval' or 'setTimeout' logic
+document.addEventListener('DOMContentLoaded', () => {
+  requestNotificationPermission(); // Ask as soon as the site loads
+  
+  // For the presentation demo, we trigger it after 10 seconds of being on the site
+  setTimeout(sendStreakReminder, 10000); 
+});
