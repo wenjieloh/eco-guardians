@@ -4239,3 +4239,18 @@ button:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+
+
+
+.sim-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+.cell-native { background-color: var(--clr-primary-tint); }
+.cell-invasive { 
+  background-color: var(--clr-danger); 
+  transform: scale(1.1); /* Makes the invasive plant look aggressive */
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
