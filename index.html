@@ -1862,3 +1862,24 @@
     </div>
   </div>
 </div>
+
+
+
+
+  <button class="chat-fab" onclick="toggleChat()">
+  <span>💬</span>
+</button>
+
+<div id="chat-window" class="chat-window">
+  <div class="chat-header">
+    <h4>Guardian Assistant</h4>
+    <button onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-body" id="chat-body">
+    <div class="bot-msg">Hello! I'm your Eco-Ranger assistant. Ask me anything about Singapore's plants or invasive species!</div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chat-input" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
