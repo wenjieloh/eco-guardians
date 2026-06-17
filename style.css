@@ -4334,3 +4334,48 @@ button:focus-visible,
   display: flex; align-items: center; justify-content: center;
   z-index: 3000;
 }
+
+
+
+
+
+/* Profile Avatar Styling */
+.avatar-circle {
+  width: 80px; height: 80px;
+  background: var(--clr-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; font-weight: bold;
+  margin: 0 auto var(--space-sm);
+  border: 4px solid var(--clr-bg-warm);
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Input Styling */
+.name-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: var(--radius-md);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+/* Stat Box Styling */
+.stat-box {
+  background: var(--clr-bg-light);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clr-forest-dark);
+}
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--clr-forest-light);
+}
