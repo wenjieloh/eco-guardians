@@ -1795,3 +1795,37 @@ async function identifyPlant(imageBlob) {
   // Now show the result to the user
   showToast(`Identified: ${plantName}! +50 XP`);
 }
+
+
+
+
+// Load profile on start
+document.addEventListener('DOMContentLoaded', () => {
+  loadProfile();
+});
+
+function loadProfile() {
+  const savedName = localStorage.getItem('ecoName') || 'New Guardian';
+  const savedXP = localStorage.getItem('ecoXP') || 0;
+  const savedStreak = localStorage.getItem('ecoStreak') || 0;
+
+  // Update Profile Page Fields
+  document.getElementById('username-input').value = savedName;
+  document.getElementById('stat-xp').textContent = savedXP;
+  document.getElementById('stat-streak').textContent = savedStreak;
+  
+  // Update Navbar (if you have one)
+  const navName = document.getElementById('nav-user-name');
+  if (navName) navName.textContent = savedName;
+}
+
+function saveProfile() {
+  const newName = document.getElementById('username-input').value;
+  localStorage.setItem('ecoName', newName);
+  
+  // Update Navbar instantly
+  const navName = document.getElementById('nav-user-name');
+  if (navName) navName.textContent = newName;
+  
+  showToast("Profile Updated! 🌿");
+}
