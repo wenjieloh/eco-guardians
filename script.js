@@ -1572,3 +1572,73 @@ document.addEventListener('DOMContentLoaded', () => {
   // Start it up!
   initSim();
 });
+
+
+
+
+// 1. The Translation Dictionary
+const translations = {
+  en: {
+    hero_title: "Habitat Defender",
+    hero_subtitle: "Protect Singapore's rainforest from invaders!",
+    btn_start: "DEFEND NOW"
+  },
+  zh: {
+    hero_title: "栖息地卫士",
+    hero_subtitle: "保护新加坡的雨林免受入侵！",
+    btn_start: "立即保卫"
+  },
+  ms: {
+    hero_title: "Pembela Habitat",
+    hero_subtitle: "Lindungi hutan hujan Singapura dari penceroboh!",
+    btn_start: "PERTAHANKAN SEKARANG"
+  },
+  ta: {
+    hero_title: "வாழ்விட பாதுகாவலர்",
+    hero_subtitle: "சிங்கப்பூரின் மழைக்காடுகளை பாதுகாப்போம்!",
+    btn_start: "இப்போதே பாதுகாக்கவும்"
+  },
+  jp: {
+    hero_title: "ハビタット・ディフェンダー",
+    hero_subtitle: "シンガポールの熱帯雨林を侵略者から守れ！",
+    btn_start: "今すぐ守る"
+  },
+  hokkien: {
+    hero_title: "Seng-thài Uē-sū", // Example Romanized Hokkien
+    hero_subtitle: "Pó-hōo Sin-ka-pho ê hōo-lîm!",
+    btn_start: "CHIT-MÁ PÓ-HŌO"
+  }
+};
+
+// 2. The Language Switcher Function
+function setLanguage(languageCode) {
+  // Find all elements on the page that have the data-i18n attribute
+  const elements = document.querySelectorAll('[data-i18n]');
+  
+  elements.forEach(element => {
+    const translationKey = element.getAttribute('data-i18n');
+    
+    // Check if the translation exists in our dictionary
+    if (translations[languageCode] && translations[languageCode][translationKey]) {
+      element.textContent = translations[languageCode][translationKey];
+    }
+  });
+
+  // Optional: Save the user's preference so it stays when they refresh
+  localStorage.setItem('preferredLanguage', languageCode);
+}
+
+// 3. Hooking up the Event Listener
+document.addEventListener('DOMContentLoaded', () => {
+  const langSelector = document.getElementById('language-selector');
+  
+  // Check if the user already chose a language previously
+  const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+  langSelector.value = savedLang;
+  setLanguage(savedLang);
+
+  // Listen for dropdown changes
+  langSelector.addEventListener('change', (event) => {
+    setLanguage(event.target.value);
+  });
+});
