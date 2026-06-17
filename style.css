@@ -4281,3 +4281,23 @@ button:focus-visible,
   position: relative;
   overflow: hidden;
 }
+
+
+
+
+
+.lang-dropdown {
+  padding: 0.5rem;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius-sm);
+  background-color: var(--clr-bg-light);
+  color: var(--clr-forest-dark);
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-dropdown:focus {
+  border-color: var(--clr-forest-light);
+}
