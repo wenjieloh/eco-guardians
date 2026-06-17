@@ -1944,3 +1944,23 @@ function processMission(missionType) {
     btn.classList.add('btn-disabled');
   }, 2000);
 }
+
+
+
+
+const mascots = ["Discipline", "Resilience", "Empathy", "Adaptability", "Mindfulness"];
+
+function getMascotMessage() {
+  const name = mascots[Math.floor(Math.random() * mascots.length)];
+  const messages = [
+    "Hey! " + name + " thinks you're falling behind! Keep the streak alive!",
+    "Your streak is waiting. Don't let the weeds win!",
+    "I'm feeling resilient today. Are you?"
+  ];
+  return messages[Math.floor(Math.random() * messages.length)];
+}
+
+// Trigger this when sending the notification
+function sendPlayfulNotification() {
+  new Notification("EcoGuardians:", { body: getMascotMessage() });
+}
