@@ -1424,3 +1424,25 @@ function initNavigation() {
     });
   });
 }
+
+
+
+
+// Save score whenever they earn points
+function updateScore(points) {
+  let currentScore = parseInt(localStorage.getItem('ecoScore')) || 0;
+  currentScore += points;
+  
+  localStorage.setItem('ecoScore', currentScore);
+  displayScore(currentScore);
+}
+
+// Load score when the web page first boot ups
+document.addEventListener('DOMContentLoaded', () => {
+  const savedScore = localStorage.getItem('ecoScore') || 0;
+  displayScore(savedScore);
+});
+
+function displayScore(score) {
+  document.querySelector('.nav-score').textContent = `🍃 Score: ${score}`;
+}
