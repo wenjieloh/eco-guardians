@@ -36,3 +36,17 @@ An interactive educational platform designed for secondary and primary school st
 
 ---
 *Created as part of an educational initiative to protect our local ecosystems.*
+
+
+
+
+
+## 📂 Project Structure
+├── index.html          # Main entry point (all pages managed via DOM)
+├── css/
+│   └── style.css       # Monolithic stylesheet with CSS variables
+├── js/
+│   ├── main.js         # Page routing and global initializers
+│   ├── game.js         # Game Defender / Memory Match mechanics
+│   └── gallery.js      # Flower Gallery filtering logic
+└── assets/             # Optimized plant images and game sprites
