@@ -1311,3 +1311,20 @@ window.addEventListener('load', function() {
   var bestEl = document.getElementById('runnerBest');
   if (bestEl) bestEl.textContent = stored;
 });
+
+
+
+// Example Game Loop or Movement Function
+const GAME_BOTTOM_BOUNDARY = 300; // Adjust this to your actual ground Y-coordinate
+const player = { x: 50, y: 300, speed: 5 };
+
+function movePlayer(direction) {
+  if (direction === 'down') {
+    player.y += player.speed;
+  }
+  
+  // THE FIX: Clamp the position so they can't go below the floor
+  if (player.y > GAME_BOTTOM_BOUNDARY) {
+    player.y = GAME_BOTTOM_BOUNDARY;
+  }
+}
