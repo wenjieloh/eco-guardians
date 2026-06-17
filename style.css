@@ -4417,3 +4417,18 @@ button:focus-visible,
 
 .bot-msg { background: var(--clr-bg-light); padding: 8px; border-radius: 8px; align-self: flex-start; }
 .user-msg { background: var(--clr-primary); color: white; padding: 8px; border-radius: 8px; align-self: flex-end; }
+
+
+
+
+
+/* Add this to your style.css */
+button, .eco-card, a {
+  transition: all 0.25s ease-in-out;
+}
+button:active {
+  transform: scale(0.98); /* Gives a 'pressed' feel when clicked */
+}
+.eco-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Subtle lift effect */
+}
