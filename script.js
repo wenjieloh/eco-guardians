@@ -1777,3 +1777,21 @@ window.checkAnswer = (answer) => {
   }
   document.querySelector('.modal-overlay').remove();
 };
+
+
+
+
+// This is a conceptual example of how the connection works
+async function identifyPlant(imageBlob) {
+  const response = await fetch('https://api.plant.id/v2/identify', {
+    method: 'POST',
+    headers: { 'Api-Key': 'YOUR_API_KEY', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ images: [/* your image data */] })
+  });
+  
+  const result = await response.json();
+  const plantName = result.suggestions[0].plant_name;
+  
+  // Now show the result to the user
+  showToast(`Identified: ${plantName}! +50 XP`);
+}
