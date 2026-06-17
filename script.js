@@ -1663,3 +1663,25 @@ function resetZoom() {
   currentZoom = 1.0;
   document.body.style.zoom = currentZoom;
 }
+
+
+
+
+function readContent(button) {
+  // 1. Find the parent card or the nearest text content
+  const card = button.closest('.eco-card') || button.closest('.page');
+  const textToRead = card.querySelector('p, h1, h3').innerText;
+
+  // 2. Create the speech object
+  const speech = new SpeechSynthesisUtterance(textToRead);
+  
+  // 3. Set the language based on your current selector
+  const langSelector = document.getElementById('language-selector');
+  speech.lang = langSelector.value === 'zh' ? 'zh-CN' : 
+                langSelector.value === 'ms' ? 'ms-MY' : 
+                langSelector.value === 'ta' ? 'ta-IN' : 
+                'en-US';
+
+  // 4. Speak!
+  window.speechSynthesis.speak(speech);
+}
