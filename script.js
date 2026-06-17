@@ -1910,3 +1910,37 @@ function debounce(func, delay) {
 window.addEventListener('resize', debounce(() => {
   console.log("Resize finished, updating layout...");
 }, 250));
+
+
+
+
+function launchMission(missionType) {
+  // 1. Trigger the camera (Reuse your existing camera function)
+  startCamera(); 
+
+  // 2. Add an overlay to show we are waiting for submission
+  showToast("Camera Active: Capture your evidence!");
+
+  // 3. Logic to handle successful upload (Simplified for prototype)
+  // In a real app, this waits for the upload/AI analysis
+  document.getElementById('snap-btn').onclick = () => {
+    processMission(missionType);
+  };
+}
+
+function processMission(missionType) {
+  // Logic to process the "Evidence"
+  showToast("Uploading evidence for verification...");
+  
+  // Simulate successful submission
+  setTimeout(() => {
+    addXP(100); // Only grant XP on success!
+    alert(`Mission Accomplished! 100 XP added for ${missionType}.`);
+    
+    // Update the mission UI to show "Complete"
+    const btn = document.querySelector(`[onclick="launchMission('${missionType}')"]`);
+    btn.textContent = "Verified! ✅";
+    btn.disabled = true;
+    btn.classList.add('btn-disabled');
+  }, 2000);
+}
