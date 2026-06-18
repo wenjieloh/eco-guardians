@@ -1701,3 +1701,50 @@
 
   <button id="capture-btn" class="btn btn-green" onclick="captureAndAnalyze()">Take Photo & Verify</button>
 </div>
+
+
+
+
+
+
+
+
+<div class="eco-card wardrobe-container">
+  <div class="avatar-display">
+    <h3>Your Ranger</h3>
+    <div class="avatar-frame">
+      <div id="base-avatar" class="avatar-layer">🧍</div>
+      <div id="costume-layer" class="avatar-layer"></div>
+    </div>
+    <div class="xp-wallet">
+      Wallet: <span id="wallet-balance" class="xp-text">1200</span> XP
+    </div>
+  </div>
+
+  <div class="costume-shop">
+    <h3>Guardian Gear Shop</h3>
+    <div class="shop-grid">
+      
+      <div class="shop-item unlocked">
+        <div class="item-icon">🧢</div>
+        <h4>Recruit Cap</h4>
+        <button class="btn-equip active" onclick="equipItem('🧢', this)">Equipped</button>
+      </div>
+
+      <div class="shop-item locked" id="item-hazmat">
+        <div class="item-icon">🦺</div>
+        <h4>Bio-Hazmat Vest</h4>
+        <div class="cost-tag">300 XP</div>
+        <button class="btn-buy" onclick="buyItem('item-hazmat', '🦺', 300, this)">Unlock</button>
+      </div>
+
+      <div class="shop-item locked" id="item-crown">
+        <div class="item-icon">👑</div>
+        <h4>Eco-Monarch Crown</h4>
+        <div class="cost-tag">1000 XP</div>
+        <button class="btn-buy" onclick="buyItem('item-crown', '👑', 1000, this)">Unlock</button>
+      </div>
+
+    </div>
+  </div>
+</div>
