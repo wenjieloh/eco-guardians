@@ -1554,4 +1554,32 @@
 
   <script src="script.js"></script>
 </body>
+
+
+
+
+<div id="game-container" class="eco-card gd-rhythm-module">
+  <div class="game-header">
+    <h3>⚔️ Plant Defenders: Sync Zap</h3>
+    <!-- Difficulty Tiers to achieve the 'Euphoria of Mastery' -->
+    <select id="difficulty-select" onchange="changeDifficulty()">
+      <option value="normal">Normal Tier</option>
+      <option value="insane">Insane Tier</option>
+      <option value="demon">🔥 Eco-Demon Tier</option>
+    </select>
+  </div>
+
+  <!-- The Rhythm Track -->
+  <div class="rhythm-track-container">
+    <div class="target-zone"></div>
+    <div id="rhythm-pulse-bar" class="pulse-bar"></div>
+  </div>
+
+  <!-- Single-Button Mechanic Interface -->
+  <div class="action-zone">
+    <button id="zap-btn" class="gd-action-btn">TAP OR PRESS SPACEBAR</button>
+    <div id="timing-feedback" class="feedback-text">READY</div>
+  </div>
+</div>
+  
 </html>
