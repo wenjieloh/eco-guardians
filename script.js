@@ -2233,3 +2233,16 @@ function loadProgress() {
   const saved = localStorage.getItem('ecoGuardianSave');
   if (saved) gameState = JSON.parse(saved);
 }
+
+
+
+
+function showLoading(buttonElement) {
+  buttonElement.disabled = true;
+  buttonElement.innerHTML = '<div class="spinner"></div> Processing...';
+}
+
+function hideLoading(buttonElement, originalText) {
+  buttonElement.disabled = false;
+  buttonElement.innerHTML = originalText;
+}
