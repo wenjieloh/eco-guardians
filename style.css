@@ -3605,3 +3605,170 @@ ul li { margin-bottom: 0.4rem; }
   margin-top: var(--space-sm);
   letter-spacing: 2px;
 }
+
+
+
+
+
+
+
+/* ===== WIKIPEDIA-STYLE CREDIBILITY ENGINE ===== */
+.wiki-species-container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #202122;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.wiki-main-content {
+  flex: 2;
+}
+
+.species-title {
+  font-family: 'Linux Libertine', 'Georgia', serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.species-title .common-name {
+  font-size: 1.3rem;
+  color: #54595d;
+}
+
+.wiki-divider {
+  border: 0;
+  border-top: 1px solid #a2a9b1;
+  margin: 10px 0 var(--space-md) 0;
+}
+
+/* Smooth Interactive Citation Anchors */
+.wiki-citation {
+  font-size: 0.75rem;
+  font-weight: bold;
+  vertical-align: super;
+  margin-left: 2px;
+  color: #34495e;
+  text-decoration: none;
+}
+
+.wiki-citation:hover {
+  text-decoration: underline;
+}
+
+/* Wikipedia-inspired Sidebar Data Panel */
+.wiki-infobox {
+  flex: 1;
+  max-width: 300px;
+  background-color: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  padding: 12px;
+  font-size: 0.85rem;
+  align-self: flex-start;
+  border-radius: var(--radius-sm);
+}
+
+.infobox-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding-bottom: var(--space-xs);
+}
+
+.infobox-image-placeholder {
+  width: 100%;
+  height: 160px;
+  background-color: #eaecf0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+  border: 1px solid #c8ccd1;
+}
+
+.infobox-image-placeholder .image-icon {
+  font-size: 3rem;
+}
+
+.infobox-data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-section-head {
+  background-color: #eaecf0;
+  text-align: center;
+  font-weight: bold;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+.table-section-head.status-danger {
+  background-color: #fee7e6;
+  color: #b32121;
+}
+
+.infobox-data-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.infobox-data-table .label {
+  font-weight: bold;
+  color: #54595d;
+  width: 40%;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.badge-alert {
+  background-color: #d33;
+  color: white;
+}
+
+/* Bibliography Sub-styles */
+.wiki-references-section {
+  margin-top: 40px;
+  font-size: 0.85rem;
+}
+
+.references-heading {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.references-list {
+  padding-left: 20px;
+}
+
+.references-list li {
+  margin-bottom: 6px;
+}
+
+.backlink {
+  color: #34495e;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: var(--space-xs);
+}
+
+/* Mobile responsive fallback layout adaptation */
+@media (max-width: 768px) {
+  .wiki-species-container {
+    flex-direction: column-reverse;
+  }
+  .wiki-infobox {
+    max-width: 100%;
+    width: 100%;
+  }
+}
