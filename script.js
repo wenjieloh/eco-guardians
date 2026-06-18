@@ -2136,3 +2136,77 @@ function captureAndAnalyze() {
 
   }, 2500);
 }
+
+
+
+
+
+// Global state system (Incorporate these values into your existing save storage)
+let userStats = {
+  xp: 1200, // Starting point value for your live demo context configuration
+  unlockedCostumes: ['item-seedling'] // tracks IDs of what has been purchased
+};
+
+// Sync displayed currency values immediately on window initialization
+function updateWardrobeDisplay() {
+  document.getElementById('wardrobe-xp').textContent = userStats.xp;
+  if(document.getElementById('xp-display')) {
+    document.getElementById('xp-display').textContent = `XP: ${userStats.xp}`;
+  }
+}
+
+function purchaseAvatar(emoji, titleName, cost, elementId) {
+  const element = document.getElementById(elementId);
+  
+  // Rule 1: If already purchased previously, simply equip it instantly
+  if (userStats.unlockedCostumes.includes(elementId)) {
+    equipAvatar(emoji, titleName, element);
+    return;
+  }
+  
+  // Rule 2: Balance Check validation step
+  if (userStats.xp >= cost) {
+    userStats.xp -= cost; // Deduct currency from account core pool
+    userStats.unlockedCostumes.push(elementId); // add to owned lists array
+    
+    // Morph visual states rules
+    element.classList.remove('locked');
+    element.classList.add('unlocked');
+    element.querySelector('.status-lbl').textContent = "Owned";
+    
+    if (typeof playSound === "function") playSound('success');
+    updateWardrobeDisplay();
+    equipAvatar(emoji, titleName, element);
+  } else {
+    if (typeof playSound === "function") playSound('fail');
+    alert(`❌ Insufficient XP! You need ${cost - userStats.xp} more points to forge this transformation identity.`);
+  }
+}
+
+function equipAvatar(emoji, titleName, targetElement = null) {
+  // Update Header Elements
+  document.getElementById('current-avatar').textContent = emoji;
+  document.getElementById('profile-rank').textContent = `Rank: ${titleName}`;
+  
+  // Strip active styling loops from all sibling blocks
+  document.querySelectorAll('.wardrobe-item').forEach(item => {
+    item.classList.remove('active-equip');
+    if(item.classList.contains('unlocked') && item.querySelector('.status-lbl').textContent === "Equipped") {
+      item.querySelector('.status-lbl').textContent = "Owned";
+    }
+  });
+  
+  // Set explicit active visual indicators on newly selected targeting components
+  if(targetElement) {
+    targetElement.classList.add('active-equip');
+    targetElement.querySelector('.status-lbl').textContent = "Equipped";
+  }
+  
+  // Optional: Trigger custom screen alerts or notification banner logs
+  console.log(`Identity shifted successfully to: ${titleName}`);
+}
+
+// Bootstrap trigger tracking hook configuration layout 
+document.addEventListener('DOMContentLoaded', () => {
+  updateWardrobeDisplay();
+});
