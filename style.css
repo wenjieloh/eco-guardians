@@ -4047,3 +4047,23 @@ ul li { margin-bottom: 0.4rem; }
   color: #00ff66;
   font-weight: bold;
 }
+
+
+
+
+
+:root {
+  --clr-primary: #00ff66; /* Your 'Eco' green */
+  --clr-dark: #111111;
+  --radius-md: 12px;
+  --space-md: 20px;
+  /* You can even add transition speeds here */
+  --speed-fast: 0.2s;
+}
+
+/* Now use them like this: */
+.btn-green {
+  background-color: var(--clr-primary);
+  border-radius: var(--radius-md);
+  transition: transform var(--speed-fast);
+}
