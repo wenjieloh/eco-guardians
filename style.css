@@ -3928,3 +3928,122 @@ ul li { margin-bottom: 0.4rem; }
 .shop-item:hover { transform: scale(1.05); }
 .item-icon { font-size: 3rem; margin-bottom: 10px; }
 .cost-tag { color: #ffd700; font-weight: bold; margin
+
+
+
+
+
+
+
+
+/* ===== WARDROBE ENGINE SYSTEM ===== */
+.wardrobe-module {
+  background: #1e1e1e;
+  color: #fff;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius-lg);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.avatar-preview-wrapper {
+  width: 80px;
+  height: 80px;
+  background: #2a2a2a;
+  border: 3px solid var(--clr-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+}
+
+.xp-badge {
+  background: rgba(0, 255, 102, 0.1);
+  color: #00ff66;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+/* Shop Matrix Grid Layout */
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+  margin-top: var(--space-md);
+}
+
+.wardrobe-item {
+  background: #252525;
+  border: 2px solid #333;
+  border-radius: var(--radius-md);
+  padding: 15px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.wardrobe-item .item-visual {
+  font-size: 2rem;
+  margin-bottom: var(--space-xs);
+  transition: transform 0.2s ease;
+}
+
+.wardrobe-item .item-name {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.wardrobe-item .status-lbl {
+  font-size: 0.75rem;
+  color: #888;
+  display: block;
+  margin-top: 5px;
+}
+
+/* Hover States matching premium micro-interactions */
+.wardrobe-item:hover {
+  transform: translateY(-3px);
+  border-color: #555;
+}
+
+.wardrobe-item:hover .item-visual {
+  transform: scale(1.15);
+}
+
+/* Visual States logic mapping rules */
+.wardrobe-item.locked {
+  opacity: 0.6;
+  background: #1a1a1a;
+}
+.wardrobe-item.locked:hover {
+  border-color: #ff3333;
+  opacity: 0.9;
+}
+
+.wardrobe-item.unlocked {
+  border-color: #27ae60;
+  opacity: 1;
+}
+
+.wardrobe-item.active-equip {
+  border-color: #00ff66;
+  background: rgba(0, 255, 102, 0.05);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+}
+.wardrobe-item.active-equip .status-lbl {
+  color: #00ff66;
+  font-weight: bold;
+}
