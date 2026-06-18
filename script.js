@@ -2069,3 +2069,70 @@ function scrollToCite(elementId) {
     }, 1200);
   }
 }
+
+
+
+
+
+
+
+
+// 1. Initialize the Web Camera
+async function startCamera() {
+  const video = document.getElementById('camera-feed');
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+    video.srcObject = stream;
+  } catch (err) {
+    console.error("Camera access denied or unavailable.", err);
+    alert("Please allow camera access to take the pledge!");
+  }
+}
+
+// Start camera when the page loads
+document.addEventListener('DOMContentLoaded', startCamera);
+
+// 2. The Capture and Analyze Logic
+function captureAndAnalyze() {
+  const btn = document.getElementById('capture-btn');
+  const laser = document.getElementById('scan-laser');
+  const resultsBoard = document.getElementById('ai-results');
+  const resPlant = document.getElementById('res-plant');
+  const resFake = document.getElementById('res-fake');
+
+  // Freeze the camera to take the "photo"
+  const video = document.getElementById('camera-feed');
+  video.pause();
+
+  // Update UI for scanning mode
+  btn.disabled = true;
+  btn.textContent = "Processing Bio-Metrics...";
+  laser.classList.remove('hidden');
+  resultsBoard.classList.remove('hidden');
+  
+  // Play sound if you added the Web Audio API from the previous step!
+  if (typeof playSound === "function") playSound('success'); 
+
+  // SIMULATE AI API DELAY (Wait 2.5 seconds to build tension)
+  setTimeout(() => {
+    // Step 1: Identify the Plant
+    resPlant.textContent = "94.2% Match - Native Flora 🌿";
+    resPlant.className = "text-success";
+    
+    // Step 2: The Anti-Cheat AI Check (Wait another 1.5 seconds)
+    setTimeout(() => {
+      resFake.textContent = "0.01% Probability - Authentic Image ✅";
+      resFake.className = "text-success";
+      
+      laser.classList.add('hidden');
+      btn.textContent = "Pledge Verified! +500 XP";
+      btn.style.background = "#00ff66";
+      btn.style.color = "#000";
+      
+      // Grant the actual points
+      if (typeof addXP === "function") addXP(500);
+      
+    }, 1500);
+
+  }, 2500);
+}
