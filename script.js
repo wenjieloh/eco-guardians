@@ -1964,3 +1964,86 @@ function getMascotMessage() {
 function sendPlayfulNotification() {
   new Notification("EcoGuardians:", { body: getMascotMessage() });
 }
+
+
+
+
+
+
+
+let gameInterval;
+let currentLeft = 0;
+let speedModifier = 4; // Corresponds to movement pixels per animation frame
+let isMovingRight = true;
+
+const gameConfig = {
+  normal: { speed: 4, windowMin: 76, windowMax: 86, xpReward: 15 },
+  insane: { speed: 8, windowMin: 78, windowMax: 84, xpReward: 40 },
+  demon:  { speed: 14, windowMin: 79, windowMax: 83, xpReward: 100 }
+};
+
+let activeDifficulty = 'normal';
+
+function startGameLoop() {
+  const bar = document.getElementById('rhythm-pulse-bar');
+  
+  function updateFrame() {
+    if (isMovingRight) {
+      currentLeft += speedModifier;
+      if (currentLeft >= 98) isMovingRight = false;
+    } else {
+      currentLeft -= speedModifier;
+      if (currentLeft <= 0) isMovingRight = true;
+    }
+    bar.style.left = currentLeft + '%';
+    gameInterval = requestAnimationFrame(updateFrame);
+  }
+  
+  gameInterval = requestAnimationFrame(updateFrame);
+}
+
+function handleZap() {
+  cancelAnimationFrame(gameInterval);
+  const config = gameConfig[activeDifficulty];
+  const feedback = document.getElementById('timing-feedback');
+
+  // Verify if indicator coordinates sit inside target alignment window margins
+  if (currentLeft >= config.windowMin && currentLeft <= config.windowMax) {
+    feedback.textContent = "PERFECT! 🟢";
+    feedback.style.color = "#00ff66";
+    if (typeof playSound === "function") playSound('success');
+    if (typeof addXP === "function") addXP(config.xpReward);
+  } else {
+    feedback.textContent = "CRITICAL MISS! 🔴";
+    feedback.style.color = "#ff3333";
+    if (typeof playSound === "function") playSound('fail');
+  }
+
+  // Auto-restart loop sequence after short brief delay matching rhythm cycles
+  setTimeout(() => {
+    feedback.textContent = "READY";
+    feedback.style.color = "#fff";
+    startGameLoop();
+  }, 800);
+}
+
+function changeDifficulty() {
+  const selection = document.getElementById('difficulty-select').value;
+  activeDifficulty = selection;
+  speedModifier = gameConfig[selection].speed;
+  cancelAnimationFrame(gameInterval);
+  startGameLoop();
+}
+
+// Bind native keyboard spacebar input event mechanics instantly for high response
+document.addEventListener('keydown', (e) => {
+  if (e.code === "Space") {
+    e.preventDefault(); // Stop window from scrolling downward unexpectedly
+    handleZap();
+  }
+});
+
+document.getElementById('zap-btn').addEventListener('click', handleZap);
+
+// Launch engine cycle on bootstrap init
+document.addEventListener('DOMContentLoaded', startGameLoop);
