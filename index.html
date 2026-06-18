@@ -11,13 +11,7 @@
 <body>
 
   <nav class="navbar">
-    <div class="nav-logo" onclick="showPage('home')">
-      <svg class="logo-leaf" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6 2 2 8 2 14c0 4 2.5 7 6 8.5V22h1v-1.5C11 21 12 21 12 21s1 0 3-.5V22h1v-1.5C19.5 19 22 16 22 14c0-6-4-12-10-12z" fill="#74c69d"/>
-        <path d="M12 6v14M8 10c1 1 3 2 4 4M16 10c-1 1-3 2-4 4" stroke="#1a3a2a" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      Plant Invaders SG
-    </div>
+    <div class="nav-logo" onclick="showPage('home')">Plant Invaders SG</div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#" onclick="showPage('home')" data-page="home" class="active">Home</a></li>
       <li><a href="#" onclick="showPage('learn')" data-page="learn">Learn</a></li>
@@ -26,10 +20,7 @@
       <li><a href="#" onclick="showPage('action')" data-page="action">Take Action</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-score" id="navScore">
-        <svg class="score-star" viewBox="0 0 16 16"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6" fill="#f4d03f"/></svg>
-        <span id="navScoreNum">0 pts</span>
-      </div>
+      <div class="nav-score" id="navScore">0 pts</div>
       <button class="hamburger" id="hamburger">
         <span></span><span></span><span></span>
       </button>
@@ -45,24 +36,15 @@
       <div class="hero-overlay"></div>
       <div class="hero-leaves" id="heroLeaves"></div>
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-flag">SG</span>
-          Singapore Environmental Alert
-        </div>
+        <div class="hero-badge">Singapore Environmental Alert</div>
         <h1>Plants Are <span class="green-text">Invading</span> Singapore!</h1>
         <p class="hero-sub">
           Right now, invasive plants are silently taking over Bukit Timah, the Southern Ridges,
           and your neighbourhood park. The good news? <strong>You can stop them.</strong>
         </p>
         <div class="btn-row">
-          <button class="btn btn-green" onclick="showPage('learn')">
-            <svg class="btn-icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 3a1 1 0 110 2 1 1 0 010-2zm1 9H9v-5h2v5z" fill="currentColor"/></svg>
-            Start Learning
-          </button>
-          <button class="btn btn-outline" onclick="showPage('games')">
-            <svg class="btn-icon" viewBox="0 0 20 20"><path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm6 3H7v2H5v2h2v2h2v-2h2v-2H9V8z" fill="currentColor"/></svg>
-            Play Games
-          </button>
+          <button class="btn btn-green" onclick="showPage('learn')">Start Learning</button>
+          <button class="btn btn-outline" onclick="showPage('games')">Play Games</button>
         </div>
         <div class="hero-stats">
           <div class="hstat">
@@ -83,12 +65,19 @@
       </div>
       <div class="hero-globe-area">
         <div class="globe-wrap">
-          <div class="globe-css"></div>
-          <div class="orbit orbit-1"><div class="orbit-dot dot-green"></div></div>
-          <div class="orbit orbit-2"><div class="orbit-dot dot-gold"></div></div>
-          <div class="orbit orbit-3"><div class="orbit-dot dot-teal"></div></div>
-          <div class="orbit orbit-4"><div class="orbit-dot dot-orange"></div></div>
-          <div class="orbit-ring"></div>
+          <div class="globe-track"></div>
+          <div class="globe-sphere">
+            <div class="globe-shine"></div>
+            <div class="globe-lat globe-lat-1"></div>
+            <div class="globe-lat globe-lat-2"></div>
+            <div class="globe-lat globe-lat-3"></div>
+            <div class="globe-long globe-long-1"></div>
+            <div class="globe-long globe-long-2"></div>
+          </div>
+          <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+          <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-2"></div></div>
+          <div class="orbit orbit-3"><div class="orbit-dot orbit-dot-3"></div></div>
+          <div class="orbit orbit-4"><div class="orbit-dot orbit-dot-4"></div></div>
         </div>
       </div>
     </header>
@@ -103,14 +92,14 @@
         </div>
         <div class="hook-grid">
           <div class="hook-card hc-red">
-            <div class="hook-icon hi-school"></div>
+            <div class="hook-icon hi-park"></div>
             <h3>Your Parks Are Under Threat</h3>
             <p>Invasive plants are taking over Bishan, Pasir Ris, and East Coast Park. Without us, Singapore's beautiful green spaces will disappear within decades.</p>
           </div>
           <div class="hook-card hc-green">
             <div class="hook-icon hi-career"></div>
             <h3>Real Career Opportunities</h3>
-            <p>Singapore's <strong>City in Nature</strong> vision is creating thousands of conservation and ecology jobs. Master this knowledge now to get your competitive edge!</p>
+            <p>Singapore's <strong>City in Nature</strong> vision is creating thousands of conservation and ecology jobs. Master this knowledge now to get your competitive edge.</p>
           </div>
           <div class="hook-card hc-yellow">
             <div class="hook-icon hi-heat"></div>
@@ -130,13 +119,13 @@
           <div class="hook-card hc-teal">
             <div class="hook-icon hi-science"></div>
             <h3>Citizen Science Is Real Science</h3>
-            <p>NParks and NUS researchers rely on student data from iNaturalist to track invasives. Your real-world sightings count as vital scientific observations!</p>
+            <p>NParks and NUS researchers rely on student data from iNaturalist to track invasives. Your real-world sightings count as vital scientific observations.</p>
           </div>
         </div>
         <div class="quote-banner">
           <div class="quote-mark">"</div>
           <p>Singapore has lost over 40% of its original biodiversity. But we still have Bukit Timah — one of the most biodiverse patches of rainforest on Earth. <strong>It's worth fighting for.</strong></p>
-          <button class="btn btn-green" onclick="showPage('learn')">I'm In — Let's Go →</button>
+          <button class="btn btn-green" onclick="showPage('learn')">I'm In — Let's Go</button>
         </div>
       </div>
     </section>
@@ -205,6 +194,7 @@
           <div class="sp-prev-card" onclick="showPage('species')">
             <div class="sp-prev-img">
               <img src="images/zanzibar.jpg" alt="Zanzibar Yam" onerror="this.style.display='none'"/>
+              <div class="sp-prev-bg sp-bg-green"></div>
               <div class="sp-prev-badge extreme">EXTREME</div>
             </div>
             <div class="sp-prev-info">
@@ -215,6 +205,7 @@
           <div class="sp-prev-card" onclick="showPage('species')">
             <div class="sp-prev-img">
               <img src="images/mam.jpg" alt="Mile-a-Minute" onerror="this.style.display='none'"/>
+              <div class="sp-prev-bg sp-bg-dark"></div>
               <div class="sp-prev-badge extreme">EXTREME</div>
             </div>
             <div class="sp-prev-info">
@@ -225,6 +216,7 @@
           <div class="sp-prev-card" onclick="showPage('species')">
             <div class="sp-prev-img">
               <img src="images/hyacinth.jpg" alt="Water Hyacinth" onerror="this.style.display='none'"/>
+              <div class="sp-prev-bg sp-bg-purple"></div>
               <div class="sp-prev-badge high">HIGH</div>
             </div>
             <div class="sp-prev-info">
@@ -235,6 +227,7 @@
           <div class="sp-prev-card" onclick="showPage('species')">
             <div class="sp-prev-img">
               <img src="images/clidemia.jpg" alt="Senduduk Bulu" onerror="this.style.display='none'"/>
+              <div class="sp-prev-bg sp-bg-pink"></div>
               <div class="sp-prev-badge high">HIGH</div>
             </div>
             <div class="sp-prev-info">
@@ -245,6 +238,7 @@
           <div class="sp-prev-card" onclick="showPage('species')">
             <div class="sp-prev-img">
               <img src="images/albizia.jpg" alt="Albizia" onerror="this.style.display='none'"/>
+              <div class="sp-prev-bg sp-bg-teal"></div>
               <div class="sp-prev-badge high">HIGH</div>
             </div>
             <div class="sp-prev-info">
@@ -254,9 +248,7 @@
           </div>
           <div class="sp-prev-card see-all-card" onclick="showPage('species')">
             <div class="sp-prev-img see-all-img">
-              <div class="see-all-icon">
-                <span></span><span></span>
-              </div>
+              <div class="see-all-plus"></div>
             </div>
             <div class="sp-prev-info">
               <h3>See All 8 Species</h3>
@@ -276,61 +268,60 @@
             <h2 class="white-text">5 Games. Real Knowledge.</h2>
             <div class="gt-list">
               <div class="gt-item">
-                <div class="gt-icon icon-blue">
-                  <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/><text x="10" y="14" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-weight="bold">?</text></svg>
-                </div>
+                <div class="gt-icon icon-blue"><div class="gt-icon-shape gti-question"></div></div>
                 <div>
                   <strong>SG Quiz</strong>
                   <span>12 Singapore-specific questions</span>
                 </div>
               </div>
               <div class="gt-item">
-                <div class="gt-icon icon-purple">
-                  <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="6" height="8" rx="1" fill="rgba(255,255,255,0.5)"/><rect x="11" y="4" width="6" height="8" rx="1" fill="rgba(255,255,255,0.3)"/></svg>
-                </div>
+                <div class="gt-icon icon-purple"><div class="gt-icon-shape gti-card"></div></div>
                 <div>
                   <strong>Memory Match</strong>
                   <span>Colour-coded plant matching</span>
                 </div>
               </div>
               <div class="gt-item">
-                <div class="gt-icon icon-green">
-                  <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><circle cx="10" cy="10" r="3" fill="rgba(255,255,255,0.5)"/></svg>
-                </div>
+                <div class="gt-icon icon-green"><div class="gt-icon-shape gti-target"></div></div>
                 <div>
                   <strong>Spot the Invader</strong>
                   <span>Native vs Invasive with photos</span>
                 </div>
               </div>
               <div class="gt-item">
-                <div class="gt-icon icon-red">
-                  <svg viewBox="0 0 20 20" fill="none"><path d="M4 14l4-8 4 5 2-3 3 6H4z" fill="rgba(255,255,255,0.5)"/></svg>
-                </div>
+                <div class="gt-icon icon-red"><div class="gt-icon-shape gti-runner"></div></div>
                 <div>
                   <strong>Plant Defender Runner</strong>
                   <span>2D endless runner game — NEW!</span>
                 </div>
               </div>
               <div class="gt-item">
-                <div class="gt-icon icon-teal">
-                  <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="2" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/><path d="M6 14l3-4 3 2 2-5" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </div>
+                <div class="gt-icon icon-teal"><div class="gt-icon-shape gti-map"></div></div>
                 <div>
                   <strong>Spread Simulator</strong>
                   <span>Watch invasions unfold over 30 years</span>
                 </div>
               </div>
             </div>
-            <button class="btn btn-white" onclick="showPage('games')">Play All Games →</button>
+            <button class="btn btn-white" onclick="showPage('games')">Play All Games</button>
           </div>
           <div class="gt-visual">
             <div class="runner-preview-box">
               <div class="rp-sky"></div>
               <div class="rp-ground"></div>
-              <div class="rp-char"></div>
-              <div class="rp-obs rp-obs1"></div>
-              <div class="rp-obs rp-obs2"></div>
-              <div class="rp-col"></div>
+              <div class="rp-char">
+                <div class="rp-char-head"></div>
+                <div class="rp-char-body"></div>
+              </div>
+              <div class="rp-obs rp-obs1">
+                <div class="rp-obs-shape"></div>
+              </div>
+              <div class="rp-obs rp-obs2">
+                <div class="rp-obs-shape rp-obs-shape-2"></div>
+              </div>
+              <div class="rp-col">
+                <div class="rp-col-dot"></div>
+              </div>
             </div>
             <p class="rp-label">Plant Defender Runner — NEW!</p>
           </div>
@@ -348,25 +339,25 @@
         <div class="three-cards">
           <div class="action-card border-green">
             <div class="ac-num">01</div>
-            <div class="ac-icon ai-phone"></div>
+            <div class="ac-icon aci-phone"></div>
             <h3>Report on iNaturalist SG</h3>
             <p>Download iNaturalist and log invasive plants near you. NParks and NUS researchers use this data directly to track and manage invasives.</p>
           </div>
           <div class="action-card border-blue">
             <div class="ac-num">02</div>
-            <div class="ac-icon ai-hands"></div>
+            <div class="ac-icon aci-hands"></div>
             <h3>Join NParks Volunteer Days</h3>
             <p>NParks runs invasive plant removal sessions at Bukit Timah and Central Catchment Nature Reserve. Open to students and families!</p>
           </div>
           <div class="action-card border-red">
             <div class="ac-num">03</div>
-            <div class="ac-icon ai-stop"></div>
+            <div class="ac-icon aci-stop"></div>
             <h3>Never Dump Garden Plants</h3>
             <p>Never release aquarium or garden plants into waterways or green spaces. This is one of the top ways invasives spread in Singapore.</p>
           </div>
         </div>
         <div class="center-btn">
-          <button class="btn btn-green" onclick="showPage('action')">Full Action Guide →</button>
+          <button class="btn btn-green" onclick="showPage('action')">Full Action Guide</button>
         </div>
       </div>
     </section>
@@ -478,54 +469,42 @@
           <p class="tab-intro">Singapore's unique geography creates specific pathways for invasives to enter and spread:</p>
           <div class="spread-grid">
             <div class="spread-item">
-              <div class="spread-icon si-red">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 6v6M14 12h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-              </div>
+              <div class="spread-icon si-red"><div class="si-shape si-ship"></div></div>
               <div>
                 <h4>Shipping and Trade</h4>
                 <p>Singapore handles 37 million containers per year — each a potential vector. Seeds hidden in soil, packaging, or produce slip through constantly.</p>
               </div>
             </div>
             <div class="spread-item">
-              <div class="spread-icon si-blue">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M2 12c2-4 6-7 10-7s8 3 10 7c-2 4-6 7-10 7S4 16 2 12z" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#fff" opacity="0.5"/></svg>
-              </div>
+              <div class="spread-icon si-blue"><div class="si-shape si-wave"></div></div>
               <div>
                 <h4>Waterways and Drains</h4>
                 <p>Singapore's canal network connects nature reserves to the coast. Water Hyacinth spreads rapidly through our drainage systems into reservoirs.</p>
               </div>
             </div>
             <div class="spread-item">
-              <div class="spread-icon si-purple">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 4c0 0-4 3-4 7s4 7 4 7 4-3 4-7-4-7-4-7z" stroke="#fff" stroke-width="2"/><path d="M8 11h8" stroke="#fff" stroke-width="1.5"/></svg>
-              </div>
+              <div class="spread-icon si-purple"><div class="si-shape si-bird"></div></div>
               <div>
                 <h4>Birds and Wildlife</h4>
                 <p>Invasive Javan Mynas eat Senduduk Bulu berries and deposit seeds throughout nature reserves — two invasives helping each other, an "invasion meltdown".</p>
               </div>
             </div>
             <div class="spread-item">
-              <div class="spread-icon si-orange">
-                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="10" width="18" height="11" rx="2" stroke="#fff" stroke-width="2"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#fff" stroke-width="2"/></svg>
-              </div>
+              <div class="spread-icon si-orange"><div class="si-shape si-house"></div></div>
               <div>
                 <h4>Irresponsible Gardening</h4>
                 <p>Aquarium plants dumped into canals and ornamentals thrown at forest edges are major problems. Never release garden plants into the wild!</p>
               </div>
             </div>
             <div class="spread-item">
-              <div class="spread-icon si-yellow">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v4M6 6l3 3M18 6l-3 3M4 12h4M16 12h4M6 18l3-3M18 18l-3-3M12 17v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-              </div>
+              <div class="spread-icon si-yellow"><div class="si-shape si-build"></div></div>
               <div>
                 <h4>Construction Sites</h4>
                 <p>Singapore's constant construction moves soil — and the seeds and rhizomes within it — to new locations where invasives thrive in disturbed ground.</p>
               </div>
             </div>
             <div class="spread-item">
-              <div class="spread-icon si-green">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 20V10M12 10c0 0-4-3-4-7 2 0 4 2 4 2s2-2 4-2c0 4-4 7-4 7z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
+              <div class="spread-icon si-green"><div class="si-shape si-sprout"></div></div>
               <div>
                 <h4>Bulbils and Rhizomes</h4>
                 <p>The Zanzibar Yam drops bulbils that remain dormant in soil for years, sprouting when conditions are right. Even tiny fragments regrow into full plants.</p>
@@ -665,34 +644,32 @@
               <p>Foliar sprays or stem injection. Used carefully to minimise impact on native plants. Never applied near waterways without special protocols.</p>
             </div>
             <div class="control-card ctrl-blue">
-              <div class="ctrl-icon ci-plant"></div>
+              <div class="ctrl-icon ci-seed"></div>
               <h4>Native Replanting</h4>
               <div class="ctrl-badge badge-good">Critical Step</div>
               <p>After removal, NParks replants native species to close the gap before invasives return. Volunteer planting events make a real difference!</p>
             </div>
             <div class="control-card ctrl-purple">
-              <div class="ctrl-icon ci-research"></div>
+              <div class="ctrl-icon ci-scope"></div>
               <h4>Research and Monitoring</h4>
               <div class="ctrl-badge badge-great">NUS + NParks</div>
               <p>GPS mapping and citizen science data from iNaturalist. Early detection data saves enormous costs in management later.</p>
             </div>
             <div class="control-card ctrl-teal">
-              <div class="ctrl-icon ci-clipboard"></div>
+              <div class="ctrl-icon ci-shield"></div>
               <h4>Biosecurity at Borders</h4>
               <div class="ctrl-badge badge-good">AVA Regulated</div>
               <p>AVA maintains a list of prohibited plants. All plant imports must be declared and inspected at Singapore's borders before entry.</p>
             </div>
             <div class="control-card ctrl-pink">
-              <div class="ctrl-icon ci-edu"></div>
+              <div class="ctrl-icon ci-book"></div>
               <h4>Education</h4>
               <div class="ctrl-badge badge-great">Most Sustainable!</div>
               <p>Long-term success depends on a public that understands invasive plants. That is why you learning this matters so much right now.</p>
             </div>
           </div>
           <div class="tip-box">
-            <div class="tip-icon">
-              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#d4a029" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="#d4a029" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
+            <div class="tip-icon"></div>
             <p><strong>Singapore tip:</strong> If you see Water Hyacinth in a canal, report to PUB's 24-hour hotline: <strong>1800-284-6600</strong>. For other invasives, use NParks' feedback portal or call <strong>1800-471-7300</strong>.</p>
           </div>
           <button class="mark-btn" onclick="markRead('control', this)">Mark as Read</button>
@@ -705,7 +682,7 @@
       <div class="container">
         <h2>Ready to Test Your Knowledge?</h2>
         <p class="section-sub">Try our Singapore quiz, runner game, and more!</p>
-        <button class="btn btn-green btn-large" onclick="showPage('games')">Play the Games →</button>
+        <button class="btn btn-green btn-large" onclick="showPage('games')">Play the Games</button>
       </div>
     </section>
 
@@ -742,7 +719,8 @@
 
           <div class="sp-card" data-category="extreme terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/zanzibar.jpg" alt="Zanzibar Yam" onerror="this.parentElement.style.background='#2d5a1a'; this.style.display='none'"/>
+              <img src="images/zanzibar.jpg" alt="Zanzibar Yam" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-green"></div>
               <div class="sp-danger-badge extreme">EXTREME</div>
             </div>
             <div class="sp-body">
@@ -754,7 +732,7 @@
                 <span>Island-wide</span>
                 <span>Up to 5m long</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-zanzibar', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-zanzibar', this)">Full Profile</button>
               <div class="sp-detail" id="sp-zanzibar">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -784,7 +762,8 @@
 
           <div class="sp-card" data-category="extreme terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/mam.jpg" alt="Mile-a-Minute" onerror="this.parentElement.style.background='#1a4a1a'; this.style.display='none'"/>
+              <img src="images/mam.jpg" alt="Mile-a-Minute" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-dark"></div>
               <div class="sp-danger-badge extreme">EXTREME</div>
             </div>
             <div class="sp-body">
@@ -796,7 +775,7 @@
                 <span>Island-wide</span>
                 <span>8cm per day</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-mam', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-mam', this)">Full Profile</button>
               <div class="sp-detail" id="sp-mam">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -826,7 +805,8 @@
 
           <div class="sp-card" data-category="high aquatic">
             <div class="sp-img-wrap">
-              <img src="images/hyacinth.jpg" alt="Water Hyacinth" onerror="this.parentElement.style.background='#3a1a6a'; this.style.display='none'"/>
+              <img src="images/hyacinth.jpg" alt="Water Hyacinth" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-purple"></div>
               <div class="sp-danger-badge high">HIGH</div>
             </div>
             <div class="sp-body">
@@ -838,7 +818,7 @@
                 <span>Canals, reservoirs</span>
                 <span>Doubles in 2 weeks</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-hyacinth', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-hyacinth', this)">Full Profile</button>
               <div class="sp-detail" id="sp-hyacinth">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -868,7 +848,8 @@
 
           <div class="sp-card" data-category="high terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/clidemia.jpg" alt="Senduduk Bulu" onerror="this.parentElement.style.background='#5a1a3a'; this.style.display='none'"/>
+              <img src="images/clidemia.jpg" alt="Senduduk Bulu" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-pink"></div>
               <div class="sp-danger-badge high">HIGH</div>
             </div>
             <div class="sp-body">
@@ -880,7 +861,7 @@
                 <span>Forest understorey</span>
                 <span>8,000 seeds per plant</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-clidemia', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-clidemia', this)">Full Profile</button>
               <div class="sp-detail" id="sp-clidemia">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -910,7 +891,8 @@
 
           <div class="sp-card" data-category="high terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/siam.jpg" alt="Siam Weed" onerror="this.parentElement.style.background='#4a3a1a'; this.style.display='none'"/>
+              <img src="images/siam.jpg" alt="Siam Weed" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-amber"></div>
               <div class="sp-danger-badge high">HIGH</div>
             </div>
             <div class="sp-body">
@@ -922,7 +904,7 @@
                 <span>Wasteland, edges</span>
                 <span>3m per season</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-siam', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-siam', this)">Full Profile</button>
               <div class="sp-detail" id="sp-siam">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -952,7 +934,8 @@
 
           <div class="sp-card" data-category="high terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/albizia.jpg" alt="Albizia" onerror="this.parentElement.style.background='#3a5a1a'; this.style.display='none'"/>
+              <img src="images/albizia.jpg" alt="Albizia" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-teal"></div>
               <div class="sp-danger-badge high">HIGH</div>
             </div>
             <div class="sp-body">
@@ -964,11 +947,11 @@
                 <span>Parks, forests</span>
                 <span>Grows 7m per year</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-albizia', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-albizia', this)">Full Profile</button>
               <div class="sp-detail" id="sp-albizia">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
-                  <p>Extremely common across Singapore in secondary forests and parks. Deliberately planted for shade in the past — before its invasive and structurally dangerous nature was fully understood.</p>
+                  <p>Extremely common across Singapore in secondary forests and parks. Deliberately planted for shade in the past — before its invasive and structurally dangerous nature was fully understood by planners.</p>
                 </div>
                 <div class="sp-detail-section">
                   <h5>How It Kills</h5>
@@ -994,7 +977,8 @@
 
           <div class="sp-card" data-category="medium terrestrial">
             <div class="sp-img-wrap">
-              <img src="images/lantana.jpg" alt="Lantana" onerror="this.parentElement.style.background='#6a2a1a'; this.style.display='none'"/>
+              <img src="images/lantana.jpg" alt="Lantana" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-orange"></div>
               <div class="sp-danger-badge medium">MEDIUM</div>
             </div>
             <div class="sp-body">
@@ -1006,7 +990,7 @@
                 <span>Gardens, edges</span>
                 <span>Toxic berries</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-lantana', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-lantana', this)">Full Profile</button>
               <div class="sp-detail" id="sp-lantana">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -1036,7 +1020,8 @@
 
           <div class="sp-card" data-category="medium aquatic">
             <div class="sp-img-wrap">
-              <img src="images/salvinia.jpg" alt="Giant Salvinia" onerror="this.parentElement.style.background='#1a3a5a'; this.style.display='none'"/>
+              <img src="images/salvinia.jpg" alt="Giant Salvinia" onerror="this.style.display='none'"/>
+              <div class="sp-img-bg sp-img-bg-blue"></div>
               <div class="sp-danger-badge medium">MEDIUM</div>
             </div>
             <div class="sp-body">
@@ -1048,7 +1033,7 @@
                 <span>Ponds, canals</span>
                 <span>Doubles in 2.5 days</span>
               </div>
-              <button class="sp-expand-btn" onclick="toggleSpecies('sp-salvinia', this)">Full Profile ▼</button>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-salvinia', this)">Full Profile</button>
               <div class="sp-detail" id="sp-salvinia">
                 <div class="sp-detail-section">
                   <h5>Habitat in Singapore</h5>
@@ -1150,24 +1135,24 @@
       <div class="container">
         <div class="game-tabs">
           <button class="game-tab active-tab" onclick="switchGame('quiz', this)">
-            <div class="gt-emoji gt-quiz"></div>
+            <div class="gt-tab-icon gtt-quiz"></div>
             <span class="gt-name">SG Quiz</span>
           </button>
           <button class="game-tab" onclick="switchGame('memory', this)">
-            <div class="gt-emoji gt-memory"></div>
+            <div class="gt-tab-icon gtt-memory"></div>
             <span class="gt-name">Memory Match</span>
           </button>
           <button class="game-tab" onclick="switchGame('spot', this)">
-            <div class="gt-emoji gt-spot"></div>
+            <div class="gt-tab-icon gtt-spot"></div>
             <span class="gt-name">Spot the Invader</span>
           </button>
           <button class="game-tab" onclick="switchGame('runner', this)">
-            <div class="gt-emoji gt-runner"></div>
+            <div class="gt-tab-icon gtt-runner"></div>
             <span class="gt-name">Plant Defender</span>
             <span class="new-badge">NEW</span>
           </button>
           <button class="game-tab" onclick="switchGame('spread', this)">
-            <div class="gt-emoji gt-spread"></div>
+            <div class="gt-tab-icon gtt-spread"></div>
             <span class="gt-name">Spread Sim</span>
           </button>
         </div>
@@ -1191,10 +1176,10 @@
               <p class="question-text" id="questionText">Loading question...</p>
               <div class="answers-grid" id="answersGrid"></div>
               <div class="quiz-feedback" id="quizFeedback" style="display:none;"></div>
-              <button class="btn btn-green" id="quizNextBtn" style="display:none; margin-top:1rem;" onclick="nextQuestion()">Next Question →</button>
+              <button class="btn btn-green" id="quizNextBtn" style="display:none; margin-top:1rem;" onclick="nextQuestion()">Next Question</button>
             </div>
             <div class="game-complete" id="quizComplete" style="display:none;">
-              <div class="gc-icon"></div>
+              <div class="gc-icon gc-trophy"></div>
               <h3>Quiz Complete!</h3>
               <p>You scored <strong id="quizFinalScore">0</strong> out of 12</p>
               <div class="gc-message" id="quizMessage"></div>
@@ -1214,7 +1199,7 @@
             <div class="memory-legend" id="memoryLegend"></div>
             <div class="memory-grid" id="memoryGrid"></div>
             <div class="game-complete" id="memoryComplete" style="display:none;">
-              <div class="gc-icon"></div>
+              <div class="gc-icon gc-trophy"></div>
               <h3>All Matched!</h3>
               <p>Completed in <strong id="memFinalMoves">0</strong> moves</p>
               <button class="btn btn-green" onclick="startMemory()">Play Again</button>
@@ -1244,7 +1229,7 @@
               <div class="spot-feedback" id="spotFeedback" style="display:none;"></div>
             </div>
             <div class="game-complete" id="spotComplete" style="display:none;">
-              <div class="gc-icon"></div>
+              <div class="gc-icon gc-star"></div>
               <h3>Round Complete!</h3>
               <p>You scored <strong id="spotFinalScore">0</strong> out of 10</p>
               <button class="btn btn-green" onclick="startSpot()">Play Again</button>
@@ -1260,22 +1245,18 @@
               <div class="runner-hud">
                 <span>Score: <strong id="runnerScoreDisplay">0</strong></span>
                 <span>Best: <strong id="runnerBest">0</strong></span>
-                <span id="runnerLivesDisplay" class="runner-lives">
-                  <span class="life-pip"></span><span class="life-pip"></span><span class="life-pip"></span>
-                </span>
+                <span id="runnerLivesDisplay">Lives: 3</span>
               </div>
             </div>
             <div class="runner-canvas-wrap">
               <canvas id="runnerCanvas" width="680" height="260"></canvas>
               <div class="runner-start-screen" id="runnerStartScreen">
-                <div class="rss-icon-wrap">
-                  <div class="rss-runner-icon"></div>
-                </div>
+                <div class="rss-orb"></div>
                 <h3>Plant Defender Runner</h3>
                 <p>Run through Bukit Timah! Jump over invasive plants and collect native species for points.</p>
                 <div class="rss-controls">
                   <span>Space / Tap = Jump</span>
-                  <span>Down Arrow = Slide</span>
+                  <span>Arrow Down = Slide</span>
                 </div>
                 <button class="btn btn-green" onclick="startRunner()">Start Running!</button>
               </div>
@@ -1297,13 +1278,7 @@
               <h2>Singapore Spread Simulator</h2>
               <div class="game-stat">Year <span id="simYear">0</span> · <span id="simPct">0</span>% invaded</div>
             </div>
-            <p class="game-intro">
-              <span class="sim-legend-dot dot-healthy"></span> Healthy forest
-              &nbsp;<span class="sim-legend-dot dot-invaded"></span> Invaded
-              &nbsp;<span class="sim-legend-dot dot-water"></span> Water
-              &nbsp;<span class="sim-legend-dot dot-protected"></span> Protected.
-              Press NParks Intervenes to fight back!
-            </p>
+            <p class="game-intro">Green = Healthy forest &nbsp; Red = Invaded &nbsp; Blue = Water &nbsp; Brown = Protected. Press NParks Intervenes to fight back!</p>
             <div class="sim-controls">
               <div class="sim-ctrl-group">
                 <label>Invasive Species</label>
@@ -1403,35 +1378,35 @@
         </div>
         <div class="how-to-list">
           <div class="how-step">
-            <div class="how-icon hi-phone"></div>
+            <div class="how-icon hi-step hi-phone"></div>
             <div>
               <h4>Step 1: Download iNaturalist</h4>
               <p>Free on iOS and Android. Singapore has an active community — responses often come from NParks or NUS researchers within just a few hours of submission.</p>
             </div>
           </div>
           <div class="how-step">
-            <div class="how-icon hi-camera"></div>
+            <div class="how-icon hi-step hi-camera"></div>
             <div>
               <h4>Step 2: Photograph Clearly</h4>
               <p>Take multiple photos: the whole plant, leaves top and bottom, stem, and flowers or fruits if visible. More detail means a more accurate identification from the community.</p>
             </div>
           </div>
           <div class="how-step">
-            <div class="how-icon hi-pin"></div>
+            <div class="how-icon hi-step hi-pin"></div>
             <div>
               <h4>Step 3: Enable GPS Location</h4>
               <p>Make sure location services are on when you photograph — precise GPS coordinates are what make citizen science data useful to NParks researchers tracking spread.</p>
             </div>
           </div>
           <div class="how-step">
-            <div class="how-icon hi-check"></div>
+            <div class="how-icon hi-step hi-check"></div>
             <div>
               <h4>Step 4: Submit the Observation</h4>
               <p>Upload to iNaturalist. Add notes about infestation size and density. All details help researchers prioritise which areas need the most urgent management action.</p>
             </div>
           </div>
           <div class="how-step">
-            <div class="how-icon hi-alert"></div>
+            <div class="how-icon hi-step hi-alert"></div>
             <div>
               <h4>Step 5: Report Formally if Needed</h4>
               <p>For serious infestations: NParks <strong>1800-471-7300</strong> or the OneService app. For aquatic invasives in canals or reservoirs: PUB <strong>1800-284-6600</strong>.</p>
@@ -1480,37 +1455,37 @@
         </div>
         <div class="activity-grid">
           <div class="act-card">
-            <div class="act-icon act-map"></div>
+            <div class="act-icon ai-map"></div>
             <h4>School Nature Audit</h4>
             <p>Survey your school garden or nearby park using iNaturalist. Map native vs invasive species and present your findings to your teacher or at a school assembly.</p>
             <div class="act-level">All Levels</div>
           </div>
           <div class="act-card">
-            <div class="act-icon act-chart"></div>
+            <div class="act-icon ai-chart"></div>
             <h4>Biodiversity Data Project</h4>
             <p>Compare iNaturalist species counts from an invaded area vs a healthy native area. Analyse the difference in plant diversity and present your data to class.</p>
             <div class="act-level">Secondary School</div>
           </div>
           <div class="act-card">
-            <div class="act-icon act-megaphone"></div>
+            <div class="act-icon ai-megaphone"></div>
             <h4>Awareness Campaign</h4>
             <p>Design posters, Instagram content, or a Kahoot quiz about Singapore's invasive plants. Share with your school community or your neighbourhood residents' committee.</p>
             <div class="act-level">All Levels</div>
           </div>
           <div class="act-card">
-            <div class="act-icon act-hands"></div>
+            <div class="act-icon ai-hands"></div>
             <h4>NParks Volunteer Day</h4>
             <p>Sign up for NParks' Friends of the Parks programme. Invasive plant removal sessions run regularly at multiple nature reserves and are open to students.</p>
             <div class="act-level">With Adult Supervision</div>
           </div>
           <div class="act-card">
-            <div class="act-icon act-seedling"></div>
+            <div class="act-icon ai-plant"></div>
             <h4>Native Plant Project</h4>
             <p>Grow Singapore native species — Tembusu, Sea Apple, or Singapore Kopsia — from seed and plant them in your school grounds with permission.</p>
             <div class="act-level">Primary School</div>
           </div>
           <div class="act-card">
-            <div class="act-icon act-film"></div>
+            <div class="act-icon ai-camera"></div>
             <h4>Mini Documentary</h4>
             <p>Film a short video about an invasive plant in your neighbourhood. Interview an NParks volunteer, show before and after photos, and post to raise awareness online.</p>
             <div class="act-level">Secondary School</div>
@@ -1527,25 +1502,25 @@
         </div>
         <div class="resource-grid">
           <div class="res-card">
-            <div class="res-icon res-nparks"></div>
+            <div class="res-icon ri-leaf"></div>
             <h4>NParks Flora and Fauna Web</h4>
             <p>Singapore's official database of all recorded plant species including invasives. Use it to look up any plant you find in the field.</p>
             <span class="res-link">nparks.gov.sg</span>
           </div>
           <div class="res-card">
-            <div class="res-icon res-app"></div>
+            <div class="res-icon ri-phone"></div>
             <h4>iNaturalist Singapore</h4>
             <p>Log your observations and connect with Singapore's active naturalist community. Your data goes directly to NParks and NUS researchers.</p>
             <span class="res-link">inaturalist.org</span>
           </div>
           <div class="res-card">
-            <div class="res-icon res-nus"></div>
+            <div class="res-icon ri-building"></div>
             <h4>NUS Biological Sciences</h4>
             <p>NUS runs citizen science programmes where students contribute to real invasive species research. Contact their outreach team for school collaboration.</p>
             <span class="res-link">dbs.nus.edu.sg</span>
           </div>
           <div class="res-card">
-            <div class="res-icon res-phone"></div>
+            <div class="res-icon ri-call"></div>
             <h4>NParks Hotline</h4>
             <p>Report invasive plants or get advice on removal. They respond to all reports and prioritise nature reserve infestations for rapid management.</p>
             <span class="res-link">1800-471-7300</span>
@@ -1561,10 +1536,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="footer-logo" onclick="showPage('home')">
-            <svg class="logo-leaf" viewBox="0 0 24 24" fill="none"><path d="M12 2C6 2 2 8 2 14c0 4 2.5 7 6 8.5V22h1v-1.5C11 21 12 21 12 21s1 0 3-.5V22h1v-1.5C19.5 19 22 16 22 14c0-6-4-12-10-12z" fill="#74c69d"/><path d="M12 6v14M8 10c1 1 3 2 4 4M16 10c-1 1-3 2-4 4" stroke="#1a3a2a" stroke-width="1.5" stroke-linecap="round"/></svg>
-            Plant Invaders SG
-          </div>
+          <div class="footer-logo" onclick="showPage('home')">Plant Invaders SG</div>
           <p>A Singapore-focused educational resource for primary and secondary school students.</p>
           <p class="footer-credit">Data from NParks Flora and Fauna Web, NUS research publications, and IUCN databases.</p>
         </div>
@@ -1576,7 +1548,7 @@
           <a onclick="showPage('action')">Take Action</a>
         </div>
       </div>
-      <div class="footer-bottom">For Singapore students | Educational Use Only | Data from NParks, NUS and IUCN</div>
+      <div class="footer-bottom">For Singapore Students | Educational Use Only | Data from NParks, NUS and IUCN</div>
     </div>
   </footer>
 
