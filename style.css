@@ -3529,3 +3529,79 @@ ul li { margin-bottom: 0.4rem; }
     animation: none;
   }
 }
+
+
+
+
+
+
+/* ===== GEOMETRY DASH ECO-ENGINE ===== */
+.gd-rhythm-module {
+  background: #0f1c14;
+  border: 3px solid var(--clr-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
+  text-align: center;
+  padding: var(--space-md);
+}
+
+.rhythm-track-container {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: #1a2e22;
+  border-radius: 20px;
+  margin: var(--space-lg) 0;
+  overflow: hidden;
+  border: 2px solid #333;
+}
+
+/* Perfect timing strike window placed at 80% mark */
+.target-zone {
+  position: absolute;
+  left: 80%;
+  width: 40px;
+  height: 100%;
+  background: rgba(0, 255, 102, 0.3);
+  border-left: 3px dashed #00ff66;
+  border-right: 3px dashed #00ff66;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+  z-index: 1;
+}
+
+/* The moving indicator tracking across the rail */
+.pulse-bar {
+  position: absolute;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0 0 12px #ffffff;
+  border-radius: 6px;
+}
+
+/* Hyper-Responsive Input Action Button */
+.gd-action-btn {
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(135deg, #27ae60, #1e824c);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 900;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 6px 0 #145833;
+  transition: transform 0.05s ease;
+}
+
+.gd-action-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #145833;
+}
+
+.feedback-text {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: var(--space-sm);
+  letter-spacing: 2px;
+}
