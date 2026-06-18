@@ -1672,3 +1672,32 @@
   </aside>
 
 </div>
+
+
+
+
+
+
+<div class="eco-card scanner-module">
+  <div class="scanner-header">
+    <h3>🌍 Guardian Pledge Scanner</h3>
+    <p>Aim your camera at the plant. Do not use screens or AI-generated images.</p>
+  </div>
+
+  <div class="camera-container">
+    <video id="camera-feed" autoplay playsinline></video>
+    
+    <div class="pledge-overlay">
+      "I pledge to protect our native ecosystem."
+    </div>
+
+    <div id="scan-laser" class="laser-line hidden"></div>
+  </div>
+
+  <div id="ai-results" class="results-board hidden">
+    <div class="result-row">🌿 Bio-Signature: <span id="res-plant" class="loading-text">Analyzing...</span></div>
+    <div class="result-row">🤖 AI Forgery Check: <span id="res-fake" class="loading-text">Analyzing...</span></div>
+  </div>
+
+  <button id="capture-btn" class="btn btn-green" onclick="captureAndAnalyze()">Take Photo & Verify</button>
+</div>
