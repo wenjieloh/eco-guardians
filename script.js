@@ -2047,3 +2047,25 @@ document.getElementById('zap-btn').addEventListener('click', handleZap);
 
 // Launch engine cycle on bootstrap init
 document.addEventListener('DOMContentLoaded', startGameLoop);
+
+
+
+
+
+
+
+
+// High-accuracy navigational tracking script for reference matching
+function scrollToCite(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Briefly apply a soft flash indicator effect to anchor point target
+    element.style.transition = "background-color 0.3s ease";
+    element.style.backgroundColor = "#fff9e6";
+    setTimeout(() => {
+      element.style.backgroundColor = "transparent";
+    }, 1200);
+  }
+}
