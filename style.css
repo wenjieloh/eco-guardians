@@ -3855,3 +3855,76 @@ ul li { margin-bottom: 0.4rem; }
 .result-row { margin: 5px 0; font-size: 1.1rem; }
 .text-success { color: #00ff66; font-weight: bold; }
 .text-danger { color: #ff3333; font-weight: bold; }
+
+
+
+
+
+/* ===== WARDROBE & ECONOMY ===== */
+.wardrobe-container {
+  display: flex;
+  gap: 20px;
+  background: #111;
+  color: white;
+  border: 2px solid var(--clr-primary);
+}
+
+/* Avatar Preview Window */
+.avatar-display {
+  flex: 1;
+  text-align: center;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid #333;
+}
+
+.avatar-frame {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  background: #222;
+  border-radius: 50%;
+  border: 3px solid #00ff66;
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-layer {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+#costume-layer {
+  top: -20px; /* Positions the hat/costume above the base */
+  font-size: 4rem;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.xp-wallet {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+.xp-text { color: #ffd700; } /* Gold for currency */
+
+/* Shop Grid */
+.costume-shop { flex: 2; }
+.shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; }
+
+.shop-item {
+  background: #222;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #444;
+  transition: transform 0.2s;
+}
+
+.shop-item:hover { transform: scale(1.05); }
+.item-icon { font-size: 3rem; margin-bottom: 10px; }
+.cost-tag { color: #ffd700; font-weight: bold; margin
