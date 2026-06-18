@@ -2210,3 +2210,26 @@ function equipAvatar(emoji, titleName, targetElement = null) {
 document.addEventListener('DOMContentLoaded', () => {
   updateWardrobeDisplay();
 });
+
+
+
+
+
+// The "Source of Truth"
+let gameState = {
+  xp: 0,
+  streak: 0,
+  unlockedItems: ['seedling'],
+  lastLogin: '2026-06-18'
+};
+
+// The "Saver"
+function saveProgress() {
+  localStorage.setItem('ecoGuardianSave', JSON.stringify(gameState));
+}
+
+// The "Loader"
+function loadProgress() {
+  const saved = localStorage.getItem('ecoGuardianSave');
+  if (saved) gameState = JSON.parse(saved);
+}
