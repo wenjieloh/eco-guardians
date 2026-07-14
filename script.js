@@ -74,7 +74,44 @@ function updateAllScores() {
   document.getElementById('totalScoreVal').textContent = total;
   document.getElementById('navScore').textContent = total + ' pts';
 }
+document.addEventListener('DOMContentLoaded', () => {
+  initApplicationRouter();
+});
 
+function initApplicationRouter() {
+  const navAnchors = document.querySelectorAll('.nav-links a, .nav-logo');
+  const targetPages = document.querySelectorAll('.page');
+
+  navAnchors.forEach(anchor => {
+    anchor.addEventListener('click', (event) => {
+      event.preventDefault();
+      
+      // Fallback fallback to dashboard page if logo wrapper element clicked
+      const targetId = anchor.getAttribute('data-target') || 'hero';
+      const destinationPage = document.getElementById(`${targetId}-page`);
+
+      if (!destinationPage) return;
+
+      // Clean viewport panel cycling execution loop
+      targetPages.forEach(page => {
+        page.classList.remove('active');
+        page.setAttribute('aria-hidden', 'true');
+      });
+
+      destinationPage.classList.add('active');
+      destinationPage.setAttribute('aria-hidden', 'false');
+
+      // Update active state indication across nav links
+      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+      if (anchor.tagName === 'A') {
+        anchor.classList.add('active');
+      }
+      
+      // Automatically scroll window layout seamlessly to viewport top point
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+}
 // ============================================================
 // FALLING LEAVES ON HERO — CSS only, no emoji text
 // ============================================================
