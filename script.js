@@ -1,6 +1,32 @@
 // ============================================================
 // NAVIGATION
 // ============================================================
+// A single function to rule them all
+function initNavigation() {
+  const navLinks = document.querySelectorAll('[data-target]');
+  const pages = document.querySelectorAll('.page');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetPageId = link.getAttribute('data-target');
+
+      pages.forEach(page => {
+        if (page.id === `${targetPageId}-page`) {
+          page.classList.add('active');
+          page.setAttribute('aria-hidden', 'false');
+        } else {
+          page.classList.remove('active');
+          page.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      // Update active nav link styling
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+}
 var gameScores = { quiz: 0, memory: 0, spot: 0, chain: 0 };
 
 function showPage(name) {
@@ -145,6 +171,24 @@ function toggleSpecies(id, btn) {
 // ============================================================
 // GAME SWITCHER
 // ============================================================
+// Save score whenever they earn points
+function updateScore(points) {
+  let currentScore = parseInt(localStorage.getItem('ecoScore')) || 0;
+  currentScore += points;
+  
+  localStorage.setItem('ecoScore', currentScore);
+  displayScore(currentScore);
+}
+
+// Load score when the web page first boot ups
+document.addEventListener('DOMContentLoaded', () => {
+  const savedScore = localStorage.getItem('ecoScore') || 0;
+  displayScore(savedScore);
+});
+
+function displayScore(score) {
+  document.querySelector('.nav-score').textContent = `🍃 Score: ${score}`;
+}
 function switchGame(name, clickedTab) {
   var panels = document.querySelectorAll('.game-panel');
   for (var p = 0; p < panels.length; p++) panels[p].classList.remove('active-panel');
