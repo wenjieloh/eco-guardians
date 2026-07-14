@@ -19,8 +19,40 @@ body {
   background: var(--clr-bg);
   color: var(--clr-dark);
 }
-
-
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 3px dashed var(--clr-primary);
+  outline-offset: 4px;
+}
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger */
+  }
+  .nav-links {
+    display: none; /* Hide normal links, trigger via JS later */
+  }
+  .nav-right {
+    display: none; /* Hide score/extras on small screens to save space */
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-nav: 500;
+  --z-modal: 1000;
+  --z-toast: 2000;
+}
 /* ===== RESET AND BASE ===== */
 *, *::before, *::after {
   box-sizing: border-box;
