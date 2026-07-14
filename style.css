@@ -1,3 +1,26 @@
+/* ===== DESIGN SYSTEM (VARIABLES) ===== */
+:root {
+  /* Colors */
+  --clr-primary: #52b788;
+  --clr-primary-light: #74c69d;
+  --clr-dark: #1a3a2a;
+  --clr-bg: #fef9ef;
+  --clr-accent: #f4d03f;
+  --clr-danger: #e74c3c;
+  
+  /* Fonts */
+  --font-body: 'Nunito', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
+}
+
+/* Usage Example */
+body {
+  font-family: var(--font-body);
+  background: var(--clr-bg);
+  color: var(--clr-dark);
+}
+
+
 /* ===== RESET AND BASE ===== */
 *, *::before, *::after {
   box-sizing: border-box;
