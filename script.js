@@ -208,6 +208,19 @@ function toggleSpecies(id, btn) {
 // ============================================================
 // GAME SWITCHER
 // ============================================================
+let gameScore = 0;
+
+function enemyDodgedOrItemCollected(points) {
+  gameScore += points;
+  document.querySelector('.nav-score').textContent = `🍃 Score: ${gameScore}`;
+  
+  // Instant Reward Milestones
+  if (gameScore === 50) {
+    showToast("🏅 Badge Earned: Novice Ranger!");
+  } else if (gameScore === 150) {
+    showToast("🌟 Badge Earned: Habitat Guardian!");
+  }
+}
 // Save score whenever they earn points
 function updateScore(points) {
   let currentScore = parseInt(localStorage.getItem('ecoScore')) || 0;
