@@ -7,7 +7,22 @@ An interactive educational platform designed for secondary and primary school st
 
 ## 🚀 Live Demo
 [Insert your GitHub Pages Link here]
+## 📂 Architecture Overview
+├── index.html          # Semantic single-page shell (ARIA accessible)
+├── css/
+│   └── style.css       # Unified design system built with CSS variables
+└── js/
+└── main.js         # Modular layout routing & interactive handlers
 
+## 🎯 Strategic Imperatives
+* **Educate:** Identify invasive threats like Kudzu and Giant Hogweed across native landscapes.
+* **Engage:** Reinforce classroom learning through responsive, gamified challenges.
+* **Empower:** Share actionable checklists to build field research skills.
+
+## 🛠️ Key Enhancements
+* **Unified Layout Engine:** Standardized card grids and responsive relative typography (`clamp()`).
+* **Accessible Coding Standards:** Native keyboard focus indicators (`:focus-visible`) and safe motion optimizations (`prefers-reduced-motion`).
+* **Clean Graphics System:** Modern, geometric CSS animations replacing legacy emoji styling for a clean, cohesive layout.
 ## 🎯 Project Goals
 * **Educate:** Teach students how to identify high-risk invasive species like Kudzu and Giant Hogweed.
 * **Engage:** Use gamification (Memory Match) and interactive quizzes to reinforce learning.
