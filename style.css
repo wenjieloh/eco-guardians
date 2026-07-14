@@ -13,13 +13,469 @@ body {
 a { text-decoration: none; color: inherit; cursor: pointer; }
 ul { padding-left: 1.2rem; }
 ul li { margin-bottom: 0.4rem; }
+/* ==========================================================================
+   1. DESIGN SYSTEM & VARIABLE REGISTRY
+   ========================================================================== */
+:root {
+  /* Color Palette */
+  --clr-forest-dark: #0a1910;
+  --clr-forest-mid: #1a3a2a;
+  --clr-forest-light: #2d6a4f;
+  --clr-primary: #52b788;
+  --clr-primary-tint: #74c69d;
+  --clr-accent: #f4d03f;
+  --clr-bg-warm: #fef9ef;
+  --clr-bg-light: #f4faf7;
+  --clr-white: #ffffff;
+  
+  /* System / Status Signals */
+  --clr-danger: #e74c3c;
+  --clr-danger-bg: rgba(231, 76, 60, 0.1);
+  --clr-warning: #e67e22;
+  --clr-info: #3498db;
+  --clr-purple: #9b59b6;
+  --clr-teal: #16a085;
 
+  /* Typography */
+  --font-heading: 'Fredoka', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  
+  /* Uniform Layout Spacing Scales */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 5rem;
+  
+  /* Global Design Constants */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 50px;
+  --shadow-subtle: 0 4px 18px rgba(13, 43, 26, 0.06);
+  --shadow-hover: 0 16px 40px rgba(13, 43, 26, 0.14);
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==========================================================================
+   2. RESET & BASE LAYOUT CONFIGURATION
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-bg-warm);
+  color: var(--clr-forest-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Global Typography Hierarchy */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--clr-forest-mid);
+  line-height: 1.2;
+}
+
+/* Page Toggling Architecture */
+.page, .game-panel {
+  display: none;
+}
+.page.active, .game-panel.active-panel {
+  display: block;
+}
+
+/* Structural Layout Scaffolding */
+.section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.white-section { background: var(--clr-white); }
+.light-section { background: var(--clr-bg-light); }
+.dark-section {
+  background: linear-gradient(135deg, var(--clr-forest-dark), var(--clr-forest-mid), var(--clr-forest-light));
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   3. UNIFIED COMPONENT SYSTEM (BUTTONS, TAGS, HEADERS)
+   ========================================================================== */
+/* Form Buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-green {
+  background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-tint));
+  color: var(--clr-white);
+  box-shadow: 0 4px 14px rgba(82, 183, 136, 0.3);
+}
+.btn-green:hover { box-shadow: 0 8px 22px rgba(82, 183, 136, 0.5); }
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--clr-white);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+}
+.btn-outline:hover { border-color: var(--clr-white); background: rgba(255, 255, 255, 0.15); }
+
+.btn-white {
+  background: var(--clr-white);
+  color: var(--clr-forest-mid);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-red {
+  background: linear-gradient(135deg, var(--shadow-hover), var(--clr-danger));
+  color: var(--clr-white);
+}
+
+/* Metadata Display Badges & Tags */
+.tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-xs);
+}
+
+.tag-red { background: var(--clr-danger-bg); color: var(--clr-danger); }
+.tag-green { background: rgba(82, 183, 136, 0.15); color: var(--clr-forest-light); }
+.tag-orange { background: rgba(230, 126, 34, 0.1); color: var(--clr-warning); }
+.tag-blue { background: rgba(52, 152, 219, 0.1); color: var(--clr-info); }
+.tag-white { background: rgba(255, 255, 255, 0.2); color: var(--clr-white); }
+
+/* Dynamic Layout Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: var(--space-xs);
+}
+
+.section-sub {
+  color: var(--clr-forest-light);
+  font-size: 1rem;
+}
+
+/* Single Page Application Section Headers */
+.page-header {
+  padding: 120px var(--space-md) var(--space-lg);
+  text-align: center;
+  color: var(--clr-white);
+  position: relative;
+}
+
+.page-header h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--clr-white);
+  margin-bottom: var(--space-xs);
+}
+
+.page-header p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header-green { background: linear-gradient(135deg, var(--clr-forest-dark), var(--clr-forest-mid)); }
+.header-teal { background: linear-gradient(135deg, var(--clr-forest-dark), var(--clr-teal)); }
+
+/* ==========================================================================
+   4. SYSTEM NAVIGATION & INTERACTIVE TOASTS
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(10, 25, 16, 0.95);
+  backdrop-filter: blur(12px);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-md);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--clr-primary-tint);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Minimalist CSS Visual replacing emoji logo bullet point */
+.nav-logo::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--clr-accent);
+  border-radius: var(--radius-full);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--space-xs);
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--clr-primary);
+  color: var(--clr-white);
+}
+
+.nav-score {
+  background: rgba(244, 208, 63, 0.15);
+  border: 1px solid rgba(244, 208, 63, 0.3);
+  color: var(--clr-accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+}
+
+/* In-App System Alerts */
+.toast {
+  position: fixed;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%) translateY(120px);
+  background: var(--clr-forest-mid);
+  color: var(--clr-white);
+  padding: 0.75rem var(--space-md);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.88rem;
+  z-index: 2000;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  border-left: 4px solid var(--clr-primary);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ==========================================================================
+   5. SOLIDIFIED LAYOUT CARD FRAMEWORKS (GRID HARMONIZATION)
+   ========================================================================== */
+/* Standard Core Layout Grids */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+/* Core Standardized Card Engine */
+.eco-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-subtle);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.eco-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--clr-primary-tint);
+}
+
+/* Specific Card Layout Adaptations */
+.eco-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.eco-card p {
+  color: var(--clr-forest-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Color Identity Left Borders for Action Cards */
+.eco-card.border-green::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--clr-primary); }
+.eco-card.border-blue::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--clr-info); }
+.eco-card.border-red::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--clr-danger); }
+
+/* Card Display Images */
+.card-media-wrap {
+  height: 150px;
+  background: linear-gradient(135deg, var(--clr-forest-dark), var(--clr-forest-mid));
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   6. CLEAN CSS GEOMETRIC GRAPHICS & PLACEHOLDERS
+   ========================================================================== */
+/* Unified Vector Asset Placeholder Component Box */
+.vector-asset {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(82, 183, 136, 0.12);
+  position: relative;
+}
+
+/* Abstract Minimal Plant Structure */
+.vector-asset.asset-plant::before {
+  content: '';
+  width: 14px;
+  height: 22px;
+  background: var(--clr-primary);
+  border-radius: 0 var(--radius-md) 0 var(--radius-md);
+  transform: rotate(-15deg);
+}
+.vector-asset.asset-plant::after {
+  content: '';
+  width: 10px;
+  height: 16px;
+  background: var(--clr-primary-tint);
+  border-radius: var(--radius-md) 0 var(--radius-md) 0;
+  transform: rotate(35deg) translate(-2px, -4px);
+}
+
+/* Abstract Minimalist Book/Education Asset */
+.vector-asset.asset-book::before {
+  content: '';
+  width: 18px;
+  height: 22px;
+  border: 2px solid var(--clr-info);
+  border-radius: 3px;
+}
+.vector-asset.asset-book::after {
+  content: '';
+  width: 10px;
+  height: 2px;
+  background: var(--clr-info);
+  position: absolute;
+  box-shadow: 0 4px 0 var(--clr-info), 0 8px 0 var(--clr-info);
+}
+
+/* Abstract Alert / Shield Indicator Visual */
+.vector-asset.asset-shield::before {
+  content: '';
+  width: 16px;
+  height: 20px;
+  background: var(--clr-danger);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Custom CSS Environment Globe Animation System */
+.globe-visual-canvas {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 35% 35%, var(--clr-primary-tint), var(--clr-forest-light), var(--clr-forest-dark));
+  border-radius: var(--radius-full);
+  box-shadow: inset -12px -12px 30px rgba(0,0,0,0.5), 0 12px 36px rgba(13, 43, 26, 0.3);
+  position: relative;
+  animation: floatMotion 4s ease-in-out infinite;
+}
+
+@keyframes floatMotion {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* ==========================================================================
+   7. KEYBOARD ACCESSIBILITY FOCUS DECORATION
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.sp-prev-card:focus-visible {
+  outline: 3px dashed var(--clr-primary);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 /* ===== PAGE SYSTEM ===== */
 .page { display: none; }
 .page.active { display: block; }
 .game-panel { display: none; }
 .game-panel.active-panel { display: block; }
-
+.leaf-particle,
+.globe,
+.rp-char {
+  /* This forces the browser to utilize GPU hardware acceleration */
+  will-change: transform;
+  transform: translateZ(0); 
+}
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
