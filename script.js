@@ -1,32 +1,6 @@
 // ============================================================
 // NAVIGATION
 // ============================================================
-// A single function to rule them all
-function initNavigation() {
-  const navLinks = document.querySelectorAll('[data-target]');
-  const pages = document.querySelectorAll('.page');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetPageId = link.getAttribute('data-target');
-
-      pages.forEach(page => {
-        if (page.id === `${targetPageId}-page`) {
-          page.classList.add('active');
-          page.setAttribute('aria-hidden', 'false');
-        } else {
-          page.classList.remove('active');
-          page.setAttribute('aria-hidden', 'true');
-        }
-      });
-
-      // Update active nav link styling
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-}
 var gameScores = { quiz: 0, memory: 0, spot: 0, chain: 0 };
 
 function showPage(name) {
@@ -74,44 +48,7 @@ function updateAllScores() {
   document.getElementById('totalScoreVal').textContent = total;
   document.getElementById('navScore').textContent = total + ' pts';
 }
-document.addEventListener('DOMContentLoaded', () => {
-  initApplicationRouter();
-});
 
-function initApplicationRouter() {
-  const navAnchors = document.querySelectorAll('.nav-links a, .nav-logo');
-  const targetPages = document.querySelectorAll('.page');
-
-  navAnchors.forEach(anchor => {
-    anchor.addEventListener('click', (event) => {
-      event.preventDefault();
-      
-      // Fallback fallback to dashboard page if logo wrapper element clicked
-      const targetId = anchor.getAttribute('data-target') || 'hero';
-      const destinationPage = document.getElementById(`${targetId}-page`);
-
-      if (!destinationPage) return;
-
-      // Clean viewport panel cycling execution loop
-      targetPages.forEach(page => {
-        page.classList.remove('active');
-        page.setAttribute('aria-hidden', 'true');
-      });
-
-      destinationPage.classList.add('active');
-      destinationPage.setAttribute('aria-hidden', 'false');
-
-      // Update active state indication across nav links
-      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
-      if (anchor.tagName === 'A') {
-        anchor.classList.add('active');
-      }
-      
-      // Automatically scroll window layout seamlessly to viewport top point
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-}
 // ============================================================
 // FALLING LEAVES ON HERO — CSS only, no emoji text
 // ============================================================
@@ -206,39 +143,129 @@ function toggleSpecies(id, btn) {
 }
 
 // ============================================================
-// GAME SWITCHER
+// BLOG — EXPAND / COLLAPSE
 // ============================================================
-let gameScore = 0;
-
-function enemyDodgedOrItemCollected(points) {
-  gameScore += points;
-  document.querySelector('.nav-score').textContent = `🍃 Score: ${gameScore}`;
-  
-  // Instant Reward Milestones
-  if (gameScore === 50) {
-    showToast("🏅 Badge Earned: Novice Ranger!");
-  } else if (gameScore === 150) {
-    showToast("🌟 Badge Earned: Habitat Guardian!");
+function toggleBlog(id, btn) {
+  var detail = document.getElementById(id);
+  if (!detail) return;
+  var isOpen = detail.classList.contains('open');
+  if (isOpen) {
+    detail.classList.remove('open');
+    btn.textContent = 'Read the Story';
+  } else {
+    detail.classList.add('open');
+    btn.textContent = 'Collapse';
   }
 }
-// Save score whenever they earn points
-function updateScore(points) {
-  let currentScore = parseInt(localStorage.getItem('ecoScore')) || 0;
-  currentScore += points;
-  
-  localStorage.setItem('ecoScore', currentScore);
-  displayScore(currentScore);
+
+// ============================================================
+// SOUND FX — tiny synthesized tones, no audio files needed
+// ============================================================
+var audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { audioCtx = null; }
+  }
+  return audioCtx;
+}
+function playTone(freq, duration, type, delay) {
+  var ctx = getAudioCtx();
+  if (!ctx) return;
+  var t0 = ctx.currentTime + (delay || 0);
+  var osc = ctx.createOscillator();
+  var gain = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.setValueAtTime(freq, t0);
+  gain.gain.setValueAtTime(0.0001, t0);
+  gain.gain.exponentialRampToValueAtTime(0.12, t0 + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(t0);
+  osc.stop(t0 + duration + 0.05);
+}
+function sfxCorrect() { playTone(660, 0.12, 'triangle'); playTone(880, 0.16, 'triangle', 0.08); }
+function sfxWrong() { playTone(180, 0.22, 'sawtooth'); }
+function sfxMatch() { playTone(740, 0.1, 'sine'); playTone(988, 0.14, 'sine', 0.06); }
+function sfxFanfare() {
+  [523, 659, 784, 1047].forEach(function (f, i) { playTone(f, 0.22, 'triangle', i * 0.11); });
 }
 
-// Load score when the web page first boot ups
-document.addEventListener('DOMContentLoaded', () => {
-  const savedScore = localStorage.getItem('ecoScore') || 0;
-  displayScore(savedScore);
-});
-
-function displayScore(score) {
-  document.querySelector('.nav-score').textContent = `🍃 Score: ${score}`;
+// ============================================================
+// CONFETTI BURST — pure CSS/DOM, no libraries
+// ============================================================
+function fireConfetti() {
+  var colors = ['#52b788', '#74c69d', '#f4d03f', '#e74c3c', '#3498db', '#9b59b6'];
+  var burst = document.createElement('div');
+  burst.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:5000;overflow:hidden;';
+  for (var i = 0; i < 44; i++) {
+    var piece = document.createElement('div');
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    var left = Math.random() * 100;
+    var size = 6 + Math.random() * 6;
+    var duration = 1.6 + Math.random() * 1.2;
+    var delay = Math.random() * 0.3;
+    var rotate = Math.random() * 360;
+    piece.style.cssText =
+      'position:absolute;top:-20px;left:' + left + 'vw;width:' + size + 'px;height:' + (size * 0.4) + 'px;' +
+      'background:' + color + ';opacity:0.9;border-radius:2px;' +
+      'animation:confettiFall ' + duration + 's ease-in ' + delay + 's forwards;' +
+      'transform:rotate(' + rotate + 'deg);';
+    burst.appendChild(piece);
+  }
+  document.body.appendChild(burst);
+  setTimeout(function () { burst.remove(); }, 3200);
 }
+(function injectConfettiKeyframes() {
+  if (document.getElementById('confettiKeyframes')) return;
+  var style = document.createElement('style');
+  style.id = 'confettiKeyframes';
+  style.textContent = '@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1;}100%{transform:translateY(105vh) rotate(540deg);opacity:0.3;}}';
+  document.head.appendChild(style);
+})();
+
+// ============================================================
+// BADGES — small persistent achievement system
+// ============================================================
+var BADGES = [
+  { id: 'quiz_master',   name: 'Quiz Master',    desc: 'Score 100+ in the SG Quiz',        icon: '🏆' },
+  { id: 'sharp_memory',  name: 'Sharp Memory',   desc: 'Finish Memory Match in 16 moves or fewer', icon: '🧠' },
+  { id: 'eagle_eye',     name: 'Eagle Eye',      desc: 'Reach a 5-round streak in Spot the Invader', icon: '👁️' },
+  { id: 'chain_champion',desc: 'Get a perfect Invasion Chain round', name: 'Chain Champion', icon: '🔗' },
+  { id: 'defender',      name: 'Plant Defender', desc: 'Complete all six pledges',         icon: '🛡️' }
+];
+function getEarnedBadges() {
+  try { return JSON.parse(localStorage.getItem('earnedBadges_v1') || '[]'); } catch (e) { return []; }
+}
+function awardBadge(id) {
+  var earned = getEarnedBadges();
+  if (earned.indexOf(id) !== -1) return;
+  earned.push(id);
+  try { localStorage.setItem('earnedBadges_v1', JSON.stringify(earned)); } catch (e) {}
+  var badge = null;
+  for (var i = 0; i < BADGES.length; i++) { if (BADGES[i].id === id) { badge = BADGES[i]; break; } }
+  if (badge) showToast(badge.icon + ' Badge unlocked: ' + badge.name + '!', 3200);
+  renderBadgeShelf();
+}
+function renderBadgeShelf() {
+  var shelf = document.getElementById('badgeShelf');
+  if (!shelf) return;
+  var earned = getEarnedBadges();
+  shelf.innerHTML = '';
+  for (var i = 0; i < BADGES.length; i++) {
+    var b = BADGES[i];
+    var got = earned.indexOf(b.id) !== -1;
+    var chip = document.createElement('div');
+    chip.className = 'badge-chip' + (got ? ' badge-earned' : ' badge-locked');
+    chip.title = b.desc;
+    chip.innerHTML = '<span class="badge-emoji">' + b.icon + '</span><span class="badge-label">' + b.name + '</span>';
+    shelf.appendChild(chip);
+  }
+}
+
+// ============================================================
+// GAME SWITCHER
+// ============================================================
 function switchGame(name, clickedTab) {
   var panels = document.querySelectorAll('.game-panel');
   for (var p = 0; p < panels.length; p++) panels[p].classList.remove('active-panel');
@@ -256,7 +283,7 @@ function switchGame(name, clickedTab) {
 }
 
 // ============================================================
-// QUIZ GAME — REWORKED
+// QUIZ GAME
 // Timed per-question, streak multiplier, animated feedback
 // ============================================================
 var quizData = [
@@ -495,6 +522,7 @@ function pickAnswer(idx) {
     var streakMsg = quizStreak >= 3 ? ' Streak x' + quizStreak + '! +' + bonus + ' bonus pts!' : '';
     fb.innerHTML = '<strong>Correct! +' + pts + ' pts' + (quizTimeLeft >= 12 ? ' (Speed bonus!)' : '') + streakMsg + '</strong><br>' + q.e;
     showToast('Correct! +' + pts + ' pts' + (quizStreak >= 3 ? ' — Streak x' + quizStreak + '!' : ''));
+    sfxCorrect();
   } else {
     btns[Array.prototype.findIndex
       ? Array.prototype.findIndex.call(btns, function (b) { return parseInt(b.dataset.origIndex) === idx; })
@@ -504,6 +532,7 @@ function pickAnswer(idx) {
     fb.className = 'quiz-feedback wrong-fb';
     fb.innerHTML = '<strong>Not quite.</strong> ' + q.e;
     showToast('Not this time! Streak broken.');
+    sfxWrong();
   }
 
   updateStreakBadge();
@@ -528,6 +557,9 @@ function nextQuestion() {
     if (quizScore > gameScores.quiz) gameScores.quiz = quizScore;
     updateAllScores();
     showToast('Quiz done! ' + quizScore + ' points!', 3000);
+    fireConfetti();
+    sfxFanfare();
+    if (quizScore >= 100) awardBadge('quiz_master');
   } else {
     renderQuestion();
   }
@@ -536,8 +568,8 @@ function nextQuestion() {
 function restartQuiz() { initQuiz(); }
 
 // ============================================================
-// MEMORY GAME — REWORKED
-// Harder 5x4 grid (20 cards = 10 pairs), time pressure,
+// MEMORY GAME
+// 5x4 grid (20 cards = 10 pairs), time pressure,
 // combo multiplier, animated match flash
 // ============================================================
 var memPairsData = [
@@ -593,7 +625,7 @@ function startMemory() {
     memHeader.appendChild(timer);
   }
 
-  // Legend — now 10 pairs
+  // Legend — 10 pairs
   var legend = document.getElementById('memoryLegend');
   legend.innerHTML = '<strong style="font-size:0.72rem;color:#3d5a47;display:block;margin-bottom:0.4rem;">Match each plant to its region of origin:</strong>';
   for (var pi = 0; pi < memPairsData.length; pi++) {
@@ -687,6 +719,7 @@ function onMemCardClick() {
       document.getElementById('memPairs').textContent = memMatchedCount;
       var comboMsg = memCombo >= 3 ? ' Combo x' + memCombo + '!' : '';
       showToast('Match!' + comboMsg, 1200);
+      sfxMatch();
       memFlipped = [];
       memLocked = false;
 
@@ -700,6 +733,9 @@ function onMemCardClick() {
           if (pts > gameScores.memory) gameScores.memory = pts;
           updateAllScores();
           showToast('All matched! ' + memMoveCount + ' moves, ' + memTotalTime + 's — ' + pts + ' pts!', 3500);
+          fireConfetti();
+          sfxFanfare();
+          if (memMoveCount <= 16) awardBadge('sharp_memory');
         }, 500);
       }
     } else {
@@ -721,7 +757,7 @@ function onMemCardClick() {
 }
 
 // ============================================================
-// SPOT THE INVADER — REWORKED
+// SPOT THE INVADER
 // Timed rounds, confidence betting, streak tracking,
 // detailed photo card with fun facts
 // ============================================================
@@ -1003,6 +1039,8 @@ function answerSpot(answer) {
       (spotConfidencePending === 2 ? ' Confidence bonus!' : '') +
       '<br>' + plant.name + ' is ' + (plant.type === 'invasive' ? 'an INVASIVE species.' : 'NATIVE to Singapore.');
     showToast('Correct! +' + finalPoints + ' pts', 1500);
+    sfxCorrect();
+    if (spotStreak >= 5) awardBadge('eagle_eye');
   } else {
     spotStreak = 0;
     updateSpotStreak();
@@ -1013,6 +1051,7 @@ function answerSpot(answer) {
     fb.innerHTML = '<strong>Wrong' + (spotConfidencePending === 2 ? ' — and you were so sure!' : '') + ' -' + lostPoints + ' pts</strong><br>' +
       plant.name + ' is actually ' + (plant.type === 'invasive' ? 'an INVASIVE species.' : 'NATIVE to Singapore.');
     showToast('Wrong! -' + lostPoints + ' pts', 1500);
+    sfxWrong();
   }
 
   fb.style.display = 'block';
@@ -1033,17 +1072,19 @@ function advanceSpotRound() {
     if (spotScore > gameScores.spot) gameScores.spot = spotScore;
     updateAllScores();
     showToast('Round done! ' + spotScore + ' pts!', 3000);
+    fireConfetti();
+    sfxFanfare();
   } else {
     renderSpotRound();
   }
 }
 
 // ============================================================
-// NEW GAME: INVASION CHAIN — REWORKED ENTIRELY
-// Students must sort 8 events into the correct
+// INVASION CHAIN
+// Students sort 8 events into the correct
 // chronological order showing how ONE invasive plant
-// (Mile-a-Minute) devastates a Singapore forest.
-// They drag or click-to-select then place steps in order.
+// devastates a Singapore forest.
+// They click-to-select then place steps into numbered slots.
 // Scoring: 10 pts per correct position, bonus for full order.
 // ============================================================
 var chainScenarios = [
@@ -1350,8 +1391,15 @@ function checkChain() {
       resultsHtml;
   }
 
-  if (correct === 8) showToast('Perfect order! +' + roundPts + ' pts!', 2500);
-  else showToast(correct + '/8 correct. +' + roundPts + ' pts', 2000);
+  if (correct === 8) {
+    showToast('Perfect order! +' + roundPts + ' pts!', 2500);
+    fireConfetti();
+    sfxFanfare();
+    awardBadge('chain_champion');
+  } else {
+    showToast(correct + '/8 correct. +' + roundPts + ' pts', 2000);
+    sfxCorrect();
+  }
 }
 
 function nextChainRound() {
@@ -1381,20 +1429,7 @@ function nextChainRound() {
     renderChainRound();
   }
 }
-// Example Game Loop or Movement Function
-const GAME_BOTTOM_BOUNDARY = 300; // Adjust this to your actual ground Y-coordinate
-const player = { x: 50, y: 300, speed: 5 };
 
-function movePlayer(direction) {
-  if (direction === 'down') {
-    player.y += player.speed;
-  }
-  
-  // THE FIX: Clamp the position so they can't go below the floor
-  if (player.y > GAME_BOTTOM_BOUNDARY) {
-    player.y = GAME_BOTTOM_BOUNDARY;
-  }
-}
 // ============================================================
 // PLEDGE SYSTEM
 // ============================================================
@@ -1413,6 +1448,9 @@ function updatePledge() {
   if (checked === checkboxes.length) {
     completeMsg.style.display = 'block';
     showToast('You are now a Singapore Plant Defender!', 3000);
+    fireConfetti();
+    sfxFanfare();
+    awardBadge('defender');
   } else {
     completeMsg.style.display = 'none';
   }
@@ -1435,52 +1473,9 @@ function restorePledge() {
 window.addEventListener('load', function () {
   updateProgress();
   updateAllScores();
+  renderBadgeShelf();
   initQuiz();
   startMemory();
   startSpot();
   initChain();
-});
-
-
-
-
-Less';
-  }
-}
-
-// ============================================================
-// Function initializer for Gallery Filter Actions
-// ============================================================
-function initFlowerGallery() {
-  const filterButtons = document.querySelectorAll('.gallery-filters .tab-btn');
-  const flowerCards = document.querySelectorAll('.flower-card');
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // 1. Reset selection styling on buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      // 2. Extract selected category evaluation string
-      const selectedFilter = button.getAttribute('data-filter');
-
-      // 3. Loop cards and safely apply responsive visual flags
-      flowerCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-
-        if (selectedFilter === 'all' || cardCategory === selectedFilter) {
-          card.style.display = 'flex';
-          // Triggers your pre-built fadeUp keyframe animation gracefully
-          card.style.animation = 'fadeUp 0.4s ease forwards';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-}
-
-// Instantiate within your existing DomContentLoaded pipeline listener
-document.addEventListener('DOMContentLoaded', () => {
-  initFlowerGallery();
 });

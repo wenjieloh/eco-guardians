@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Invaders SG</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="showPage('home')">Plant Invaders SG</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home');return false;" data-page="home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('blog');return false;" data-page="blog">Blog</a></li>
+      <li><a href="#" onclick="showPage('learn');return false;" data-page="learn">Learn</a></li>
+      <li><a href="#" onclick="showPage('species');return false;" data-page="species">Species</a></li>
+      <li><a href="#" onclick="showPage('games');return false;" data-page="games">Games</a></li>
+      <li><a href="#" onclick="showPage('action');return false;" data-page="action">Take Action</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-score" id="navScore">0 pts</div>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- ===================== HOME ===================== -->
+  <div id="page-home" class="page active">
+
+    <header class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-leaves" id="heroLeaves"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Singapore Environmental Alert</div>
+        <h1>Plants Are <span class="green-text">Invading</span> Singapore!</h1>
+        <p class="hero-sub">
+          Right now, invasive plants are silently taking over Bukit Timah, the Southern Ridges,
+          and your neighbourhood park. The good news? <strong>You can stop them.</strong>
+        </p>
+        <div class="btn-row">
+          <button class="btn btn-green" onclick="showPage('learn')">Start Learning</button>
+          <button class="btn btn-outline" onclick="showPage('games')">Play Games</button>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat">
+            <span class="hstat-num">400+</span>
+            <span class="hstat-label">Invasive Species</span>
+          </div>
+          <div class="hstat-divider"></div>
+          <div class="hstat">
+            <span class="hstat-num">40%</span>
+            <span class="hstat-label">Biodiversity Lost</span>
+          </div>
+          <div class="hstat-divider"></div>
+          <div class="hstat">
+            <span class="hstat-num">$50M+</span>
+            <span class="hstat-label">Annual Control Cost</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-globe-area">
+        <div class="globe-wrap">
+          <div class="globe-track"></div>
+          <div class="globe-sphere">
+            <div class="globe-shine"></div>
+            <div class="globe-lat globe-lat-1"></div>
+            <div class="globe-lat globe-lat-2"></div>
+            <div class="globe-lat globe-lat-3"></div>
+            <div class="globe-long globe-long-1"></div>
+            <div class="globe-long globe-long-2"></div>
+          </div>
+          <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+          <div class="orbit orbit-2"><div class="orbit-dot orbit-dot-2"></div></div>
+          <div class="orbit orbit-3"><div class="orbit-dot orbit-dot-3"></div></div>
+          <div class="orbit orbit-4"><div class="orbit-dot orbit-dot-4"></div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- WHY YOU SHOULD CARE -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-red">WHY YOU SHOULD CARE</div>
+          <h2>This Is <em>Your</em> Singapore to Protect</h2>
+          <p class="section-sub">Six reasons every Singapore student needs to know about invasive plants</p>
+        </div>
+        <div class="hook-grid">
+          <div class="hook-card hc-red">
+            <div class="hook-icon hi-park"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 6 11h3l-4 7h5v4h4v-4h5l-4-7h3z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+            <h3>Your Parks Are Under Threat</h3>
+            <p>Invasive plants are already in Bishan, Pasir Ris, and East Coast Park. Without action, Singapore's green spaces will be transformed within decades.</p>
+          </div>
+          <div class="hook-card hc-green">
+            <div class="hook-icon hi-career"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="18" height="12" rx="2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Real Career Opportunities</h3>
+            <p>Singapore's <strong>City in Nature</strong> vision is creating thousands of conservation and ecology jobs. This knowledge is your competitive edge.</p>
+          </div>
+          <div class="hook-card hc-yellow">
+            <div class="hook-icon hi-heat"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10a3 3 0 1 1-2 0V5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="17" r="3" fill="rgba(255,255,255,0.35)" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Invasives Make Heat Worse</h3>
+            <p>Native trees cool Singapore's urban heat island. Invasives replace them with species that trap heat — making our island even hotter.</p>
+          </div>
+          <div class="hook-card hc-purple">
+            <div class="hook-icon hi-wildlife"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="15" r="4" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="8" r="2" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="8" r="2" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="2" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Your Wildlife Needs You</h3>
+            <p>Otters, hornbills, mousedeer — all depend on native plants. When invasives dominate, these animals lose their food and homes.</p>
+          </div>
+          <div class="hook-card hc-blue">
+            <div class="hook-icon hi-lead"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3v18M5 4h13l-3 4 3 4H5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+            <h3>Be the Fix-It Generation</h3>
+            <p>Previous generations introduced these plants by accident. <em>Your</em> generation gets to be the one that solved it.</p>
+          </div>
+          <div class="hook-card hc-teal">
+            <div class="hook-icon hi-science"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+            <h3>Citizen Science Is Real Science</h3>
+            <p>NParks and NUS researchers use student data from iNaturalist to track invasives. Your sightings count as real scientific observations.</p>
+          </div>
+        </div>
+        <div class="quote-banner">
+          <div class="quote-mark">"</div>
+          <p>Singapore has lost over 40% of its original biodiversity. But we still have Bukit Timah — one of the most biodiverse patches of rainforest on Earth. <strong>It's worth fighting for.</strong></p>
+          <button class="btn btn-green" onclick="showPage('learn')">I'm In — Let's Go</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <div class="stats-strip">
+      <div class="stat-item">
+        <span class="stat-num">400+</span>
+        <span class="stat-label">Invasive Plant Species in Singapore</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">163km²</span>
+        <span class="stat-label">Of Singapore's Nature At Risk</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">40%</span>
+        <span class="stat-label">Of Original Biodiversity Already Lost</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">$50M+</span>
+        <span class="stat-label">Spent Annually on Invasive Control</span>
+      </div>
+    </div>
+
+    <!-- BASICS -->
+    <section class="section light-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-green">THE BASICS</div>
+          <h2>What Is an Invasive Plant?</h2>
+        </div>
+        <div class="four-cards">
+          <div class="basic-card">
+            <div class="basic-icon bi-globe"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12h16M12 4a12 12 0 0 1 0 16 12 12 0 0 1 0-16z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Not From Here</h3>
+            <p>Invasive plants are species introduced — accidentally or on purpose — to places outside their native home. In Singapore, many arrived via trade ships or as ornamentals.</p>
+          </div>
+          <div class="basic-card">
+            <div class="basic-icon bi-fast"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.25)"/></svg></div>
+            <h3>Spreads Fast</h3>
+            <p>Without natural predators or diseases from their home country, they spread unchecked — sometimes doubling coverage in just two weeks.</p>
+          </div>
+          <div class="basic-card">
+            <div class="basic-icon bi-skull"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3 2 20h20L12 3z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.15)"/><path d="M12 9v5M12 17h.01" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Smothers Native Life</h3>
+            <p>They steal sunlight, water, and nutrients from native plants — cascading into habitat loss for Singapore's wildlife like otters and hornbills.</p>
+          </div>
+          <div class="basic-card">
+            <div class="basic-icon bi-fire"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22c4 0 7-2.5 7-6.5 0-3-2-5-3-7-.5 2-2 3-2 3 .5-3-1-6-4-7.5.5 3-1 5-3 7-1.5 1.5-2 3.5-2 4.5C5 19.5 8 22 12 22z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+            <h3>Hard to Remove</h3>
+            <p>Once established, invasive plants cost enormous time, money, and effort to remove. Prevention and early action are everything.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIES PREVIEW -->
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-orange">MEET THE INVADERS</div>
+          <h2>Singapore's Most Wanted</h2>
+          <p class="section-sub">Click any card to see the full profile</p>
+        </div>
+        <div class="species-preview-grid">
+          <div class="sp-prev-card" onclick="showPage('species')">
+            <div class="sp-prev-img">
+              <div class="sp-prev-bg sp-bg-green"></div>
+              <img src="images/zanzibar.jpg" alt="Zanzibar Yam" onerror="this.style.display='none'"/>
+              <div class="sp-prev-badge extreme">EXTREME</div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>Zanzibar Yam</h3>
+              <p>Smothers trees with bulbil-spreading vines</p>
+            </div>
+          </div>
+          <div class="sp-prev-card" onclick="showPage('species')">
+            <div class="sp-prev-img">
+              <div class="sp-prev-bg sp-bg-dark"></div>
+              <img src="images/mam.jpg" alt="Mile-a-Minute" onerror="this.style.display='none'"/>
+              <div class="sp-prev-badge extreme">EXTREME</div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>Mile-a-Minute</h3>
+              <p>Singapore's #1 weed — 8cm growth per day</p>
+            </div>
+          </div>
+          <div class="sp-prev-card" onclick="showPage('species')">
+            <div class="sp-prev-img">
+              <div class="sp-prev-bg sp-bg-purple"></div>
+              <img src="images/hyacinth.jpg" alt="Water Hyacinth" onerror="this.style.display='none'"/>
+              <div class="sp-prev-badge high">HIGH</div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>Water Hyacinth</h3>
+              <p>Chokes Singapore's waterways and reservoirs</p>
+            </div>
+          </div>
+          <div class="sp-prev-card" onclick="showPage('species')">
+            <div class="sp-prev-img">
+              <div class="sp-prev-bg sp-bg-pink"></div>
+              <img src="images/clidemia.jpg" alt="Senduduk Bulu" onerror="this.style.display='none'"/>
+              <div class="sp-prev-badge high">HIGH</div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>Senduduk Bulu</h3>
+              <p>Invades even healthy forest understorey</p>
+            </div>
+          </div>
+          <div class="sp-prev-card" onclick="showPage('species')">
+            <div class="sp-prev-img">
+              <div class="sp-prev-bg sp-bg-teal"></div>
+              <img src="images/albizia.jpg" alt="Albizia" onerror="this.style.display='none'"/>
+              <div class="sp-prev-badge high">HIGH</div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>Albizia</h3>
+              <p>Fast-growing widow-maker tree</p>
+            </div>
+          </div>
+          <div class="sp-prev-card see-all-card" onclick="showPage('species')">
+            <div class="sp-prev-img see-all-img">
+              <div class="see-all-plus"></div>
+            </div>
+            <div class="sp-prev-info">
+              <h3>See All 8 Species</h3>
+              <p>Full profiles with photos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES TEASER -->
+    <section class="section dark-section">
+      <div class="container">
+        <div class="games-teaser-inner">
+          <div class="gt-text">
+            <div class="tag tag-white">PLAY AND LEARN</div>
+            <h2 class="white-text">4 Games. Real Knowledge.</h2>
+            <div class="gt-list">
+              <div class="gt-item">
+                <div class="gt-icon icon-blue"><div class="gt-icon-inner gti-question"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.6"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7v.5M12 17h.01" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
+                <div>
+                  <strong>SG Quiz</strong>
+                  <span>12 timed questions with streak bonuses</span>
+                </div>
+              </div>
+              <div class="gt-item">
+                <div class="gt-icon icon-purple"><div class="gt-icon-inner gti-card"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="1.6"/><path d="M9 8h6M9 12h6M9 16h3" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
+                <div>
+                  <strong>Memory Match</strong>
+                  <span>10 pairs, combo multiplier, race the clock</span>
+                </div>
+              </div>
+              <div class="gt-item">
+                <div class="gt-icon icon-green"><div class="gt-icon-inner gti-target"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="8" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.6"/><circle cx="12" cy="12" r="0.6" fill="white"/></svg></div></div>
+                <div>
+                  <strong>Spot the Invader</strong>
+                  <span>Confidence betting, timed rounds, fun facts</span>
+                </div>
+              </div>
+              <div class="gt-item">
+                <div class="gt-icon icon-red"><div class="gt-icon-inner gti-chain"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="8" height="8" rx="4" stroke="white" stroke-width="1.6"/><rect x="13" y="8" width="8" height="8" rx="4" stroke="white" stroke-width="1.6"/><path d="M11 12h2" stroke="white" stroke-width="1.6"/></svg></div></div>
+                <div>
+                  <strong>Invasion Chain</strong>
+                  <span>Sort invasion events in the right order — NEW!</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-white" onclick="showPage('games')">Play All Games</button>
+          </div>
+          <div class="gt-visual">
+            <div class="chain-preview-box">
+              <div class="cpb-header">Invasion Chain</div>
+              <div class="cpb-steps">
+                <div class="cpb-step cpb-step-done">
+                  <div class="cpb-num">1</div>
+                  <div class="cpb-bar cpb-bar-green"></div>
+                </div>
+                <div class="cpb-step cpb-step-done">
+                  <div class="cpb-num">2</div>
+                  <div class="cpb-bar cpb-bar-green"></div>
+                </div>
+                <div class="cpb-step cpb-step-active">
+                  <div class="cpb-num">3</div>
+                  <div class="cpb-bar cpb-bar-pulse"></div>
+                </div>
+                <div class="cpb-step">
+                  <div class="cpb-num">4</div>
+                  <div class="cpb-bar cpb-bar-empty"></div>
+                </div>
+                <div class="cpb-step">
+                  <div class="cpb-num">5</div>
+                  <div class="cpb-bar cpb-bar-empty"></div>
+                </div>
+              </div>
+              <div class="cpb-label">Sort events in the correct order</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION STRIP -->
+    <section class="section light-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-green">YOU CAN HELP</div>
+          <h2>3 Things Singapore Students Can Do Right Now</h2>
+        </div>
+        <div class="three-cards">
+          <div class="action-card border-green">
+            <div class="ac-num">01</div>
+            <div class="ac-icon aci-phone"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="10" height="20" rx="2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 18h2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Report on iNaturalist SG</h3>
+            <p>Download iNaturalist and log invasive plants near you. NParks and NUS researchers use this data directly to track and manage invasives.</p>
+          </div>
+          <div class="action-card border-blue">
+            <div class="ac-num">02</div>
+            <div class="ac-icon aci-hands"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l4-4 5 5-2 2M21 12l-4-4-5 5 2 2M9 15l3 3 3-3" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Join NParks Volunteer Days</h3>
+            <p>NParks runs invasive plant removal sessions at Bukit Timah and Central Catchment Nature Reserve. Open to students and families!</p>
+          </div>
+          <div class="action-card border-red">
+            <div class="ac-num">03</div>
+            <div class="ac-icon aci-stop"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6l12 12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3>Never Dump Garden Plants</h3>
+            <p>Never release aquarium or garden plants into waterways or green spaces. This is one of the top ways invasives spread in Singapore.</p>
+          </div>
+        </div>
+        <div class="center-btn">
+          <button class="btn btn-green" onclick="showPage('action')">Full Action Guide</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- END HOME -->
+
+
+  <!-- ===================== BLOG ===================== -->
+  <div id="page-blog" class="page">
+
+    <div class="page-header header-blog">
+      <div class="tag tag-white">ECOGUARDIANS TRIBUNE</div>
+      <h1>Stories From the Front Line</h1>
+      <p>Quick, sharp reads on the plants quietly reshaping Singapore — and the people fighting back.</p>
+    </div>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="blog-grid" id="blogGrid">
+
+          <article class="blog-card" data-cat="alert">
+            <div class="blog-cover cover-red">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 22V13M12 13c0-4-3-6-7-6 0 4 3 6 7 6zm0 0c0-5 3-8 8-8 0 5-3 8-8 8z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <span class="blog-badge">Ecosystem Alert</span>
+            </div>
+            <div class="blog-body">
+              <h3>The Silent Green Takeover</h3>
+              <p class="blog-excerpt">Plants that never sleep, never stop, and never say when to quit. Meet the vines quietly rewriting Singapore's forests.</p>
+              <div class="blog-meta"><span>⏱ 2 min read</span><span>Ecology</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-silent', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-silent">
+                <p>Imagine a plant that never sleeps, never stops growing, and chokes out everything in its path. Kudzu and Mile-a-Minute do exactly that — climbing over shrubs and trees like a living blanket, stealing every ray of sunlight until whatever's underneath simply gives up.</p>
+                <p>Here's the unsettling part: it's invisible until it isn't. A single vine looks harmless. Two years later, it's a wall of green swallowing a whole hillside. By the time most people notice, the native plants underneath are already dead.</p>
+                <p>Spotting the early signs — a monoculture patch, a vine climbing where nothing climbed before — is the single most powerful thing an ordinary person can do. You don't need a lab coat. You need eyes.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="science">
+            <div class="blog-cover cover-green">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="20" rx="2" stroke="white" stroke-width="1.8"/><path d="M11 18h2" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span class="blog-badge">Citizen Science</span>
+            </div>
+            <div class="blog-body">
+              <h3>Your Phone Is a Scientific Instrument</h3>
+              <p class="blog-excerpt">No laboratory required. Just a camera, a trail, and five spare minutes.</p>
+              <div class="blog-meta"><span>⏱ 2 min read</span><span>Community</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-phone', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-phone">
+                <p>You don't need a laboratory coat to do real science. Walk MacRitchie or Bukit Timah with the iNaturalist app open, photograph anything that looks out of place, and hit submit. That's it. That's the whole job.</p>
+                <p>Here's what makes it powerful: NParks and NUS researchers actually check these uploads. A photo you took on a Tuesday afternoon could be the first record of a new infestation — the difference between catching a problem at "one plant" instead of "one hectare."</p>
+                <p>Thousands of casual sightings, stitched together, become the map researchers use to decide where to send removal crews next. Your walk is their data.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="tips">
+            <div class="blog-cover cover-blue">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="white" stroke-width="1.6"/></svg>
+              <span class="blog-badge">Nature Tips</span>
+            </div>
+            <div class="blog-body">
+              <h3>The Mud on Your Shoes Matters</h3>
+              <p class="blog-excerpt">Invasive seeds are master hitchhikers — and your sneakers are the free ride.</p>
+              <div class="blog-meta"><span>⏱ 1 min read</span><span>Field Tips</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-mud', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-mud">
+                <p>Invasive plant seeds are hitchhikers. They cling to the mud on your sneakers, your bicycle tyres, the treads of a hiking boot — and they don't care where they end up.</p>
+                <p>Walk from an urban park into a pristine nature reserve without cleaning your shoes, and you might accidentally plant an invader in soil that's stayed clean for decades. It sounds dramatic. It's also exactly how a lot of infestations start.</p>
+                <p>The fix costs nothing: scrape the mud off before you enter a new trail. Ten seconds. That's the whole intervention.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="history">
+            <div class="blog-cover cover-purple">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.7"/><path d="M12 7v5l3 3" stroke="white" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span class="blog-badge">History</span>
+            </div>
+            <div class="blog-body">
+              <h3>Bukit Timah's Quiet 60-Year War</h3>
+              <p class="blog-excerpt">One contaminated bag of grass seed in the 1960s. Decades of consequences.</p>
+              <div class="blog-meta"><span>⏱ 3 min read</span><span>Deep Dive</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-history', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-history">
+                <p>Somewhere in the 1960s, a shipment of grass seed arrived in Singapore contaminated with something nobody had asked for: Mikania micrantha, better known today as Mile-a-Minute. Nobody flagged it. Nobody could have known.</p>
+                <p>Sixty years later, it's the single most widespread invasive plant on the island — a vine that grows up to 8cm a day and blankets whole patches of Bukit Timah so densely that trees underneath die from lack of light within months.</p>
+                <p>NParks now runs multi-season manual cutting programmes just to hold the line. It's a reminder that ecological mistakes rarely announce themselves loudly. They arrive quietly, in a bag of seed, and the bill comes due generations later.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="wildlife">
+            <div class="blog-cover cover-orange">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M2 14c4-6 8-8 11-6-2 0-3 1-3 3 4-1 7 0 9 3-3 0-4 1-5 3-3-1-6 0-8 3-1-3-1-5-4-6z" stroke="white" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              <span class="blog-badge">Wildlife</span>
+            </div>
+            <div class="blog-body">
+              <h3>Why the Javan Myna Is Secretly a Villain</h3>
+              <p class="blog-excerpt">Two invasive species, one unholy alliance, and a forest caught in the middle.</p>
+              <div class="blog-meta"><span>⏱ 2 min read</span><span>Ecology</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-myna', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-myna">
+                <p>The Javan Myna looks harmless enough — a common, noisy bird you've probably ignored a thousand times. But it has a side hustle: eating the berries of Senduduk Bulu, an invasive shrub, and depositing the seeds deep inside Singapore's forests via, well, droppings.</p>
+                <p>Scientists have a name for this: an "invasion meltdown," where two invasive species accelerate each other's spread. The Myna gets an easy meal. Senduduk Bulu gets a free delivery service straight into shaded forest understorey it couldn't otherwise reach.</p>
+                <p>It's a reminder that invasions are rarely solo acts. They're networks — and untangling them means understanding who's helping whom.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card" data-cat="voices">
+            <div class="blog-cover cover-teal">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="white" stroke-width="1.7"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7" stroke="white" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <span class="blog-badge">Student Voices</span>
+            </div>
+            <div class="blog-body">
+              <h3>Confessions of a Reformed Weed-Puller</h3>
+              <p class="blog-excerpt">What I learned yanking Zanzibar Yam out of the ground for a school project — and immediately doing it wrong.</p>
+              <div class="blog-meta"><span>⏱ 2 min read</span><span>Field Notes</span></div>
+              <button class="blog-read-btn" onclick="toggleBlog('blog-confess', this)">Read the Story</button>
+              <div class="blog-detail" id="blog-confess">
+                <p>My first attempt at "helping" was pulling a Zanzibar Yam vine off a tree with my bare hands, feeling very heroic, and leaving every single bulbil sitting in the soil underneath. Within a season, there were more plants than before I started.</p>
+                <p>Turns out invasive removal has rules for a reason — miss the roots, miss the bulbils, and you've basically just pruned the plant a haircut it didn't need. It grows back faster.</p>
+                <p>The real lesson: enthusiasm without technique isn't help, it's a delay. If you're doing a school nature project, talk to an NParks volunteer coordinator first. They've made every mistake already so you don't have to.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- END BLOG -->
+
+
+  <!-- ===================== LEARN ===================== -->
+  <div id="page-learn" class="page">
+
+    <div class="page-header header-green">
+      <div class="tag tag-white">EDUCATION HUB</div>
+      <h1>Learn About Invasive Plants</h1>
+      <p>Singapore-focused, student-friendly, science-backed.</p>
+    </div>
+
+    <div class="progress-bar-section">
+      <div class="container">
+        <div class="progress-row">
+          <span class="progress-label">Reading Progress</span>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section white-section">
+      <div class="container">
+
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="what">What Are They?</button>
+          <button class="tab-btn" data-tab="spread">How They Spread</button>
+          <button class="tab-btn" data-tab="habitats">SG Habitats</button>
+          <button class="tab-btn" data-tab="damage">The Damage</button>
+          <button class="tab-btn" data-tab="control">Fighting Back</button>
+        </div>
+
+        <!-- TAB: WHAT -->
+        <div class="tab-pane active" id="tab-what">
+          <div class="learn-two-col">
+            <div class="learn-text">
+              <h2>What Makes a Plant "Invasive"?</h2>
+              <p>An invasive plant is a species that is <strong>non-native</strong> to an ecosystem and whose introduction causes harm to the environment, economy, or human health.</p>
+              <p>Not every foreign plant is invasive. A plant becomes truly invasive when it:</p>
+              <ul>
+                <li>Establishes and reproduces successfully in a new environment</li>
+                <li>Spreads rapidly without human help</li>
+                <li>Outcompetes native species for sunlight, water, and nutrients</li>
+                <li>Disrupts native ecosystems and the animals that depend on them</li>
+              </ul>
+              <p>In Singapore, over <strong>400 non-native plant species</strong> have been recorded. Many arrived via centuries of global trade, colonial-era planting, and the aquarium and gardening trades.</p>
+            </div>
+            <div class="learn-visual">
+              <div class="compare-box">
+                <h4>Native vs Invasive — Singapore Example</h4>
+                <div class="compare-cols">
+                  <div class="compare-native">
+                    <div class="compare-title">Tembusu Tree</div>
+                    <div class="compare-tag native-tag">NATIVE</div>
+                    <ul>
+                      <li>On Singapore's $5 note</li>
+                      <li>Supports 50+ animals</li>
+                      <li>Evolved here over millennia</li>
+                      <li>Has natural pest controls</li>
+                      <li>Grows in natural balance</li>
+                    </ul>
+                  </div>
+                  <div class="compare-invasive">
+                    <div class="compare-title">Zanzibar Yam</div>
+                    <div class="compare-tag invasive-tag">INVASIVE</div>
+                    <ul>
+                      <li>Introduced from Africa</li>
+                      <li>No local natural enemies</li>
+                      <li>Smothers trees rapidly</li>
+                      <li>Spreads via buried bulbils</li>
+                      <li>Disrupts entire forest</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fact-row">
+            <div class="fact-card fact-blue">
+              <div class="fact-icon fi-dna"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 3c0 6 10 6 10 12M17 21c0-6-10-6-10-12M8 8h8M8 16h8" stroke="#2d6a4f" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+              <h4>Enemy Release Effect</h4>
+              <p>In Africa, the Zanzibar Yam is controlled by insects and fungi. In Singapore, none of these exist — so it grows explosively with nothing to stop it.</p>
+            </div>
+            <div class="fact-card fact-orange">
+              <div class="fact-icon fi-ship"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16h18l-2 4H5l-2-4zM6 16V9h12v7M9 9V5h6v4" stroke="#2980b9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Singapore's Port Problem</h4>
+              <p>As the world's second-busiest port, Singapore receives cargo from 600+ ports. Seeds arrive constantly hidden in soil, packaging, and fresh produce.</p>
+            </div>
+            <div class="fact-card fact-red">
+              <div class="fact-icon fi-temp"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10a3 3 0 1 1-2 0V5" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+              <h4>Climate Change Amplifier</h4>
+              <p>Rising temperatures create even more favourable conditions for tropical invasives to establish and spread through Singapore's parks year-round.</p>
+            </div>
+          </div>
+          <button class="mark-btn" onclick="markRead('what', this)">Mark as Read</button>
+        </div>
+
+        <!-- TAB: SPREAD -->
+        <div class="tab-pane" id="tab-spread">
+          <h2>How Invasives Spread in Singapore</h2>
+          <p class="tab-intro">Singapore's unique geography creates specific pathways for invasives to enter and spread:</p>
+          <div class="spread-grid">
+            <div class="spread-item">
+              <div class="spread-icon si-red"><div class="si-shape si-ship"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16h18l-2 4H5l-2-4zM6 16V9h12v7M9 9V5h6v4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div>
+                <h4>Shipping and Trade</h4>
+                <p>Singapore handles 37 million containers per year — each a potential vector. Seeds hidden in soil, packaging, or produce slip through constantly.</p>
+              </div>
+            </div>
+            <div class="spread-item">
+              <div class="spread-icon si-blue"><div class="si-shape si-wave"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div>
+                <h4>Waterways and Drains</h4>
+                <p>Singapore's canal network connects nature reserves to the coast. Water Hyacinth spreads rapidly through our drainage systems into reservoirs.</p>
+              </div>
+            </div>
+            <div class="spread-item">
+              <div class="spread-icon si-purple"><div class="si-shape si-bird"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 14c4-6 8-8 11-6-2 0-3 1-3 3 4-1 7 0 9 3-3 0-4 1-5 3-3-1-6 0-8 3-1-3-1-5-4-6z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div></div>
+              <div>
+                <h4>Birds and Wildlife</h4>
+                <p>Invasive Javan Mynas eat Senduduk Bulu berries and deposit seeds throughout nature reserves — two invasives helping each other, an "invasion meltdown".</p>
+              </div>
+            </div>
+            <div class="spread-item">
+              <div class="spread-icon si-orange"><div class="si-shape si-house"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 11 12 4l8 7v9H4v-9z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 20v-6h6v6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div>
+                <h4>Irresponsible Gardening</h4>
+                <p>Aquarium plants dumped into canals and ornamentals thrown at forest edges are major problems. Never release garden plants into the wild!</p>
+              </div>
+            </div>
+            <div class="spread-item">
+              <div class="spread-icon si-yellow"><div class="si-shape si-build"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="3" width="14" height="18" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div>
+                <h4>Construction Sites</h4>
+                <p>Singapore's constant construction moves soil — and the seeds and rhizomes within it — to new locations where invasives thrive in disturbed ground.</p>
+              </div>
+            </div>
+            <div class="spread-item">
+              <div class="spread-icon si-green"><div class="si-shape si-sprout"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22V13M12 13c0-4-3-6-7-6 0 4 3 6 7 6zm0 0c0-5 3-8 8-8 0 5-3 8-8 8z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+              <div>
+                <h4>Bulbils and Rhizomes</h4>
+                <p>The Zanzibar Yam drops bulbils that remain dormant in soil for years, sprouting when conditions are right. Even tiny fragments regrow into full plants.</p>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-box">
+            <h3>How One Plant Becomes a Crisis</h3>
+            <div class="timeline-steps">
+              <div class="tl-step">
+                <div class="tl-dot dot-green"></div>
+                <div class="tl-year">Year 1</div>
+                <p>Single plant. Unnoticed.</p>
+              </div>
+              <div class="tl-line"></div>
+              <div class="tl-step">
+                <div class="tl-dot dot-yellow"></div>
+                <div class="tl-year">Year 3</div>
+                <p>Dozens of plants. Spreading quietly.</p>
+              </div>
+              <div class="tl-line"></div>
+              <div class="tl-step">
+                <div class="tl-dot dot-orange"></div>
+                <div class="tl-year">Year 7</div>
+                <p>Hundreds of plants. Natives declining.</p>
+              </div>
+              <div class="tl-line"></div>
+              <div class="tl-step">
+                <div class="tl-dot dot-red"></div>
+                <div class="tl-year">Year 15</div>
+                <p>Entire habitat invaded. Very costly to reverse.</p>
+              </div>
+            </div>
+          </div>
+          <button class="mark-btn" onclick="markRead('spread', this)">Mark as Read</button>
+        </div>
+
+        <!-- TAB: HABITATS -->
+        <div class="tab-pane" id="tab-habitats">
+          <h2>Singapore's Most Threatened Habitats</h2>
+          <p class="tab-intro">Singapore has some of South-East Asia's most precious ecosystems — all under threat from invasive plants:</p>
+          <div class="habitat-grid">
+            <div class="hab-card" style="border-top-color:#27ae60;">
+              <div class="hab-icon hab-forest"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2 6 11h3l-4 7h5v4h4v-4h5l-4-7h3z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+              <h4>Bukit Timah Forest</h4>
+              <p>One of the world's most biodiverse urban forests. Mile-a-Minute and Zanzibar Yam invade its edges, threatening species found nowhere else on Earth.</p>
+              <div class="hab-tag">Mile-a-Minute, Zanzibar Yam</div>
+            </div>
+            <div class="hab-card" style="border-top-color:#3498db;">
+              <div class="hab-icon hab-water"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.25)"/></svg></div>
+              <h4>Reservoirs and Waterways</h4>
+              <p>Water Hyacinth mats reduce water quality, block sunlight, and clog pumping systems supplying Singapore's drinking water directly.</p>
+              <div class="hab-tag">Water Hyacinth, Salvinia</div>
+            </div>
+            <div class="hab-card" style="border-top-color:#16a085;">
+              <div class="hab-icon hab-mangrove"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22V10M12 10 6 4M12 10l6-6M8 22h8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Sungei Buloh Mangroves</h4>
+              <p>Critical nurseries for fish and resting spots for migratory birds. Invasive grasses and vines are fragmenting these irreplaceable coastal habitats.</p>
+              <div class="hab-tag">Casuarina, Para Grass</div>
+            </div>
+            <div class="hab-card" style="border-top-color:#8e44ad;">
+              <div class="hab-icon hab-island"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 18c3-2 15-2 18 0M12 15V4M12 4l4 3M12 7 8 5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Pulau Ubin</h4>
+              <p>Singapore's biodiversity refuge. Invasives are filling gaps left by abandoned farmland — outcompeting returning native species before they can establish.</p>
+              <div class="hab-tag">Siam Weed, Lantana</div>
+            </div>
+            <div class="hab-card" style="border-top-color:#e67e22;">
+              <div class="hab-icon hab-grass"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 21c0-6 2-10 2-10M9 21c0-8 1-13 1-13M14 21c0-8-1-13-1-13M19 21c0-6-2-10-2-10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Wasteland and Grasslands</h4>
+              <p>Open areas between urban and forest zones are invasion hotspots. Invasive grasses establish here first, then creep into adjacent forests.</p>
+              <div class="hab-tag">Siam Weed, Cogon Grass</div>
+            </div>
+            <div class="hab-card" style="border-top-color:#c0392b;">
+              <div class="hab-icon hab-ridge"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 20 9 8l4 6 2-3 7 9H2z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+              <h4>Southern Ridges</h4>
+              <p>This green corridor from Labrador to Mount Faber faces constant invasion pressure from urban-adapted plants spreading from surrounding housing estates.</p>
+              <div class="hab-tag">Senduduk Bulu, Albizia</div>
+            </div>
+          </div>
+          <button class="mark-btn" onclick="markRead('habitats', this)">Mark as Read</button>
+        </div>
+
+        <!-- TAB: DAMAGE -->
+        <div class="tab-pane" id="tab-damage">
+          <h2>The Real Damage in Singapore</h2>
+          <p class="tab-intro">The impact goes far beyond just looking untidy. Here is what is really at stake:</p>
+          <div class="damage-block damage-green">
+            <h3>Ecological Damage</h3>
+            <ul>
+              <li><strong>Biodiversity collapse</strong> — Invasives replace diverse plant communities with single-species monocultures</li>
+              <li><strong>Food web disruption</strong> — Native insects, birds, and mammals depend on specific native plants that invasives displace</li>
+              <li><strong>Soil chemistry changes</strong> — Some invasives alter soil pH and nutrients, preventing native plant recovery even after removal</li>
+              <li><strong>Light competition</strong> — Mile-a-Minute grows over forest canopy, starving trees of sunlight until they die within months</li>
+              <li><strong>Long-term seed banks</strong> — Invasive bulbils and seeds persist in soil for years, blocking native seedling establishment</li>
+            </ul>
+          </div>
+          <div class="damage-block damage-yellow">
+            <h3>Economic Damage</h3>
+            <ul>
+              <li><strong>Water supply costs</strong> — Water Hyacinth requires expensive mechanical treatment in Singapore's reservoirs</li>
+              <li><strong>PUB drainage blockage</strong> — Aquatic weeds block Singapore's canal systems, requiring costly ongoing maintenance</li>
+              <li><strong>NParks removal budgets</strong> — Tens of millions spent annually on invasive plant management across Singapore's parks</li>
+              <li><strong>Tourism impact</strong> — Degraded green spaces reduce the appeal of Singapore's nature parks to eco-tourists</li>
+            </ul>
+          </div>
+          <div class="damage-block damage-red">
+            <h3>Public Health Concerns</h3>
+            <ul>
+              <li><strong>Dengue risk</strong> — Dense invasive mats create perfect Aedes mosquito breeding sites in Singapore's warm, wet climate</li>
+              <li><strong>Toxic plants</strong> — Some invasives in Singapore are toxic to children and pets if touched or ingested</li>
+              <li><strong>Water quality</strong> — Aquatic invasives enable bacteria and toxin-producing algae to bloom in reservoirs</li>
+              <li><strong>Heat amplification</strong> — Invasives replacing native tree canopy worsen Singapore's already serious urban heat island</li>
+            </ul>
+          </div>
+          <div class="spotlight-box">
+            <strong>Spotlight: What Mile-a-Minute Does to Bukit Timah</strong>
+            <p>Growing up to 8cm per day, Mikania micrantha drapes over shrubs and trees like a thick green blanket, cutting off all light. Trees weaken and collapse. The seedbank fills with Mikania seeds. Native undergrowth vanishes entirely. Recovering a heavily invaded patch can take 10 to 20 years of active management — or it may never recover at all.</p>
+          </div>
+          <button class="mark-btn" onclick="markRead('damage', this)">Mark as Read</button>
+        </div>
+
+        <!-- TAB: CONTROL -->
+        <div class="tab-pane" id="tab-control">
+          <h2>How Singapore Fights Back</h2>
+          <p class="tab-intro">Singapore uses integrated approaches combining government action with community involvement:</p>
+          <div class="control-grid">
+            <div class="control-card ctrl-green">
+              <div class="ctrl-icon ci-hand"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13V6a1.5 1.5 0 0 1 3 0v5M11 11V4a1.5 1.5 0 0 1 3 0v7M14 12V6a1.5 1.5 0 0 1 3 0v8M8 12l-2 1a2 2 0 0 0-1 2c0 3 3 7 8 7s7-3 7-6v-4" stroke="#2d6a4f" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Manual Removal</h4>
+              <div class="ctrl-badge badge-good">NParks Standard</div>
+              <p>NParks staff and volunteers physically uproot invasives. Must remove all roots — even small Zanzibar Yam fragments can regrow into full plants.</p>
+            </div>
+            <div class="control-card ctrl-orange">
+              <div class="ctrl-icon ci-flask"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke="#e67e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Targeted Herbicides</h4>
+              <div class="ctrl-badge badge-caution">Specialist Use</div>
+              <p>Foliar sprays or stem injection. Used carefully to minimise impact on native plants. Never applied near waterways without special protocols.</p>
+            </div>
+            <div class="control-card ctrl-blue">
+              <div class="ctrl-icon ci-seed"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-4 7-12a7 7 0 0 0-14 0c0 8 7 12 7 12zM12 22V10" stroke="#3498db" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h4>Native Replanting</h4>
+              <div class="ctrl-badge badge-good">Critical Step</div>
+              <p>After removal, NParks replants native species to close the gap before invasives return. Volunteer planting events make a real difference!</p>
+            </div>
+            <div class="control-card ctrl-purple">
+              <div class="ctrl-icon ci-scope"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7" stroke="#9b59b6" stroke-width="1.8"/><path d="M21 21l-5-5" stroke="#9b59b6" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+              <h4>Research and Monitoring</h4>
+              <div class="ctrl-badge badge-great">NUS + NParks</div>
+              <p>GPS mapping and citizen science data from iNaturalist. Early detection data saves enormous costs in management later.</p>
+            </div>
+            <div class="control-card ctrl-teal">
+              <div class="ctrl-icon ci-shield"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z" stroke="#16a085" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+              <h4>Biosecurity at Borders</h4>
+              <div class="ctrl-badge badge-good">AVA Regulated</div>
+              <p>AVA maintains a list of prohibited plants. All plant imports must be declared and inspected at Singapore's borders before entry.</p>
+            </div>
+            <div class="control-card ctrl-pink">
+              <div class="ctrl-icon ci-book"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z" stroke="#e91e8c" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 20.5V18h16" stroke="#e91e8c" stroke-width="1.8"/></svg></div>
+              <h4>Education</h4>
+              <div class="ctrl-badge badge-great">Most Sustainable!</div>
+              <p>Long-term success depends on a public that understands invasive plants. That is why you learning this matters so much right now.</p>
+            </div>
+          </div>
+          <div class="tip-box">
+            <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6V16h5.4v-.5c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z" stroke="#b7860a" stroke-width="1.7" stroke-linejoin="round" fill="rgba(244,208,63,0.25)"/></svg></div>
+            <p><strong>Singapore tip:</strong> If you see Water Hyacinth in a canal, report to PUB's 24-hour hotline: <strong>1800-284-6600</strong>. For other invasives, use NParks' feedback portal or call <strong>1800-471-7300</strong>.</p>
+          </div>
+          <button class="mark-btn" onclick="markRead('control', this)">Mark as Read</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section light-section center-section">
+      <div class="container">
+        <h2>Ready to Test Your Knowledge?</h2>
+        <p class="section-sub">Try our Singapore quiz, memory match, and more!</p>
+        <button class="btn btn-green btn-large" onclick="showPage('games')">Play the Games</button>
+      </div>
+    </section>
+
+  </div>
+  <!-- END LEARN -->
+
+
+  <!-- ===================== SPECIES ===================== -->
+  <div id="page-species" class="page">
+
+    <div class="page-header header-purple">
+      <div class="tag tag-white">SINGAPORE ROGUES GALLERY</div>
+      <h1>Singapore's Invasive Species</h1>
+      <p>Eight invasive plants causing real damage right here. Click any card for the full profile.</p>
+    </div>
+
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-inner">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="extreme">Extreme</button>
+          <button class="filter-btn" data-filter="high">High</button>
+          <button class="filter-btn" data-filter="medium">Medium</button>
+          <button class="filter-btn" data-filter="aquatic">Aquatic</button>
+          <button class="filter-btn" data-filter="terrestrial">Terrestrial</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="species-grid" id="speciesGrid">
+
+          <div class="sp-card" data-category="extreme terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-green"></div>
+              <img src="images/zanzibar.jpg" alt="Zanzibar Yam" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge extreme">EXTREME</div>
+            </div>
+            <div class="sp-body">
+              <h3>Zanzibar Yam</h3>
+              <p class="sp-latin"><em>Dioscorea bulbifera</em></p>
+              <p class="sp-nick">"The Bulb Bomber"</p>
+              <div class="sp-tags">
+                <span>Africa and Asia</span>
+                <span>Island-wide</span>
+                <span>Up to 5m long</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-zanzibar', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-zanzibar">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Forest edges, secondary forests, roadsides across Singapore. Particularly aggressive at Bukit Timah, Central Catchment, and Pulau Ubin. Thrives in our year-round warmth and humidity.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Twines aggressively around native shrubs and trees, creating a dense canopy that blocks all sunlight. Produces bulbils that drop to the ground and spread via soil disturbance.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Bulbils drop from the vine and are moved by water flow, soil disturbance during construction, and animals. Even small tuber fragments left in soil can regenerate a full plant.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Manual uprooting — must remove all bulbils from soil</li>
+                    <li>Repeated cutting over multiple seasons to exhaust roots</li>
+                    <li>Herbicide stem injection for established plants</li>
+                    <li>Monitor for regrowth for at least 2 years after clearing</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> The Zanzibar Yam was likely introduced as a food crop during colonial times. Now it is one of Singapore's most problematic invasives.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="extreme terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-dark"></div>
+              <img src="images/mam.jpg" alt="Mile-a-Minute" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge extreme">EXTREME</div>
+            </div>
+            <div class="sp-body">
+              <h3>Mile-a-Minute</h3>
+              <p class="sp-latin"><em>Mikania micrantha</em></p>
+              <p class="sp-nick">"Singapore's Number One Weed"</p>
+              <div class="sp-tags">
+                <span>C. and S. America</span>
+                <span>Island-wide</span>
+                <span>8cm per day</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-mam', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-mam">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Roadsides, forest edges, degraded forest, and wasteland across Singapore. The single most widespread invasive plant in Singapore according to NParks.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Grows up to 8cm per day in Singapore's tropical climate. Climbs over and smothers all vegetation beneath it, forming a continuous canopy that blocks all light. Affected trees die within months.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Wind dispersal of lightweight seeds is the primary mechanism. Seeds travel from construction sites and roadsides into adjacent forest. Stem fragments also root easily in Singapore's moist soil.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Manual cutting before seed set — top priority action</li>
+                    <li>Repeated weekly cutting during the growing season</li>
+                    <li>Herbicide spraying on established infestations</li>
+                    <li>Competitive planting of fast-growing native species to shade it out</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Introduced via contaminated grass seed in the 1960s — a single preventable mistake that created decades of ongoing management costs.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high aquatic">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-purple"></div>
+              <img src="images/hyacinth.jpg" alt="Water Hyacinth" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Water Hyacinth</h3>
+              <p class="sp-latin"><em>Eichhornia crassipes</em></p>
+              <p class="sp-nick">"The Waterway Choker"</p>
+              <div class="sp-tags">
+                <span>South America</span>
+                <span>Canals, reservoirs</span>
+                <span>Doubles in 2 weeks</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-hyacinth', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-hyacinth">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Found in Singapore's reservoirs, canals, and slow-moving waterways. Common in Kranji Reservoir and various urban canals.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Thick floating mats block sunlight — aquatic plants die and fish suffocate as oxygen drops. Creates ideal breeding grounds for Aedes mosquitoes, directly increasing Singapore's dengue risk.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Doubles coverage in just 2 weeks through vegetative reproduction. Flood events wash mats through Singapore's canal network. Also introduced when people dump aquarium plants into waterways.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How PUB and NParks Remove It</h5>
+                  <ul>
+                    <li>Mechanical harvesting using specialist boats on larger water bodies</li>
+                    <li>Manual removal using nets and rakes in canals</li>
+                    <li>Report to PUB at 1800-284-6600</li>
+                    <li>NEVER dump aquarium plants into Singapore's waterways</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Introduced as an ornamental pond plant because of its beautiful purple flowers — now one of Singapore's costliest aquatic invasives to manage.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-pink"></div>
+              <img src="images/clidemia.jpg" alt="Senduduk Bulu" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Senduduk Bulu</h3>
+              <p class="sp-latin"><em>Clidemia hirta</em></p>
+              <p class="sp-nick">"The Forest Floor Killer"</p>
+              <div class="sp-tags">
+                <span>Tropical Americas</span>
+                <span>Forest understorey</span>
+                <span>8,000 seeds per plant</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-clidemia', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-clidemia">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>A serious understorey invader in Singapore's secondary forests including Bukit Timah and Central Catchment. It tolerates shade — meaning it can invade intact forest, not just disturbed edges.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Forms dense thickets preventing native seedlings from establishing. Breaks the regeneration cycle of native forest — once it takes over the understorey, the forest cannot replace its canopy trees naturally.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Thousands of berries eaten by the invasive Javan Myna, dispersed throughout forest fragments. This bird-plant invasive partnership is called an "invasion meltdown" by researchers.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Manual uprooting — most effective when plants are young</li>
+                    <li>Cut-stump herbicide treatment for established shrubs</li>
+                    <li>Long-term monitoring — seeds persist in soil for years</li>
+                    <li>Replant native understorey species after clearing to fill the gap</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Senduduk Bulu is partly powered by the Javan Myna — itself an invasive species. Two invasives helping each other is called an invasion meltdown!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-amber"></div>
+              <img src="images/siam.jpg" alt="Siam Weed" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Siam Weed</h3>
+              <p class="sp-latin"><em>Chromolaena odorata</em></p>
+              <p class="sp-nick">"The Sunlight Thief"</p>
+              <div class="sp-tags">
+                <span>C. and S. America</span>
+                <span>Wasteland, edges</span>
+                <span>3m per season</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-siam', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-siam">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Roadsides, wasteland, forest edges, and abandoned farmland — especially prevalent on Pulau Ubin and along Singapore's rail corridor.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Grows up to 3 metres tall in a single growing season, shading out all native plants below. Releases allelopathic chemicals inhibiting surrounding plants.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Wind-dispersed seeds in large quantities. Thrives especially in disturbed soil after construction — making Singapore's constant development a major driver of its spread.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Cutting before seed set is critical — prevents the next generation</li>
+                    <li>Herbicide treatment on cut stumps to prevent regrowth</li>
+                    <li>Replanting with fast-growing native pioneer species for competition</li>
+                    <li>Community volunteer cutting events run regularly on Pulau Ubin</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Siam Weed is highly flammable when dry. A single discarded cigarette in a Siam Weed patch could start a devastating fire in Singapore's otherwise fire-free forests.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="high terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-teal"></div>
+              <img src="images/albizia.jpg" alt="Albizia" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge high">HIGH</div>
+            </div>
+            <div class="sp-body">
+              <h3>Albizia</h3>
+              <p class="sp-latin"><em>Falcataria moluccana</em></p>
+              <p class="sp-nick">"The Widow-Maker Tree"</p>
+              <div class="sp-tags">
+                <span>Maluku, Indonesia</span>
+                <span>Parks, forests</span>
+                <span>Grows 7m per year</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-albizia', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-albizia">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Extremely common across Singapore in secondary forests and parks. Deliberately planted for shade in the past — before its invasive and structurally dangerous nature was fully understood.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Up to 7m per year growth produces structurally weak wood that breaks catastrophically in storms. Dense canopy shades out native forest regeneration completely below it.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Wind and water-dispersed seeds in enormous quantities. Nitrogen-fixing roots give it an advantage in poor soils, allowing it to outcompete native trees.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Ring-barking for large specimens to prevent sudden dangerous collapse</li>
+                    <li>Controlled felling by trained arborists only — structurally unsafe</li>
+                    <li>Stump treatment with herbicide to prevent regrowth from roots</li>
+                    <li>Major ongoing NParks removal project on Pulau Ubin island</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Albizia was planted extensively for reforestation in the 1970s — a well-intentioned decision that created a major ecological problem Singapore is still managing today.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="medium terrestrial">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-orange"></div>
+              <img src="images/lantana.jpg" alt="Lantana" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge medium">MEDIUM</div>
+            </div>
+            <div class="sp-body">
+              <h3>Lantana</h3>
+              <p class="sp-latin"><em>Lantana camara</em></p>
+              <p class="sp-nick">"The Pretty Killer"</p>
+              <div class="sp-tags">
+                <span>Central America</span>
+                <span>Gardens, edges</span>
+                <span>Toxic berries</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-lantana', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-lantana">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Roadsides, garden escapes, forest edges, and Pulau Ubin wasteland. Still sold in some Singapore nurseries as an ornamental.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Dense prickly thickets exclude native plants and make areas impenetrable to wildlife. Berries are poisonous to children and most native mammals.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Bird-dispersed seeds — particularly by the Javan Myna and Asian Glossy Starling — are the primary spread mechanism in Singapore.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How NParks Removes It</h5>
+                  <ul>
+                    <li>Manual removal with thick gloves — stems are thorny and irritating</li>
+                    <li>Herbicide treatment on cut stumps to prevent regrowth</li>
+                    <li>Campaigns to discourage purchase of Lantana from local nurseries</li>
+                    <li>36+ biocontrol agents have been studied globally for this species</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Lantana flowers change colour as they age — from yellow to orange to red — signalling to pollinators which flowers still have nectar. Beautiful but deadly!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sp-card" data-category="medium aquatic">
+            <div class="sp-img-wrap">
+              <div class="sp-img-bg sp-img-bg-blue"></div>
+              <img src="images/salvinia.jpg" alt="Giant Salvinia" onerror="this.style.display='none'"/>
+              <div class="sp-danger-badge medium">MEDIUM</div>
+            </div>
+            <div class="sp-body">
+              <h3>Giant Salvinia</h3>
+              <p class="sp-latin"><em>Salvinia molesta</em></p>
+              <p class="sp-nick">"The Aquarium Escapee"</p>
+              <div class="sp-tags">
+                <span>South America</span>
+                <span>Ponds, canals</span>
+                <span>Doubles in 2.5 days</span>
+              </div>
+              <button class="sp-expand-btn" onclick="toggleSpecies('sp-salvinia', this)">Full Profile</button>
+              <div class="sp-detail" id="sp-salvinia">
+                <div class="sp-detail-section">
+                  <h5>Habitat in Singapore</h5>
+                  <p>Found in ornamental ponds, slow-moving canals, and reservoir margins across Singapore. Frequently introduced through the aquarium trade.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Kills</h5>
+                  <p>Can double its biomass in as little as 2.5 days. Creates thick floating mats that block all light, deplete oxygen, and prevent gas exchange. Completely eliminates aquatic biodiversity beneath within weeks.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How It Spreads</h5>
+                  <p>Almost entirely through human activity — aquarium plant releases are the main vector in Singapore. Even tiny fragments become new full plants.</p>
+                </div>
+                <div class="sp-detail-section">
+                  <h5>How PUB and NParks Remove It</h5>
+                  <ul>
+                    <li>Manual skimming from ponds and canals using nets</li>
+                    <li>Biological control: Cyrtobagous salviniae weevil is highly effective globally</li>
+                    <li>Public awareness campaigns targeting aquarium hobbyists</li>
+                    <li>Regulation of aquatic plant sales in Singapore pet shops</li>
+                  </ul>
+                </div>
+                <div class="sp-funfact"><strong>Wild fact:</strong> Giant Salvinia is covered in tiny water-repelling hairs shaped like egg-beaters. Scientists have studied them to develop new waterproof materials!</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- QUICK ID -->
+        <div class="quick-id-section">
+          <div class="section-header" style="text-align:left;margin-bottom:1.5rem;">
+            <div class="tag tag-green">FIELD IDENTIFICATION</div>
+            <h2>How to Spot an Invasive in Singapore</h2>
+          </div>
+          <div class="id-step-list">
+            <div class="id-step">
+              <div class="id-num">1</div>
+              <div>
+                <h4>At a forest edge or disturbed area</h4>
+                <p>Most Singapore invasives establish first in disturbed soil — construction edges, roadsides, gaps in vegetation. Single species dominating these areas is suspicious.</p>
+              </div>
+            </div>
+            <div class="id-step">
+              <div class="id-num">2</div>
+              <div>
+                <h4>Forming a monoculture</h4>
+                <p>Healthy Singapore forest has extraordinary plant diversity. A large area dominated by just one species — especially a climbing vine or dense shrub — may be invasive.</p>
+              </div>
+            </div>
+            <div class="id-step">
+              <div class="id-num">3</div>
+              <div>
+                <h4>Climbing or smothering other plants</h4>
+                <p>Vines draping over shrubs and trees like a blanket — a classic sign of Zanzibar Yam or Mile-a-Minute. The plants underneath may already be dying from lack of light.</p>
+              </div>
+            </div>
+            <div class="id-step">
+              <div class="id-num">4</div>
+              <div>
+                <h4>Use iNaturalist Singapore</h4>
+                <p>Photograph the plant and submit to iNaturalist. The Singapore NParks community will help identify it within hours. Your observation becomes real scientific data!</p>
+              </div>
+            </div>
+          </div>
+          <div class="warning-box">
+            <strong>Never remove Albizia yourself</strong> — it is structurally dangerous and can fall without warning. Always report to NParks: 1800-471-7300
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <!-- END SPECIES -->
+
+
+  <!-- ===================== GAMES ===================== -->
+  <div id="page-games" class="page">
+
+    <div class="page-header header-orange">
+      <div class="tag tag-white">PLAY AND LEARN</div>
+      <h1>Games and Activities</h1>
+      <p>Four Singapore-themed games. Earn points, unlock badges, and beat your high score!</p>
+      <div class="badge-shelf" id="badgeShelf"></div>
+    </div>
+
+    <div class="score-bar">
+      <div class="container">
+        <div class="score-bar-inner">
+          <div class="score-pill">Quiz <span id="quizScoreVal">0</span></div>
+          <div class="score-pill">Memory <span id="memoryScoreVal">0</span></div>
+          <div class="score-pill">Spot <span id="spotScoreVal">0</span></div>
+          <div class="score-pill">Chain <span id="chainScoreVal">0</span></div>
+          <div class="score-pill total-pill">Total <span id="totalScoreVal">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-selector">
+      <div class="container">
+        <div class="game-tabs">
+          <button class="game-tab active-tab" onclick="switchGame('quiz', this)">
+            <div class="gt-tab-icon gtt-quiz"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.6"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7v.5M12 17h.01" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <span class="gt-name">SG Quiz</span>
+          </button>
+          <button class="game-tab" onclick="switchGame('memory', this)">
+            <div class="gt-tab-icon gtt-memory"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="white" stroke-width="1.6"/></svg></div>
+            <span class="gt-name">Memory Match</span>
+          </button>
+          <button class="game-tab" onclick="switchGame('spot', this)">
+            <div class="gt-tab-icon gtt-spot"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="white" stroke-width="1.6"/></svg></div>
+            <span class="gt-name">Spot the Invader</span>
+          </button>
+          <button class="game-tab" onclick="switchGame('chain', this)">
+            <div class="gt-tab-icon gtt-chain"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="8" height="8" rx="4" stroke="white" stroke-width="1.6"/><rect x="13" y="8" width="8" height="8" rx="4" stroke="white" stroke-width="1.6"/><path d="M11 12h2" stroke="white" stroke-width="1.6"/></svg></div>
+            <span class="gt-name">Invasion Chain</span>
+            <span class="new-badge">NEW</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-area">
+      <div class="container">
+
+        <!-- QUIZ GAME -->
+        <div class="game-panel active-panel" id="game-quiz">
+          <div class="game-box quiz-box">
+            <div class="game-box-header">
+              <h2>Singapore Invasive Quiz</h2>
+              <div class="game-stat">Q <span id="qNum">1</span> / 12</div>
+            </div>
+            <div class="quiz-progress-bar">
+              <div class="quiz-progress-fill" id="quizProgressFill"></div>
+            </div>
+            <div id="quizPlayArea">
+              <p class="question-text" id="questionText">Loading question...</p>
+              <div class="answers-grid" id="answersGrid"></div>
+              <div class="quiz-feedback" id="quizFeedback" style="display:none;"></div>
+              <button class="btn btn-green" id="quizNextBtn" style="display:none;margin-top:1rem;" onclick="nextQuestion()">Next Question</button>
+            </div>
+            <div class="game-complete" id="quizComplete" style="display:none;">
+              <div class="gc-icon gc-trophy"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 5H4a3 3 0 0 0 3 6M17 5h3a3 3 0 0 1-3 6M10 15v3H8v2h8v-2h-2v-3" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+              <h3>Quiz Complete!</h3>
+              <p>You scored <strong id="quizFinalScore">0</strong> points</p>
+              <div class="gc-message" id="quizMessage"></div>
+              <button class="btn btn-green" onclick="restartQuiz()">Play Again</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEMORY GAME -->
+        <div class="game-panel" id="game-memory">
+          <div class="game-box memory-box">
+            <div class="game-box-header">
+              <h2>Colour-Coded Memory Match</h2>
+              <div class="game-stat">Moves: <span id="memMoves">0</span> | Pairs: <span id="memPairs">0</span>/10</div>
+            </div>
+            <p class="game-intro">Match each invasive plant to its region of origin. Matched pairs glow in their colour! Build combos and race the clock for a higher score.</p>
+            <div class="memory-legend" id="memoryLegend"></div>
+            <div class="memory-grid" id="memoryGrid"></div>
+            <div class="game-complete" id="memoryComplete" style="display:none;">
+              <div class="gc-icon gc-trophy"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4h10v4a5 5 0 0 1-10 0V4z" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 5H4a3 3 0 0 0 3 6M17 5h3a3 3 0 0 1-3 6M10 15v3H8v2h8v-2h-2v-3" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+              <h3>All Matched!</h3>
+              <p>Completed in <strong id="memFinalMoves">0</strong> moves</p>
+              <button class="btn btn-green" onclick="startMemory()">Play Again</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPOT THE INVADER -->
+        <div class="game-panel" id="game-spot">
+          <div class="game-box spot-box">
+            <div class="game-box-header">
+              <h2>Spot the Invader</h2>
+              <div class="game-stat">Round <span id="spotRoundNum">1</span>/10 &nbsp;|&nbsp; <span id="spotPts">0</span> pts</div>
+            </div>
+            <p class="game-intro">Is this plant <strong>native to Singapore</strong> or an <strong>invasive species</strong>? Choose your confidence level first — then answer before time runs out. Confidence doubles your points or your penalty!</p>
+            <div id="spotPlayArea">
+              <div class="spot-plant-card">
+                <img id="spotPlantImg" src="" alt="" class="spot-plant-img" onerror="this.style.display='none'"/>
+                <h3 id="spotPlantName" class="spot-plant-name"></h3>
+                <p id="spotPlantClue" class="spot-plant-clue"></p>
+                <p id="spotPlantOrigin" class="spot-plant-origin"></p>
+              </div>
+              <div class="spot-buttons">
+                <button class="btn spot-native-btn" onclick="answerSpot('native')">Native to Singapore</button>
+                <button class="btn spot-invasive-btn" onclick="answerSpot('invasive')">Invasive Species</button>
+              </div>
+              <div class="spot-feedback" id="spotFeedback" style="display:none;"></div>
+            </div>
+            <div class="game-complete" id="spotComplete" style="display:none;">
+              <div class="gc-icon gc-star"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3 6.5 7 1-5 5 1.2 7.3L12 18l-6.2 3.8L7 14.5 2 9.5l7-1z" stroke="white" stroke-width="1.6" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/></svg></div>
+              <h3>Round Complete!</h3>
+              <p>You scored <strong id="spotFinalScore">0</strong> points</p>
+              <button class="btn btn-green" onclick="startSpot()">Play Again</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INVASION CHAIN — populated entirely by JS -->
+        <div class="game-panel" id="game-chain"></div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- END GAMES -->
+
+
+  <!-- ===================== ACTION ===================== -->
+  <div id="page-action" class="page">
+
+    <div class="page-header header-teal">
+      <div class="tag tag-white">BE THE CHANGE</div>
+      <h1>Take Action in Singapore!</h1>
+      <p>Real actions you can take right now — no experience required.</p>
+    </div>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="pledge-wrapper">
+          <div class="pledge-card">
+            <h2>Singapore Plant Defender Pledge</h2>
+            <p>Tick each pledge to earn your Plant Defender badge!</p>
+            <div class="pledge-list" id="pledgeList">
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will download iNaturalist and report at least one invasive plant sighting in Singapore</span>
+              </label>
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will never dump aquarium or garden plants into Singapore waterways or green spaces</span>
+              </label>
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will tell at least 3 classmates about invasive plants in Singapore</span>
+              </label>
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will join or organise an NParks volunteer event at a nature reserve</span>
+              </label>
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will choose native plants if I ever plant anything in a garden or school project</span>
+              </label>
+              <label class="pledge-item">
+                <input type="checkbox" onchange="updatePledge()"/>
+                <span>I will learn to identify at least 3 Singapore invasive plants by sight in the wild</span>
+              </label>
+            </div>
+            <div class="pledge-progress-row">
+              <span><span id="pledgeDone">0</span>/6 pledges</span>
+              <div class="pledge-bar">
+                <div class="pledge-bar-fill" id="pledgeBarFill"></div>
+              </div>
+            </div>
+            <div class="pledge-complete-msg" id="pledgeCompleteMsg" style="display:none;">
+              You are officially a <strong>Singapore Plant Defender!</strong> Screenshot this and share with your class!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-blue">HOW TO REPORT</div>
+          <h2>Step-by-Step: Report an Invasive in Singapore</h2>
+        </div>
+        <div class="how-to-list">
+          <div class="how-step">
+            <div class="how-icon hi-step hi-phone"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="10" height="20" rx="2" stroke="#1a6aaf" stroke-width="1.8"/><path d="M11 18h2" stroke="#1a6aaf" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Step 1: Download iNaturalist</h4>
+              <p>Free on iOS and Android. Singapore has an active community — responses often come from NParks or NUS researchers within just a few hours of submission.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-icon hi-step hi-camera"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#7d3c98" stroke-width="1.8"/><circle cx="12" cy="13.5" r="3.5" stroke="#7d3c98" stroke-width="1.8"/><path d="M8 7l1.5-3h5L16 7" stroke="#7d3c98" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Step 2: Photograph Clearly</h4>
+              <p>Take multiple photos: the whole plant, leaves top and bottom, stem, and flowers or fruits if visible. More detail means a more accurate identification from the community.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-icon hi-step hi-pin"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z" stroke="#c0392b" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="#c0392b" stroke-width="1.8"/></svg></div>
+            <div>
+              <h4>Step 3: Enable GPS Location</h4>
+              <p>Make sure location services are on when you photograph — precise GPS coordinates are what make citizen science data useful to NParks researchers tracking spread.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-icon hi-step hi-check"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#1e8449" stroke-width="1.8"/><path d="M8 12l3 3 5-6" stroke="#1e8449" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <h4>Step 4: Submit the Observation</h4>
+              <p>Upload to iNaturalist. Add notes about infestation size and density. All details help researchers prioritise which areas need the most urgent management action.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-icon hi-step hi-alert"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3 2 20h20L12 3z" stroke="#d4a029" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9v5M12 17h.01" stroke="#d4a029" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div>
+              <h4>Step 5: Report Formally if Needed</h4>
+              <p>For serious infestations: NParks <strong>1800-471-7300</strong> or the OneService app. For aquatic invasives in canals or reservoirs: PUB <strong>1800-284-6600</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-red">SAFETY RULES</div>
+          <h2>What NOT To Do</h2>
+        </div>
+        <div class="warning-grid">
+          <div class="warn-card">
+            <div class="wi-stop"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#e74c3c" stroke-width="1.8"/><path d="M6.5 6.5l11 11" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Never remove Albizia yourself</h4>
+            <p>Structurally dangerous. Can fall without warning. Only trained arborists should manage these trees. Report to NParks and let the professionals handle it.</p>
+          </div>
+          <div class="warn-card">
+            <div class="wi-stop"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#e74c3c" stroke-width="1.8"/><path d="M6.5 6.5l11 11" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Never dump plants in waterways</h4>
+            <p>Illegal under the Environmental Protection and Management Act. One of the biggest ways invasives spread in Singapore — do not do this under any circumstances.</p>
+          </div>
+          <div class="warn-card">
+            <div class="wi-stop"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#e74c3c" stroke-width="1.8"/><path d="M6.5 6.5l11 11" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Never pull and leave roots</h4>
+            <p>Zanzibar Yam and Mile-a-Minute fragments left in soil will regrow fully. Bag all removed material as general waste — never put invasives in the green waste composting stream.</p>
+          </div>
+          <div class="warn-card">
+            <div class="wi-stop"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#e74c3c" stroke-width="1.8"/><path d="M6.5 6.5l11 11" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Never attempt aquatic removal alone</h4>
+            <p>Deep canals and reservoirs are dangerous. Report Water Hyacinth and Salvinia to PUB and let specialist teams who have the right equipment handle it safely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-green">STUDENT PROJECTS</div>
+          <h2>Project Ideas for Singapore Students</h2>
+        </div>
+        <div class="activity-grid">
+          <div class="act-card">
+            <div class="act-icon ai-map"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z" stroke="#2980b9" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 4v14M15 6v14" stroke="#2980b9" stroke-width="1.6"/></svg></div>
+            <h4>School Nature Audit</h4>
+            <p>Survey your school garden or nearby park using iNaturalist. Map native vs invasive species and present your findings to your teacher or at a school assembly.</p>
+            <div class="act-level">All Levels</div>
+          </div>
+          <div class="act-card">
+            <div class="act-icon ai-chart"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10M10 20V4M16 20v-7M4 20h16" stroke="#9b59b6" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Biodiversity Data Project</h4>
+            <p>Compare iNaturalist species counts from an invaded area vs a healthy native area. Analyse the difference in plant diversity and present your data to class.</p>
+            <div class="act-level">Secondary School</div>
+          </div>
+          <div class="act-card">
+            <div class="act-icon ai-megaphone"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 10v4h3l6 4V6L6 10H3zM14 9a3 3 0 0 1 0 6" stroke="#e67e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>Awareness Campaign</h4>
+            <p>Design posters, Instagram content, or a Kahoot quiz about Singapore's invasive plants. Share with your school community or your neighbourhood residents' committee.</p>
+            <div class="act-level">All Levels</div>
+          </div>
+          <div class="act-card">
+            <div class="act-icon ai-hands"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12l4-4 5 5-2 2M21 12l-4-4-5 5 2 2M9 15l3 3 3-3" stroke="#52b788" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h4>NParks Volunteer Day</h4>
+            <p>Sign up for NParks' Friends of the Parks programme. Invasive plant removal sessions run regularly at multiple nature reserves and are open to students.</p>
+            <div class="act-level">With Adult Supervision</div>
+          </div>
+          <div class="act-card">
+            <div class="act-icon ai-plant"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22V13M12 13c0-4-3-6-7-6 0 4 3 6 7 6zm0 0c0-5 3-8 8-8 0 5-3 8-8 8z" stroke="#1e8449" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+            <h4>Native Plant Project</h4>
+            <p>Grow Singapore native species — Tembusu, Sea Apple, or Singapore Kopsia — from seed and plant them in your school grounds with permission.</p>
+            <div class="act-level">Primary School</div>
+          </div>
+          <div class="act-card">
+            <div class="act-icon ai-camera"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#e74c3c" stroke-width="1.8"/><circle cx="12" cy="13.5" r="3.5" stroke="#e74c3c" stroke-width="1.8"/><path d="M8 7l1.5-3h5L16 7" stroke="#e74c3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>Mini Documentary</h4>
+            <p>Film a short video about an invasive plant in your neighbourhood. Interview an NParks volunteer, show before and after photos, and post to raise awareness online.</p>
+            <div class="act-level">Secondary School</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="tag tag-purple">SINGAPORE RESOURCES</div>
+          <h2>Where to Learn More and Get Involved</h2>
+        </div>
+        <div class="resource-grid">
+          <div class="res-card">
+            <div class="res-icon ri-leaf"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 4C10 4 4 10 4 18v2h2c8 0 14-6 14-14V4z" stroke="#2d6a4f" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 19c4-4 8-7 15-15" stroke="#2d6a4f" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>NParks Flora and Fauna Web</h4>
+            <p>Singapore's official database of all recorded plant species including invasives. Use it to look up any plant you find in the field.</p>
+            <span class="res-link">nparks.gov.sg</span>
+          </div>
+          <div class="res-card">
+            <div class="res-icon ri-phone"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="2" width="10" height="20" rx="2" stroke="#1a6aaf" stroke-width="1.8"/><path d="M11 18h2" stroke="#1a6aaf" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <h4>iNaturalist Singapore</h4>
+            <p>Log your observations and connect with Singapore's active naturalist community. Your data goes directly to NParks and NUS researchers.</p>
+            <span class="res-link">inaturalist.org</span>
+          </div>
+          <div class="res-card">
+            <div class="res-icon ri-building"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="3" width="14" height="18" stroke="#6c3483" stroke-width="1.8"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2" stroke="#6c3483" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <h4>NUS Biological Sciences</h4>
+            <p>NUS runs citizen science programmes where students contribute to real invasive species research. Contact their outreach team for school collaboration.</p>
+            <span class="res-link">dbs.nus.edu.sg</span>
+          </div>
+          <div class="res-card">
+            <div class="res-icon ri-call"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3c1 2 1 4 2 5l-2 2c1 3 4 6 7 7l2-2c1 1 3 1 5 2v3c-8 1-16-7-15-15h3z" stroke="#1e8449" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+            <h4>NParks Hotline</h4>
+            <p>Report invasive plants or get advice on removal. They respond to all reports and prioritise nature reserve infestations for rapid management.</p>
+            <span class="res-link">1800-471-7300</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- END ACTION -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo" onclick="showPage('home')">Plant Invaders SG</div>
+          <p>A Singapore-focused educational resource for primary and secondary school students.</p>
+          <p class="footer-credit">Data from NParks Flora and Fauna Web, NUS research publications, and IUCN databases.</p>
+        </div>
+        <div class="footer-links">
+          <a onclick="showPage('home')">Home</a>
+          <a onclick="showPage('blog')">Blog</a>
+          <a onclick="showPage('learn')">Learn</a>
+          <a onclick="showPage('species')">Species</a>
+          <a onclick="showPage('games')">Games</a>
+          <a onclick="showPage('action')">Take Action</a>
+        </div>
+      </div>
+      <div class="footer-bottom">For Singapore Students | Educational Use Only | Data from NParks, NUS and IUCN</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
