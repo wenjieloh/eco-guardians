@@ -654,33 +654,7 @@ button:focus-visible,
 @media (max-width: 768px) {
   .hero-logo { max-width: 240px; }
 }
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%       { transform: translateY(-16px) rotate(2deg); }
-}
-
-.orbit {
-  position: absolute;
-  width: 14px; height: 14px;
-  animation: orbitSpin 7s linear infinite;
-}
-
-.orbit-dot {
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #74c69d, #2d6a4f);
-  box-shadow: 0 0 8px rgba(116,198,157,0.8);
-}
-
-.orbit-dot-2 { background: radial-gradient(circle at 35% 35%, #f4d03f, #c8860a); box-shadow: 0 0 8px rgba(244,208,63,0.8); }
-.orbit-dot-3 { background: radial-gradient(circle at 35% 35%, #e67e22, #a0400a); box-shadow: 0 0 8px rgba(230,126,34,0.7); }
-.orbit-dot-4 { background: radial-gradient(circle at 35% 35%, #3498db, #1a6aaf); box-shadow: 0 0 8px rgba(52,152,219,0.7); }
-
-.orbit-1 { width: 10px; height: 10px; animation-delay: 0s; }
-.orbit-2 { width: 14px; height: 14px; animation-delay: 1.75s; }
-.orbit-3 { width: 9px;  height: 9px;  animation-delay: 3.5s; }
-.orbit-4 { width: 12px; height: 12px; animation-delay: 5.25s; }
-
-@keyframes orbitSpin {
+ 
   0%   { transform: rotate(0deg)   translateX(110px) rotate(0deg);    }
   100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
 }
