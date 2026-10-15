@@ -250,13 +250,9 @@ h1, h2, h3, h4 {
 }
 
 /* Minimalist CSS Visual replacing emoji logo bullet point */
-.nav-logo::after {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--clr-accent);
-  border-radius: var(--radius-full);
-}
+   .nav-logo { cursor: pointer; }
+   .nav-logo::after { display: none; }
+   .nav-logo-img { height: 56px; width: auto; display: block; }
 
 .nav-links {
   display: flex;
